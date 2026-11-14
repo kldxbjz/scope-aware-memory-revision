@@ -8,13 +8,15 @@ def decoded(row,key):
     value=row[key]
     return json.loads(value) if isinstance(value,str) else value
 
-def visible_prefix(conversations, date):
-    """Only dialogue date, role, content. NEVER annotations/scenarios/graph fields."""
+def visible_prefix(conversations, date, conversation_index=None, turn_index=None):
+    """Date-only means end-of-date. Index tie-break is engineering, not proven chronology."""
+    cutoff=(date, conversation_index if conversation_index is not None else float("inf"),
+            turn_index if turn_index is not None else float("inf"))
     out=[]
-    for conv in sorted(conversations,key=lambda c:c["date"]):
-        if conv["date"] > date:
-            break
-        for turn in conv["conversation"]["turns"]:
+    for ci,conv in sorted(enumerate(conversations),key=lambda x:(x[1]["date"],x[0])):
+        for ti,turn in enumerate(conv["conversation"]["turns"]):
+            if (conv["date"],ci,ti)>cutoff:
+                continue
             out.append({"date":conv["date"],"role":turn["role"],"content":turn["content"]})
     return out
 
