@@ -1,0 +1,62 @@
+{
+  "10": {
+    "label": "scoped_exception",
+    "family": "travel",
+    "split": "test"
+  },
+  "11": {
+    "label": "lasting_update",
+    "family": "travel",
+    "split": "test"
+  },
+  "12": {
+    "label": "insufficient",
+    "family": "travel",
+    "split": "test"
+  },
+  "01": {
+    "label": "scoped_exception",
+    "family": "format",
+    "split": "train"
+  },
+  "02": {
+    "label": "lasting_update",
+    "family": "format",
+    "split": "train"
+  },
+  "03": {
+    "label": "insufficient",
+    "family": "format",
+    "split": "train"
+  },
+  "04": {
+    "label": "scoped_exception",
+    "family": "schedule",
+    "split": "train"
+  },
+  "05": {
+    "label": "lasting_update",
+    "family": "schedule",
+    "split": "train"
+  },
+  "06": {
+    "label": "insufficient",
+    "family": "schedule",
+    "split": "train"
+  },
+  "07": {
+    "label": "scoped_exception",
+    "family": "drink",
+    "split": "validation"
+  },
+  "08": {
+    "label": "lasting_update",
+    "family": "drink",
+    "split": "validation"
+  },
+  "09": {
+    "label": "insufficient",
+    "family": "drink",
+    "split": "validation"
+  }
+}

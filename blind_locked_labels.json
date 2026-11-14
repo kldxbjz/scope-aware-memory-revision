@@ -1,0 +1,52 @@
+{
+  "internal_a": {
+    "locked": true,
+    "context": "fresh subagent, no history/tools/key; shuffled aliases",
+    "alias_to_id": {
+      "a": "09",
+      "b": "05",
+      "c": "10",
+      "d": "03",
+      "e": "08",
+      "f": "01",
+      "g": "12",
+      "h": "04",
+      "i": "02",
+      "j": "07",
+      "k": "06",
+      "l": "11"
+    },
+    "labels": {
+      "a": "insufficient",
+      "b": "lasting_update",
+      "c": "scoped_exception",
+      "d": "insufficient",
+      "e": "lasting_update",
+      "f": "scoped_exception",
+      "g": "insufficient",
+      "h": "scoped_exception",
+      "i": "lasting_update",
+      "j": "scoped_exception",
+      "k": "insufficient",
+      "l": "lasting_update"
+    }
+  },
+  "internal_b": {
+    "locked": true,
+    "context": "fresh subagent, no history/tools/key; original IDs",
+    "labels": {
+      "10": "scoped_exception",
+      "11": "lasting_update",
+      "12": "insufficient",
+      "01": "scoped_exception",
+      "02": "lasting_update",
+      "03": "insufficient",
+      "04": "scoped_exception",
+      "05": "lasting_update",
+      "06": "insufficient",
+      "07": "scoped_exception",
+      "08": "lasting_update",
+      "09": "insufficient"
+    }
+  }
+}

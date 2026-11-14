@@ -1,0 +1,25 @@
+{
+  "count": 12,
+  "agreement": 12,
+  "disagreements": [],
+  "internal_a_author_key_correct": 12,
+  "internal_b_author_key_correct": 12,
+  "per_class": {
+    "lasting_update": {
+      "count": 4,
+      "a_correct": 4,
+      "b_correct": 4
+    },
+    "scoped_exception": {
+      "count": 4,
+      "a_correct": 4,
+      "b_correct": 4
+    },
+    "insufficient": {
+      "count": 4,
+      "a_correct": 4,
+      "b_correct": 4
+    }
+  },
+  "warning": "Internal same-model synthetic sanity only; not human agreement or data readiness"
+}

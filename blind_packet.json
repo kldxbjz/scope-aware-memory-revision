@@ -1,0 +1,161 @@
+{
+  "instructions": "Classify the second user message only: lasting_update, scoped_exception, insufficient. Return ID and rationale. No graph/gold. Do not treat tentative interest as a committed change.",
+  "items": [
+    {
+      "id": "01",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Usually give concise answers."
+        },
+        {
+          "role": "user",
+          "content": "For this proof only, give every detail; otherwise stay concise."
+        }
+      ]
+    },
+    {
+      "id": "02",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Usually give concise answers."
+        },
+        {
+          "role": "user",
+          "content": "Going forward, give detailed answers instead of concise ones."
+        }
+      ]
+    },
+    {
+      "id": "03",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Usually give concise answers."
+        },
+        {
+          "role": "user",
+          "content": "Detailed answers might be nice."
+        }
+      ]
+    },
+    {
+      "id": "04",
+      "messages": [
+        {
+          "role": "user",
+          "content": "My standard meeting time is morning."
+        },
+        {
+          "role": "user",
+          "content": "While this night-shift assignment lasts, schedule meetings in the afternoon; afterward mornings again."
+        }
+      ]
+    },
+    {
+      "id": "05",
+      "messages": [
+        {
+          "role": "user",
+          "content": "My standard meeting time is morning."
+        },
+        {
+          "role": "user",
+          "content": "Afternoons are my new standard meeting time, replacing mornings."
+        }
+      ]
+    },
+    {
+      "id": "06",
+      "messages": [
+        {
+          "role": "user",
+          "content": "My standard meeting time is morning."
+        },
+        {
+          "role": "user",
+          "content": "Afternoons worked well yesterday."
+        }
+      ]
+    },
+    {
+      "id": "07",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Normally recommend tea."
+        },
+        {
+          "role": "user",
+          "content": "At the office recommend coffee, but elsewhere tea as usual."
+        }
+      ]
+    },
+    {
+      "id": "08",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Normally recommend tea."
+        },
+        {
+          "role": "user",
+          "content": "I have changed my usual choice to coffee; stop using tea as my default."
+        }
+      ]
+    },
+    {
+      "id": "09",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Normally recommend tea."
+        },
+        {
+          "role": "user",
+          "content": "Someone mentioned coffee could be better."
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "messages": [
+        {
+          "role": "user",
+          "content": "I generally travel by rail."
+        },
+        {
+          "role": "user",
+          "content": "For overseas trips choose flights; keep rail as my usual option otherwise."
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "messages": [
+        {
+          "role": "user",
+          "content": "I generally travel by rail."
+        },
+        {
+          "role": "user",
+          "content": "From now on flights replace rail as my usual travel option."
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "messages": [
+        {
+          "role": "user",
+          "content": "I generally travel by rail."
+        },
+        {
+          "role": "user",
+          "content": "Flying sounds interesting."
+        }
+      ]
+    }
+  ]
+}
