@@ -1,0 +1,65 @@
+{
+  "description": "Handwritten toy; no user data; scope and actions provided by oracle.",
+  "events": [
+    {
+      "time": 1,
+      "attribute": "drink",
+      "scope": "*",
+      "action": "add",
+      "value": "tea",
+      "utterance": "I generally prefer tea.",
+      "probes": [
+        {
+          "attribute": "drink",
+          "scope": "*",
+          "expected": "tea"
+        },
+        {
+          "attribute": "drink",
+          "scope": "office",
+          "expected": "tea"
+        }
+      ]
+    },
+    {
+      "time": 2,
+      "attribute": "drink",
+      "scope": "office",
+      "action": "add",
+      "value": "coffee",
+      "utterance": "At the office I prefer coffee, but otherwise tea.",
+      "probes": [
+        {
+          "attribute": "drink",
+          "scope": "*",
+          "expected": "tea"
+        },
+        {
+          "attribute": "drink",
+          "scope": "office",
+          "expected": "coffee"
+        }
+      ]
+    },
+    {
+      "time": 3,
+      "attribute": "drink",
+      "scope": "*",
+      "action": "update",
+      "value": "water",
+      "utterance": "My general preference is now water. At the office I still prefer coffee.",
+      "probes": [
+        {
+          "attribute": "drink",
+          "scope": "*",
+          "expected": "water"
+        },
+        {
+          "attribute": "drink",
+          "scope": "office",
+          "expected": "coffee"
+        }
+      ]
+    }
+  ]
+}
