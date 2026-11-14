@@ -1,0 +1,985 @@
+{
+  "source_revision": "50941f00f90c03a5a60219d76393869b757b835a",
+  "endpoint": "https://datasets-server.huggingface.co/rows?dataset=stellalisy%2FHorizonBench&config=mental_state_graphs&split=test&offset=0&length=3",
+  "selection": "row indices 0,1,2; not representative",
+  "license": "CC-BY-4.0 (dataset card); code license separate",
+  "counting_unit": "unique (user, structure_id, complete evolution_history record); repeated snapshots deduplicated",
+  "semantic_review_status": "NOT completed: annotation anchors are candidates, not observable ground truth",
+  "users": [
+    {
+      "user_hash": "b2b1f5cb9639cff35e375f8d0a8680ce09fc5519e167c93b0e5f9455d908da73",
+      "split": "audit_only_exclude_from_training_and_final_test",
+      "generator": "sonnet-4.5",
+      "snapshot_dates": 100,
+      "conversations": 162,
+      "unique_latent_change_records": 51,
+      "changed_attribute_instances": 156,
+      "later_annotated_turn_candidates": 25,
+      "definite_global_revision": 0,
+      "definite_scoped_exception": 0,
+      "ambiguous_or_unverified": 51,
+      "changes": [
+        {
+          "structure_id": "emotional_support_style_17",
+          "latent_date": "2025-10-10T16:39:09.744935",
+          "changed_attributes": 4,
+          "first_later_annotated_turn": [
+            "2025-10-16T16:39:09.744935",
+            8
+          ],
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "emotional_support_style_17",
+          "latent_date": "2025-10-27T16:39:09.744935",
+          "changed_attributes": 4,
+          "first_later_annotated_turn": [
+            "2025-12-15T16:39:09.744935",
+            4
+          ],
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "self_esteem_rebuilding_preferences_434",
+          "latent_date": "2025-10-20T16:39:09.744935",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "philosophical_engagement_12",
+          "latent_date": "2025-11-23T16:39:09.744935",
+          "changed_attributes": 2,
+          "first_later_annotated_turn": [
+            "2026-01-29T16:39:09.744935",
+            4
+          ],
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "creative_collaboration_49",
+          "latent_date": "2025-11-20T16:39:09.744935",
+          "changed_attributes": 2,
+          "first_later_annotated_turn": [
+            "2025-12-06T16:39:09.744935",
+            6
+          ],
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "tone_guideline_preferences_165",
+          "latent_date": "2025-10-28T16:39:09.744935",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": [
+            "2025-12-10T16:39:09.744935",
+            14
+          ],
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "writing_style_preferences_152",
+          "latent_date": "2025-11-20T16:39:09.744935",
+          "changed_attributes": 2,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "emotional_support_style_20",
+          "latent_date": "2025-10-14T16:39:09.744935",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": [
+            "2026-03-20T16:39:09.744935",
+            10
+          ],
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "apology_style_preferences_438",
+          "latent_date": "2025-10-28T16:39:09.744935",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": [
+            "2025-12-04T16:39:09.744935",
+            10
+          ],
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "apology_style_preferences_447",
+          "latent_date": "2025-10-20T16:39:09.744935",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": [
+            "2025-12-02T16:39:09.744935",
+            16
+          ],
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "apology_style_preferences_375",
+          "latent_date": "2025-12-02T16:39:09.744935",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": [
+            "2025-12-06T16:39:09.744935",
+            14
+          ],
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "apology_style_preferences_443",
+          "latent_date": "2025-11-19T16:39:09.744935",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": [
+            "2025-12-09T16:39:09.744935",
+            10
+          ],
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "apology_style_preferences_441",
+          "latent_date": "2025-10-27T16:39:09.744935",
+          "changed_attributes": 4,
+          "first_later_annotated_turn": [
+            "2025-12-09T16:39:09.744935",
+            4
+          ],
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "public_speaking_coaching_preferences_349",
+          "latent_date": "2025-11-23T16:39:09.744935",
+          "changed_attributes": 4,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "writing_style_preferences_80",
+          "latent_date": "2025-11-20T16:39:09.744935",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": [
+            "2026-02-26T16:39:09.744935",
+            8
+          ],
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "communication_medium_preferences_142",
+          "latent_date": "2025-10-27T16:39:09.744935",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": [
+            "2025-12-30T16:39:09.744935",
+            4
+          ],
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "public_speaking_coaching_preferences_412",
+          "latent_date": "2025-11-20T16:39:09.744935",
+          "changed_attributes": 4,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "public_speaking_coaching_preferences_397",
+          "latent_date": "2025-12-02T16:39:09.744935",
+          "changed_attributes": 4,
+          "first_later_annotated_turn": [
+            "2026-01-01T16:39:09.744935",
+            10
+          ],
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "public_speaking_coaching_preferences_397",
+          "latent_date": "2025-12-09T16:39:09.744935",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": [
+            "2026-01-01T16:39:09.744935",
+            10
+          ],
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "emotional_support_style_18",
+          "latent_date": "2025-12-09T16:39:09.744935",
+          "changed_attributes": 2,
+          "first_later_annotated_turn": [
+            "2026-01-21T16:39:09.744935",
+            8
+          ],
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "philosophical_engagement_9",
+          "latent_date": "2025-11-19T16:39:09.744935",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "philosophical_engagement_9",
+          "latent_date": "2025-11-23T16:39:09.744935",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "advice_delivery_preferences_96",
+          "latent_date": "2025-12-09T16:39:09.744935",
+          "changed_attributes": 4,
+          "first_later_annotated_turn": [
+            "2026-01-06T16:39:09.744935",
+            8
+          ],
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "conflict_resolution_style_preferences_442",
+          "latent_date": "2026-01-06T16:39:09.744935",
+          "changed_attributes": 4,
+          "first_later_annotated_turn": [
+            "2026-02-08T16:39:09.744935",
+            22
+          ],
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "emotional_support_style_61",
+          "latent_date": "2025-12-30T16:39:09.744935",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "creative_collaboration_182",
+          "latent_date": "2026-01-06T16:39:09.744935",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "writing_style_preferences_141",
+          "latent_date": "2025-12-02T16:39:09.744935",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "writing_style_preferences_141",
+          "latent_date": "2025-12-30T16:39:09.744935",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "motivation_strategy_preferences_330",
+          "latent_date": "2025-11-23T16:39:09.744935",
+          "changed_attributes": 4,
+          "first_later_annotated_turn": [
+            "2026-01-30T16:39:09.744935",
+            6
+          ],
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "emotional_support_style_24",
+          "latent_date": "2025-10-10T16:39:09.744935",
+          "changed_attributes": 2,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "emotional_support_style_24",
+          "latent_date": "2025-10-14T16:39:09.744935",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "emotional_support_style_24",
+          "latent_date": "2025-11-19T16:39:09.744935",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "apology_style_preferences_446",
+          "latent_date": "2025-12-30T16:39:09.744935",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": [
+            "2026-02-03T16:39:09.744935",
+            10
+          ],
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "communication_intimacy_31",
+          "latent_date": "2026-02-08T16:39:09.744935",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "public_speaking_coaching_preferences_412",
+          "latent_date": "2026-02-08T16:39:09.744935",
+          "changed_attributes": 4,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "ethical_review_preferences_70",
+          "latent_date": "2026-02-09T16:39:09.744935",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "emotional_support_style_61",
+          "latent_date": "2026-02-08T16:39:09.744935",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "advice_delivery_preferences_101",
+          "latent_date": "2026-01-06T16:39:09.744935",
+          "changed_attributes": 2,
+          "first_later_annotated_turn": [
+            "2026-02-22T16:39:09.744935",
+            22
+          ],
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "conflict_resolution_style_preferences_429",
+          "latent_date": "2026-02-16T16:39:09.744935",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "self_esteem_rebuilding_preferences_428",
+          "latent_date": "2025-11-19T16:39:09.744935",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "emotional_support_style_17",
+          "latent_date": "2026-02-16T16:39:09.744935",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": [
+            "2026-02-26T16:39:09.744935",
+            14
+          ],
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "language_preferences_365",
+          "latent_date": "2025-12-09T16:39:09.744935",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "apology_style_preferences_438",
+          "latent_date": "2026-02-11T16:39:09.744935",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": [
+            "2026-03-03T16:39:09.744935",
+            6
+          ],
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "apology_style_preferences_448",
+          "latent_date": "2026-02-11T16:39:09.744935",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": [
+            "2026-03-07T16:39:09.744935",
+            8
+          ],
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "apology_style_preferences_376",
+          "latent_date": "2026-02-16T16:39:09.744935",
+          "changed_attributes": 2,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "apology_style_preferences_376",
+          "latent_date": "2026-02-22T16:39:09.744935",
+          "changed_attributes": 2,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "apology_style_preferences_376",
+          "latent_date": "2026-02-25T16:39:09.744935",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "public_speaking_coaching_preferences_397",
+          "latent_date": "2026-02-09T16:39:09.744935",
+          "changed_attributes": 4,
+          "first_later_annotated_turn": [
+            "2026-03-16T16:39:09.744935",
+            4
+          ],
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "public_speaking_coaching_preferences_387",
+          "latent_date": "2026-02-16T16:39:09.744935",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "emotional_support_style_19",
+          "latent_date": "2026-02-28T16:39:09.744935",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "creative_collaboration_187",
+          "latent_date": "2026-02-26T16:39:09.744935",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        }
+      ]
+    },
+    {
+      "user_hash": "feb3b0f7ab09a3516387013d3fcb5f383eb0f2f363068ed57bb51da9dad08701",
+      "split": "audit_only_exclude_from_training_and_final_test",
+      "generator": "sonnet-4.5",
+      "snapshot_dates": 109,
+      "conversations": 163,
+      "unique_latent_change_records": 42,
+      "changed_attribute_instances": 136,
+      "later_annotated_turn_candidates": 15,
+      "definite_global_revision": 0,
+      "definite_scoped_exception": 0,
+      "ambiguous_or_unverified": 42,
+      "changes": [
+        {
+          "structure_id": "emotional_support_style_61",
+          "latent_date": "2025-10-22T16:39:08.721902",
+          "changed_attributes": 4,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "tone_guideline_preferences_165",
+          "latent_date": "2025-10-22T16:39:08.721902",
+          "changed_attributes": 2,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "emotional_support_style_17",
+          "latent_date": "2025-11-07T16:39:08.721902",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": [
+            "2025-11-13T16:39:08.721902",
+            4
+          ],
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "emotional_support_style_18",
+          "latent_date": "2025-11-10T16:39:08.721902",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": [
+            "2025-11-13T16:39:08.721902",
+            6
+          ],
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "creative_collaboration_187",
+          "latent_date": "2025-10-23T16:39:08.721902",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "writing_style_preferences_141",
+          "latent_date": "2025-11-12T16:39:08.721902",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "emotional_support_style_23",
+          "latent_date": "2025-11-12T16:39:08.721902",
+          "changed_attributes": 4,
+          "first_later_annotated_turn": [
+            "2026-01-16T16:39:08.721902",
+            10
+          ],
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "apology_style_preferences_375",
+          "latent_date": "2025-10-16T16:39:08.721902",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "apology_style_preferences_376",
+          "latent_date": "2025-10-11T16:39:08.721902",
+          "changed_attributes": 2,
+          "first_later_annotated_turn": [
+            "2025-12-02T16:39:08.721902",
+            8
+          ],
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "emotional_support_style_19",
+          "latent_date": "2025-11-10T16:39:08.721902",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": [
+            "2025-12-03T16:39:08.721902",
+            4
+          ],
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "advice_delivery_preferences_148",
+          "latent_date": "2025-11-07T16:39:08.721902",
+          "changed_attributes": 4,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "apology_style_preferences_447",
+          "latent_date": "2025-11-07T16:39:08.721902",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "advice_delivery_preferences_148",
+          "latent_date": "2025-12-10T16:39:08.721902",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "emotional_support_style_20",
+          "latent_date": "2025-11-12T16:39:08.721902",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": [
+            "2025-11-12T16:39:08.721902",
+            6
+          ],
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "public_speaking_coaching_preferences_397",
+          "latent_date": "2025-10-27T16:39:08.721902",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "public_speaking_coaching_preferences_397",
+          "latent_date": "2025-11-12T16:39:08.721902",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "advice_delivery_preferences_96",
+          "latent_date": "2025-12-11T16:39:08.721902",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "writing_style_preferences_94",
+          "latent_date": "2025-12-11T16:39:08.721902",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": [
+            "2026-01-02T16:39:08.721902",
+            10
+          ],
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "public_speaking_coaching_preferences_396",
+          "latent_date": "2025-12-10T16:39:08.721902",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": [
+            "2025-12-31T16:39:08.721902",
+            6
+          ],
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "emotional_support_style_59",
+          "latent_date": "2025-10-16T16:39:08.721902",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": [
+            "2026-02-02T16:39:08.721902",
+            10
+          ],
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "tone_guideline_preferences_169",
+          "latent_date": "2025-10-27T16:39:08.721902",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "writing_style_preferences_80",
+          "latent_date": "2025-11-07T16:39:08.721902",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "writing_style_preferences_80",
+          "latent_date": "2025-12-10T16:39:08.721902",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "empirical_evidence_integration_preferences_392",
+          "latent_date": "2026-01-05T16:39:08.721902",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": [
+            "2026-01-12T16:39:08.721902",
+            8
+          ],
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "emotional_support_style_19",
+          "latent_date": "2026-01-16T16:39:08.721902",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": [
+            "2026-02-02T16:39:08.721902",
+            2
+          ],
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "public_speaking_coaching_preferences_395",
+          "latent_date": "2026-02-02T16:39:08.721902",
+          "changed_attributes": 4,
+          "first_later_annotated_turn": [
+            "2026-03-22T16:39:08.721902",
+            2
+          ],
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "apology_style_preferences_375",
+          "latent_date": "2025-12-10T16:39:08.721902",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "apology_style_preferences_377",
+          "latent_date": "2025-11-10T16:39:08.721902",
+          "changed_attributes": 4,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "content_length_preferences_173",
+          "latent_date": "2026-02-20T16:39:08.721902",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": [
+            "2026-02-22T16:39:08.721902",
+            20
+          ],
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "advice_delivery_preferences_96",
+          "latent_date": "2026-02-20T16:39:08.721902",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "intergenerational_engagement_preferences_444",
+          "latent_date": "2025-10-27T16:39:08.721902",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "intergenerational_engagement_preferences_444",
+          "latent_date": "2025-11-10T16:39:08.721902",
+          "changed_attributes": 5,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "intergenerational_engagement_preferences_444",
+          "latent_date": "2026-02-21T16:39:08.721902",
+          "changed_attributes": 4,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "intergenerational_engagement_preferences_444",
+          "latent_date": "2026-02-27T16:39:08.721902",
+          "changed_attributes": 4,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "facilitation_style_preferences_157",
+          "latent_date": "2026-02-20T16:39:08.721902",
+          "changed_attributes": 4,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "advice_delivery_preferences_96",
+          "latent_date": "2026-02-27T16:39:08.721902",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "advice_delivery_preferences_95",
+          "latent_date": "2026-02-24T16:39:08.721902",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "writing_style_preferences_152",
+          "latent_date": "2026-02-01T16:39:08.721902",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "emotional_support_style_61",
+          "latent_date": "2026-01-16T16:39:08.721902",
+          "changed_attributes": 4,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "public_speaking_coaching_preferences_349",
+          "latent_date": "2026-02-27T16:39:08.721902",
+          "changed_attributes": 4,
+          "first_later_annotated_turn": [
+            "2026-03-22T16:39:08.721902",
+            6
+          ],
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "public_speaking_coaching_preferences_360",
+          "latent_date": "2026-02-01T16:39:08.721902",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "philosophical_engagement_9",
+          "latent_date": "2026-02-01T16:39:08.721902",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": [
+            "2026-02-27T16:39:08.721902",
+            14
+          ],
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        }
+      ]
+    },
+    {
+      "user_hash": "5b896ee3f75b723d1f3ae08b74299b875b7a88bbc296a36dce240b9379abc6e4",
+      "split": "audit_only_exclude_from_training_and_final_test",
+      "generator": "sonnet-4.5",
+      "snapshot_dates": 24,
+      "conversations": 49,
+      "unique_latent_change_records": 7,
+      "changed_attribute_instances": 15,
+      "later_annotated_turn_candidates": 3,
+      "definite_global_revision": 0,
+      "definite_scoped_exception": 0,
+      "ambiguous_or_unverified": 7,
+      "changes": [
+        {
+          "structure_id": "philosophical_engagement_9",
+          "latent_date": "2025-10-13T16:39:14.328364",
+          "changed_attributes": 2,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "philosophical_engagement_13",
+          "latent_date": "2025-10-18T16:39:14.328364",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": [
+            "2025-10-28T16:39:14.328364",
+            8
+          ],
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "philosophical_engagement_13",
+          "latent_date": "2025-10-25T16:39:14.328364",
+          "changed_attributes": 3,
+          "first_later_annotated_turn": [
+            "2025-10-28T16:39:14.328364",
+            8
+          ],
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "empirical_evidence_integration_preferences_392",
+          "latent_date": "2025-10-29T16:39:14.328364",
+          "changed_attributes": 2,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "philosophical_engagement_12",
+          "latent_date": "2025-10-13T16:39:14.328364",
+          "changed_attributes": 2,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "philosophical_engagement_12",
+          "latent_date": "2025-10-18T16:39:14.328364",
+          "changed_attributes": 2,
+          "first_later_annotated_turn": null,
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        },
+        {
+          "structure_id": "philosophical_engagement_13",
+          "latent_date": "2025-10-29T16:39:14.328364",
+          "changed_attributes": 1,
+          "first_later_annotated_turn": [
+            "2025-11-02T16:39:14.328364",
+            6
+          ],
+          "first_verified_observable_evidence": null,
+          "label": "ambiguous_or_unverified"
+        }
+      ]
+    }
+  ],
+  "response_sha256": "840c91c704a7532f5428dbb35d58097fa1f537860442e1d018d9a43bc5210924"
+}
