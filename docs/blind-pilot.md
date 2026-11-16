@@ -4,11 +4,11 @@
 No HorizonBench or PairPref dialogue copied. No dataset/model API call.
 
 ## Separation and process
-blind_packet.json contains instructions, opaque IDs and user messages only.
-blind_gold.json is the separate author key plus family/split manifest. Do not pass it to an annotator/model.
+`annotations/blind_pilot/blind_packet.json` contains instructions, opaque IDs and user messages only.
+`annotations/blind_pilot/blind_gold.json` is the separate author key plus family/split manifest. Do not pass it to an annotator/model.
 Two fresh internal subagents received only texts and the label rubric, no parent history, files, tools or author key.
 A saw shuffled aliases a-l; B saw original 01-12 order. Both returned locked labels before comparison.
-blind_locked_labels.json records exact locked categories and A's alias mapping. Brief explanations in each
+`annotations/blind_pilot/blind_locked_labels.json` records exact locked categories and A's alias mapping. Brief explanations in each
 pass confirmed explicit duration/replacement cues versus tentative interest, reported suggestions or past success.
 No adjudication changes required: 12/12 agreement; 12/12 each against author key, 4/4 in each class.
 
@@ -25,4 +25,4 @@ Next gate: enlarge verified examples across multiple scopes/durations, blind ind
 and adjudication, exact evidence spans, balanced error strata, then freeze user/template-disjoint split and
 bounded training plan. No outreach, training, GPU, paid calls or push performed.
 
-Reproduce: python3 -m unittest -v ; python3 score_blind_pilot.py
+Reproduce: `python3 -m unittest -v` and `python3 -m scope_memory.score_blind_pilot` (stdout saved as `results/blind_score.json`).

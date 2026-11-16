@@ -1,7 +1,6 @@
 import json,unittest
-from pathlib import Path
-from score_blind_pilot import score
-P=Path(__file__).parent
+from scope_memory.paths import BLIND_PILOT as P
+from scope_memory.score_blind_pilot import score
 class BlindPilotTests(unittest.TestCase):
  def test_input_is_blind(self):
   x=json.loads((P/"blind_packet.json").read_text())

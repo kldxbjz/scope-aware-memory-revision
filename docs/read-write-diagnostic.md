@@ -1,8 +1,8 @@
 # Read versus write diagnostic
 Source inspiration only: PairPref (https://arxiv.org/html/2609.34526v1) holds memory/request fixed while varying situations. We downloaded no PairPref examples and copied none. All six fixtures derive from our preexisting fictional paired_pilot families.
 
-Run: python3 -m unittest -v ; python3 read_write_diagnostic.py
-Results: read_write_results.json.
+Run: `python3 -m unittest -v` and `python3 -m scope_memory.read_write_diagnostic`.
+Results: `results/read_write_results.json` (the saved stdout).
 
 ## Isolation and denominators
 Read-only: supply one correct controlled memory and identical request to two situations per family.

@@ -1,5 +1,5 @@
 import unittest
-from audit_horizon import visible_prefix,audit
+from scope_memory.audit_horizon import visible_prefix,audit
 class AuditTests(unittest.TestCase):
  def test_visible_only(self):
   c=[{"date":"1","conversation":{"turns":[{"role":"user","content":"hi","preference_expressed":{"gold":"secret"}}]}},{"date":"2","conversation":{"turns":[{"role":"user","content":"future"}]}}]

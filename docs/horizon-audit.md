@@ -4,7 +4,7 @@ This is a schema/observability audit, NOT a completed semantic annotation study 
 ## Provenance
 Dataset: stellalisy/HorizonBench, mental_state_graphs/test, deterministic row indices 0,1,2.
 Source revision (API sha and response x-revision agreed): 50941f00f90c03a5a60219d76393869b757b835a.
-Endpoint is recorded in audit_horizon.py; response hash and hashed user IDs in audit_horizon_result.json.
+Endpoint is recorded in `scope_memory/audit_horizon.py`; response hash and hashed user IDs in `results/audit_horizon_result.json`.
 CC BY 4.0 per publisher dataset card. Attribute HorizonBench authors on redistribution.
 Only three rows fetched (~13 MB); no parquet shards/full dataset or model calls.
 Raw public synthetic profiles/dialogue remain in ignored local storage; NOT committed or sent to Babel.
@@ -37,6 +37,8 @@ Only observable confirmed examples enter training. Unknown evidence is an abstai
 Snapshot metadata supplies candidate supervision, never automatically ground truth for inference.
 
 ## Reproduce
+```sh
 python3 -m unittest -v
-python3 audit_horizon.py PATH_TO_ROWS_RESPONSE --output audit_horizon_result.json
+python3 -m scope_memory.audit_horizon PATH_TO_ROWS_RESPONSE --output results/audit_horizon_result.json
+```
 The script reads a saved bounded response, rejects truncated rows, and does not fetch data or call a model.

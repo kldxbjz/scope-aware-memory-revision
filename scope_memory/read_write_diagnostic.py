@@ -1,7 +1,7 @@
 """Evaluation-only fictional controls. No learned model or NL extraction claim."""
 import copy
 import json
-from paired_pilot import build
+from .paired_pilot import build
 
 def families():
     items=build()

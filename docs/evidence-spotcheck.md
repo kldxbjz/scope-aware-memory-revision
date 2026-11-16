@@ -2,7 +2,7 @@
 Single-assistant screening, NOT independent human annotation/adjudication. No population inference.
 
 ## Selection / boundary
-Same three users and pinned response as HORIZON_AUDIT.md.
+Same three users and pinned response as [horizon-audit.md](horizon-audit.md).
 Within each user, sort unique candidate JSON keys (structure ID, complete change record);
 choose the first with a later user annotation and first without: 3 anchored + 3 unanchored = 6.
 Anchored cutoff: first later annotated user turn; unanchored cutoff: end of latent-change date.

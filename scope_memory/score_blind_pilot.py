@@ -1,6 +1,6 @@
 """Only run after internal annotations are locked. No model calls."""
 import json
-from pathlib import Path
+from .paths import BLIND_PILOT
 def score(gold, records):
  a=records["internal_a"];b=records["internal_b"]
  assert a["locked"] and b["locked"]
@@ -19,6 +19,6 @@ def score(gold, records):
    for c in ("lasting_update","scoped_exception","insufficient")},
   "warning":"Internal same-model synthetic sanity only; not human agreement or data readiness"}
 if __name__=="__main__":
- p=Path(__file__).parent
+ p=BLIND_PILOT
  print(json.dumps(score(json.loads((p/"blind_gold.json").read_text()),
   json.loads((p/"blind_locked_labels.json").read_text())),indent=2))

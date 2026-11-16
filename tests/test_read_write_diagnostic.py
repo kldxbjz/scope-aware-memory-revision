@@ -1,5 +1,5 @@
 import unittest
-from read_write_diagnostic import *
+from scope_memory.read_write_diagnostic import *
 class DiagnosticTests(unittest.TestCase):
  def test_read_overapply_not_overwrite(self):
   r=read_diagnostic(lambda p:reader(p,"overapply"))

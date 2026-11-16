@@ -1,11 +1,11 @@
 import json
 import unittest
-from pathlib import Path
-from replay import Memory, replay
+from scope_memory.paths import FIXTURES
+from scope_memory.replay import Memory, replay
 
 class ReplayTests(unittest.TestCase):
     def setUp(self):
-        self.ep = json.loads((Path(__file__).parent / "fixtures" / "toy_episode.json").read_text())
+        self.ep = json.loads((FIXTURES / "toy_episode.json").read_text())
 
     def test_oracle_preserves_exception(self):
         r = replay(self.ep, True)

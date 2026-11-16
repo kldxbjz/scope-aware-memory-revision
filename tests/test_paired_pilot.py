@@ -1,5 +1,5 @@
 import unittest
-from paired_pilot import build,inference_input
+from scope_memory.paired_pilot import build,inference_input
 class PilotTests(unittest.TestCase):
  def test_pairs_and_holdout(self):
   items=build()

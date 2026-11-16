@@ -1,0 +1,6 @@
+"""Repository locations of tracked inputs."""
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+FIXTURES = ROOT / "fixtures"
+BLIND_PILOT = ROOT / "annotations" / "blind_pilot"

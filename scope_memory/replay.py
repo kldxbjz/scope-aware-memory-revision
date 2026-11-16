@@ -1,6 +1,6 @@
 """Oracle/rule plumbing smoke test; NOT SFT or learned-method evidence."""
 import json
-from pathlib import Path
+from .paths import FIXTURES
 
 class Memory:
     def __init__(self, scoped):
@@ -48,7 +48,7 @@ def replay(episode, scoped):
             "trace": trace}
 
 def main():
-    episode = json.loads((Path(__file__).parent / "fixtures" / "toy_episode.json").read_text())
+    episode = json.loads((FIXTURES / "toy_episode.json").read_text())
     print(json.dumps({"evidence": "toy oracle engineering sanity only",
                       "scope_blind_rule": replay(episode, False),
                       "scope_aware_oracle": replay(episode, True)}, indent=2))
