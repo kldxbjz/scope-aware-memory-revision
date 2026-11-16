@@ -23,6 +23,7 @@ echo "host=$(hostname) job=${SLURM_JOB_ID:-} $(date -Is)"; nvidia-smi --query-gp
 "$PY" "$CODE/baseline.py" --model "$BIG/models/Qwen3-4B-Instruct-2507" --repo "$MIRROR" \
   --episodes "$MIRROR/training/scope_revision_v1/data/dev.jsonl" --out-dir "$RUN" --shots 6 --demo-episodes "$MIRROR/training/scope_revision_v1/data/train.jsonl" --batch-size 8
 cd "$MIRROR"
+# Primary: eval_rollout_answer_agent.json (Answer Agent QA). Diagnostic: eval_tf_*.json, eval_rollout_oracle_reader.json.
 for arm in scope crud; do
   "$PY" -m scope_memory.evaluate teacher-forced --data "$RUN/episodes.jsonl" --arm $arm \
     --predictions "$RUN/predictions_$arm.jsonl" --details "$RUN/details_$arm.jsonl" --out "$RUN/eval_tf_$arm.json" > /dev/null
@@ -30,5 +31,5 @@ done
 "$PY" -m scope_memory.evaluate rollout-score --data "$RUN/episodes.jsonl" --trajectories "$RUN/trajectories.jsonl" \
   --answers "$RUN/answers.jsonl" --out "$RUN/eval_rollout_answer_agent.json" > /dev/null
 "$PY" -m scope_memory.evaluate rollout-score --data "$RUN/episodes.jsonl" --trajectories "$RUN/trajectories.jsonl" \
-  --out "$RUN/eval_rollout_oracle_reader.json" > /dev/null
+  --oracle-reader --out "$RUN/eval_rollout_oracle_reader.json" > /dev/null
 touch "$RUN/ALL_DONE"; echo "ALL_DONE $(date -Is)"

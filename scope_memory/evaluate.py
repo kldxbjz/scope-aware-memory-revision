@@ -6,6 +6,9 @@ rollout: each arm carries its own memory forward and QA probes read the snapshot
   after their event (outline v2.7 main metric; Answer Agent answers when given,
   otherwise the deterministic oracle reader, which is a pipeline check only).
 Intervals: percentile bootstrap over episodes (one fictional user each).
+Roles: Answer Agent QA on rollout memory, with the paired scope-minus-CRUD difference, is the
+  primary result. Everything read with the rule readers (teacher-forced metrics, rollout write
+  metrics, the oracle reader) is diagnostic, and rule-reader parse failures are reported apart.
 
   python3 -m scope_memory.evaluate self-check --data DATA.jsonl
   python3 -m scope_memory.evaluate teacher-forced --data DATA.jsonl --arm scope --predictions preds.jsonl
@@ -75,28 +78,34 @@ def teacher_forced(episodes, arm, completions):
             targeted = {(attribute, key) for _, attribute, key in step["changes"]}
             untouched = [(a, k) for a, entry in pre.items() for k in entry["exceptions"] if (a, k) not in targeted]
             category = gold["category"]
+            readable = status != "uninterpretable"  # rule-reader metrics skip memory the reader cannot parse
             scored.append({
                 "id": f"{episode['episode_id']}/{event['event_id']}/{arm}", "episode_id": episode["episode_id"],
                 "event_id": event["event_id"], "arm": arm, "category": category, "status": status, "reason": reason,
                 "decision": decision, "decision_correct": decision == gold["decision"],
                 "state_correct": status == "ok" and read == expected,
-                "general_changed": any(read.get(a, {}).get("general") != pre[a]["general"] for a in pre),
-                "missed_update": any(read.get(a, {}).get("general") != expected[a]["general"]
-                                     for kind, a, _ in step["changes"] if kind == "general"),
+                "general_changed": (any(read.get(a, {}).get("general") != pre[a]["general"] for a in pre)
+                                    if readable else None),
+                "missed_update": (any(read.get(a, {}).get("general") != expected[a]["general"]
+                                      for kind, a, _ in step["changes"] if kind == "general") if readable else None),
                 "exception_disturbed": (any(read.get(a, {}).get("exceptions", {}).get(k) != pre[a]["exceptions"][k]
-                                            for a, k in untouched) if untouched else None),
+                                            for a, k in untouched) if untouched and readable else None),
                 "wrote": memory.view() != step["before"][arm].view()})
             scored[-1]["row_correct"] = scored[-1]["state_correct"] and scored[-1]["decision_correct"]
     return scored
 
 
+def _if_readable(field):
+    """Per-row value that leaves out outputs whose memory the rule reader cannot parse."""
+    return lambda s: None if s["status"] == "uninterpretable" else s[field]
+
+
 TEACHER_FORCED_METRICS = (  # name, rows it applies to (None = all), per-row value (None = not applicable)
     ("row_correct", None, lambda s: s["row_correct"]),
+    ("row_correct_if_readable", None, _if_readable("row_correct")),
     ("state_correct", None, lambda s: s["state_correct"]),
-    ("state_correct_if_readable", None, lambda s: s["state_correct"] if s["status"] == "ok" else None),
+    ("state_correct_if_readable", None, _if_readable("state_correct")),
     ("decision_correct", None, lambda s: s["decision_correct"]),
-    ("invalid_or_rejected", None, lambda s: s["status"] in ("invalid", "rejected")),
-    ("uninterpretable", None, lambda s: s["status"] == "uninterpretable"),
     ("false_overwrite", tuple(c for c in CATEGORIES if c != "general_update"), lambda s: s["general_changed"]),
     ("missed_update", ("general_update",), lambda s: s["missed_update"]),
     ("exception_disturbed", None, lambda s: s["exception_disturbed"]),
@@ -104,6 +113,18 @@ TEACHER_FORCED_METRICS = (  # name, rows it applies to (None = all), per-row val
     ("clarify_recall", ("clarify",), lambda s: s["decision"] == "clarify"),
     ("false_clarify", tuple(c for c in CATEGORIES if c != "clarify"), lambda s: s["decision"] == "clarify"),
 )
+RULE_READER_METRICS = ("row_correct", "row_correct_if_readable", "state_correct", "state_correct_if_readable",
+                       "false_overwrite", "missed_update", "exception_disturbed")
+PARSE_FAILURE_METRICS = (  # outputs that could not be scored as written
+    ("invalid_output", None, lambda s: s["status"] == "invalid"),
+    ("rejected_by_executor", None, lambda s: s["status"] == "rejected"),
+    ("rule_reader_parse_failure", None, lambda s: s["status"] == "uninterpretable"),
+    ("rule_reader_parse_failure_if_accepted", None,
+     lambda s: s["status"] == "uninterpretable" if s["status"] in ("ok", "uninterpretable") else None),
+)
+TEACHER_FORCED_NOTE = ("Diagnostic only. The metrics named in rule_reader_metrics read memory with the rule reader, "
+                       "which accepts only the canonical CRUD sentences; outputs it cannot parse are counted in "
+                       "parse_failures. The primary result is Answer Agent QA from rollout-score --answers.")
 
 
 def rollout(episode, arm, policy):
@@ -144,15 +165,16 @@ def score_rollouts(episodes, trajectories, answers=None, count_tokens=None):
         for probe in episode.get("probes", []):
             view = trajectory["snapshots"][probe["after_event"]]
             key = f"{episode['episode_id']}/{probe['probe_id']}/{arm}"
+            read, unmatched = READERS[arm](view, catalogs)
             if answers is None:
-                raw = oracle_answer(READERS[arm](view, catalogs)[0], probe)
+                raw = oracle_answer(read, probe)
             else:
                 raw = answers.get(key)
             answer = None if raw is None else canonical_value(catalogs[probe["attribute"]], raw)
             scored.append({"id": key, "episode_id": episode["episode_id"], "arm": arm,
                            "qa_group": probe["category"], "probe_type": probe["probe_type"],
                            "answer": answer, "correct": answer == probe["gold"],
-                           "reader": "oracle" if answers is None else "answer_agent",
+                           "reader": "oracle" if answers is None else "answer_agent", "memory_readable": not unmatched,
                            "memory_records": len(view), "memory_words": len(json.dumps(view).split()),
                            "memory_tokens": count_tokens(json.dumps(view)) if count_tokens else None,
                            "episode_rejected_outputs": rejected, "episode_steps": len(trajectory["steps"])})
@@ -163,9 +185,16 @@ ROLLOUT_WRITE_METRICS = (
     ("rollout_false_overwrite", tuple(c for c in CATEGORIES if c != "general_update"), lambda s: s["general_changed"]),
     ("rollout_missed_update", ("general_update",), lambda s: s["missed_update"]),
     ("rollout_spurious_write", NO_CHANGE, lambda s: s["wrote"]),
-    ("rollout_unreadable_memory", None, lambda s: not s["readable"]),
     ("rollout_state_matches_gold", None, lambda s: s["state_matches_gold"]),
+    ("rollout_state_matches_gold_if_readable", None,
+     lambda s: s["state_matches_gold"] if s["readable_after"] else None),
 )
+ROLLOUT_NOTES = {
+    "primary": ("Primary result: Answer Agent QA on each arm's own memory (<arm>.metrics, <arm>.by_probe_type, "
+                "scope_minus_crud). <arm>.diagnostic holds rule-reader numbers, which are diagnostics only."),
+    "diagnostic": ("Diagnostic only: QA read by the oracle rule reader, a pipeline check and not a formal result. "
+                   "CRUD memory outside the canonical sentences counts as a parse failure here."),
+}
 
 
 def rollout_write_rows(episodes, trajectories):
@@ -187,11 +216,12 @@ def rollout_write_rows(episodes, trajectories):
             readable = not unread_before and not unread_after
             general = lambda state, a: state.get(a, {}).get("general")
             rows.append({"episode_id": episode["episode_id"], "event_id": event["event_id"], "arm": t["arm"],
-                         "category": category, "readable": readable, "wrote": after_view != before_view,
+                         "category": category, "readable": readable, "readable_after": not unread_after,
+                         "wrote": after_view != before_view,
                          "general_changed": any(general(after, a) != general(before, a) for a in gold) if readable else None,
                          "missed_update": (any(general(after, a) != gold[a]["general"] for a in gold) if readable else None)
                          if category == "general_update" else None,
-                         "state_matches_gold": readable and after == gold,
+                         "state_matches_gold": not unread_after and after == gold,
                          "memory_after": after_view})
             before_view = after_view
     return rows
@@ -244,15 +274,20 @@ def summarize(scored, metrics, field, bootstrap=2000, seed=0):
 def summarize_teacher_forced(scored, bootstrap=2000, seed=0):
     by_category = {c: summarize(scored, (("row_correct", (c,), lambda s: s["row_correct"]),), "category",
                                 bootstrap, seed).get("row_correct") for c in CATEGORIES}
-    return {"events": len(scored), "episodes": len({s["episode_id"] for s in scored}),
+    return {"role": "diagnostic", "role_note": TEACHER_FORCED_NOTE,
+            "events": len(scored), "episodes": len({s["episode_id"] for s in scored}),
+            "parse_failures": summarize(scored, PARSE_FAILURE_METRICS, "category", bootstrap, seed),
             "metrics": summarize(scored, TEACHER_FORCED_METRICS, "category", bootstrap, seed),
+            "rule_reader_metrics": list(RULE_READER_METRICS),
             "row_correct_by_category": {c: v for c, v in by_category.items() if v},
             "status": dict(Counter(s["status"] for s in scored)),
             "rejection_reasons": dict(Counter(s["reason"] for s in scored if s["reason"]))}
 
 
 def summarize_rollouts(scored, bootstrap=2000, seed=0, write_rows=None):
-    out = {}
+    """QA per arm (primary when every probe was answered by the Answer Agent); rule-reader numbers kept apart."""
+    role = "primary" if scored and all(s["reader"] == "answer_agent" for s in scored) else "diagnostic"
+    report, arms = {"role": role, "role_note": ROLLOUT_NOTES[role]}, {}
     probe_sets = {arm: {s["id"].rsplit("/", 1)[0] for s in scored if s["arm"] == arm} for arm in ARMS}
     for arm in ARMS:
         rows = [s for s in scored if s["arm"] == arm]
@@ -263,27 +298,33 @@ def summarize_rollouts(scored, bootstrap=2000, seed=0, write_rows=None):
         by_type = summarize(rows, [(f"qa_{t}", (t,), lambda s: s["correct"])
                                    for t in sorted({s["probe_type"] for s in rows})], "probe_type", bootstrap, seed)
         episodes = {s["episode_id"]: s for s in rows}
-        out[arm] = {"probes": len(rows), "reader": rows[0]["reader"],
-                    "metrics": summarize(rows, metrics, "qa_group", bootstrap, seed), "by_probe_type": by_type,
-                    "rejected_outputs": sum(s["episode_rejected_outputs"] for s in episodes.values()),
-                    "steps": sum(s["episode_steps"] for s in episodes.values()),
-                    "mean_memory_records_at_probes": round(sum(s["memory_records"] for s in rows) / len(rows), 2),
-                    "mean_memory_words_at_probes": round(sum(s["memory_words"] for s in rows) / len(rows), 1)}
-    for arm in ARMS:
-        if arm in out:
-            rows = [s for s in scored if s["arm"] == arm]
-            out[arm]["missing_answers"] = sum(s["reader"] == "answer_agent" and s["answer"] is None for s in rows)
-            tokens = [s["memory_tokens"] for s in rows if s.get("memory_tokens") is not None]
-            if tokens:
-                out[arm]["mean_memory_tokens_at_probes"] = round(sum(tokens) / len(tokens), 1)
-            if write_rows is not None:
-                out[arm]["write_metrics"] = summarize([r for r in write_rows if r["arm"] == arm],
-                                                      ROLLOUT_WRITE_METRICS, "category", bootstrap, seed)
-    if all(arm in out for arm in ARMS):
-        out["pairing_complete"] = probe_sets["scope"] == probe_sets["crud"]
-        if out["pairing_complete"]:
-            out["scope_minus_crud"] = _paired_qa(scored, bootstrap, seed)
-    return out
+        arms[arm] = {"probes": len(rows), "reader": rows[0]["reader"],
+                     "metrics": summarize(rows, metrics, "qa_group", bootstrap, seed), "by_probe_type": by_type,
+                     "missing_answers": sum(s["reader"] == "answer_agent" and s["answer"] is None for s in rows),
+                     "rejected_outputs": sum(s["episode_rejected_outputs"] for s in episodes.values()),
+                     "steps": sum(s["episode_steps"] for s in episodes.values()),
+                     "mean_memory_records_at_probes": round(sum(s["memory_records"] for s in rows) / len(rows), 2),
+                     "mean_memory_words_at_probes": round(sum(s["memory_words"] for s in rows) / len(rows), 1)}
+        tokens = [s["memory_tokens"] for s in rows if s.get("memory_tokens") is not None]
+        if tokens:
+            arms[arm]["mean_memory_tokens_at_probes"] = round(sum(tokens) / len(tokens), 1)
+        diagnostic = summarize(rows, (("rule_reader_parse_failure_at_probes", None,
+                                       lambda s: not s["memory_readable"]),), "qa_group", bootstrap, seed)
+        if write_rows is not None:
+            own = [r for r in write_rows if r["arm"] == arm]
+            diagnostic.update(summarize(own, (("rule_reader_parse_failure_after_events", None,
+                                               lambda s: not s["readable_after"]),), "category", bootstrap, seed))
+            diagnostic["write_metrics"] = summarize(own, ROLLOUT_WRITE_METRICS, "category", bootstrap, seed)
+        arms[arm]["diagnostic"] = diagnostic
+    if all(arm in arms for arm in ARMS):
+        report["pairing_complete"] = probe_sets["scope"] == probe_sets["crud"]
+        if report["pairing_complete"]:
+            report["scope_minus_crud"] = _paired_qa(scored, bootstrap, seed)
+    if "crud" in arms:  # reported on its own: how often the rule reader could not parse the CRUD memory
+        report["crud_rule_reader_parse_failure"] = {k: v for k, v in arms["crud"]["diagnostic"].items()
+                                                    if k.startswith("rule_reader_parse_failure")}
+    report.update(arms)
+    return report
 
 
 def _paired_qa(scored, bootstrap, seed):

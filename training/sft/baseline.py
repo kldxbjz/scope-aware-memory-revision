@@ -1,12 +1,14 @@
-"""Prompt baselines M0 (CRUD) and M1 (scope) on a split: batched teacher-forced outputs, lockstep rollouts
-with the policy's own memory, and fixed Answer Agent replies to every probe.
+"""Policy evaluation runs for both arms: batched teacher-forced outputs, lockstep rollouts with each arm's own
+memory, and replies from a fixed Answer Agent to every probe.
 
-Writes predictions_<arm>.jsonl, trajectories.jsonl and answers.jsonl for scope_memory.evaluate.
-Usage: python baseline.py --model DIR [--adapter DIR] --repo DIR --episodes DATA.jsonl --out-dir DIR
+Without adapters this is the prompt baseline M0 (CRUD) / M1 (scope); `--shots k` adds fixed train
+demonstrations. With SFT, each arm loads only its own adapter (`--adapter-scope`, `--adapter-crud`).
+The Answer Agent is always a freshly loaded base model without any adapter.
+Writes predictions_<arm>.jsonl, trajectories.jsonl, answers.jsonl and answer_agent.json for scope_memory.evaluate.
 """
 import argparse
+import gc
 import json
-import re
 import sys
 from pathlib import Path
 
@@ -25,6 +27,7 @@ class Generator:
             from peft import PeftModel
             self.model = PeftModel.from_pretrained(self.model, adapter)
         self.model.eval()
+        self.adapter = adapter
         self.batch_size = batch_size
 
     def __call__(self, conversations, max_new_tokens):
@@ -39,6 +42,16 @@ class Generator:
             outputs += self.tok.batch_decode(gen[:, enc["input_ids"].shape[1]:], skip_special_tokens=True)
         return outputs
 
+    def close(self):
+        del self.model
+        gc.collect()
+        torch.cuda.empty_cache()
+
+
+def lora_modules(model):
+    """Names of injected LoRA submodules; PEFT injects them into the base model itself."""
+    return [name for name, _ in model.named_modules() if name.rsplit(".", 1)[-1].startswith("lora_")]
+
 
 def pick_option(reply, options):
     text = " ".join(reply.lower().split())
@@ -49,7 +62,8 @@ def pick_option(reply, options):
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--model", required=True)
-    p.add_argument("--adapter")
+    p.add_argument("--adapter-scope", help="LoRA adapter trained on the scope arm (SFT runs only)")
+    p.add_argument("--adapter-crud", help="LoRA adapter trained on the CRUD arm (SFT runs only)")
     p.add_argument("--repo", required=True)
     p.add_argument("--episodes", required=True)
     p.add_argument("--out-dir", required=True)
@@ -59,6 +73,9 @@ def main():
     p.add_argument("--shots", type=int, default=0, help="fixed in-context demonstrations per arm (0 = zero-shot)")
     p.add_argument("--demo-episodes", help="split the demonstrations come from (train)")
     args = p.parse_args()
+    if bool(args.adapter_scope) != bool(args.adapter_crud):
+        sys.exit("give both --adapter-scope and --adapter-crud, or neither")
+    adapters = {"scope": args.adapter_scope, "crud": args.adapter_crud}
     sys.path.insert(0, args.repo)
     from scope_memory.evaluate import answer_prompt, parse_output
     from scope_memory.protocol import (ARMS, POLICY_INSTRUCTIONS, CrudMemory, ScopeMemory, canon, catalogs_of,
@@ -68,7 +85,8 @@ def main():
     out.mkdir(parents=True, exist_ok=True)
     episodes = read_episodes(args.episodes)[:args.limit] if args.limit else read_episodes(args.episodes)
     (out / "episodes.jsonl").write_text("".join(json.dumps(e) + "\n" for e in episodes), encoding="utf-8")
-    gen = Generator(args.model, args.adapter, args.batch_size)
+    (out / "run_config.json").write_text(json.dumps({"adapters": adapters, "shots": args.shots,
+                                                     "answer_agent": "base model, no adapter"}) + "\n", encoding="utf-8")
     demos = {arm: [] for arm in ARMS}
     if args.shots:  # shortest train example per event category, fixed for every prompt
         pool = [r for e in read_episodes(args.demo_episodes) for r in sft_rows(e)]
@@ -81,21 +99,29 @@ def main():
                                                        {"role": "assistant", "content": r["completion"]})]
             (out / f"demos_{arm}.json").write_text(json.dumps([r["id"] for r in chosen]) + "\n", encoding="utf-8")
 
-    for arm in ARMS:  # teacher-forced
-        target = out / f"predictions_{arm}.jsonl"
-        if target.exists():
-            continue
-        rows = [r for e in episodes for r in sft_rows(e) if r["arm"] == arm]
-        replies = gen([[{"role": "system", "content": r["system"]}] + demos[arm] + [{"role": "user", "content": r["prompt"]}]
-                       for r in rows], args.max_new_tokens)
-        target.write_text("".join(json.dumps({"id": r["id"], "completion": c}) + "\n" for r, c in zip(rows, replies)),
-                          encoding="utf-8")
-        print(f"teacher-forced {arm}: {len(rows)} outputs", flush=True)
+    loaded = {"gen": None}
 
-    trajectories_path = out / "trajectories.jsonl"
-    if not trajectories_path.exists():  # rollouts, lockstep over episodes
-        trajectories = []
-        for arm in ARMS:
+    def generator(adapter):
+        """Loaded lazily: an arm's model carries only that arm's adapter; adapter None is a fresh base model."""
+        gen = loaded["gen"]
+        if gen is None or gen.adapter != adapter:
+            if gen is not None:
+                gen.close()
+            gen = loaded["gen"] = Generator(args.model, adapter, args.batch_size)
+        return gen
+
+    for arm in ARMS:
+        target = out / f"predictions_{arm}.jsonl"
+        if not target.exists():  # teacher-forced
+            rows = [r for e in episodes for r in sft_rows(e) if r["arm"] == arm]
+            replies = generator(adapters[arm])([[{"role": "system", "content": r["system"]}] + demos[arm] +
+                                                [{"role": "user", "content": r["prompt"]}] for r in rows],
+                                               args.max_new_tokens)
+            target.write_text("".join(json.dumps({"id": r["id"], "completion": c}) + "\n" for r, c in zip(rows, replies)),
+                              encoding="utf-8")
+            print(f"teacher-forced {arm}: {len(rows)} outputs", flush=True)
+        traj_path = out / f"trajectories_{arm}.jsonl"
+        if not traj_path.exists():  # rollout, lockstep over episodes, own memory only
             state = {}
             for e in episodes:
                 memory = ScopeMemory() if arm == "scope" else CrudMemory()
@@ -109,7 +135,7 @@ def main():
                     st["seen"].append(ev["event_id"])
                     prompts.append([{"role": "system", "content": POLICY_INSTRUCTIONS[arm]}] + demos[arm] +
                                    [{"role": "user", "content": canon(policy_input(st["memory"].view(), ev))}])
-                for (e, ev), reply in zip(active, gen(prompts, args.max_new_tokens)):
+                for (e, ev), reply in zip(active, generator(adapters[arm])(prompts, args.max_new_tokens)):
                     st = state[e["episode_id"]]
                     obj, how = parse_output(reply)
                     reason = how if obj is None else st["memory"].apply(obj, ev["event_id"], st["seen"])[0]
@@ -117,16 +143,22 @@ def main():
                                         "reason": reason})
                     st["snapshots"][ev["event_id"]] = st["memory"].view()
                 print(f"rollout {arm}: event index {k} done for {len(active)} episodes", flush=True)
-            for e in episodes:
-                st = state[e["episode_id"]]
-                trajectories.append({"episode_id": e["episode_id"], "arm": arm, "steps": st["steps"],
-                                     "snapshots": st["snapshots"]})
-        trajectories_path.write_text("".join(json.dumps(t) + "\n" for t in trajectories), encoding="utf-8")
+            traj_path.write_text("".join(json.dumps({"episode_id": e["episode_id"], "arm": arm,
+                                                     "steps": state[e["episode_id"]]["steps"],
+                                                     "snapshots": state[e["episode_id"]]["snapshots"]}) + "\n"
+                                         for e in episodes), encoding="utf-8")
+    trajectories_path = out / "trajectories.jsonl"
+    trajectories_path.write_text("".join((out / f"trajectories_{arm}.jsonl").read_text(encoding="utf-8") for arm in ARMS),
+                                 encoding="utf-8")
 
     answers_path = out / "answers.jsonl"
-    if not answers_path.exists():  # fixed Answer Agent: same base model, no adapter
-        if args.adapter:
-            gen.model = gen.model.get_base_model()
+    if not answers_path.exists():  # fixed Answer Agent: the base model, never an adapter
+        gen = generator(None)
+        injected = lora_modules(gen.model)
+        if injected:
+            sys.exit(f"Answer Agent still has LoRA modules, e.g. {injected[0]}")
+        (out / "answer_agent.json").write_text(json.dumps({"model": args.model, "adapter": None, "lora_modules": 0})
+                                               + "\n", encoding="utf-8")
         by_id = {e["episode_id"]: e for e in episodes}
         items, prompts = [], []
         for line in trajectories_path.read_text(encoding="utf-8").splitlines():
