@@ -1,0 +1,478 @@
+[
+  {
+    "attribute": "hotel room outlook",
+    "scopes": [
+      "solo stays beside a canal",
+      "group stays beside a canal"
+    ],
+    "options": [
+      "a view of the water",
+      "a view of the inner garden",
+      "a view of the rooftops",
+      "a view of the wooded slope"
+    ],
+    "family": "train-hotel-room-outlook",
+    "domain": "travel",
+    "opener": "The little boats were bobbing around when I arrived.",
+    "distraction": "I finally found the loose button in my bag."
+  },
+  {
+    "attribute": "station waiting activity",
+    "scopes": [
+      "waiting before a daytime departure",
+      "waiting before a night departure"
+    ],
+    "options": [
+      "reading a pocket magazine",
+      "sketching the departure hall",
+      "listening to a short radio play",
+      "working on a word puzzle"
+    ],
+    "family": "train-station-waiting-activity",
+    "domain": "travel",
+    "opener": "The station clock has a surprisingly loud tick.",
+    "distraction": "My scarf is still damp from the walk over."
+  },
+  {
+    "attribute": "rental bicycle basket design",
+    "scopes": [
+      "renting a bicycle without a companion",
+      "renting a bicycle with a companion"
+    ],
+    "options": [
+      "a shallow wire basket",
+      "a deep canvas basket",
+      "a rigid wicker basket",
+      "a lidded plastic basket"
+    ],
+    "family": "train-rental-bicycle-basket-design",
+    "domain": "travel",
+    "opener": "I took a look around the little rental shed.",
+    "distraction": "There was a cat asleep beside the pump."
+  },
+  {
+    "attribute": "guesthouse shoe storage",
+    "scopes": [
+      "guesthouse stays in dry weather",
+      "guesthouse stays in wet weather"
+    ],
+    "options": [
+      "a tray beside the bed",
+      "a cubby near the door",
+      "a hanging shoe pouch",
+      "a rack beneath the bench"
+    ],
+    "family": "train-guesthouse-shoe-storage",
+    "domain": "travel",
+    "opener": "The guesthouse has polished wooden floors.",
+    "distraction": "I left my spare laces in the wash bag."
+  },
+  {
+    "attribute": "salad dressing serving style",
+    "scopes": [
+      "salads eaten at my own desk",
+      "salads eaten on an outdoor bench"
+    ],
+    "options": [
+      "dressing tossed through the leaves",
+      "dressing in a separate dipping cup",
+      "dressing drizzled around the bowl",
+      "dressing pooled beneath the vegetables"
+    ],
+    "family": "train-salad-dressing-serving-style",
+    "domain": "food",
+    "opener": "The salad spinner finally stopped wobbling.",
+    "distraction": "I found another little spoon behind the drawer."
+  },
+  {
+    "attribute": "toast topping",
+    "scopes": [
+      "breakfasts eaten before sunrise",
+      "breakfasts eaten after sunrise"
+    ],
+    "options": [
+      "mashed pear on toast",
+      "sesame paste on toast",
+      "roasted pepper spread on toast",
+      "soft cheese with chives on toast"
+    ],
+    "family": "train-toast-topping",
+    "domain": "food",
+    "opener": "The toast popped up while I was looking for a plate.",
+    "distraction": "The kitchen radio was doing a quiz again."
+  },
+  {
+    "attribute": "crunchy snack shape",
+    "scopes": [
+      "snacks packed in a round tin",
+      "snacks packed in a rectangular tin"
+    ],
+    "options": [
+      "thin baked curls",
+      "small toasted squares",
+      "crisp hollow tubes",
+      "flat seeded discs"
+    ],
+    "family": "train-crunchy-snack-shape",
+    "domain": "food",
+    "opener": "I opened the snack cupboard and everything slid forward.",
+    "distraction": "The tin with the dent still closes properly."
+  },
+  {
+    "attribute": "filled flatbread cutting style",
+    "scopes": [
+      "flatbreads eaten while seated",
+      "flatbreads eaten while standing"
+    ],
+    "options": [
+      "two long flatbread strips",
+      "four short flatbread pieces",
+      "small flatbread triangles",
+      "an uncut folded flatbread"
+    ],
+    "family": "train-filled-flatbread-cutting-style",
+    "domain": "food",
+    "opener": "Lunch ended up on the smallest plate in the cupboard.",
+    "distraction": "I managed to drop the tea towel behind the counter."
+  },
+  {
+    "attribute": "task batching method",
+    "scopes": [
+      "workdays spent in a shared room",
+      "workdays spent in a room alone"
+    ],
+    "options": [
+      "batches grouped by required tool",
+      "batches grouped by deadline distance",
+      "batches grouped by estimated effort",
+      "batches grouped by project stage"
+    ],
+    "family": "train-task-batching-method",
+    "domain": "work",
+    "opener": "I spent half the morning hunting through a messy task list.",
+    "distraction": "The new desk mat is still curling at one corner."
+  },
+  {
+    "attribute": "desk reset sequence",
+    "scopes": [
+      "resets after a morning work block",
+      "resets after an evening work block"
+    ],
+    "options": [
+      "papers before cables before cups",
+      "cups before papers before cables",
+      "cables before cups before papers",
+      "stationery before all other desk items"
+    ],
+    "family": "train-desk-reset-sequence",
+    "domain": "work",
+    "opener": "The desk looks as though a small paper storm hit it.",
+    "distraction": "I found the missing cap under the lamp."
+  },
+  {
+    "attribute": "rough idea capture method",
+    "scopes": [
+      "ideas that occur while seated",
+      "ideas that occur while walking indoors"
+    ],
+    "options": [
+      "a rough pencil doodle",
+      "a whispered voice fragment",
+      "a single index-card sentence",
+      "a few movable word tiles"
+    ],
+    "family": "train-rough-idea-capture-method",
+    "domain": "work",
+    "opener": "An idea arrived just as I was putting things away.",
+    "distraction": "The kettle clicked off halfway through my thought."
+  },
+  {
+    "attribute": "desk interruption signal",
+    "scopes": [
+      "focused work beside an occupied desk",
+      "focused work beside an empty desk"
+    ],
+    "options": [
+      "a small amber desk flag",
+      "a folded fabric screen",
+      "a wooden busy marker",
+      "a turned-over desk nameplate"
+    ],
+    "family": "train-desk-interruption-signal",
+    "domain": "work",
+    "opener": "People keep stopping to ask whether I have a moment.",
+    "distraction": "The hallway notice is hanging slightly crooked."
+  },
+  {
+    "attribute": "pointer trail appearance",
+    "scopes": [
+      "computer use with an external trackball",
+      "computer use with the built-in pointing stick"
+    ],
+    "options": [
+      "a short fading pointer trail",
+      "a long dotted pointer trail",
+      "a narrow solid pointer trail",
+      "no visible pointer trail"
+    ],
+    "family": "train-pointer-trail-appearance",
+    "domain": "device settings",
+    "opener": "I lost the pointer again against the wallpaper.",
+    "distraction": "The cable clip finally stopped falling off."
+  },
+  {
+    "attribute": "keyboard repeat delay",
+    "scopes": [
+      "typing with thin gloves",
+      "typing with bare hands"
+    ],
+    "options": [
+      "a quarter-second repeat delay",
+      "a half-second repeat delay",
+      "a three-quarter-second repeat delay",
+      "a one-second repeat delay"
+    ],
+    "family": "train-keyboard-repeat-delay",
+    "domain": "device settings",
+    "opener": "A key repeated while I was reaching for my cup.",
+    "distraction": "I should really dust underneath the keyboard."
+  },
+  {
+    "attribute": "tablet orientation behavior",
+    "scopes": [
+      "tablet use on a kitchen stand",
+      "tablet use on a bedside stand"
+    ],
+    "options": [
+      "portrait orientation held in place",
+      "landscape orientation held in place",
+      "rotation after a deliberate tap",
+      "rotation that follows the tablet tilt"
+    ],
+    "family": "train-tablet-orientation-behavior",
+    "domain": "device settings",
+    "opener": "The tablet turned sideways in the middle of a line.",
+    "distraction": "The stand makes a tiny squeak when I move it."
+  },
+  {
+    "attribute": "desktop speaker balance",
+    "scopes": [
+      "listening from the left side of the desk",
+      "listening from the right side of the desk"
+    ],
+    "options": [
+      "equal volume from both speakers",
+      "a gentle left-speaker emphasis",
+      "a gentle right-speaker emphasis",
+      "both channels combined through the center speaker"
+    ],
+    "family": "train-desktop-speaker-balance",
+    "domain": "device settings",
+    "opener": "The little speaker test made me jump.",
+    "distraction": "There is a pencil balanced on the speaker grille."
+  },
+  {
+    "attribute": "kitchen timer chime",
+    "scopes": [
+      "timers for covered stovetop dishes",
+      "timers for uncovered stovetop dishes"
+    ],
+    "options": [
+      "three hollow wooden taps",
+      "a rising glassy trill",
+      "two soft bell notes",
+      "a brief brushed-cymbal sound"
+    ],
+    "family": "train-kitchen-timer-chime",
+    "domain": "notifications",
+    "opener": "The timer went off just as the saucepan lid rattled.",
+    "distraction": "I had to rescue a towel from the chair."
+  },
+  {
+    "attribute": "parcel progress detail",
+    "scopes": [
+      "parcels containing soft furnishings",
+      "parcels containing small tools"
+    ],
+    "options": [
+      "a notice at every sorting stop",
+      "a notice after each city transfer",
+      "a notice when the final journey begins",
+      "a notice after the parcel is handed over"
+    ],
+    "family": "train-parcel-progress-detail",
+    "domain": "notifications",
+    "opener": "The parcel tracker has acquired another tiny icon.",
+    "distraction": "I still have a stack of empty boxes to flatten."
+  },
+  {
+    "attribute": "shared-list activity threshold",
+    "scopes": [
+      "shared lists used by two adults",
+      "shared lists used by three or more adults"
+    ],
+    "options": [
+      "an alert for each added item",
+      "an alert after three additions",
+      "an alert after six additions",
+      "an alert when someone finishes editing"
+    ],
+    "family": "train-shared-list-activity-threshold",
+    "domain": "notifications",
+    "opener": "Our shared list got very busy this afternoon.",
+    "distraction": "The little checkbox animation is oddly satisfying."
+  },
+  {
+    "attribute": "table row shading",
+    "scopes": [
+      "tables with fewer than six rows",
+      "tables with six or more rows"
+    ],
+    "options": [
+      "alternating pale peach rows",
+      "one shaded row in each group of three",
+      "shading on the header row alone",
+      "thin lavender bands between row groups"
+    ],
+    "family": "train-table-row-shading",
+    "domain": "document formatting",
+    "opener": "I squinted at that table longer than I meant to.",
+    "distraction": "The paper sample beside me keeps sliding away."
+  },
+  {
+    "attribute": "heading numbering style",
+    "scopes": [
+      "documents written for my hobby circle",
+      "documents written for my volunteer circle"
+    ],
+    "options": [
+      "stacked decimal heading numbers",
+      "lowercase letter heading labels",
+      "Roman heading numerals",
+      "unnumbered headings with a small dot"
+    ],
+    "family": "train-heading-numbering-style",
+    "domain": "document formatting",
+    "opener": "The outline has grown another branch.",
+    "distraction": "My ruler has vanished behind the notebook again."
+  },
+  {
+    "attribute": "page number placement",
+    "scopes": [
+      "booklets bound along the long edge",
+      "booklets bound along the short edge"
+    ],
+    "options": [
+      "page numbers in the outer bottom corner",
+      "page numbers beside the upper margin",
+      "page numbers centered below a fine rule",
+      "page numbers inside the side margin"
+    ],
+    "family": "train-page-number-placement",
+    "domain": "document formatting",
+    "opener": "I was flipping through the booklet on the bus.",
+    "distraction": "One corner got folded in my bag."
+  },
+  {
+    "attribute": "storage jar closure",
+    "scopes": [
+      "jars used for dry seeds",
+      "jars used for dried herbs"
+    ],
+    "options": [
+      "a wide cork stopper",
+      "a hinged metal clasp",
+      "a screw-top bamboo lid",
+      "a push-fit ceramic cap"
+    ],
+    "family": "train-storage-jar-closure",
+    "domain": "shopping",
+    "opener": "The jar cupboard is getting rather crowded.",
+    "distraction": "I found an empty label stuck to my sleeve."
+  },
+  {
+    "attribute": "basket packing order",
+    "scopes": [
+      "shopping with a wheeled basket",
+      "shopping with a hand-carried basket"
+    ],
+    "options": [
+      "heavy groceries below fragile ones",
+      "chilled groceries together in the middle",
+      "groceries arranged by unpacking cupboard",
+      "groceries separated into meal bundles"
+    ],
+    "family": "train-basket-packing-order",
+    "domain": "shopping",
+    "opener": "I somehow ended up carrying three awkward bags.",
+    "distraction": "The shopping token was in my coat all along."
+  },
+  {
+    "attribute": "coat pocket construction",
+    "scopes": [
+      "coats worn on frost-free days",
+      "coats worn on frosty days"
+    ],
+    "options": [
+      "deep angled welt pockets",
+      "square patch pockets with flaps",
+      "concealed seam pockets",
+      "zippered vertical chest pockets"
+    ],
+    "family": "train-coat-pocket-construction",
+    "domain": "shopping",
+    "opener": "I tried the coat while holding my notebook.",
+    "distraction": "The changing-room curtain kept drifting open."
+  },
+  {
+    "attribute": "resistance-band hand grip",
+    "scopes": [
+      "band exercises performed standing",
+      "band exercises performed seated"
+    ],
+    "options": [
+      "a loop around the open palm",
+      "a closed grip on padded handles",
+      "a folded band held between both palms",
+      "a soft strap around each wrist"
+    ],
+    "family": "train-resistance-band-hand-grip",
+    "domain": "exercise",
+    "opener": "The exercise band rolled itself into a knot.",
+    "distraction": "I cleared enough floor space without moving the rug."
+  },
+  {
+    "attribute": "balance-practice footing",
+    "scopes": [
+      "balance drills performed beside a wall",
+      "balance drills performed away from a wall"
+    ],
+    "options": [
+      "a firm cork exercise pad",
+      "a thin folded exercise mat",
+      "a smooth wooden practice board",
+      "a textured rubber balance disc"
+    ],
+    "family": "train-balance-practice-footing",
+    "domain": "exercise",
+    "opener": "I nearly stepped on a stray sock before starting.",
+    "distraction": "The room feels much bigger after moving that stool."
+  },
+  {
+    "attribute": "cooldown movement order",
+    "scopes": [
+      "cooldowns after upper-body practice",
+      "cooldowns after lower-body practice"
+    ],
+    "options": [
+      "shoulder circles before ankle circles",
+      "slow marching before arm swings",
+      "gentle side bends before heel lifts",
+      "wrist rolls before relaxed walking"
+    ],
+    "family": "train-cooldown-movement-order",
+    "domain": "exercise",
+    "opener": "The last exercise left me pleasantly warm.",
+    "distraction": "The water bottle keeps making that clicking noise."
+  }
+]

@@ -1,0 +1,702 @@
+{
+  "hotel room outlook": {
+    "attr_short": "the outlook",
+    "scopes": [
+      "canal stays on my own",
+      "canal stays with a group"
+    ],
+    "options": [
+      "looking out over the water",
+      "looking onto the inner courtyard garden",
+      "looking across the roofs",
+      "looking up at the wooded hillside"
+    ],
+    "topics": [
+      "the morning light on the canal",
+      "the room facing the inner courtyard",
+      "the view at check-in"
+    ],
+    "reasons": [
+      "I like to spend a few minutes looking outside before I unpack",
+      "I want it to be easier while I am getting ready to go",
+      "It saves thinking about it when I reach the place",
+      "I would rather settle it before the next trip",
+      "I want something I can live with when I am away"
+    ]
+  },
+  "station waiting activity": {
+    "attr_short": "how I pass time at the station",
+    "scopes": [
+      "waiting for a daytime train",
+      "waiting for a night train"
+    ],
+    "options": [
+      "a pocket-sized magazine to read",
+      "a sketch of the station hall",
+      "a little radio drama",
+      "a word puzzle to solve"
+    ],
+    "topics": [
+      "the time between departures",
+      "the benches in the station hall",
+      "something compact to read at the station"
+    ],
+    "reasons": [
+      "I am trying to make the wait feel less like wasted time",
+      "I want it to be easier while I am getting ready to go",
+      "It saves thinking about it when I reach the place",
+      "I would rather settle it before the next trip",
+      "I want something I can live with when I am away"
+    ]
+  },
+  "rental bicycle basket design": {
+    "attr_short": "the basket on the hired bike",
+    "scopes": [
+      "hiring a bike on my own",
+      "hiring a bike when someone comes along"
+    ],
+    "options": [
+      "a low wire basket",
+      "a roomy deep basket in canvas",
+      "a stiff wicker basket",
+      "a plastic basket with a lid"
+    ],
+    "topics": [
+      "the things that go in the bike basket",
+      "the bumps along the path",
+      "getting the bike ready to leave"
+    ],
+    "reasons": [
+      "I need to be able to carry the small things without stopping to fix them",
+      "I want it to be easier while I am getting ready to go",
+      "It saves thinking about it when I reach the place",
+      "I would rather settle it before the next trip",
+      "I want something I can live with when I am away"
+    ]
+  },
+  "guesthouse shoe storage": {
+    "attr_short": "where I leave my shoes",
+    "scopes": [
+      "at a guesthouse on dry days",
+      "at a guesthouse in rainy weather"
+    ],
+    "options": [
+      "a bedside shoe tray",
+      "a shoe cubby near the entry",
+      "a shoe bag that hangs up",
+      "a shoe rack under the bench"
+    ],
+    "topics": [
+      "the space around the guesthouse entrance",
+      "where wet shoes can dry",
+      "the first thing to find when leaving"
+    ],
+    "reasons": [
+      "I want to find both shoes without having to look all over the room",
+      "I want it to be easier while I am getting ready to go",
+      "It saves thinking about it when I reach the place",
+      "I would rather settle it before the next trip",
+      "I want something I can live with when I am away"
+    ]
+  },
+  "salad dressing serving style": {
+    "attr_short": "how the dressing goes on",
+    "scopes": [
+      "when I eat my salad at my desk",
+      "when I eat my salad on a bench outside"
+    ],
+    "options": [
+      "dressing mixed with the leaves",
+      "a separate cup of dressing to dip into",
+      "dressing in a drizzle round the bowl",
+      "dressing collected underneath the vegetables"
+    ],
+    "topics": [
+      "texture in the salad leaves",
+      "taking the salad outside",
+      "how much dressing stays on the greens"
+    ],
+    "reasons": [
+      "I do not want the whole bowl to get soggy halfway through",
+      "I care more about how it feels to eat than how it looks",
+      "I am thinking about what is easiest once it is on the table",
+      "It is one of those details I notice when I am already eating",
+      "I want it to feel right without having to fuss with it"
+    ]
+  },
+  "toast topping": {
+    "attr_short": "what goes on the toast",
+    "scopes": [
+      "breakfast before the sun comes up",
+      "breakfast once the sun is up"
+    ],
+    "options": [
+      "toast spread with mashed pear",
+      "toast with a sesame spread",
+      "a roasted pepper spread on the toast",
+      "chive soft cheese on toast"
+    ],
+    "topics": [
+      "making toast while it is still dark",
+      "the first slice of the morning",
+      "how the spread sits on a warm slice"
+    ],
+    "reasons": [
+      "That first slice is usually the only one I have time to make",
+      "I care more about how it feels to eat than how it looks",
+      "I am thinking about what is easiest once it is on the table",
+      "It is one of those details I notice when I am already eating",
+      "I want it to feel right without having to fuss with it"
+    ]
+  },
+  "crunchy snack shape": {
+    "attr_short": "the shape of the crunchy bites",
+    "scopes": [
+      "packing snacks in a circular tin",
+      "packing snacks in a rectangular box tin"
+    ],
+    "options": [
+      "baked curls sliced thin",
+      "little squares toasted crisp",
+      "crunchy snack tubes with hollow middles",
+      "flat crunchy discs with seeds"
+    ],
+    "topics": [
+      "what fits in the snack tin",
+      "the smaller pieces at the bottom",
+      "keeping a crisp bite"
+    ],
+    "reasons": [
+      "I want to be able to reach in and take a couple without spilling the rest",
+      "I care more about how it feels to eat than how it looks",
+      "I am thinking about what is easiest once it is on the table",
+      "It is one of those details I notice when I am already eating",
+      "I want it to feel right without having to fuss with it"
+    ]
+  },
+  "filled flatbread cutting style": {
+    "attr_short": "how I cut the flatbread",
+    "scopes": [
+      "eating flatbread sitting down",
+      "eating flatbread on my feet"
+    ],
+    "options": [
+      "a pair of long strips",
+      "four stubby pieces of flatbread",
+      "little wedges of flatbread",
+      "one folded piece without cutting it"
+    ],
+    "topics": [
+      "holding the flatbread in one hand",
+      "how the filling sits after cutting",
+      "the pieces on the plate"
+    ],
+    "reasons": [
+      "It is easier to eat without losing the filling if I get the shape right",
+      "I care more about how it feels to eat than how it looks",
+      "I am thinking about what is easiest once it is on the table",
+      "It is one of those details I notice when I am already eating",
+      "I want it to feel right without having to fuss with it"
+    ]
+  },
+  "task batching method": {
+    "attr_short": "how I group my to-dos",
+    "scopes": [
+      "working with other people in the room",
+      "working in a room on my own"
+    ],
+    "options": [
+      "grouped by which tool I need",
+      "grouped by how far off the deadlines are",
+      "grouped by how much work they look like",
+      "grouped by where each project has got to"
+    ],
+    "topics": [
+      "the order of the work queue",
+      "switching from one tool to another",
+      "getting through the pile without losing your place"
+    ],
+    "reasons": [
+      "I spend too much time switching between things that need different tools",
+      "I notice it most when I am trying to get back to work",
+      "It affects how easily I find my place again",
+      "When things are busy the small bit of friction adds up",
+      "I want to be able to get to the next thing without stopping"
+    ]
+  },
+  "desk reset sequence": {
+    "attr_short": "the desk tidy-up order",
+    "scopes": [
+      "tidying after a morning session",
+      "tidying after an evening session"
+    ],
+    "options": [
+      "papers first, then cables, then cups",
+      "cups first, then papers, then wires",
+      "wires first, then cups, then paperwork",
+      "the stationery first, the rest afterward"
+    ],
+    "topics": [
+      "the stack of papers on the desk",
+      "clearing out the empty cups",
+      "being able to start clean next time"
+    ],
+    "reasons": [
+      "I would like to sit down at the desk next time without clearing a spot first",
+      "I notice it most when I am trying to get back to work",
+      "It affects how easily I find my place again",
+      "When things are busy the small bit of friction adds up",
+      "I want to be able to get to the next thing without stopping"
+    ]
+  },
+  "rough idea capture method": {
+    "attr_short": "how I jot down ideas",
+    "scopes": [
+      "ideas I get sitting down",
+      "ideas I get while walking around inside"
+    ],
+    "options": [
+      "a quick pencil sketch",
+      "a snippet whispered into a recorder",
+      "one sentence on an index card",
+      "a handful of little tiles with words"
+    ],
+    "topics": [
+      "getting an idea down quickly",
+      "what is within reach when it occurs to you",
+      "finding the rough note later"
+    ],
+    "reasons": [
+      "Half the idea is usually gone by the time I find something to write on",
+      "I notice it most when I am trying to get back to work",
+      "It affects how easily I find my place again",
+      "When things are busy the small bit of friction adds up",
+      "I want to be able to get to the next thing without stopping"
+    ]
+  },
+  "desk interruption signal": {
+    "attr_short": "what I put up when I need focus",
+    "scopes": [
+      "working with someone at the next desk",
+      "working beside an unoccupied workstation"
+    ],
+    "options": [
+      "a little amber flag on the desk",
+      "a small folding screen made of cloth",
+      "a wooden marker that says I am busy",
+      "my desk name sign flipped over"
+    ],
+    "topics": [
+      "how visible the signal is across the room",
+      "making room beside the keyboard",
+      "what the other desk can see"
+    ],
+    "reasons": [
+      "I want the person near me to be able to tell without having to ask",
+      "I notice it most when I am trying to get back to work",
+      "It affects how easily I find my place again",
+      "When things are busy the small bit of friction adds up",
+      "I want to be able to get to the next thing without stopping"
+    ]
+  },
+  "pointer trail appearance": {
+    "attr_short": "the little trail behind the cursor",
+    "scopes": [
+      "using the computer with a separate trackball",
+      "using the machine's own pointing nub"
+    ],
+    "options": [
+      "a short trail that fades away",
+      "a long string of pointer dots",
+      "a skinny continuous line behind the pointer",
+      "a pointer without a trail"
+    ],
+    "topics": [
+      "following the cursor across the screen",
+      "the trail left by a quick flick",
+      "seeing the pointer without clutter"
+    ],
+    "reasons": [
+      "I lose track of the cursor when I move it quickly",
+      "I notice it when I have been using the device for a while",
+      "I want to be able to use it without looking away much",
+      "It matters how it feels once I actually put my hands on it",
+      "I am judging it by what happens in ordinary use"
+    ]
+  },
+  "keyboard repeat delay": {
+    "attr_short": "how long a key waits before repeating",
+    "scopes": [
+      "typing in light gloves",
+      "typing without gloves"
+    ],
+    "options": [
+      "a quarter second before it repeats",
+      "half a second before repeat",
+      "three quarters of a second before repeating",
+      "a full second before the repeat kicks in"
+    ],
+    "topics": [
+      "keeping a key pressed",
+      "the gap before a letter repeats",
+      "typing without an accidental extra character"
+    ],
+    "reasons": [
+      "I keep putting in a second letter by mistake",
+      "I notice it when I have been using the device for a while",
+      "I want to be able to use it without looking away much",
+      "It matters how it feels once I actually put my hands on it",
+      "I am judging it by what happens in ordinary use"
+    ]
+  },
+  "tablet orientation behavior": {
+    "attr_short": "how the tablet turns",
+    "scopes": [
+      "using the tablet propped up in the kitchen",
+      "using the tablet on the stand by the bed"
+    ],
+    "options": [
+      "locked upright",
+      "locked sideways",
+      "turning once I tap for it",
+      "turning as I tilt the tablet"
+    ],
+    "topics": [
+      "the stand angle in the kitchen",
+      "keeping a page upright on the bedside stand",
+      "turning the screen without picking it up"
+    ],
+    "reasons": [
+      "I do not want the screen to turn while I am still trying to read it",
+      "I notice it when I have been using the device for a while",
+      "I want to be able to use it without looking away much",
+      "It matters how it feels once I actually put my hands on it",
+      "I am judging it by what happens in ordinary use"
+    ]
+  },
+  "desktop speaker balance": {
+    "attr_short": "the speaker mix",
+    "scopes": [
+      "listening while sitting to the desk's left",
+      "listening while sitting to the desk's right"
+    ],
+    "options": [
+      "both speakers at the same level",
+      "the left speaker slightly louder",
+      "the right speaker slightly louder",
+      "a center speaker carrying the two channels"
+    ],
+    "topics": [
+      "sitting off to one side",
+      "where the voices sound centered",
+      "the distance to the speakers"
+    ],
+    "reasons": [
+      "At one end of the desk the voices sound farther away than they should",
+      "I notice it when I have been using the device for a while",
+      "I want to be able to use it without looking away much",
+      "It matters how it feels once I actually put my hands on it",
+      "I am judging it by what happens in ordinary use"
+    ]
+  },
+  "kitchen timer chime": {
+    "attr_short": "what the timer sounds like",
+    "scopes": [
+      "timing a pan with a lid on",
+      "timing a pan without a lid"
+    ],
+    "options": [
+      "three hollow taps like wood",
+      "an upward tinkling sound like glass",
+      "a pair of quiet bell sounds",
+      "a quick sound like a brushed cymbal"
+    ],
+    "topics": [
+      "hearing the timer over the pan",
+      "recognizing the chime without looking",
+      "how sharp the sound is in the kitchen"
+    ],
+    "reasons": [
+      "If I am at the stove I need to recognize the timer by sound",
+      "I am trying to notice the worthwhile updates without being pulled away",
+      "I want to be able to tell what happened without opening everything",
+      "I am mostly thinking about how much it breaks my concentration",
+      "I should be able to recognize it even if I am doing something else"
+    ]
+  },
+  "parcel progress detail": {
+    "attr_short": "how much parcel tracking I see",
+    "scopes": [
+      "tracking packages of soft furnishings",
+      "tracking packages of little tools"
+    ],
+    "options": [
+      "an update from each sort point",
+      "an update at every transfer between cities",
+      "an update when it starts the last leg",
+      "an update once it has been handed over"
+    ],
+    "topics": [
+      "what you actually check in parcel tracking",
+      "knowing when the last leg begins",
+      "sorting useful notices from repeated ones"
+    ],
+    "reasons": [
+      "I want to be able to tell when I should start looking out for the package",
+      "I am trying to notice the worthwhile updates without being pulled away",
+      "I want to be able to tell what happened without opening everything",
+      "I am mostly thinking about how much it breaks my concentration",
+      "I should be able to recognize it even if I am doing something else"
+    ]
+  },
+  "shared-list activity threshold": {
+    "attr_short": "when the shared list pings",
+    "scopes": [
+      "a list shared by two grownups",
+      "a list with at least three grownup users"
+    ],
+    "options": [
+      "a ping for every new item",
+      "a ping after the third new item",
+      "a ping after six items are added",
+      "a ping once someone is done making changes"
+    ],
+    "topics": [
+      "changes landing on the list together",
+      "how the list looks after somebody edits it",
+      "getting interrupted for small additions"
+    ],
+    "reasons": [
+      "Several little pings in a row pull me away from what I am doing",
+      "I am trying to notice the worthwhile updates without being pulled away",
+      "I want to be able to tell what happened without opening everything",
+      "I am mostly thinking about how much it breaks my concentration",
+      "I should be able to recognize it even if I am doing something else"
+    ]
+  },
+  "table row shading": {
+    "attr_short": "the table striping",
+    "scopes": [
+      "tables of up to five rows",
+      "tables of six rows or more"
+    ],
+    "options": [
+      "pale peach on every other row",
+      "one colored row per set of three",
+      "a shaded header and no other shading",
+      "thin purple-tinted strips between groups"
+    ],
+    "topics": [
+      "following a row across the page",
+      "keeping the header easy to spot",
+      "how dark the stripes look on paper"
+    ],
+    "reasons": [
+      "I lose the row I am reading when I look across several columns",
+      "I want to be able to follow it on the page without squinting",
+      "I notice it more when there are several pages together",
+      "I am judging how it looks after the whole thing is laid out",
+      "I do not want readers to have to scan around to make sense of it"
+    ]
+  },
+  "heading numbering style": {
+    "attr_short": "how the section headings are numbered",
+    "scopes": [
+      "writing for my hobby group",
+      "writing for my group of volunteers"
+    ],
+    "options": [
+      "nested decimal numbers on the headings",
+      "little lowercase letters on the headings",
+      "headings labeled with Roman numerals",
+      "a dot on each heading without a number"
+    ],
+    "topics": [
+      "finding your place between headings",
+      "seeing which section a subsection belongs to",
+      "how the section labels look at a glance"
+    ],
+    "reasons": [
+      "It saves me from going back up the page to find which part I am in",
+      "I want to be able to follow it on the page without squinting",
+      "I notice it more when there are several pages together",
+      "I am judging how it looks after the whole thing is laid out",
+      "I do not want readers to have to scan around to make sense of it"
+    ]
+  },
+  "page number placement": {
+    "attr_short": "where the page numbers go",
+    "scopes": [
+      "booklets with their long edge bound",
+      "booklets with their short edge bound"
+    ],
+    "options": [
+      "numbers at the outside bottom corner",
+      "numbers next to the top margin",
+      "centered numbers below a thin line",
+      "numbers tucked into the side margin"
+    ],
+    "topics": [
+      "how close the number sits to the fold",
+      "finding a page while flipping through",
+      "the room left at the lower edge"
+    ],
+    "reasons": [
+      "I want to see the number quickly while flipping through a booklet",
+      "I want to be able to follow it on the page without squinting",
+      "I notice it more when there are several pages together",
+      "I am judging how it looks after the whole thing is laid out",
+      "I do not want readers to have to scan around to make sense of it"
+    ]
+  },
+  "storage jar closure": {
+    "attr_short": "the lids for the jars",
+    "scopes": [
+      "jarring dry seeds",
+      "jarring dried herbs"
+    ],
+    "options": [
+      "a broad stopper made of cork",
+      "a metal clip on a hinge",
+      "a bamboo lid that screws on",
+      "a ceramic lid that pushes into place"
+    ],
+    "topics": [
+      "how easy a jar is to open",
+      "getting a reliable seal",
+      "how the lids sit side by side"
+    ],
+    "reasons": [
+      "I end up opening these jars with one hand a lot of the time",
+      "I care about how it feels to use rather than how it looks in the shop",
+      "It is the kind of thing that gets annoying after a few uses",
+      "I want to picture actually carrying it or putting it away",
+      "I am thinking about what happens once I bring it home"
+    ]
+  },
+  "basket packing order": {
+    "attr_short": "how I load the shopping basket",
+    "scopes": [
+      "bringing the basket on wheels",
+      "bringing the basket I carry by hand"
+    ],
+    "options": [
+      "heavy things underneath breakable groceries",
+      "cold items grouped in the center",
+      "items grouped by their cupboard",
+      "groceries grouped by which meal they are for"
+    ],
+    "topics": [
+      "avoiding crushed groceries",
+      "fitting the heaviest items first",
+      "getting home and unloading"
+    ],
+    "reasons": [
+      "I would rather not get home to find the delicate stuff at the bottom",
+      "I care about how it feels to use rather than how it looks in the shop",
+      "It is the kind of thing that gets annoying after a few uses",
+      "I want to picture actually carrying it or putting it away",
+      "I am thinking about what happens once I bring it home"
+    ]
+  },
+  "coat pocket construction": {
+    "attr_short": "the sort of pockets I like",
+    "scopes": [
+      "wearing the coat on days without frost",
+      "wearing the coat when there is frost"
+    ],
+    "options": [
+      "deep slanted welt pockets",
+      "square outside pockets with flaps",
+      "pockets hidden in the seams",
+      "upright chest pockets with zips"
+    ],
+    "topics": [
+      "warming your hands without taking things out",
+      "which bits of the coat get caught",
+      "where a small object will sit"
+    ],
+    "reasons": [
+      "I use the pockets much more often than I open the coat itself",
+      "I care about how it feels to use rather than how it looks in the shop",
+      "It is the kind of thing that gets annoying after a few uses",
+      "I want to picture actually carrying it or putting it away",
+      "I am thinking about what happens once I bring it home"
+    ]
+  },
+  "resistance-band hand grip": {
+    "attr_short": "how I hold the exercise band",
+    "scopes": [
+      "doing band exercises on my feet",
+      "doing band exercises sitting down"
+    ],
+    "options": [
+      "the band looped round my open palm",
+      "a closed grip on the cushioned handles",
+      "the folded band between my palms",
+      "a soft loop around both wrists"
+    ],
+    "topics": [
+      "where the band presses on the hand",
+      "how you get into the next set",
+      "keeping both hands even"
+    ],
+    "reasons": [
+      "The grip gets uncomfortable several repetitions into a set",
+      "I notice it once I have done a few repetitions",
+      "I want to be able to concentrate on the movement itself",
+      "I am trying not to interrupt the flow of the exercise",
+      "I care about how it feels once I am warmed up"
+    ]
+  },
+  "balance-practice footing": {
+    "attr_short": "what I stand on to balance",
+    "scopes": [
+      "doing balance practice next to a wall",
+      "doing balance practice away from a wall"
+    ],
+    "options": [
+      "a hard cork pad",
+      "a slim workout mat folded over",
+      "a polished wooden balance board",
+      "a grippy round rubber balance cushion"
+    ],
+    "topics": [
+      "how much grip you get underfoot",
+      "whether the board rocks",
+      "getting into position near the wall"
+    ],
+    "reasons": [
+      "How the surface feels makes a difference as soon as I shift my weight",
+      "I notice it once I have done a few repetitions",
+      "I want to be able to concentrate on the movement itself",
+      "I am trying not to interrupt the flow of the exercise",
+      "I care about how it feels once I am warmed up"
+    ]
+  },
+  "cooldown movement order": {
+    "attr_short": "the order of the cooldown",
+    "scopes": [
+      "cooling down after training the upper body",
+      "cooling down after training the lower body"
+    ],
+    "options": [
+      "shoulder rotations, then ankle rotations",
+      "an easy march, then arm swings",
+      "small side bends, then heel raises",
+      "wrist rotations, then an easy walk"
+    ],
+    "topics": [
+      "the move that comes just after practice",
+      "settling into a slower pace",
+      "saving the last little stretch for the end"
+    ],
+    "reasons": [
+      "I notice how stiff I am if I rush through the first few moves",
+      "I notice it once I have done a few repetitions",
+      "I want to be able to concentrate on the movement itself",
+      "I am trying not to interrupt the flow of the exercise",
+      "I care about how it feels once I am warmed up"
+    ]
+  }
+}

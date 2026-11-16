@@ -1,0 +1,1168 @@
+{
+  "add_persistent": [
+    {
+      "template_id": "dev-add_persistent-1",
+      "messages": [
+        {
+          "role": "user",
+          "content": "I have found something I like for my {attribute}, but it is for {scope} rather than everyday use."
+        },
+        {
+          "role": "assistant",
+          "content": "What would you like on those occasions?"
+        },
+        {
+          "role": "user",
+          "content": "{new}. I want that whenever they come around, not just the next one."
+        }
+      ],
+      "evidence_message": 3
+    },
+    {
+      "template_id": "dev-add_persistent-2",
+      "messages": [
+        {
+          "role": "user",
+          "content": "{opener} I tried {new} for my {attribute} and thought it would be a one-off."
+        },
+        {
+          "role": "assistant",
+          "content": "How did it turn out?"
+        },
+        {
+          "role": "user",
+          "content": "Well enough that I want to keep using it for {scope}."
+        },
+        {
+          "role": "assistant",
+          "content": "How long would you like to carry on with it?"
+        },
+        {
+          "role": "user",
+          "content": "I am happy to make that my lasting choice there. Please remember it for future occasions."
+        }
+      ],
+      "evidence_message": 5
+    },
+    {
+      "template_id": "dev-add_persistent-3",
+      "messages": [
+        {
+          "role": "user",
+          "content": "I always come back to {new} when I think about my {attribute}."
+        },
+        {
+          "role": "assistant",
+          "content": "What do you like about it?"
+        },
+        {
+          "role": "user",
+          "content": "It feels less fussy. I would like to choose it, but only for a particular situation."
+        },
+        {
+          "role": "assistant",
+          "content": "Which situation have you got in mind?"
+        },
+        {
+          "role": "user",
+          "content": "{scope}. It suits those occasions without exception."
+        },
+        {
+          "role": "assistant",
+          "content": "Are you still experimenting with it?"
+        },
+        {
+          "role": "user",
+          "content": "No, I have finished trying things out. I want it every time those occasions arise."
+        }
+      ],
+      "evidence_message": 7
+    }
+  ],
+  "add_window": [
+    {
+      "template_id": "dev-add_window-1",
+      "messages": [
+        {
+          "role": "user",
+          "content": "I need to plan my {attribute} for {scope} over a short stretch: {start} through {end}, including the last day."
+        },
+        {
+          "role": "assistant",
+          "content": "Which choice would help during that stretch?"
+        },
+        {
+          "role": "user",
+          "content": "{new}. After that, my ordinary choice will be fine again."
+        }
+      ],
+      "evidence_message": 3
+    },
+    {
+      "template_id": "dev-add_window-2",
+      "messages": [
+        {
+          "role": "user",
+          "content": "{opener} Could I use {new} for my {attribute} for a while?"
+        },
+        {
+          "role": "assistant",
+          "content": "Where would you like to use it?"
+        },
+        {
+          "role": "user",
+          "content": "For {scope}, and only during the period I am about to give you."
+        },
+        {
+          "role": "assistant",
+          "content": "What dates should I work with?"
+        },
+        {
+          "role": "user",
+          "content": "From {start} through {end}, inclusive. Once that ends, go back to what I ordinarily prefer."
+        }
+      ],
+      "evidence_message": 5
+    },
+    {
+      "template_id": "dev-add_window-3",
+      "messages": [
+        {
+          "role": "user",
+          "content": "My {attribute} needs a temporary arrangement for {scope}."
+        },
+        {
+          "role": "assistant",
+          "content": "What are you thinking of using?"
+        },
+        {
+          "role": "user",
+          "content": "{new}. I checked it carefully this time."
+        },
+        {
+          "role": "assistant",
+          "content": "When would that start?"
+        },
+        {
+          "role": "user",
+          "content": "{start}. {distraction}"
+        },
+        {
+          "role": "assistant",
+          "content": "And when does the arrangement finish?"
+        },
+        {
+          "role": "user",
+          "content": "At the end of {end}. I want my ordinary choice again after that date."
+        }
+      ],
+      "evidence_message": 7
+    }
+  ],
+  "add_open": [
+    {
+      "template_id": "dev-add_open-1",
+      "messages": [
+        {
+          "role": "user",
+          "content": "For {scope}, I would like a short-term change to my {attribute}. There is no end date yet."
+        },
+        {
+          "role": "assistant",
+          "content": "Which choice would you like to try?"
+        },
+        {
+          "role": "user",
+          "content": "{new}, each time for now. I will tell you when I am ready to stop."
+        }
+      ],
+      "evidence_message": 3
+    },
+    {
+      "template_id": "dev-add_open-2",
+      "messages": [
+        {
+          "role": "user",
+          "content": "{opener} I would like to start using {new} for my {attribute}."
+        },
+        {
+          "role": "assistant",
+          "content": "For which occasions?"
+        },
+        {
+          "role": "user",
+          "content": "For {scope}. I am not ready to call it my long-term choice."
+        },
+        {
+          "role": "assistant",
+          "content": "Do you know how long the trial will last?"
+        },
+        {
+          "role": "user",
+          "content": "Not yet. Use it on those occasions until I tell you otherwise; the arrangement is temporary."
+        }
+      ],
+      "evidence_message": 5
+    },
+    {
+      "template_id": "dev-add_open-3",
+      "messages": [
+        {
+          "role": "user",
+          "content": "I need to make my {attribute} a little easier to manage for {scope}."
+        },
+        {
+          "role": "assistant",
+          "content": "What would you prefer?"
+        },
+        {
+          "role": "user",
+          "content": "{new} seems right, so let us use that for the next few occasions."
+        },
+        {
+          "role": "assistant",
+          "content": "Do you have a final date in mind?"
+        },
+        {
+          "role": "user",
+          "content": "No, I cannot predict that yet."
+        },
+        {
+          "role": "assistant",
+          "content": "How should I handle the occasions after the next few?"
+        },
+        {
+          "role": "user",
+          "content": "Continue with it for now unless I tell you to stop. I am trying it out, not settling on it permanently."
+        }
+      ],
+      "evidence_message": 7
+    }
+  ],
+  "revise": [
+    {
+      "template_id": "dev-revise-1",
+      "messages": [
+        {
+          "role": "user",
+          "content": "The {old} choice for my {attribute} for {scope} is not quite right. I want to replace it. {timing}"
+        },
+        {
+          "role": "assistant",
+          "content": "What would suit you better there?"
+        },
+        {
+          "role": "user",
+          "content": "{new}. I have had a proper chance to compare them now."
+        }
+      ],
+      "evidence_message": 3
+    },
+    {
+      "template_id": "dev-revise-2",
+      "messages": [
+        {
+          "role": "user",
+          "content": "{opener} I want to revise something about my {attribute}."
+        },
+        {
+          "role": "assistant",
+          "content": "Which arrangement are you referring to?"
+        },
+        {
+          "role": "user",
+          "content": "The one for {scope}, where I chose {old}. I would like {new} in its place."
+        },
+        {
+          "role": "assistant",
+          "content": "Would you like to change how long that arrangement lasts?"
+        },
+        {
+          "role": "user",
+          "content": "No. {timing} That should save me some bother."
+        }
+      ],
+      "evidence_message": 5
+    },
+    {
+      "template_id": "dev-revise-3",
+      "messages": [
+        {
+          "role": "user",
+          "content": "I remember choosing {old} for my {attribute}, but I am no longer pleased with it."
+        },
+        {
+          "role": "assistant",
+          "content": "Which occasions are you thinking about?"
+        },
+        {
+          "role": "user",
+          "content": "{scope}, specifically. The fit is not as good as I expected."
+        },
+        {
+          "role": "assistant",
+          "content": "What would you rather use?"
+        },
+        {
+          "role": "user",
+          "content": "I would rather have {new} on those occasions."
+        },
+        {
+          "role": "assistant",
+          "content": "Is there anything to change about the dates?"
+        },
+        {
+          "role": "user",
+          "content": "{timing} It is the choice itself I wanted to change."
+        }
+      ],
+      "evidence_message": 7
+    }
+  ],
+  "general": [
+    {
+      "template_id": "dev-general-1",
+      "messages": [
+        {
+          "role": "user",
+          "content": "I want a new everyday choice for my {attribute}, starting today and continuing. The separate arrangement for {scope} still suits me."
+        },
+        {
+          "role": "assistant",
+          "content": "What would you like ordinarily?"
+        },
+        {
+          "role": "user",
+          "content": "{new} instead of {general}. I keep finding it more comfortable."
+        }
+      ],
+      "evidence_message": 3
+    },
+    {
+      "template_id": "dev-general-2",
+      "messages": [
+        {
+          "role": "user",
+          "content": "{opener} My usual {attribute} is not working for me any more."
+        },
+        {
+          "role": "assistant",
+          "content": "What would you prefer?"
+        },
+        {
+          "role": "user",
+          "content": "{new}, starting today. I would like to keep using it."
+        },
+        {
+          "role": "assistant",
+          "content": "Was there another part of the arrangement you wanted to discuss?"
+        },
+        {
+          "role": "user",
+          "content": "The choice for {scope} is still good. It is my everyday choice of {general} that I am replacing."
+        }
+      ],
+      "evidence_message": 5
+    },
+    {
+      "template_id": "dev-general-3",
+      "messages": [
+        {
+          "role": "user",
+          "content": "I have been choosing {general} by default for {attribute}. I would like to switch to {new}."
+        },
+        {
+          "role": "assistant",
+          "content": "Which part of your routine is this for?"
+        },
+        {
+          "role": "user",
+          "content": "The ordinary occasions. I have been using {general} there, and I want to switch from today onward."
+        },
+        {
+          "role": "assistant",
+          "content": "Do the separately arranged occasions still suit you?"
+        },
+        {
+          "role": "user",
+          "content": "Yes, I am still pleased with what I chose for {scope}. That should carry on."
+        }
+      ],
+      "evidence_message": 5
+    }
+  ],
+  "stable_oneoff": [
+    {
+      "template_id": "dev-stable_oneoff-1",
+      "messages": [
+        {
+          "role": "user",
+          "content": "I have a single request involving my {attribute}. My usual arrangement is fine for later."
+        },
+        {
+          "role": "assistant",
+          "content": "What would you like for this request?"
+        },
+        {
+          "role": "user",
+          "content": "{new}, please. Just this one-off."
+        }
+      ],
+      "evidence_message": 3
+    },
+    {
+      "template_id": "dev-stable_oneoff-2",
+      "messages": [
+        {
+          "role": "user",
+          "content": "{opener} Could I use {new} for my {attribute}?"
+        },
+        {
+          "role": "assistant",
+          "content": "For how long?"
+        },
+        {
+          "role": "user",
+          "content": "Today only. I am not changing what I normally like."
+        }
+      ],
+      "evidence_message": 3
+    },
+    {
+      "template_id": "dev-stable_oneoff-3",
+      "messages": [
+        {
+          "role": "user",
+          "content": "The current item needs something different for {attribute}."
+        },
+        {
+          "role": "assistant",
+          "content": "Which choice would work?"
+        },
+        {
+          "role": "user",
+          "content": "{new}. It is a temporary workaround for this item."
+        },
+        {
+          "role": "assistant",
+          "content": "What about the next item?"
+        },
+        {
+          "role": "user",
+          "content": "Use the existing arrangement then. This request ends with the item we are dealing with now."
+        }
+      ],
+      "evidence_message": 5
+    }
+  ],
+  "stable_other": [
+    {
+      "template_id": "dev-stable_other-1",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Someone I was chatting with said, \"{new} is always my {attribute} choice; it is the default for me.\""
+        },
+        {
+          "role": "assistant",
+          "content": "Is that how you feel about it as well?"
+        },
+        {
+          "role": "user",
+          "content": "No, that was their view. My own choices are fine as they are."
+        }
+      ],
+      "evidence_message": 3
+    },
+    {
+      "template_id": "dev-stable_other-2",
+      "messages": [
+        {
+          "role": "user",
+          "content": "{opener} I am editing a made-up diary entry about {attribute}."
+        },
+        {
+          "role": "assistant",
+          "content": "Which part are you looking at?"
+        },
+        {
+          "role": "user",
+          "content": "The line says, \"Save {new} as my choice, without exception.\""
+        },
+        {
+          "role": "assistant",
+          "content": "Whose voice is that line meant to be in?"
+        },
+        {
+          "role": "user",
+          "content": "The imaginary writer, not mine. I am not adopting their choice."
+        }
+      ],
+      "evidence_message": 5
+    },
+    {
+      "template_id": "dev-stable_other-3",
+      "messages": [
+        {
+          "role": "user",
+          "content": "I wrote this line for a character: \"Remember, I want {new} for {attribute}.\""
+        },
+        {
+          "role": "assistant",
+          "content": "Does the character borrow that preference from you?"
+        },
+        {
+          "role": "user",
+          "content": "No. That preference belongs to the character alone."
+        },
+        {
+          "role": "assistant",
+          "content": "What are you trying to show about them?"
+        },
+        {
+          "role": "user",
+          "content": "That they sound very certain, even about small things."
+        }
+      ],
+      "evidence_message": 3
+    }
+  ],
+  "stable_hypothetical": [
+    {
+      "template_id": "dev-stable_hypothetical-1",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Suppose I used {new} for {attribute}. Would that make things easier?"
+        },
+        {
+          "role": "assistant",
+          "content": "Are you considering a change, or comparing possibilities?"
+        },
+        {
+          "role": "user",
+          "content": "Only comparing. I have not chosen to do it."
+        }
+      ],
+      "evidence_message": 3
+    },
+    {
+      "template_id": "dev-stable_hypothetical-2",
+      "messages": [
+        {
+          "role": "user",
+          "content": "I am imagining a plan with a different {attribute}."
+        },
+        {
+          "role": "assistant",
+          "content": "What would you put in that plan?"
+        },
+        {
+          "role": "user",
+          "content": "{new}, for now. I wonder whether it would save effort."
+        },
+        {
+          "role": "assistant",
+          "content": "Do you want to put that plan into use?"
+        },
+        {
+          "role": "user",
+          "content": "No, I am just working through the what-if. Leave my actual arrangement alone."
+        }
+      ],
+      "evidence_message": 5
+    },
+    {
+      "template_id": "dev-stable_hypothetical-3",
+      "messages": [
+        {
+          "role": "user",
+          "content": "{opener} Could we think through a temporary version with {new} for {attribute}?"
+        },
+        {
+          "role": "assistant",
+          "content": "Is this something you want to use?"
+        },
+        {
+          "role": "user",
+          "content": "Not at this stage. It is an imagined version, not a request to change anything."
+        },
+        {
+          "role": "assistant",
+          "content": "What part would you like to think through?"
+        },
+        {
+          "role": "user",
+          "content": "How much extra preparation it would take."
+        }
+      ],
+      "evidence_message": 3
+    }
+  ],
+  "stable_rejected": [
+    {
+      "template_id": "dev-stable_rejected-1",
+      "messages": [
+        {
+          "role": "user",
+          "content": "I looked into that suggestion of {new} for my {attribute}."
+        },
+        {
+          "role": "assistant",
+          "content": "Did the suggestion stand up to a closer look?"
+        },
+        {
+          "role": "user",
+          "content": "It is not for me. I want to carry on with the choices I already have."
+        }
+      ],
+      "evidence_message": 3
+    },
+    {
+      "template_id": "dev-stable_rejected-2",
+      "messages": [
+        {
+          "role": "user",
+          "content": "{opener} The proposed {attribute} change sounded tempting for a moment."
+        },
+        {
+          "role": "assistant",
+          "content": "Which proposal do you mean?"
+        },
+        {
+          "role": "user",
+          "content": "Using {new}. I have decided against it."
+        },
+        {
+          "role": "assistant",
+          "content": "Did something put you off?"
+        },
+        {
+          "role": "user",
+          "content": "Yes, it would be more trouble than it is worth. Please stick with my current arrangement."
+        }
+      ],
+      "evidence_message": 3
+    },
+    {
+      "template_id": "dev-stable_rejected-3",
+      "messages": [
+        {
+          "role": "user",
+          "content": "I was comparing the {new} suggestion for {attribute} with what I already use."
+        },
+        {
+          "role": "assistant",
+          "content": "Have you reached a decision?"
+        },
+        {
+          "role": "user",
+          "content": "Yes. I am turning it down and keeping my present choices. I do not need to try another variation."
+        }
+      ],
+      "evidence_message": 3
+    }
+  ],
+  "stable_reaffirm": [
+    {
+      "template_id": "dev-stable_reaffirm-1",
+      "messages": [
+        {
+          "role": "user",
+          "content": "I gave my everyday {attribute} another look."
+        },
+        {
+          "role": "assistant",
+          "content": "How do you feel about the choice you have?"
+        },
+        {
+          "role": "user",
+          "content": "I still like {new}. Nothing has persuaded me to change it."
+        }
+      ],
+      "evidence_message": 3
+    },
+    {
+      "template_id": "dev-stable_reaffirm-2",
+      "messages": [
+        {
+          "role": "user",
+          "content": "{opener} I checked what I had picked for ordinary {attribute}."
+        },
+        {
+          "role": "assistant",
+          "content": "Did it match what you expected?"
+        },
+        {
+          "role": "user",
+          "content": "Yes, it was {new}."
+        },
+        {
+          "role": "assistant",
+          "content": "Are you happy to carry on with it?"
+        },
+        {
+          "role": "user",
+          "content": "Yes, that is still exactly what I want."
+        }
+      ],
+      "evidence_message": 5
+    },
+    {
+      "template_id": "dev-stable_reaffirm-3",
+      "messages": [
+        {
+          "role": "user",
+          "content": "I always seem to come back to {new} for my usual {attribute}."
+        },
+        {
+          "role": "assistant",
+          "content": "Is that a new conclusion?"
+        },
+        {
+          "role": "user",
+          "content": "No, it is the same choice I already had. I am pleased with it and want to keep it."
+        }
+      ],
+      "evidence_message": 3
+    }
+  ],
+  "clarify": [
+    {
+      "template_id": "dev-clarify-1",
+      "messages": [
+        {
+          "role": "user",
+          "content": "I may want {new} for my {attribute}, but I have two arrangements in mind: {scope} and {neighbor}."
+        },
+        {
+          "role": "assistant",
+          "content": "Which one would you like to change?"
+        },
+        {
+          "role": "user",
+          "content": "I cannot choose between them yet. I am still trying to work that out."
+        }
+      ],
+      "evidence_message": 3
+    },
+    {
+      "template_id": "dev-clarify-2",
+      "messages": [
+        {
+          "role": "user",
+          "content": "{opener} I am considering a change to {new} for my {attribute}."
+        },
+        {
+          "role": "assistant",
+          "content": "Where would you want that?"
+        },
+        {
+          "role": "user",
+          "content": "Possibly for {scope}, possibly for {neighbor}."
+        },
+        {
+          "role": "assistant",
+          "content": "Have you settled on either of those?"
+        },
+        {
+          "role": "user",
+          "content": "Not yet. Both are on my mind, and I need more time to decide."
+        }
+      ],
+      "evidence_message": 5
+    },
+    {
+      "template_id": "dev-clarify-3",
+      "messages": [
+        {
+          "role": "user",
+          "content": "I have been thinking about {new} for {attribute}."
+        },
+        {
+          "role": "assistant",
+          "content": "What would it replace?"
+        },
+        {
+          "role": "user",
+          "content": "That is the bit I cannot pin down. It might be the choice for {scope}."
+        },
+        {
+          "role": "assistant",
+          "content": "Is there another possibility?"
+        },
+        {
+          "role": "user",
+          "content": "Yes, the one for {neighbor}. I am not ready to pick which arrangement I mean."
+        }
+      ],
+      "evidence_message": 5
+    }
+  ],
+  "resolve": [
+    {
+      "template_id": "dev-resolve-1",
+      "messages": [
+        {
+          "role": "user",
+          "content": "I can settle that earlier question about my {attribute}. It is for {scope}, not {neighbor}. {timing}"
+        },
+        {
+          "role": "assistant",
+          "content": "What choice have you settled on there?"
+        },
+        {
+          "role": "user",
+          "content": "{new}, replacing {old}. That is the change I want."
+        }
+      ],
+      "evidence_message": 3
+    },
+    {
+      "template_id": "dev-resolve-2",
+      "messages": [
+        {
+          "role": "user",
+          "content": "I have decided where I want {new} for my {attribute}."
+        },
+        {
+          "role": "assistant",
+          "content": "Which of the arrangements did you mean?"
+        },
+        {
+          "role": "user",
+          "content": "{scope}. I want it in place of {old} there, not for {neighbor}."
+        },
+        {
+          "role": "assistant",
+          "content": "What about the duration?"
+        },
+        {
+          "role": "user",
+          "content": "{timing} I have no further date changes to make."
+        }
+      ],
+      "evidence_message": 5
+    },
+    {
+      "template_id": "dev-resolve-3",
+      "messages": [
+        {
+          "role": "user",
+          "content": "I am ready to finish the {attribute} choice I left open."
+        },
+        {
+          "role": "assistant",
+          "content": "Where did you land?"
+        },
+        {
+          "role": "user",
+          "content": "I want to change the arrangement for {scope}."
+        },
+        {
+          "role": "assistant",
+          "content": "What would you prefer on those occasions?"
+        },
+        {
+          "role": "user",
+          "content": "I have settled on {new}; the earlier choice of {old} no longer suits me there."
+        },
+        {
+          "role": "assistant",
+          "content": "Should the timing change as well?"
+        },
+        {
+          "role": "user",
+          "content": "{timing} That part can carry on as planned."
+        }
+      ],
+      "evidence_message": 7
+    }
+  ],
+  "retire": [
+    {
+      "template_id": "dev-retire-1",
+      "messages": [
+        {
+          "role": "user",
+          "content": "I would like to stop keeping a separate {attribute} choice for {scope}."
+        },
+        {
+          "role": "assistant",
+          "content": "How would you like those occasions handled instead?"
+        },
+        {
+          "role": "user",
+          "content": "Use whatever I prefer ordinarily at the time. If my everyday choice changes later, those occasions should follow it too."
+        }
+      ],
+      "evidence_message": 3
+    },
+    {
+      "template_id": "dev-retire-2",
+      "messages": [
+        {
+          "role": "user",
+          "content": "{opener} The distinct {attribute} arrangement for {scope} is no longer useful to me."
+        },
+        {
+          "role": "assistant",
+          "content": "What would you like to do with it?"
+        },
+        {
+          "role": "user",
+          "content": "Remove that separate instruction. Those occasions can use my ordinary choice from now onward."
+        },
+        {
+          "role": "assistant",
+          "content": "Would you want that tied to the choice you have today?"
+        },
+        {
+          "role": "user",
+          "content": "No, it should follow my ordinary choice even if I pick something different later."
+        }
+      ],
+      "evidence_message": 5
+    },
+    {
+      "template_id": "dev-retire-3",
+      "messages": [
+        {
+          "role": "user",
+          "content": "There is one less arrangement I need to keep track of for {attribute}."
+        },
+        {
+          "role": "assistant",
+          "content": "Which one can go?"
+        },
+        {
+          "role": "user",
+          "content": "The separate choice for {scope}. I want to drop it."
+        },
+        {
+          "role": "assistant",
+          "content": "How should I choose for those occasions after that?"
+        },
+        {
+          "role": "user",
+          "content": "Whatever my ordinary choice is at that point. I do not want a fixed choice of their own any more."
+        }
+      ],
+      "evidence_message": 5
+    }
+  ],
+  "contrast": [
+    {
+      "template_id": "dev-contrast-1",
+      "branches": {
+        "persistent": [
+          {
+            "role": "user",
+            "content": "I want to choose my {attribute} for {scope} and keep that choice for recurring occasions, rather than make a one-off request."
+          },
+          {
+            "role": "assistant",
+            "content": "Have you had a chance to weigh the possibilities yet?"
+          },
+          {
+            "role": "user",
+            "content": "I looked at the various choices again this morning."
+          },
+          {
+            "role": "assistant",
+            "content": "Which option appeals to you?"
+          },
+          {
+            "role": "user",
+            "content": "{new}. I have compared it with the alternatives and want to go with it."
+          },
+          {
+            "role": "assistant",
+            "content": "Are you comfortable with that decision?"
+          },
+          {
+            "role": "user",
+            "content": "Yes, I have had enough time to think it over."
+          }
+        ],
+        "one_off": [
+          {
+            "role": "user",
+            "content": "I want to choose my {attribute} for one occurrence of {scope}, rather than pick something for recurring occasions."
+          },
+          {
+            "role": "assistant",
+            "content": "Have you had a chance to weigh the possibilities yet?"
+          },
+          {
+            "role": "user",
+            "content": "I looked at the various choices again this morning."
+          },
+          {
+            "role": "assistant",
+            "content": "Which option appeals to you?"
+          },
+          {
+            "role": "user",
+            "content": "{new}. I have compared it with the alternatives and want to go with it."
+          },
+          {
+            "role": "assistant",
+            "content": "Are you comfortable with that decision?"
+          },
+          {
+            "role": "user",
+            "content": "Yes, I have had enough time to think it over."
+          }
+        ]
+      },
+      "evidence_message": 5
+    },
+    {
+      "template_id": "dev-contrast-2",
+      "branches": {
+        "persistent": [
+          {
+            "role": "user",
+            "content": "Can we sort out my {attribute} for {scope}? I want this choice to continue whenever those occasions come around. It is a lasting arrangement."
+          },
+          {
+            "role": "assistant",
+            "content": "Were you unhappy with the way things went last time?"
+          },
+          {
+            "role": "user",
+            "content": "A little. I wanted to have a choice ready this time."
+          },
+          {
+            "role": "assistant",
+            "content": "Which alternative has caught your attention?"
+          },
+          {
+            "role": "user",
+            "content": "{new} is what I would like."
+          },
+          {
+            "role": "assistant",
+            "content": "Did you get a chance to compare the alternatives?"
+          },
+          {
+            "role": "user",
+            "content": "Yes. That is the one I want to go with."
+          }
+        ],
+        "one_off": [
+          {
+            "role": "user",
+            "content": "Can we sort out my {attribute} for {scope}? I want this choice for the current occasion and no others. It is a single request."
+          },
+          {
+            "role": "assistant",
+            "content": "Were you unhappy with the way things went last time?"
+          },
+          {
+            "role": "user",
+            "content": "A little. I wanted to have a choice ready this time."
+          },
+          {
+            "role": "assistant",
+            "content": "Which alternative has caught your attention?"
+          },
+          {
+            "role": "user",
+            "content": "{new} is what I would like."
+          },
+          {
+            "role": "assistant",
+            "content": "Did you get a chance to compare the alternatives?"
+          },
+          {
+            "role": "user",
+            "content": "Yes. That is the one I want to go with."
+          }
+        ]
+      },
+      "evidence_message": 5
+    },
+    {
+      "template_id": "dev-contrast-3",
+      "branches": {
+        "persistent": [
+          {
+            "role": "user",
+            "content": "My {attribute} needs a standing choice again. Whatever I choose here should be used on future occasions of the situation I name."
+          },
+          {
+            "role": "assistant",
+            "content": "Which situation are you choosing for?"
+          },
+          {
+            "role": "user",
+            "content": "{scope}. That is what I am trying to plan."
+          },
+          {
+            "role": "assistant",
+            "content": "What are you leaning toward?"
+          },
+          {
+            "role": "user",
+            "content": "{new}, but give me a moment to be sure."
+          },
+          {
+            "role": "assistant",
+            "content": "Are you ready to settle on it?"
+          },
+          {
+            "role": "user",
+            "content": "Yes, go with that choice. I have made up my mind."
+          }
+        ],
+        "one_off": [
+          {
+            "role": "user",
+            "content": "My {attribute} needs a choice for a single occurrence. Whatever I choose here should apply just once in the situation I name."
+          },
+          {
+            "role": "assistant",
+            "content": "Which situation are you choosing for?"
+          },
+          {
+            "role": "user",
+            "content": "{scope}. That is what I am trying to plan."
+          },
+          {
+            "role": "assistant",
+            "content": "What are you leaning toward?"
+          },
+          {
+            "role": "user",
+            "content": "{new}, but give me a moment to be sure."
+          },
+          {
+            "role": "assistant",
+            "content": "Are you ready to settle on it?"
+          },
+          {
+            "role": "user",
+            "content": "Yes, go with that choice. I have made up my mind."
+          }
+        ]
+      },
+      "evidence_message": 7
+    }
+  ],
+  "timing": {
+    "persistent": [
+      "I want that on future occasions too, with no planned end.",
+      "I am keeping this as a lasting arrangement for those occasions."
+    ],
+    "window": [
+      "The dates are still {start} through {end}, including both days.",
+      "Keep the first day at {start} and the last day at {end}."
+    ],
+    "open": [
+      "This is still temporary; I have not set a date for it to finish.",
+      "It is an interim arrangement until I say otherwise, without a fixed end date."
+    ]
+  }
+}

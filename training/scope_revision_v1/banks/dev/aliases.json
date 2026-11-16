@@ -1,0 +1,702 @@
+{
+  "lodging pillow filling": {
+    "attr_short": "what I want the pillow filled with",
+    "scopes": [
+      "sleeping in a room with bunks",
+      "sleeping in a room of my own"
+    ],
+    "options": [
+      "a pillow stuffed with millet hulls",
+      "a pillow full of shredded latex",
+      "a wool-filled pillow I can wash",
+      "a pillow stuffed with loose fibers"
+    ],
+    "topics": [
+      "how the pillow settles overnight",
+      "the firmness through the pillowcase",
+      "what to pack for the bunk room"
+    ],
+    "reasons": [
+      "I notice the filling as soon as I put my head down",
+      "I do not want to sort it out on the way there",
+      "It is easier if I can think it through before setting out",
+      "Getting ready for the trip would feel less rushed",
+      "I will notice the difference once I arrive"
+    ]
+  },
+  "boarding document holder": {
+    "attr_short": "where I carry the boarding papers",
+    "scopes": [
+      "setting out in a coat",
+      "setting out bare-armed without a coat"
+    ],
+    "options": [
+      "a thin pouch worn round the neck",
+      "a see-through sleeve worn on the wrist",
+      "a flat envelope about the size of a passport",
+      "a travel folder shut with a clip"
+    ],
+    "topics": [
+      "having the papers ready at the gate",
+      "how much fits in the coat",
+      "finding the boarding slip one-handed"
+    ],
+    "reasons": [
+      "I want it somewhere I can reach without taking everything out",
+      "I do not want to sort it out on the way there",
+      "It is easier if I can think it through before setting out",
+      "Getting ready for the trip would feel less rushed",
+      "I will notice the difference once I arrive"
+    ]
+  },
+  "roadside break activity": {
+    "attr_short": "what I do at the roadside stop",
+    "scopes": [
+      "stopping by the road in full daylight",
+      "stopping by the road once it is dark"
+    ],
+    "options": [
+      "one easy circuit of the rest stop",
+      "stretching my hands and ankles in the seat",
+      "a short walk round the picnic area",
+      "standing up to loosen my shoulders"
+    ],
+    "topics": [
+      "loosening up after sitting in the car",
+      "how much room there is beside the stop",
+      "getting moving before the next leg"
+    ],
+    "reasons": [
+      "After a long drive I need a little time before getting back in",
+      "I do not want to sort it out on the way there",
+      "It is easier if I can think it through before setting out",
+      "Getting ready for the trip would feel less rushed",
+      "I will notice the difference once I arrive"
+    ]
+  },
+  "overnight bag compartment layout": {
+    "attr_short": "how the overnight bag is divided",
+    "scopes": [
+      "getting to the overnight stay on foot",
+      "getting to the overnight stay in a vehicle"
+    ],
+    "options": [
+      "one large undivided pocket",
+      "two same-size sections with zips",
+      "a slim outside pocket plus a deep inside compartment",
+      "three sleeves I can take out of the bag"
+    ],
+    "topics": [
+      "getting the overnight things out first",
+      "where smaller items get lost",
+      "using the same bag on foot"
+    ],
+    "reasons": [
+      "I do not want to take the whole bag apart to reach something small",
+      "I do not want to sort it out on the way there",
+      "It is easier if I can think it through before setting out",
+      "Getting ready for the trip would feel less rushed",
+      "I will notice the difference once I arrive"
+    ]
+  },
+  "roasted vegetable cut": {
+    "attr_short": "the shape I cut roasting vegetables into",
+    "scopes": [
+      "roasting vegetables on a sheet of metal",
+      "roasting vegetables in a clay dish"
+    ],
+    "options": [
+      "long vegetable sticks tapered at the ends",
+      "thick semicircles of vegetables",
+      "small rustic chunks of vegetables",
+      "broad flat strips of vegetable"
+    ],
+    "topics": [
+      "how the pieces sit in the roasting pan",
+      "the color on the cut edges",
+      "how easy they are to turn"
+    ],
+    "reasons": [
+      "The cut changes how easily I can turn the pieces in the pan",
+      "It ought to work when I am actually hungry",
+      "I am going by the way it tastes at the table",
+      "I would rather spend less time fiddling with my food",
+      "I care about the way it comes out, not just how it sounds"
+    ]
+  },
+  "oat bowl topping": {
+    "attr_short": "what I put on the oats",
+    "scopes": [
+      "eating oats in my own place",
+      "having oats somewhere other than home"
+    ],
+    "options": [
+      "plum cooked down with nutmeg",
+      "lime zest and toasted coconut",
+      "apricot pieces with pumpkin seeds",
+      "hot apple with cardamom powder"
+    ],
+    "topics": [
+      "the spice that comes through first",
+      "how the fruit sits on the oats",
+      "making the bowl away from home"
+    ],
+    "reasons": [
+      "I like the topping to come through without masking the oats",
+      "It ought to work when I am actually hungry",
+      "I am going by the way it tastes at the table",
+      "I would rather spend less time fiddling with my food",
+      "I care about the way it comes out, not just how it sounds"
+    ]
+  },
+  "dumpling sauce placement": {
+    "attr_short": "where I put the dumpling sauce",
+    "scopes": [
+      "serving dumplings in a deep dish",
+      "serving dumplings on a flat serving plate"
+    ],
+    "options": [
+      "sauce brushed over the tops",
+      "a layer of sauce under the dumplings",
+      "sauce in a low separate dish",
+      "little spots of sauce in the gaps"
+    ],
+    "topics": [
+      "keeping the dumpling skins intact",
+      "how much sauce gets on a bite",
+      "carrying the dish to the table"
+    ],
+    "reasons": [
+      "I want the sauce on the bite, not mostly left on the dish",
+      "It ought to work when I am actually hungry",
+      "I am going by the way it tastes at the table",
+      "I would rather spend less time fiddling with my food",
+      "I care about the way it comes out, not just how it sounds"
+    ]
+  },
+  "picnic fruit preparation": {
+    "attr_short": "how I get the fruit ready",
+    "scopes": [
+      "a picnic on sand",
+      "a picnic on grass"
+    ],
+    "options": [
+      "skin off, then cut into wedges",
+      "uncut fruit with the peel left on",
+      "fruit cubes on short skewers",
+      "thin slices stacked inside a pot"
+    ],
+    "topics": [
+      "serving the fruit without a plate",
+      "how much gets peeled ahead of time",
+      "keeping sand out of the food"
+    ],
+    "reasons": [
+      "I am picturing passing the fruit around without much room to put things down",
+      "It ought to work when I am actually hungry",
+      "I am going by the way it tastes at the table",
+      "I would rather spend less time fiddling with my food",
+      "I care about the way it comes out, not just how it sounds"
+    ]
+  },
+  "incoming-task review order": {
+    "attr_short": "which work requests I look at first",
+    "scopes": [
+      "going through the task list before lunch",
+      "going through the task list after lunch"
+    ],
+    "options": [
+      "the unanswered ones ahead of new arrivals",
+      "requests with files before text-only ones",
+      "starting with the oldest tasks I have not finished",
+      "ongoing projects before ones on hold"
+    ],
+    "topics": [
+      "seeing requests that got missed",
+      "finding the attachments before opening a thread",
+      "how many items survive until later in the day"
+    ],
+    "reasons": [
+      "I keep finding older requests after I have already started on newer ones",
+      "I am trying to spend less time getting oriented",
+      "It would help me start back up without having to hunt",
+      "I lose time when each small choice turns into a new decision",
+      "I want to carry on without resetting my train of thought"
+    ]
+  },
+  "research tab grouping method": {
+    "attr_short": "how I organize the browser tabs",
+    "scopes": [
+      "looking things up on one big screen",
+      "looking things up on two smaller screens"
+    ],
+    "options": [
+      "a group per open research question",
+      "a group per publication",
+      "a group per stage of reading",
+      "a group per rival explanation"
+    ],
+    "topics": [
+      "finding a source among open tabs",
+      "keeping related questions visible",
+      "how much fits on a single screen"
+    ],
+    "reasons": [
+      "I want to go back to a source without having to reopen it",
+      "I am trying to spend less time getting oriented",
+      "It would help me start back up without having to hunt",
+      "I lose time when each small choice turns into a new decision",
+      "I want to carry on without resetting my train of thought"
+    ]
+  },
+  "short work-break activity": {
+    "attr_short": "what I do on a quick break",
+    "scopes": [
+      "taking an indoor break by myself",
+      "taking an indoor break with someone else"
+    ],
+    "options": [
+      "giving the little fern some water",
+      "folding a bit of paper into a shape",
+      "looking toward the far rooftops",
+      "sorting one drawer of the desk"
+    ],
+    "topics": [
+      "getting away from the screen for a minute",
+      "what fits into a short indoor break",
+      "resetting before the next work block"
+    ],
+    "reasons": [
+      "I get more from the break if I stop looking at the display",
+      "I am trying to spend less time getting oriented",
+      "It would help me start back up without having to hunt",
+      "I lose time when each small choice turns into a new decision",
+      "I want to carry on without resetting my train of thought"
+    ]
+  },
+  "desk cable arrangement": {
+    "attr_short": "what holds the wires in place",
+    "scopes": [
+      "using a desk with a wall directly behind it",
+      "using a desk with space behind it"
+    ],
+    "options": [
+      "wires bundled in a woven sleeve",
+      "separate clips along the back",
+      "wires fed round a tray under the desk",
+      "wires held on a skinny rail at the side"
+    ],
+    "topics": [
+      "having slack in the cables",
+      "reaching across the rear edge",
+      "moving one cable without pulling the rest"
+    ],
+    "reasons": [
+      "I would like to take out one cable without tugging on all the others",
+      "I am trying to spend less time getting oriented",
+      "It would help me start back up without having to hunt",
+      "I lose time when each small choice turns into a new decision",
+      "I want to carry on without resetting my train of thought"
+    ]
+  },
+  "mouse wheel scroll mapping": {
+    "attr_short": "what rolling the mouse wheel does",
+    "scopes": [
+      "using the wheel left-handed",
+      "using the wheel right-handed"
+    ],
+    "options": [
+      "scroll in the direction of the wheel",
+      "scroll opposite the wheel's motion",
+      "move a paragraph at a time",
+      "jump a screen at a time"
+    ],
+    "topics": [
+      "getting the wheel to match your hand",
+      "what happens on a long page",
+      "seeing where the next paragraph starts"
+    ],
+    "reasons": [
+      "It throws me off when the page jumps more than I expect",
+      "I go by what happens when I try it with my own hands",
+      "I need it to feel right in the middle of using the device",
+      "I do not want to make the same little adjustment every time",
+      "I care about how much attention it takes away from the screen"
+    ]
+  },
+  "touchpad tap action": {
+    "attr_short": "what a touchpad tap does",
+    "scopes": [
+      "using the pad on a flat table",
+      "using the pad on an angled stand"
+    ],
+    "options": [
+      "one light tap as the main click",
+      "a double tap as the main click",
+      "a hard press as the main click",
+      "a tap then hold as the main click"
+    ],
+    "topics": [
+      "what happens on a light touch",
+      "reaching the pad at an angle",
+      "not clicking when you meant to move"
+    ],
+    "reasons": [
+      "At that angle I click by accident while trying to move",
+      "I go by what happens when I try it with my own hands",
+      "I need it to feel right in the middle of using the device",
+      "I do not want to make the same little adjustment every time",
+      "I care about how much attention it takes away from the screen"
+    ]
+  },
+  "lock-screen clock presentation": {
+    "attr_short": "the clock I see when the screen locks",
+    "scopes": [
+      "locking the screen during the day",
+      "locking it after dark"
+    ],
+    "options": [
+      "big numbers drawn in outline",
+      "small clock digits in a stack",
+      "a slim clock dial with hands",
+      "one line spelling out the time"
+    ],
+    "topics": [
+      "reading the time without unlocking",
+      "seeing the clock in a dim room",
+      "how much of the display the digits use"
+    ],
+    "reasons": [
+      "I want to get the time without unlocking the whole screen",
+      "I go by what happens when I try it with my own hands",
+      "I need it to feel right in the middle of using the device",
+      "I do not want to make the same little adjustment every time",
+      "I care about how much attention it takes away from the screen"
+    ]
+  },
+  "text caret appearance": {
+    "attr_short": "what the text marker looks like",
+    "scopes": [
+      "typing in a wide column",
+      "typing in a tight column"
+    ],
+    "options": [
+      "a fine upright line that blinks",
+      "a heavy upright line that stays on",
+      "an empty rectangle for the text cursor",
+      "a short low line beneath the text"
+    ],
+    "topics": [
+      "keeping your place in a tight column",
+      "seeing the insertion point on a blank line",
+      "not losing the marker when you pause"
+    ],
+    "reasons": [
+      "It takes me a second to find the marker again when I look back",
+      "I go by what happens when I try it with my own hands",
+      "I need it to feel right in the middle of using the device",
+      "I do not want to make the same little adjustment every time",
+      "I care about how much attention it takes away from the screen"
+    ]
+  },
+  "battery warning point": {
+    "attr_short": "when the battery warning pops up",
+    "scopes": [
+      "running on battery with something plugged in",
+      "running on battery without anything attached"
+    ],
+    "options": [
+      "a low charge prompt at 18 percent",
+      "a low charge prompt at 27 percent",
+      "a low charge prompt at 36 percent",
+      "a low charge prompt at 45 percent"
+    ],
+    "topics": [
+      "how much battery remains after the warning",
+      "getting a prompt with something plugged in",
+      "having enough time to find the charger"
+    ],
+    "reasons": [
+      "I need enough warning to finish what I am doing before finding a charger",
+      "I would like to know enough without opening another view",
+      "I cannot stop for every single change",
+      "I am trying to make the alert useful at a glance",
+      "It matters whether I notice it while I am busy"
+    ]
+  },
+  "calendar alert title visibility": {
+    "attr_short": "what the calendar popup gives away",
+    "scopes": [
+      "viewing calendar alerts at a counter I share",
+      "viewing calendar alerts at a counter for myself"
+    ],
+    "options": [
+      "the entire event name in the popup",
+      "one word from the start of the title",
+      "an icon for the event with no title",
+      "a little nickname in place of its title"
+    ],
+    "topics": [
+      "reading an alert where everybody can see",
+      "recognizing the event from a short label",
+      "what shows up in the full title"
+    ],
+    "reasons": [
+      "I like knowing which event it is without showing other people the whole name",
+      "I would like to know enough without opening another view",
+      "I cannot stop for every single change",
+      "I am trying to make the alert useful at a glance",
+      "It matters whether I notice it while I am busy"
+    ]
+  },
+  "saved-search alert grouping": {
+    "attr_short": "how the saved queries notify me",
+    "scopes": [
+      "a saved query with one search word",
+      "a saved query with multiple search words"
+    ],
+    "options": [
+      "a separate ping for every match",
+      "updates containing two matches apiece",
+      "five search hits in each bundle",
+      "updates grouped by who posted the result"
+    ],
+    "topics": [
+      "seeing several results at once",
+      "how often the saved search interrupts",
+      "keeping results from the same source together"
+    ],
+    "reasons": [
+      "The results are more useful when I can see how they are related",
+      "I would like to know enough without opening another view",
+      "I cannot stop for every single change",
+      "I am trying to make the alert useful at a glance",
+      "It matters whether I notice it while I am busy"
+    ]
+  },
+  "block quotation indentation": {
+    "attr_short": "how far I set block quotes in",
+    "scopes": [
+      "a quote block of one to three lines",
+      "a quote block of four lines or longer"
+    ],
+    "options": [
+      "a small inset on each side",
+      "a deep inset on the left and none on the right",
+      "the opening quote hung out with the text aligned flush",
+      "quote text set in with a delicate border"
+    ],
+    "topics": [
+      "how clearly a quote stands away from the prose",
+      "fitting a long quotation on one page",
+      "seeing where the quotation begins"
+    ],
+    "reasons": [
+      "The passage gets hard to spot if it looks just like the text around it",
+      "I pay attention to how it reads as a whole",
+      "I want to see the structure without having to look twice",
+      "It should make sense across a few pages, not just one",
+      "I would rather not clutter up the words around it"
+    ]
+  },
+  "appendix separator design": {
+    "attr_short": "what separates the appendices",
+    "scopes": [
+      "an appendix with pictures",
+      "an appendix made up only of text"
+    ],
+    "options": [
+      "a completely blank separator page",
+      "a horizontal rule across the full width",
+      "a tiny flourish centered on the page",
+      "a thin upright rule next to the heading"
+    ],
+    "topics": [
+      "finding the appendix quickly",
+      "how a divider looks between two text-heavy sections",
+      "the space next to the title"
+    ],
+    "reasons": [
+      "I want to see where the extra material starts without reading every heading",
+      "I pay attention to how it reads as a whole",
+      "I want to see the structure without having to look twice",
+      "It should make sense across a few pages, not just one",
+      "I would rather not clutter up the words around it"
+    ]
+  },
+  "hyperlink decoration": {
+    "attr_short": "how links are marked on the page",
+    "scopes": [
+      "links to material people can download",
+      "links to regular web pages"
+    ],
+    "options": [
+      "a light dotted line under links",
+      "a little arrow pointing out from each link",
+      "links sitting inside pale rounded rectangles",
+      "links in bold type with no underline"
+    ],
+    "topics": [
+      "recognizing a download link without tapping",
+      "how much room a symbol takes",
+      "spotting a link in a busy paragraph"
+    ],
+    "reasons": [
+      "I would like to know where the link goes before opening it",
+      "I pay attention to how it reads as a whole",
+      "I want to see the structure without having to look twice",
+      "It should make sense across a few pages, not just one",
+      "I would rather not clutter up the words around it"
+    ]
+  },
+  "market bag handle construction": {
+    "attr_short": "the handles on the market bag",
+    "scopes": [
+      "carrying the bag in the crook of my arm",
+      "carrying the bag by hand"
+    ],
+    "options": [
+      "thick cloth handles rolled round",
+      "flat handles in reinforced webbing",
+      "rounded rope handles with a hollow middle",
+      "soft cushioned handles in loops"
+    ],
+    "topics": [
+      "keeping the bag from digging into an arm",
+      "having a decent grip when it is full",
+      "how the handles fold when put away"
+    ],
+    "reasons": [
+      "I notice the handle when the bag gets heavy",
+      "I want to judge it by what I will do with it later",
+      "It is the part I would notice when I use it away from the shop",
+      "I care about whether it fits with the rest of my things",
+      "I would rather not keep thinking about that detail after buying it"
+    ]
+  },
+  "plant-pot base design": {
+    "attr_short": "what sits under a plant pot",
+    "scopes": [
+      "putting pots on shelving made of stone",
+      "putting pots on shelving made of wood"
+    ],
+    "options": [
+      "a saucer that can be taken off",
+      "three small built-in legs",
+      "a ring that lifts the base clear",
+      "a level base backed with cork"
+    ],
+    "topics": [
+      "whether the pot wobbles on the shelf",
+      "keeping drips off the wood",
+      "moving the pot without scratching"
+    ],
+    "reasons": [
+      "I am trying not to mark the shelf when I move the pot",
+      "I want to judge it by what I will do with it later",
+      "It is the part I would notice when I use it away from the shop",
+      "I care about whether it fits with the rest of my things",
+      "I would rather not keep thinking about that detail after buying it"
+    ]
+  },
+  "everyday tote fastening": {
+    "attr_short": "how the everyday tote stays shut",
+    "scopes": [
+      "taking the tote somewhere crowded",
+      "taking the tote somewhere quiet"
+    ],
+    "options": [
+      "a wide magnetic flap that folds over",
+      "one knotted fastening cord",
+      "a zipper across the opening set down inside",
+      "two toggles carved from wood"
+    ],
+    "topics": [
+      "getting into the bag with one hand",
+      "keeping the opening covered in a crowd",
+      "how thick it is near the fastener"
+    ],
+    "reasons": [
+      "I would rather not have to set the bag down to open it",
+      "I want to judge it by what I will do with it later",
+      "It is the part I would notice when I use it away from the shop",
+      "I care about whether it fits with the rest of my things",
+      "I would rather not keep thinking about that detail after buying it"
+    ]
+  },
+  "warmup stepping pattern": {
+    "attr_short": "how I put my feet down to warm up",
+    "scopes": [
+      "warming up in a cramped area",
+      "warming up somewhere with room to move"
+    ],
+    "options": [
+      "left and right toe taps to the front",
+      "short diagonal steps on the spot",
+      "little side steps with a break",
+      "easy steps backward and then forward again"
+    ],
+    "topics": [
+      "getting the feet warm in a small space",
+      "staying balanced when you step back",
+      "the pace in the first few movements"
+    ],
+    "reasons": [
+      "I need to warm up without taking more floor space than I have",
+      "I am trying to keep a steady pace through the set",
+      "I want something that feels comfortable while I move",
+      "It makes a difference when I am a few moves in",
+      "I would rather focus on the exercise than on that adjustment"
+    ]
+  },
+  "hand-weight resting place": {
+    "attr_short": "where I set the weights between lifts",
+    "scopes": [
+      "using hand weights by a short bench",
+      "using hand weights by a taller bench"
+    ],
+    "options": [
+      "the weights set onto a towel folded over",
+      "the weights set inside a low rubber tray",
+      "the weights set down on a square of cork",
+      "the weights supported by a pair of foam blocks"
+    ],
+    "topics": [
+      "putting the weights down quietly",
+      "not having to reach too low between sets",
+      "protecting the bench and floor"
+    ],
+    "reasons": [
+      "I keep reaching too far down to pick the weights up again",
+      "I am trying to keep a steady pace through the set",
+      "I want something that feels comfortable while I move",
+      "It makes a difference when I am a few moves in",
+      "I would rather focus on the exercise than on that adjustment"
+    ]
+  },
+  "stretching visual focus": {
+    "attr_short": "where I look while doing the stretch",
+    "scopes": [
+      "stretching while looking toward a window",
+      "stretching while looking toward an inside wall"
+    ],
+    "options": [
+      "looking steadily at something nearby",
+      "watching a hand travel slowly",
+      "closing my eyes gently between moves",
+      "letting my eyes move along a level line"
+    ],
+    "topics": [
+      "finding something steady to look at",
+      "keeping the gaze soft",
+      "looking across a room with plain walls"
+    ],
+    "reasons": [
+      "It is hard to stay steady when my eyes keep moving around",
+      "I am trying to keep a steady pace through the set",
+      "I want something that feels comfortable while I move",
+      "It makes a difference when I am a few moves in",
+      "I would rather focus on the exercise than on that adjustment"
+    ]
+  }
+}

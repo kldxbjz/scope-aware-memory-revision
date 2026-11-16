@@ -1,0 +1,702 @@
+{
+  "lodging unpacking routine": {
+    "attr_short": "what I do with clothes when I arrive",
+    "scopes": [
+      "checking in for one night",
+      "checking in for more than one night"
+    ],
+    "options": [
+      "putting my clothes on hangers straightaway",
+      "leaving my clothes in marked packing rolls",
+      "setting my clothes in a low drawer",
+      "stacking folded clothes on the luggage shelf"
+    ],
+    "topics": [
+      "what will crease if left folded",
+      "getting changed on arrival",
+      "finding things without unloading the whole bag"
+    ],
+    "reasons": [
+      "I would rather not look for the same shirt twice after checking in",
+      "I would rather have an idea of what to do before I go",
+      "The details are harder to sort out after the journey",
+      "It comes down to what would feel right when I get to my stop",
+      "I want the arrival to take a little less effort"
+    ]
+  },
+  "ferry-trip keepsake": {
+    "attr_short": "what I keep from the crossing",
+    "scopes": [
+      "crossing by ferry without taking a camera",
+      "crossing by ferry with my camera"
+    ],
+    "options": [
+      "a pencil rubbing from the ticket imprint",
+      "a little drawing of the trail in the water",
+      "a note describing what the crossing sounded like",
+      "a scrap of the boat leaflet pressed flat"
+    ],
+    "topics": [
+      "what you can bring home in a pocket",
+      "noticing details on the crossing",
+      "keeping something from the boat without a photo"
+    ],
+    "reasons": [
+      "I like having something small I can stumble across months later",
+      "I would rather have an idea of what to do before I go",
+      "The details are harder to sort out after the journey",
+      "It comes down to what would feel right when I get to my stop",
+      "I want the arrival to take a little less effort"
+    ]
+  },
+  "travel wash-kit arrangement": {
+    "attr_short": "where things go in the toiletry kit",
+    "scopes": [
+      "packing toiletries for somewhere warm",
+      "packing toiletries for somewhere chilly"
+    ],
+    "options": [
+      "bottles upright inside elastic holders",
+      "toiletries flat in sleeves made of clear mesh",
+      "toiletries sorted into drawstring cloth pouches",
+      "bottles fitted into a shaped insert"
+    ],
+    "topics": [
+      "being able to see the bottles at a glance",
+      "finding a wet item in the kit",
+      "keeping the smallest tubes from sliding out"
+    ],
+    "reasons": [
+      "I do not like digging through the whole kit to find a little bottle",
+      "I would rather have an idea of what to do before I go",
+      "The details are harder to sort out after the journey",
+      "It comes down to what would feel right when I get to my stop",
+      "I want the arrival to take a little less effort"
+    ]
+  },
+  "museum visit starting point": {
+    "attr_short": "which part of the exhibition I see first",
+    "scopes": [
+      "a museum ticket for the lower floor",
+      "a museum ticket to the level upstairs"
+    ],
+    "options": [
+      "the oldest exhibit comes first",
+      "the tiniest gallery comes first",
+      "the installation in the center comes first",
+      "the most recently acquired piece comes first"
+    ],
+    "topics": [
+      "how to begin walking around the exhibition",
+      "the displays nearest the stairs",
+      "what there is time to see first"
+    ],
+    "reasons": [
+      "It helps me to pick a starting point before I get caught up looking around",
+      "I would rather have an idea of what to do before I go",
+      "The details are harder to sort out after the journey",
+      "It comes down to what would feel right when I get to my stop",
+      "I want the arrival to take a little less effort"
+    ]
+  },
+  "baked potato filling": {
+    "attr_short": "what I put inside the jacket potato",
+    "scopes": [
+      "eating the potato out of a bowl",
+      "eating the potato from a little paper tray"
+    ],
+    "options": [
+      "smoky beans and scallion pieces",
+      "radish gratings with herb curd",
+      "thyme-scented roast mushrooms",
+      "crushed peas seasoned with lemon peel"
+    ],
+    "topics": [
+      "how neatly the filling stays in the potato",
+      "what you can scoop up from a paper tray",
+      "how the herbs and beans balance"
+    ],
+    "reasons": [
+      "I want the filling to be easy to scoop without coming away in one piece",
+      "The first few bites tell me more than looking at the plate",
+      "I am accounting for how the food is served as well",
+      "It needs to be practical when I sit down to eat",
+      "I am thinking about what the whole bite feels like"
+    ]
+  },
+  "cucumber preparation": {
+    "attr_short": "how I chop the cucumbers",
+    "scopes": [
+      "serving cucumber alongside hot food",
+      "serving cucumber alongside cold food"
+    ],
+    "options": [
+      "roughly bashed chunks of cucumber",
+      "cucumber peeled to make long coils",
+      "thick round slices of cucumber",
+      "skinny sticks of cucumber"
+    ],
+    "topics": [
+      "how much crunch stays in the cucumber",
+      "what works beside a hot dish",
+      "how easy the pieces are to pick up"
+    ],
+    "reasons": [
+      "I care about keeping some crunch next to the other food",
+      "The first few bites tell me more than looking at the plate",
+      "I am accounting for how the food is served as well",
+      "It needs to be practical when I sit down to eat",
+      "I am thinking about what the whole bite feels like"
+    ]
+  },
+  "fruit crumble topping": {
+    "attr_short": "what goes on top of the crumble",
+    "scopes": [
+      "making a crumble in little separate dishes",
+      "making one crumble for people to share"
+    ],
+    "options": [
+      "coarse oats and hazelnuts over the fruit",
+      "a layer of fine ground almond crumbs",
+      "crispy clusters of buckwheat over the fruit",
+      "a scattered rye and sunflower topping"
+    ],
+    "topics": [
+      "how the topping breaks after baking",
+      "sharing a crumble without losing the crisp edge",
+      "how thick the topping sits over the fruit"
+    ],
+    "reasons": [
+      "I like the crisp part to hold up after I have served it",
+      "The first few bites tell me more than looking at the plate",
+      "I am accounting for how the food is served as well",
+      "It needs to be practical when I sit down to eat",
+      "I am thinking about what the whole bite feels like"
+    ]
+  },
+  "supper grain accompaniment": {
+    "attr_short": "which grain I serve with supper",
+    "scopes": [
+      "a supper served from one pot",
+      "a supper dished up from separate pans"
+    ],
+    "options": [
+      "light fluffy millet cooked with steam",
+      "pearl barley with a toasted flavor",
+      "tender couscous scented with lemon",
+      "whole buckwheat grains with a nutty taste"
+    ],
+    "topics": [
+      "getting the grain onto the plate easily",
+      "what sits well alongside the main dish",
+      "how the side fits when serving from the pot"
+    ],
+    "reasons": [
+      "I want the side to sit well with the main dish without covering the flavor",
+      "The first few bites tell me more than looking at the plate",
+      "I am accounting for how the food is served as well",
+      "It needs to be practical when I sit down to eat",
+      "I am thinking about what the whole bite feels like"
+    ]
+  },
+  "unfinished-task handoff note": {
+    "attr_short": "what I leave for the next person",
+    "scopes": [
+      "passing a task to just one colleague",
+      "handing over a task to whoever is on rotation"
+    ],
+    "options": [
+      "one short line about the next step",
+      "a quick drawing of what depends on what",
+      "a tiny table of what's done and what's left",
+      "an out-loud recap plus a written pointer"
+    ],
+    "topics": [
+      "making the next step visible",
+      "showing where the work stopped",
+      "how much history the next person needs"
+    ],
+    "reasons": [
+      "I want the next person to see where to begin without asking me to explain it again",
+      "It matters whether I can return to where I left off",
+      "I am trying to cut down the time between one task and the next",
+      "I care about keeping track without adding another chore",
+      "It is the sort of detail I notice while there is a lot going on"
+    ]
+  },
+  "scratch-paper use pattern": {
+    "attr_short": "how I lay out working on spare paper",
+    "scopes": [
+      "working out sums on my feet at the desk",
+      "working out sums while sitting at the desk"
+    ],
+    "options": [
+      "a separate little square for each sum",
+      "a spiral column containing several sums",
+      "working spread around a sketch in the middle",
+      "doing the math on little folded slips"
+    ],
+    "topics": [
+      "being able to follow sums on a small scrap",
+      "room to draw the rough shape first",
+      "what stays legible when you stand up"
+    ],
+    "reasons": [
+      "I need to look back at the working without losing which sum is which",
+      "It matters whether I can return to where I left off",
+      "I am trying to cut down the time between one task and the next",
+      "I care about keeping track without adding another chore",
+      "It is the sort of detail I notice while there is a lot going on"
+    ]
+  },
+  "completed-task review cue": {
+    "attr_short": "how I mark something I've finished",
+    "scopes": [
+      "reviewing a job I did inside",
+      "reviewing a job I did outside"
+    ],
+    "options": [
+      "a pencil check next to the result",
+      "a bead I slide along a string on the desk",
+      "a little stamp beside it in my log",
+      "a colored strand looped onto the task card"
+    ],
+    "topics": [
+      "seeing what has been checked already",
+      "finding the result in the work log",
+      "marking the card without writing an extra line"
+    ],
+    "reasons": [
+      "I want to be able to tell what I finished when I come back to the list",
+      "It matters whether I can return to where I left off",
+      "I am trying to cut down the time between one task and the next",
+      "I care about keeping track without adding another chore",
+      "It is the sort of detail I notice while there is a lot going on"
+    ]
+  },
+  "desk reference placement": {
+    "attr_short": "where I put pages I'm looking at",
+    "scopes": [
+      "using references while I write longhand",
+      "using references as I work at the keyboard"
+    ],
+    "options": [
+      "pages leaning on a small easel to one side",
+      "pages flat just above where I work",
+      "sheets clipped onto an upright board",
+      "pages in a short stand that swivels"
+    ],
+    "topics": [
+      "looking at a reference without turning around",
+      "where the pages sit relative to a hand",
+      "keeping the paper from sliding"
+    ],
+    "reasons": [
+      "I am trying to see the reference without moving the work out of the way",
+      "It matters whether I can return to where I left off",
+      "I am trying to cut down the time between one task and the next",
+      "I care about keeping track without adding another chore",
+      "It is the sort of detail I notice while there is a lot going on"
+    ]
+  },
+  "stylus pressure response": {
+    "attr_short": "how hard I press with the pen",
+    "scopes": [
+      "drawing on a screen protector with texture",
+      "drawing on a slick screen protector"
+    ],
+    "options": [
+      "a pressure setting tuned for a light touch",
+      "a curve that builds gradually in the middle",
+      "pressure settings built around a firm touch",
+      "nearly the same stroke response throughout"
+    ],
+    "topics": [
+      "how much pressure it takes to make a dark stroke",
+      "getting small marks on a slick cover",
+      "keeping the line from jumping in width"
+    ],
+    "reasons": [
+      "It bothers me when a small change in pressure makes the stroke jump",
+      "I judge it by whether I can use the screen without thinking about it",
+      "I notice it when I go to make a small movement",
+      "I would rather not break what I was doing to adjust anything",
+      "I am thinking about how it feels after more than a minute"
+    ]
+  },
+  "display edge gesture": {
+    "attr_short": "what swiping in from the edge does",
+    "scopes": [
+      "swiping the edge with the display propped vertically",
+      "swiping the edge with the display laid down"
+    ],
+    "options": [
+      "a swipe that pulls up the tools",
+      "a swipe that moves to another workspace",
+      "a swipe that brings up the recent items",
+      "the swipe leaves things as they are"
+    ],
+    "topics": [
+      "how easy it is to reach the side of the display",
+      "what opens when you brush the edge",
+      "whether a gesture interrupts what you were doing"
+    ],
+    "reasons": [
+      "I want to reach the edge without interrupting what I was doing",
+      "I judge it by whether I can use the screen without thinking about it",
+      "I notice it when I go to make a small movement",
+      "I would rather not break what I was doing to adjust anything",
+      "I am thinking about how it feels after more than a minute"
+    ]
+  },
+  "digital magnifier tracking": {
+    "attr_short": "what the zoom box follows",
+    "scopes": [
+      "magnifying with a hardware keyboard",
+      "magnifying with the keyboard shown on screen"
+    ],
+    "options": [
+      "zoom follows the place I'm typing",
+      "zoom stays on a rectangle I pick",
+      "zoom follows where the pointer moves",
+      "zoom stays aligned with the selected line"
+    ],
+    "topics": [
+      "keeping the enlarged region on the right spot",
+      "which bit of the screen you lose when it moves",
+      "following the line without hunting"
+    ],
+    "reasons": [
+      "I lose my place when the enlarged area moves while I am looking at it",
+      "I judge it by whether I can use the screen without thinking about it",
+      "I notice it when I go to make a small movement",
+      "I would rather not break what I was doing to adjust anything",
+      "I am thinking about how it feels after more than a minute"
+    ]
+  },
+  "headset microphone indicator": {
+    "attr_short": "what tells me the headset mic is on",
+    "scopes": [
+      "wearing the headset without moving",
+      "wearing the headset while on the move"
+    ],
+    "options": [
+      "a solid turquoise light on the mic",
+      "an amber mic light that pulses",
+      "a little mic symbol with no lamp",
+      "one short flash when the mic turns on"
+    ],
+    "topics": [
+      "spotting the mic state without opening a panel",
+      "seeing the light while you are moving",
+      "how noticeable the headset icon is from the side"
+    ],
+    "reasons": [
+      "I like knowing whether I am muted without having to open anything",
+      "I judge it by whether I can use the screen without thinking about it",
+      "I notice it when I go to make a small movement",
+      "I would rather not break what I was doing to adjust anything",
+      "I am thinking about how it feels after more than a minute"
+    ]
+  },
+  "water-flask refill alert": {
+    "attr_short": "what reminds me to top up the flask",
+    "scopes": [
+      "tracking refills of the smaller flask",
+      "tracking refills of the bigger flask"
+    ],
+    "options": [
+      "a quiet little ripple on the display",
+      "two little buzzes in a row",
+      "a tiny droplet that lights up",
+      "a soft whistle that falls in pitch"
+    ],
+    "topics": [
+      "catching a refill reminder while putting the flask down",
+      "which signal is quiet enough not to interrupt",
+      "knowing when the little flask is empty"
+    ],
+    "reasons": [
+      "I want to notice the refill cue without distracting anyone nearby",
+      "If it goes off while I am occupied I still want to recognize it",
+      "I am looking for enough of a signal to know what to do next",
+      "The amount of interruption matters to me",
+      "I should be able to tell whether this one is worth checking"
+    ]
+  },
+  "group-poll update trigger": {
+    "attr_short": "when I get news from the poll",
+    "scopes": [
+      "polls with two possible answers",
+      "polls with at least three answers"
+    ],
+    "options": [
+      "a ping on each incoming vote",
+      "a ping at the halfway point for voters",
+      "a ping when the leading option changes",
+      "a ping when the last person submits a vote"
+    ],
+    "topics": [
+      "finding out that the vote has changed",
+      "not seeing a notice for every small change",
+      "getting an update before the poll closes"
+    ],
+    "reasons": [
+      "I care about a change that actually tells me something about the vote",
+      "If it goes off while I am occupied I still want to recognize it",
+      "I am looking for enough of a signal to know what to do next",
+      "The amount of interruption matters to me",
+      "I should be able to tell whether this one is worth checking"
+    ]
+  },
+  "community-board digest arrangement": {
+    "attr_short": "how the noticeboard roundup is sorted",
+    "scopes": [
+      "rounding up posts for things people do inside",
+      "rounding up posts for things people do outside"
+    ],
+    "options": [
+      "sorted by how long the posts take to read",
+      "posts put together by when the activity happens",
+      "organized by how far there is to walk",
+      "posts grouped by equipment and supplies"
+    ],
+    "topics": [
+      "seeing the supplies for an activity first",
+      "being able to skim a whole roundup",
+      "putting nearby activities where you can find them"
+    ],
+    "reasons": [
+      "I like being able to skim the board and spot things I might go to",
+      "If it goes off while I am occupied I still want to recognize it",
+      "I am looking for enough of a signal to know what to do next",
+      "The amount of interruption matters to me",
+      "I should be able to tell whether this one is worth checking"
+    ]
+  },
+  "footnote marker appearance": {
+    "attr_short": "how the footnote numbers look",
+    "scopes": [
+      "notes on pages with just one column",
+      "notes on pages with two columns"
+    ],
+    "options": [
+      "tiny raised digits to mark the notes",
+      "lowercase letters for the notes in brackets",
+      "raised stars and daggers for the notes",
+      "numbers in circles that sit on the line"
+    ],
+    "topics": [
+      "making the references small but legible",
+      "finding where a note starts in the second column",
+      "how the marks fit between words"
+    ],
+    "reasons": [
+      "I still need to read the little marks without stopping to work out what they mean",
+      "I want to see how it sits with the rest of the layout",
+      "I care about whether the reader can follow the marks",
+      "It is easier to judge with a few neighboring pages in view",
+      "I am trying to give the important parts enough room"
+    ]
+  },
+  "figure caption alignment": {
+    "attr_short": "where the caption sits",
+    "scopes": [
+      "labeling a picture that's square",
+      "labeling a picture that's wider than it is tall"
+    ],
+    "options": [
+      "caption lined up to the left of the figure",
+      "caption in the middle under the figure",
+      "caption in a skinny column on the right",
+      "caption set in under the middle of the figure"
+    ],
+    "topics": [
+      "keeping the caption visually close to the picture",
+      "how much room the caption needs to the right",
+      "seeing which figure a line belongs to"
+    ],
+    "reasons": [
+      "I want each line of text to look connected to the right picture",
+      "I want to see how it sits with the rest of the layout",
+      "I care about whether the reader can follow the marks",
+      "It is easier to judge with a few neighboring pages in view",
+      "I am trying to give the important parts enough room"
+    ]
+  },
+  "section-opening decoration": {
+    "attr_short": "what I put above a section start",
+    "scopes": [
+      "starting the section on a page at the left",
+      "starting the section on a page at the right"
+    ],
+    "options": [
+      "a little leaf shape over the heading",
+      "a toned capital at the start of the line",
+      "a fine dotted line under the title",
+      "no decoration and a bit of space"
+    ],
+    "topics": [
+      "not using up the entire top margin",
+      "making a new section visible as you flip",
+      "leaving enough space before the first line"
+    ],
+    "reasons": [
+      "It is hard to tell where a section starts if the opening looks like any other page",
+      "I want to see how it sits with the rest of the layout",
+      "I care about whether the reader can follow the marks",
+      "It is easier to judge with a few neighboring pages in view",
+      "I am trying to give the important parts enough room"
+    ]
+  },
+  "sweater cuff construction": {
+    "attr_short": "what I want at the sweater wrist",
+    "scopes": [
+      "wearing the sweater under a jacket",
+      "wearing the sweater by itself"
+    ],
+    "options": [
+      "a snug ribbed wrist cuff",
+      "a wide cuff folded back",
+      "an easy fit with a rolled cuff edge",
+      "a knitted cuff with a split that narrows"
+    ],
+    "topics": [
+      "how bulky the cuff feels under a jacket",
+      "getting a loose sleeve to sit at the wrist",
+      "keeping the edge from turning inside out"
+    ],
+    "reasons": [
+      "I notice the cuff mostly when I take the jacket off",
+      "I am picturing how I would handle it after I get it home",
+      "The difference will show up when I go to use it",
+      "It needs to work with the space I actually have",
+      "I am thinking about what will hold up after a few outings"
+    ]
+  },
+  "reusable lunch-pot nesting": {
+    "attr_short": "how the lunch tubs fit together",
+    "scopes": [
+      "taking lunch tubs in a slim bag",
+      "taking lunch tubs in a roomy wide bag"
+    ],
+    "options": [
+      "a stack of two low containers",
+      "one deep container with a little cup inside",
+      "three skinny containers that clip together in a row",
+      "a wide container with two inserts"
+    ],
+    "topics": [
+      "fitting more than one thing in the lunch bag",
+      "what comes out first when you unpack",
+      "stopping the little cup from rattling"
+    ],
+    "reasons": [
+      "I want to carry lunch without having containers knock against each other",
+      "I am picturing how I would handle it after I get it home",
+      "The difference will show up when I go to use it",
+      "It needs to work with the space I actually have",
+      "I am thinking about what will hold up after a few outings"
+    ]
+  },
+  "bath-towel border style": {
+    "attr_short": "the edge finish on the bath towel",
+    "scopes": [
+      "drying the towel on a hook",
+      "drying the towel over a bar"
+    ],
+    "options": [
+      "a skinny band woven in herringbone",
+      "a wide smooth linen strip",
+      "fringe at the edge with no border strip",
+      "a double terry edge with soft round corners"
+    ],
+    "topics": [
+      "how the edge sits on the rail",
+      "finding the right towel from its border",
+      "whether the fringe catches on the hook"
+    ],
+    "reasons": [
+      "I use the edge to tell which towel is which in a stack",
+      "I am picturing how I would handle it after I get it home",
+      "The difference will show up when I go to use it",
+      "It needs to work with the space I actually have",
+      "I am thinking about what will hold up after a few outings"
+    ]
+  },
+  "mobility drill rhythm": {
+    "attr_short": "the pace for mobility work",
+    "scopes": [
+      "doing mobility exercises to music",
+      "doing mobility exercises in silence"
+    ],
+    "options": [
+      "one measured move each time I breathe out",
+      "a pair of easy movements per full breath",
+      "three little bounces, then a rest",
+      "keeping the moves flowing without counting"
+    ],
+    "topics": [
+      "finding a pace without pushing too hard",
+      "matching movement to breathing",
+      "keeping an even rhythm when there is music"
+    ],
+    "reasons": [
+      "It feels easier when I am not counting and moving at the same time",
+      "I want to be able to keep the movement going comfortably",
+      "It changes how the next repetition feels",
+      "I care about not breaking the rhythm",
+      "I am judging that part once my body gets moving"
+    ]
+  },
+  "floor exercise head support": {
+    "attr_short": "what goes under my head on the floor",
+    "scopes": [
+      "doing the exercises on a carpet",
+      "doing the exercises on a bare floor"
+    ],
+    "options": [
+      "a cotton towel folded flat under my head",
+      "a little curved rest made of foam",
+      "a thin piece of wool padding",
+      "a soft fleece roll"
+    ],
+    "topics": [
+      "how much the head support raises you",
+      "whether a pad shifts on a bare floor",
+      "getting comfortable while staying level"
+    ],
+    "reasons": [
+      "If it raises my head too much I end up adjusting it between movements",
+      "I want to be able to keep the movement going comfortably",
+      "It changes how the next repetition feels",
+      "I care about not breaking the rhythm",
+      "I am judging that part once my body gets moving"
+    ]
+  },
+  "step-drill hand position": {
+    "attr_short": "what I do with my hands on the step",
+    "scopes": [
+      "stepping on the shorter platform",
+      "stepping on the middle-height platform"
+    ],
+    "options": [
+      "my hands placed gently at my waist",
+      "my hands loosely clasped behind me",
+      "my arms down with my palms turned inward",
+      "fingertips touching the opposite shoulders"
+    ],
+    "topics": [
+      "keeping your balance as you step up",
+      "where your arms naturally fall",
+      "getting off the platform without reaching for anything"
+    ],
+    "reasons": [
+      "I can feel myself go off balance when I am thinking about where my arms are",
+      "I want to be able to keep the movement going comfortably",
+      "It changes how the next repetition feels",
+      "I care about not breaking the rhythm",
+      "I am judging that part once my body gets moving"
+    ]
+  }
+}

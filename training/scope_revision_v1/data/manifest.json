@@ -1,0 +1,48 @@
+{
+  "files": {
+    "../samples.md": {
+      "sha256": "af64d854a66a4def11c8c89a292b87319b76d9539526131e0a804394110e2602"
+    },
+    "audit.json": {
+      "sha256": "eadef89557d421c352cea4a8f2dd3bf60dad40670da7cd0dcdc506a559159b56"
+    },
+    "dev.jsonl": {
+      "categories": {
+        "clarify": 104,
+        "exception_retirement": 70,
+        "exception_revision": 171,
+        "general_update": 118,
+        "scoped_exception": 107,
+        "stable_preference": 132
+      },
+      "episodes": 120,
+      "sha256": "c8bd3deaffd5f09226759ef9cc357c8d44e62a811251d3223766b671fe7ca68d"
+    },
+    "test.jsonl": {
+      "categories": {
+        "clarify": 142,
+        "exception_retirement": 155,
+        "exception_revision": 227,
+        "general_update": 195,
+        "scoped_exception": 211,
+        "stable_preference": 261
+      },
+      "episodes": 200,
+      "sha256": "f5e680a107e53a5276522f0e711f6c385ecb928f141f530ac4d247d4b23bee4f"
+    },
+    "train.jsonl": {
+      "categories": {
+        "clarify": 535,
+        "exception_retirement": 449,
+        "exception_revision": 605,
+        "general_update": 630,
+        "scoped_exception": 683,
+        "stable_preference": 671
+      },
+      "episodes": 600,
+      "sha256": "494b76c72b5b0b47bfd98aaff898c56b1eef3e5253c8adaf21eba4837ef74bc7"
+    }
+  },
+  "format": "scope-memory-v1",
+  "seed": 0
+}

@@ -1,0 +1,478 @@
+[
+  {
+    "attribute": "lodging unpacking routine",
+    "scopes": [
+      "lodgings used for a single night",
+      "lodgings used for several nights"
+    ],
+    "options": [
+      "clothes hung immediately on arrival",
+      "clothes kept in labeled packing rolls",
+      "clothes arranged in a shallow drawer",
+      "clothes folded on an open luggage shelf"
+    ],
+    "family": "test-lodging-unpacking-routine",
+    "domain": "travel",
+    "opener": "I arrived with my socks somehow mixed in with the chargers.",
+    "distraction": "The hallway smelled faintly of fresh wood."
+  },
+  {
+    "attribute": "ferry-trip keepsake",
+    "scopes": [
+      "ferry trips made without a camera",
+      "ferry trips made with a camera"
+    ],
+    "options": [
+      "a pencil rubbing of the ticket stamp",
+      "a tiny sketch of the wake",
+      "a written note about the crossing sounds",
+      "a pressed scrap from the onboard leaflet"
+    ],
+    "family": "test-ferry-trip-keepsake",
+    "domain": "travel",
+    "opener": "The crossing was bumpier than the leaflet made it look.",
+    "distraction": "My hat nearly escaped when I stepped outside."
+  },
+  {
+    "attribute": "travel wash-kit arrangement",
+    "scopes": [
+      "wash kits packed for warm destinations",
+      "wash kits packed for cool destinations"
+    ],
+    "options": [
+      "bottles standing in elastic loops",
+      "toiletries lying in clear mesh sleeves",
+      "toiletries divided into cloth drawstring bags",
+      "bottles nested in a molded inner tray"
+    ],
+    "family": "test-travel-wash-kit-arrangement",
+    "domain": "travel",
+    "opener": "Something rattled inside the wash kit all the way here.",
+    "distraction": "I had forgotten how squeaky that zipper was."
+  },
+  {
+    "attribute": "museum visit starting point",
+    "scopes": [
+      "museum visits on a ground-floor ticket",
+      "museum visits on an upper-floor ticket"
+    ],
+    "options": [
+      "starting with the oldest display",
+      "starting with the smallest gallery",
+      "starting with the central installation",
+      "starting with the newest acquisition"
+    ],
+    "family": "test-museum-visit-starting-point",
+    "domain": "travel",
+    "opener": "The museum map was larger than the table.",
+    "distraction": "A pencil rolled all the way under the bench."
+  },
+  {
+    "attribute": "baked potato filling",
+    "scopes": [
+      "potatoes eaten from a bowl",
+      "potatoes eaten from a paper boat"
+    ],
+    "options": [
+      "smoky beans with chopped scallions",
+      "herbed curd with grated radish",
+      "roasted mushrooms with thyme",
+      "crushed peas with lemon zest"
+    ],
+    "family": "test-baked-potato-filling",
+    "domain": "food",
+    "opener": "The potato split open before I had the plate ready.",
+    "distraction": "I found a fork with a slightly bent tine."
+  },
+  {
+    "attribute": "cucumber preparation",
+    "scopes": [
+      "cucumber served with a warm dish",
+      "cucumber served with a cold dish"
+    ],
+    "options": [
+      "cucumber smashed into rough chunks",
+      "cucumber peeled into long spirals",
+      "cucumber sliced into thick coins",
+      "cucumber cut into fine matchsticks"
+    ],
+    "family": "test-cucumber-preparation",
+    "domain": "food",
+    "opener": "The cucumber rolled off the board and made me laugh.",
+    "distraction": "The small colander was nested inside the large one."
+  },
+  {
+    "attribute": "fruit crumble topping",
+    "scopes": [
+      "crumbles baked in individual dishes",
+      "crumbles baked in a shared dish"
+    ],
+    "options": [
+      "a chunky oat-and-hazelnut topping",
+      "a fine almond-sand topping",
+      "a crisp buckwheat-cluster topping",
+      "a loose rye-and-sunflower topping"
+    ],
+    "family": "test-fruit-crumble-topping",
+    "domain": "food",
+    "opener": "The fruit bubbled right up to the edge.",
+    "distraction": "The oven light makes everything look extra golden."
+  },
+  {
+    "attribute": "supper grain accompaniment",
+    "scopes": [
+      "suppers served from a single pot",
+      "suppers served from separate pans"
+    ],
+    "options": [
+      "fluffy steamed millet",
+      "toasted pearl barley",
+      "soft lemon-scented couscous",
+      "nutty whole buckwheat groats"
+    ],
+    "family": "test-supper-grain-accompaniment",
+    "domain": "food",
+    "opener": "I was looking for something to put beside the vegetables.",
+    "distraction": "The lid fits that little pot much better than I remembered."
+  },
+  {
+    "attribute": "unfinished-task handoff note",
+    "scopes": [
+      "handoffs to a single collaborator",
+      "handoffs to a rotating group"
+    ],
+    "options": [
+      "a brief next-step sentence",
+      "a sketched dependency chain",
+      "a small done-and-pending grid",
+      "a spoken recap with a written pointer"
+    ],
+    "family": "test-unfinished-task-handoff-note",
+    "domain": "work",
+    "opener": "I stopped halfway through a fiddly task yesterday.",
+    "distraction": "The desk clock is making a faint buzzing sound."
+  },
+  {
+    "attribute": "scratch-paper use pattern",
+    "scopes": [
+      "rough calculations at a standing desk",
+      "rough calculations at a seated desk"
+    ],
+    "options": [
+      "one calculation per loose square",
+      "several calculations in a spiral column",
+      "calculations arranged around a central sketch",
+      "calculations on folded pocket slips"
+    ],
+    "family": "test-scratch-paper-use-pattern",
+    "domain": "work",
+    "opener": "My rough notes have drifted across half the desk.",
+    "distraction": "I found a tiny binder clip stuck to the ruler."
+  },
+  {
+    "attribute": "completed-task review cue",
+    "scopes": [
+      "reviews after work done indoors",
+      "reviews after work done outdoors"
+    ],
+    "options": [
+      "a penciled tick beside the outcome",
+      "a movable bead on a desk string",
+      "a small stamp in the work log",
+      "a colored thread tied to the task card"
+    ],
+    "family": "test-completed-task-review-cue",
+    "domain": "work",
+    "opener": "It feels good to see a few things finished.",
+    "distraction": "The corner of the work log is getting soft."
+  },
+  {
+    "attribute": "desk reference placement",
+    "scopes": [
+      "reference use while writing by hand",
+      "reference use while typing"
+    ],
+    "options": [
+      "reference pages propped on a side easel",
+      "reference pages laid above the work area",
+      "reference pages clipped to a vertical board",
+      "reference pages held in a low rotating stand"
+    ],
+    "family": "test-desk-reference-placement",
+    "domain": "work",
+    "opener": "I keep covering the reference page with my elbow.",
+    "distraction": "The little clip has developed a stubborn spring."
+  },
+  {
+    "attribute": "stylus pressure response",
+    "scopes": [
+      "stylus work on a textured screen cover",
+      "stylus work on a smooth screen cover"
+    ],
+    "options": [
+      "a light-touch pressure curve",
+      "a gradual midrange pressure curve",
+      "a firm-pressure response curve",
+      "a nearly uniform stroke response"
+    ],
+    "family": "test-stylus-pressure-response",
+    "domain": "device settings",
+    "opener": "The stylus made a much darker mark than I expected.",
+    "distraction": "The spare nib was still in its tiny paper sleeve."
+  },
+  {
+    "attribute": "display edge gesture",
+    "scopes": [
+      "gestures made with the display upright",
+      "gestures made with the display flat"
+    ],
+    "options": [
+      "an edge swipe that opens a tool strip",
+      "an edge swipe that switches workspaces",
+      "an edge swipe that shows recent items",
+      "an edge swipe that does nothing"
+    ],
+    "family": "test-display-edge-gesture",
+    "domain": "device settings",
+    "opener": "My sleeve brushed the screen edge again.",
+    "distraction": "The stand is now balanced on two felt pads."
+  },
+  {
+    "attribute": "digital magnifier tracking",
+    "scopes": [
+      "magnifier use with a physical keyboard",
+      "magnifier use with an onscreen keyboard"
+    ],
+    "options": [
+      "a magnifier that follows the insertion point",
+      "a magnifier fixed over a chosen rectangle",
+      "a magnifier that follows pointer movement",
+      "a magnifier that centers the selected line"
+    ],
+    "family": "test-digital-magnifier-tracking",
+    "domain": "device settings",
+    "opener": "I lost my place inside the enlarged view.",
+    "distraction": "The room lamp has stopped flickering at last."
+  },
+  {
+    "attribute": "headset microphone indicator",
+    "scopes": [
+      "headset use while sitting still",
+      "headset use while moving around"
+    ],
+    "options": [
+      "a steady turquoise microphone light",
+      "a pulsing amber microphone light",
+      "a small microphone icon without light",
+      "a brief light flash when the microphone opens"
+    ],
+    "family": "test-headset-microphone-indicator",
+    "domain": "device settings",
+    "opener": "I kept wondering whether the microphone was on.",
+    "distraction": "The foam pad feels softer after a few days."
+  },
+  {
+    "attribute": "water-flask refill alert",
+    "scopes": [
+      "refill tracking with a small flask",
+      "refill tracking with a large flask"
+    ],
+    "options": [
+      "a soft ripple animation",
+      "a pair of short vibration pulses",
+      "a tiny glowing droplet symbol",
+      "a quiet descending whistle"
+    ],
+    "family": "test-water-flask-refill-alert",
+    "domain": "notifications",
+    "opener": "The flask was empty when I reached for it.",
+    "distraction": "Its lid has acquired another little scratch."
+  },
+  {
+    "attribute": "group-poll update trigger",
+    "scopes": [
+      "polls offering exactly two choices",
+      "polls offering more than two choices"
+    ],
+    "options": [
+      "a notice whenever a vote arrives",
+      "a notice when half the group has voted",
+      "a notice when a different choice takes the lead",
+      "a notice after every participant has voted"
+    ],
+    "family": "test-group-poll-update-trigger",
+    "domain": "notifications",
+    "opener": "The poll was much livelier than I expected.",
+    "distraction": "Someone drew a very elaborate doodle beside the options."
+  },
+  {
+    "attribute": "community-board digest arrangement",
+    "scopes": [
+      "board posts about indoor activities",
+      "board posts about outdoor activities"
+    ],
+    "options": [
+      "posts arranged by estimated reading time",
+      "posts clustered by activity date",
+      "posts arranged by walking distance",
+      "posts clustered by the supplies needed"
+    ],
+    "family": "test-community-board-digest-arrangement",
+    "domain": "notifications",
+    "opener": "The community board has filled an entire screen.",
+    "distraction": "The thumbnail pictures are unexpectedly cheerful."
+  },
+  {
+    "attribute": "footnote marker appearance",
+    "scopes": [
+      "footnotes in single-column material",
+      "footnotes in double-column material"
+    ],
+    "options": [
+      "small superscript Arabic markers",
+      "bracketed lowercase footnote letters",
+      "raised asterisk-and-dagger markers",
+      "circled footnote numerals on the baseline"
+    ],
+    "family": "test-footnote-marker-appearance",
+    "domain": "document formatting",
+    "opener": "The footnote marks look crowded on that page.",
+    "distraction": "My pencil sharpener has collected another mountain of shavings."
+  },
+  {
+    "attribute": "figure caption alignment",
+    "scopes": [
+      "captions under square illustrations",
+      "captions under wide illustrations"
+    ],
+    "options": [
+      "captions flush with the figure's left edge",
+      "captions centered under the figure",
+      "captions aligned to a narrow right column",
+      "captions indented beneath the figure center"
+    ],
+    "family": "test-figure-caption-alignment",
+    "domain": "document formatting",
+    "opener": "The caption ended up longer than I expected.",
+    "distraction": "The paper mockup has a crease through one corner."
+  },
+  {
+    "attribute": "section-opening decoration",
+    "scopes": [
+      "sections beginning on a left-hand page",
+      "sections beginning on a right-hand page"
+    ],
+    "options": [
+      "a small leaf ornament above the heading",
+      "a shaded initial behind the opening line",
+      "a narrow dotted rule below the heading",
+      "a plain opening with extra white space"
+    ],
+    "family": "test-section-opening-decoration",
+    "domain": "document formatting",
+    "opener": "I was turning the pages to see how the openings felt.",
+    "distraction": "A scrap of tracing paper keeps clinging to the cover."
+  },
+  {
+    "attribute": "sweater cuff construction",
+    "scopes": [
+      "sweaters worn beneath a jacket",
+      "sweaters worn without a jacket"
+    ],
+    "options": [
+      "a close rib-knit cuff",
+      "a broad turned-back cuff",
+      "a loose rolled-edge cuff",
+      "a tapered split-knit cuff"
+    ],
+    "family": "test-sweater-cuff-construction",
+    "domain": "shopping",
+    "opener": "The sleeve kept catching on my watch.",
+    "distraction": "One of the tags had folded itself into a tiny fan."
+  },
+  {
+    "attribute": "reusable lunch-pot nesting",
+    "scopes": [
+      "lunch pots carried in a narrow bag",
+      "lunch pots carried in a wide bag"
+    ],
+    "options": [
+      "two shallow pots stacked together",
+      "a tall pot with a removable inner cup",
+      "three slim pots clipped side by side",
+      "a broad pot holding two small inserts"
+    ],
+    "family": "test-reusable-lunch-pot-nesting",
+    "domain": "shopping",
+    "opener": "I tried fitting the lunch pots into the bag.",
+    "distraction": "There was a stray elastic band inside the smallest pot."
+  },
+  {
+    "attribute": "bath-towel border style",
+    "scopes": [
+      "towels hung on a wall hook",
+      "towels hung across a rail"
+    ],
+    "options": [
+      "a narrow woven herringbone border",
+      "a broad flat linen border",
+      "a soft fringed edge without a band",
+      "a doubled terry border with rounded corners"
+    ],
+    "family": "test-bath-towel-border-style",
+    "domain": "shopping",
+    "opener": "The towel shelf is fuller than I thought.",
+    "distraction": "I found the old laundry peg behind the basket."
+  },
+  {
+    "attribute": "mobility drill rhythm",
+    "scopes": [
+      "mobility practice done with background music",
+      "mobility practice done without background music"
+    ],
+    "options": [
+      "one slow movement per exhale",
+      "two gentle movements per breathing cycle",
+      "three small pulses followed by a pause",
+      "a smooth continuous uncounted motion"
+    ],
+    "family": "test-mobility-drill-rhythm",
+    "domain": "exercise",
+    "opener": "The first few movements felt a little clumsy.",
+    "distraction": "The curtain kept brushing the back of the chair."
+  },
+  {
+    "attribute": "floor exercise head support",
+    "scopes": [
+      "floor practice on carpeted flooring",
+      "floor practice on uncarpeted flooring"
+    ],
+    "options": [
+      "a low folded cotton towel",
+      "a small crescent-shaped foam rest",
+      "a thin flat wool pad",
+      "a soft rolled fleece support"
+    ],
+    "family": "test-floor-exercise-head-support",
+    "domain": "exercise",
+    "opener": "I shifted around before finding a comfortable spot.",
+    "distraction": "There is a patch of sunlight exactly where the mat goes."
+  },
+  {
+    "attribute": "step-drill hand position",
+    "scopes": [
+      "step drills using a low platform",
+      "step drills using a medium platform"
+    ],
+    "options": [
+      "hands lightly resting at the waist",
+      "hands loosely joined behind the back",
+      "arms hanging with palms facing inward",
+      "fingertips resting on opposite shoulders"
+    ],
+    "family": "test-step-drill-hand-position",
+    "domain": "exercise",
+    "opener": "The step platform made a little creak.",
+    "distraction": "I moved the plant pot away from the exercise corner."
+  }
+]

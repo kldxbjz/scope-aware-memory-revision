@@ -1,0 +1,478 @@
+[
+  {
+    "attribute": "lodging pillow filling",
+    "scopes": [
+      "stays in a bunk room",
+      "stays in a private sleeping room"
+    ],
+    "options": [
+      "a millet-husk pillow",
+      "a shredded-latex pillow",
+      "a washable wool pillow",
+      "a loose-fiber pillow"
+    ],
+    "family": "dev-lodging-pillow-filling",
+    "domain": "travel",
+    "opener": "That pillow felt different from the one pictured.",
+    "distraction": "The bedside curtain had a tiny moon sewn onto it."
+  },
+  {
+    "attribute": "boarding document holder",
+    "scopes": [
+      "journeys begun with a coat on",
+      "journeys begun without a coat"
+    ],
+    "options": [
+      "a slim document neck pouch",
+      "a clear wrist document sleeve",
+      "a flat passport-sized envelope",
+      "a clip-fastened travel folio"
+    ],
+    "family": "dev-boarding-document-holder",
+    "domain": "travel",
+    "opener": "I nearly mixed up the two bits of travel paper.",
+    "distraction": "There was a surprisingly good mural in the waiting hall."
+  },
+  {
+    "attribute": "roadside break activity",
+    "scopes": [
+      "road breaks in bright daylight",
+      "road breaks after dusk"
+    ],
+    "options": [
+      "a slow lap around the rest area",
+      "a seated ankle-and-hand stretch",
+      "a brief stroll through the picnic ground",
+      "a standing shoulder-loosening routine"
+    ],
+    "family": "dev-roadside-break-activity",
+    "domain": "travel",
+    "opener": "The rest area was quieter than I expected.",
+    "distraction": "A paper bag kept blowing in circles near the bin."
+  },
+  {
+    "attribute": "overnight bag compartment layout",
+    "scopes": [
+      "overnight stays reached on foot",
+      "overnight stays reached by motor vehicle"
+    ],
+    "options": [
+      "one wide open packing compartment",
+      "two equal zippered packing sections",
+      "a narrow outer pocket and a deep main section",
+      "three removable packing sleeves"
+    ],
+    "family": "dev-overnight-bag-compartment-layout",
+    "domain": "travel",
+    "opener": "I packed everything and then found one more sock.",
+    "distraction": "The little luggage tag has come loose again."
+  },
+  {
+    "attribute": "roasted vegetable cut",
+    "scopes": [
+      "vegetables roasted on a metal tray",
+      "vegetables roasted in an earthenware dish"
+    ],
+    "options": [
+      "long tapered vegetable batons",
+      "thick vegetable half-moons",
+      "small rough vegetable chunks",
+      "wide flat vegetable ribbons"
+    ],
+    "family": "dev-roasted-vegetable-cut",
+    "domain": "food",
+    "opener": "The chopping board has decided to wobble today.",
+    "distraction": "I spotted the missing oven mitt on a chair."
+  },
+  {
+    "attribute": "oat bowl topping",
+    "scopes": [
+      "oat bowls eaten at home",
+      "oat bowls eaten away from home"
+    ],
+    "options": [
+      "stewed plum with nutmeg",
+      "toasted coconut with lime zest",
+      "chopped apricot with pumpkin seeds",
+      "warm apple with ground cardamom"
+    ],
+    "family": "dev-oat-bowl-topping",
+    "domain": "food",
+    "opener": "The oats bubbled up when I looked away.",
+    "distraction": "There is a little steam patch on the window."
+  },
+  {
+    "attribute": "dumpling sauce placement",
+    "scopes": [
+      "dumplings served in a deep bowl",
+      "dumplings served on a flat platter"
+    ],
+    "options": [
+      "sauce brushed across the dumpling tops",
+      "sauce poured beneath the dumplings",
+      "sauce offered in a shallow side saucer",
+      "sauce dotted between the dumplings"
+    ],
+    "family": "dev-dumpling-sauce-placement",
+    "domain": "food",
+    "opener": "One dumpling stuck to the edge of the steamer.",
+    "distraction": "The small serving spoon was hiding in the big one."
+  },
+  {
+    "attribute": "picnic fruit preparation",
+    "scopes": [
+      "picnics on a sandy surface",
+      "picnics on a grassy surface"
+    ],
+    "options": [
+      "peeled fruit cut into wedges",
+      "whole fruit with the skins intact",
+      "fruit cubes threaded onto short picks",
+      "thin fruit slices layered in a pot"
+    ],
+    "family": "dev-picnic-fruit-preparation",
+    "domain": "food",
+    "opener": "The picnic box smells faintly of oranges.",
+    "distraction": "I remembered the cloth napkins this time."
+  },
+  {
+    "attribute": "incoming-task review order",
+    "scopes": [
+      "task reviews done before lunch",
+      "task reviews done after lunch"
+    ],
+    "options": [
+      "unanswered requests before new ones",
+      "requests with attachments before plain messages",
+      "oldest unfinished requests first",
+      "requests from active projects before paused ones"
+    ],
+    "family": "dev-incoming-task-review-order",
+    "domain": "work",
+    "opener": "The incoming pile grew while I was making tea.",
+    "distraction": "I finally straightened the calendar on the wall."
+  },
+  {
+    "attribute": "research tab grouping method",
+    "scopes": [
+      "research on a single large display",
+      "research on a pair of small displays"
+    ],
+    "options": [
+      "tabs grouped by unanswered question",
+      "tabs grouped by source publication",
+      "tabs grouped by reading progress",
+      "tabs grouped by competing explanation"
+    ],
+    "family": "dev-research-tab-grouping-method",
+    "domain": "work",
+    "opener": "I have enough open tabs to lose the one I need.",
+    "distraction": "The screen cloth turned up inside the notebook."
+  },
+  {
+    "attribute": "short work-break activity",
+    "scopes": [
+      "work breaks taken alone indoors",
+      "work breaks taken with company indoors"
+    ],
+    "options": [
+      "watering a small desk fern",
+      "folding a simple paper shape",
+      "looking out at distant rooflines",
+      "tidying one desk drawer"
+    ],
+    "family": "dev-short-work-break-activity",
+    "domain": "work",
+    "opener": "I stood up and immediately forgot why.",
+    "distraction": "The little plant has put out a very crooked leaf."
+  },
+  {
+    "attribute": "desk cable arrangement",
+    "scopes": [
+      "desks set against a wall",
+      "desks standing clear of walls"
+    ],
+    "options": [
+      "cables gathered into a braided sleeve",
+      "cables clipped separately along the rear edge",
+      "cables looped through an under-desk tray",
+      "cables fastened to a narrow side rail"
+    ],
+    "family": "dev-desk-cable-arrangement",
+    "domain": "work",
+    "opener": "The cables are making another nest under the desk.",
+    "distraction": "I found the last adhesive clip in a pencil pot."
+  },
+  {
+    "attribute": "mouse wheel scroll mapping",
+    "scopes": [
+      "scrolling with the left hand",
+      "scrolling with the right hand"
+    ],
+    "options": [
+      "wheel movement matched to page travel",
+      "wheel movement opposite to page travel",
+      "wheel movement stepping between paragraphs",
+      "wheel movement jumping by screenfuls"
+    ],
+    "family": "dev-mouse-wheel-scroll-mapping",
+    "domain": "device settings",
+    "opener": "The page ran away when I nudged the wheel.",
+    "distraction": "There is a crumb beside the mouse pad."
+  },
+  {
+    "attribute": "touchpad tap action",
+    "scopes": [
+      "touchpad use on a level tabletop",
+      "touchpad use on a tilted laptop stand"
+    ],
+    "options": [
+      "one tap for a primary click",
+      "two taps for a primary click",
+      "a firm press for a primary click",
+      "a tap followed by a hold for a primary click"
+    ],
+    "family": "dev-touchpad-tap-action",
+    "domain": "device settings",
+    "opener": "I tapped the pad and opened the wrong thing.",
+    "distraction": "The laptop stand has a new felt strip now."
+  },
+  {
+    "attribute": "lock-screen clock presentation",
+    "scopes": [
+      "screens locked during daylight hours",
+      "screens locked during hours of darkness"
+    ],
+    "options": [
+      "large outlined clock digits",
+      "small stacked clock digits",
+      "a slender analog clock face",
+      "a single-line word clock"
+    ],
+    "family": "dev-lock-screen-clock-presentation",
+    "domain": "device settings",
+    "opener": "I glanced at the clock from across the room.",
+    "distraction": "The reflected lamp looks like a tiny second moon."
+  },
+  {
+    "attribute": "text caret appearance",
+    "scopes": [
+      "writing in a broad text column",
+      "writing in a narrow text column"
+    ],
+    "options": [
+      "a thin blinking vertical caret",
+      "a thick steady vertical caret",
+      "a hollow rectangular caret",
+      "a low horizontal caret bar"
+    ],
+    "family": "dev-text-caret-appearance",
+    "domain": "device settings",
+    "opener": "The typing marker disappeared into a line of letters.",
+    "distraction": "The cushion on this chair keeps slipping sideways."
+  },
+  {
+    "attribute": "battery warning point",
+    "scopes": [
+      "battery use with a peripheral attached",
+      "battery use with no peripheral attached"
+    ],
+    "options": [
+      "a warning at eighteen percent charge",
+      "a warning at twenty-seven percent charge",
+      "a warning at thirty-six percent charge",
+      "a warning at forty-five percent charge"
+    ],
+    "family": "dev-battery-warning-point",
+    "domain": "notifications",
+    "opener": "The battery indicator surprised me again.",
+    "distraction": "I had packed the cable but not the little adapter."
+  },
+  {
+    "attribute": "calendar alert title visibility",
+    "scopes": [
+      "calendar alerts seen at a shared counter",
+      "calendar alerts seen at a private counter"
+    ],
+    "options": [
+      "the complete event title on the alert",
+      "the first word of the event title",
+      "an event symbol without title text",
+      "a short custom nickname for the event"
+    ],
+    "family": "dev-calendar-alert-title-visibility",
+    "domain": "notifications",
+    "opener": "The calendar banner popped up while I was reaching over.",
+    "distraction": "The clock above the counter is a minute fast."
+  },
+  {
+    "attribute": "saved-search alert grouping",
+    "scopes": [
+      "saved searches with a single keyword",
+      "saved searches with several keywords"
+    ],
+    "options": [
+      "one alert per matching item",
+      "matches bundled into pairs",
+      "matches collected in groups of five",
+      "matches grouped by the source that posted them"
+    ],
+    "family": "dev-saved-search-alert-grouping",
+    "domain": "notifications",
+    "opener": "The search results arrived in a little rush.",
+    "distraction": "I nearly closed the wrong browser tab."
+  },
+  {
+    "attribute": "block quotation indentation",
+    "scopes": [
+      "quotations shorter than four lines",
+      "quotations at least four lines long"
+    ],
+    "options": [
+      "a narrow indent on both sides",
+      "a broad indent on the left alone",
+      "a hanging quotation mark with flush text",
+      "an inset quotation inside a fine border"
+    ],
+    "family": "dev-block-quotation-indentation",
+    "domain": "document formatting",
+    "opener": "The quotation takes up more room than I expected.",
+    "distraction": "I have put a paperweight on the curling sample."
+  },
+  {
+    "attribute": "appendix separator design",
+    "scopes": [
+      "appendices containing illustrations",
+      "appendices containing text alone"
+    ],
+    "options": [
+      "a blank divider leaf",
+      "a full-width horizontal divider",
+      "a small centered decorative fleuron",
+      "a narrow vertical divider beside the title"
+    ],
+    "family": "dev-appendix-separator-design",
+    "domain": "document formatting",
+    "opener": "I reached the appendix and lost my place for a moment.",
+    "distraction": "There is a coffee-colored ring on the scrap paper."
+  },
+  {
+    "attribute": "hyperlink decoration",
+    "scopes": [
+      "links pointing to downloadable material",
+      "links pointing to ordinary webpages"
+    ],
+    "options": [
+      "a fine dotted underline beneath links",
+      "a small outward arrow beside links",
+      "links enclosed in pale rounded boxes",
+      "bold links without an underline"
+    ],
+    "family": "dev-hyperlink-decoration",
+    "domain": "document formatting",
+    "opener": "The links almost disappeared into the paragraph.",
+    "distraction": "I keep brushing the eraser crumbs onto my sleeve."
+  },
+  {
+    "attribute": "market bag handle construction",
+    "scopes": [
+      "bags carried over my forearm",
+      "bags carried in my hand"
+    ],
+    "options": [
+      "wide rolled cloth handles",
+      "flat reinforced webbing handles",
+      "rounded hollow rope handles",
+      "soft padded loop handles"
+    ],
+    "family": "dev-market-bag-handle-construction",
+    "domain": "shopping",
+    "opener": "The bag handles dug in more than I expected.",
+    "distraction": "A receipt had folded itself around my keys."
+  },
+  {
+    "attribute": "plant-pot base design",
+    "scopes": [
+      "pots placed on a stone shelf",
+      "pots placed on a wooden shelf"
+    ],
+    "options": [
+      "a removable saucer base",
+      "three short integral feet",
+      "a raised ring-shaped foot",
+      "a flat cork-backed base"
+    ],
+    "family": "dev-plant-pot-base-design",
+    "domain": "shopping",
+    "opener": "I measured the shelf with a piece of string.",
+    "distraction": "There was a bit of potting soil in my pocket."
+  },
+  {
+    "attribute": "everyday tote fastening",
+    "scopes": [
+      "totes used on crowded outings",
+      "totes used on quiet outings"
+    ],
+    "options": [
+      "a broad magnetic foldover flap",
+      "a single knotted cord fastening",
+      "an inset full-width zipper",
+      "a pair of wooden toggle fasteners"
+    ],
+    "family": "dev-everyday-tote-fastening",
+    "domain": "shopping",
+    "opener": "The tote tipped over and spilled a notebook.",
+    "distraction": "I found the bus token at the bottom seam."
+  },
+  {
+    "attribute": "warmup stepping pattern",
+    "scopes": [
+      "warmups done in a narrow space",
+      "warmups done in a wide space"
+    ],
+    "options": [
+      "alternating forward toe taps",
+      "small diagonal steps in place",
+      "gentle side steps with a pause",
+      "slow backward steps and returns"
+    ],
+    "family": "dev-warmup-stepping-pattern",
+    "domain": "exercise",
+    "opener": "I tried warming up between the chair and the wall.",
+    "distraction": "The rug corner has finally stopped curling."
+  },
+  {
+    "attribute": "hand-weight resting place",
+    "scopes": [
+      "weight exercises beside a low bench",
+      "weight exercises beside a high bench"
+    ],
+    "options": [
+      "weights resting on a folded towel",
+      "weights resting in a shallow rubber tray",
+      "weights resting on a cork floor square",
+      "weights resting across two foam blocks"
+    ],
+    "family": "dev-hand-weight-resting-place",
+    "domain": "exercise",
+    "opener": "One of the weights made a loud clunk on the floor.",
+    "distraction": "I moved the water glass well out of reach."
+  },
+  {
+    "attribute": "stretching visual focus",
+    "scopes": [
+      "stretches performed facing a window",
+      "stretches performed facing an interior wall"
+    ],
+    "options": [
+      "eyes resting on a nearby fixed point",
+      "eyes following a slow hand movement",
+      "eyes gently closed between movements",
+      "eyes tracking a horizontal line"
+    ],
+    "family": "dev-stretching-visual-focus",
+    "domain": "exercise",
+    "opener": "I noticed I keep looking at the ceiling when I stretch.",
+    "distraction": "A leaf was tapping softly against the window."
+  }
+]

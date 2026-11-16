@@ -28,6 +28,7 @@ training/       synthetic SFT corpus v0.1, its audit and the CPU preflight
 | Synthetic SFT corpus v0.1 and CPU preflight | [docs/training-intake.md](docs/training-intake.md) | [training/](training/README.md) | in the write-up |
 | Memory revision protocol v1 (outline v2.7): executors, gold projection, data-generation prompt | [docs/protocol.md](docs/protocol.md) | `scope_memory/protocol.py` | none yet |
 | Evaluator: teacher-forced and rollout | [docs/evaluation.md](docs/evaluation.md) | `scope_memory/evaluate.py` | none yet |
+| Synthetic chronological corpus v1.1 (920 episodes, protocol v1) | [training/scope_revision_v1/README.md](training/scope_revision_v1/README.md), [docs/data-generation-prompt.md](docs/data-generation-prompt.md) | `training/scope_revision_v1/build.py` | `training/scope_revision_v1/data/` |
 
 ## Quickstart
 
@@ -61,7 +62,7 @@ These are candidates, not verified ready-made per-event action-label datasets. P
 
 ## Data hygiene
 
-- Tracked: code, small handwritten fixtures and annotations, small saved results, and the synthetic training corpus v0.1 (about 0.4 MB of JSONL).
+- Tracked: code, small handwritten fixtures and annotations, small saved results, and the synthetic corpora v0.1 and v1.1 (about 13 MB of JSONL).
 - Not tracked: raw correspondence, raw dataset rows, credentials, checkpoints and run outputs (`local-notes/`, `private/`, `data/`, `outputs/`, `runs/`, `logs/`, `checkpoints/` are ignored).
 - The three audited HorizonBench users are audit-only and stay out of training, validation and final test.
 - The earlier 40-example smoke pilot and 24-example candidate eval set must never enter training.
