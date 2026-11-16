@@ -102,6 +102,22 @@ class ProtocolTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "evidence_message"):
             replay_gold(broken)
 
+    def test_instruction_examples_are_valid_for_their_arm(self):
+        from scope_memory.protocol import EXAMPLE_OUTPUTS, POLICY_INSTRUCTIONS, canon, read_crud_state, read_scope_state
+        catalogs = {"drink order": {"attribute": "drink order", "options": ["black coffee", "green tea"],
+                                    "scopes": {"office": {"scope": "at the office", "aliases": []}}}}
+        window = {"kind": "window", "from": "2030-03-01", "to": "2030-03-14"}
+        expected = {"drink order": {"general": "black coffee",
+                                    "exceptions": {"office": {"value": "green tea", "validity": window}}}}
+        for arm, memory, reader in (("scope", ScopeMemory(), read_scope_state), ("crud", CrudMemory(), read_crud_state)):
+            write, noop = EXAMPLE_OUTPUTS[arm]
+            self.assertIn(canon(write), POLICY_INSTRUCTIONS[arm])
+            self.assertIn(canon(noop), POLICY_INSTRUCTIONS[arm])
+            memory.seed({"drink order": {"general": "black coffee", "exceptions": {}}}, catalogs)
+            self.assertIsNone(memory.apply(write, "e9", ["seed", "e9"])[0])
+            self.assertEqual(reader(memory.view(), catalogs), (expected, []))
+            self.assertIsNone(memory.apply(noop, "e10", ["seed", "e9", "e10"])[0])
+
     def test_sft_rows_hide_gold(self):
         rows = sft_rows(self.episode)
         self.assertEqual(len(rows), 14)

@@ -8,6 +8,7 @@ Writes predictions_<arm>.jsonl, trajectories.jsonl, answers.jsonl and answer_age
 """
 import argparse
 import gc
+import hashlib
 import json
 import sys
 from pathlib import Path
@@ -83,10 +84,16 @@ def main():
 
     out = Path(args.out_dir)
     out.mkdir(parents=True, exist_ok=True)
+    config = {"model": args.model, "episodes": args.episodes, "limit": args.limit, "adapters": adapters,
+              "shots": args.shots, "demo_episodes": args.demo_episodes, "answer_agent": "base model, no adapter",
+              "policy_instructions_sha256": {arm: hashlib.sha256(POLICY_INSTRUCTIONS[arm].encode("utf-8")).hexdigest()
+                                             for arm in ARMS}}
+    config_path = out / "run_config.json"  # a resumed run must use the same settings and instructions
+    if config_path.exists() and json.loads(config_path.read_text(encoding="utf-8")) != config:
+        sys.exit(f"{config_path} was written with other settings or instructions; use a new --out-dir")
+    config_path.write_text(json.dumps(config) + "\n", encoding="utf-8")
     episodes = read_episodes(args.episodes)[:args.limit] if args.limit else read_episodes(args.episodes)
     (out / "episodes.jsonl").write_text("".join(json.dumps(e) + "\n" for e in episodes), encoding="utf-8")
-    (out / "run_config.json").write_text(json.dumps({"adapters": adapters, "shots": args.shots,
-                                                     "answer_agent": "base model, no adapter"}) + "\n", encoding="utf-8")
     demos = {arm: [] for arm in ARMS}
     if args.shots:  # shortest train example per event category, fixed for every prompt
         pool = [r for e in read_episodes(args.demo_episodes) for r in sft_rows(e)]

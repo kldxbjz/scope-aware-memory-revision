@@ -1,6 +1,6 @@
 # Memory revision protocol v1
 
-Contract between the data generator (`training/scope_revision_v1/`), the executors and projections (`scope_memory/protocol.py`) and the evaluator (`scope_memory/evaluate.py`, see [evaluation.md](evaluation.md)). It implements sections 4–6 of the course outline v2.7, with the trims listed in section 10. The instructions given to the data generator are in [data-generation-prompt.md](data-generation-prompt.md); `fixtures/protocol_episode.json` is a complete worked episode. Version 1, 2026-11-15.
+Contract between the data generator (`training/scope_revision_v1/`), the executors and projections (`scope_memory/protocol.py`) and the evaluator (`scope_memory/evaluate.py`, see [evaluation.md](evaluation.md)). It implements sections 4–6 of the course outline v2.7, with the trims listed in section 10. The instructions given to the data generator are in [data-generation-prompt.md](data-generation-prompt.md); `fixtures/protocol_episode.json` is a complete worked episode. Version 1.1, 2026-11-15 (1.1 adds a worked example to each arm's instruction, section 7).
 
 ## 1. Episodes
 
@@ -111,7 +111,7 @@ CRUD sentences: `For {attribute}, the user prefers {value}.` and `For {attribute
 
 ## 7. Policy input and SFT rows
 
-`{"memory": <arm view>, "event": {"event_id": ..., "date": ..., "dialogue": [...]}}`. The `event` object is byte-identical across arms; only the memory view differs. A fixed instruction per arm (`POLICY_INSTRUCTIONS` in `scope_memory/protocol.py`) precedes it. SFT rows use the gold memory (teacher forcing); rollout evaluation uses the policy's own memory. The policy never sees later events, probes or gold.
+`{"memory": <arm view>, "event": {"event_id": ..., "date": ..., "dialogue": [...]}}`. The `event` object is byte-identical across arms; only the memory view differs. A fixed instruction per arm (`POLICY_INSTRUCTIONS` in `scope_memory/protocol.py`) precedes it. Since version 1.1 each instruction also says which field names the operation and ends with the same made-up event (an attribute, situation and dates that no episode uses) worked in that arm's format: one exception write and the NOOP form. Without it the untrained policy broke the CRUD output schema in 30 of 31 smoke events. SFT rows use the gold memory (teacher forcing); rollout evaluation uses the policy's own memory. The policy never sees later events, probes or gold.
 
 ## 8. Probes and readers
 

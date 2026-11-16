@@ -37,7 +37,7 @@ CRUD_EXCEPTION = re.compile(
     r"(?: from (?P<start>\d{4}-\d{2}-\d{2}) through (?P<end>\d{4}-\d{2}-\d{2})|(?P<open> for now, with no end date given))?\.")
 CRUD_GENERAL = re.compile(r"For (?P<attribute>.+?), the user prefers (?P<value>.+)\.")
 
-POLICY_INSTRUCTIONS = {
+INSTRUCTION_RULES = {  # task text per arm; POLICY_INSTRUCTIONS below adds the worked example
     "scope": (
         "You maintain a user's long-term preference memory. Read the memory and the new conversation and "
         "return one JSON object {\"decision\": \"resolved\" or \"clarify\", \"actions\": [...]}. Records have "
@@ -72,6 +72,28 @@ def norm(text):
 
 def canon(obj):
     return json.dumps(obj, ensure_ascii=False, sort_keys=True)
+
+
+# Protocol 1.1: the same made-up event worked in each arm's format (no episode uses this attribute,
+# situation or these dates), plus the NOOP form.
+EXAMPLE_EVENT = ('Example: the memory holds m1, the general drink order "black coffee", and the new conversation '
+                 '(event_id "e9") says the user wants green tea at the office from 2030-03-01 through 2030-03-14.')
+EXAMPLE_OUTPUTS = {
+    "scope": ({"decision": "resolved", "actions": [{
+        "operation": "ADD", "attribute": "drink order", "value": "green tea", "scope": "at the office",
+        "validity": {"kind": "window", "from": "2030-03-01", "to": "2030-03-14"},
+        "relations": [{"type": "EXCEPTION_TO", "target": "m1"}], "evidence_ids": ["e9"]}]},
+              {"decision": "resolved", "actions": [{"operation": "NOOP"}]}),
+    "crud": ({"decision": "resolved", "operations": [{
+        "op": "ADD", "text": "For drink order when at the office, the user prefers green tea from 2030-03-01 through "
+                             "2030-03-14."}]},
+             {"decision": "resolved", "operations": [{"op": "NOOP"}]}),
+}
+OPERATION_FIELD = {"scope": 'Each action is an object whose "operation" field names it.',
+                   "crud": 'Each operation is an object whose "op" field names it.'}
+POLICY_INSTRUCTIONS = {arm: (f"{INSTRUCTION_RULES[arm]} {OPERATION_FIELD[arm]}\n{EXAMPLE_EVENT} Output:\n"
+                             f"{canon(EXAMPLE_OUTPUTS[arm][0])}\nNothing to store:\n{canon(EXAMPLE_OUTPUTS[arm][1])}")
+                       for arm in ARMS}
 
 
 def validity_error(validity):
