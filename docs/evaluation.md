@@ -77,7 +77,17 @@ Two reference rows put the QA numbers in range, both read by the same Answer Age
 
 `ANSWER_READERS` in `scope_memory/evaluate.py` holds the Answer Agent prompts, the same for both arms. Version 1 is the original prompt. Version 2 adds one reading rule: "A record limited to a situation or to dates applies only in that situation and on those dates; when no limited record applies, use the general preference." Version 3 adds the rule and asks for a one-sentence check before a final `Answer:` line, which is where the option is read.
 
-Version 1 misread correct memory: on gold memory it failed every boundary probe (a date just after a temporary preference ended: 0/28 for CRUD, 2/28 for scope, against 14/28 and 12/28 when memory was never written) and answered default probes ("an ordinary occasion") with an exception's value (77.8% CRUD, 85.9% scope). The version for formal results is chosen on gold memory alone, before any SFT result exists: the highest QA averaged over the two arms, and the simpler version when two are within one point. `run_config.json`, `answer_agent.json` and the primary report record the version. `baseline.py --from-run OLD_RUN` re-reads a finished run with another version without running the policy again; the settings must match apart from the version.
+Version 1 misread correct memory: on gold memory it failed every boundary probe (a date just after a temporary preference ended: 0/28 for CRUD, 2/28 for scope, against 14/28 and 12/28 when memory was never written) and answered default probes ("an ordinary occasion") with an exception's value (77.8% CRUD, 85.9% scope). The version for formal results is chosen on gold memory alone, before any SFT result exists: the highest QA averaged over the two arms, and the simpler version when two are within one point. `run_config.json`, `answer_agent.json` and the primary report record the version.
+
+Calibration on the dev split (1,170 probes per arm):
+
+| Version | Gold memory CRUD | Gold memory scope | Mean | Scope − CRUD on gold [95% CI] | Never written CRUD / scope | Boundary probes on gold, CRUD / scope |
+|---|---|---|---|---|---|---|
+| 1 | 88.5 | 91.2 | 89.9 | +2.6 [+0.3, +5.0] | 35.3 / 36.0 | 0/28, 2/28 |
+| 2 | 90.8 | 91.9 | 91.4 | +1.0 [−0.9, +3.0] | 35.9 / 36.4 | 0/28, 2/28 |
+| 3 | 92.5 | 93.3 | 92.9 | +0.9 [−1.2, +2.9] | 36.1 / 36.9 | 8/28, 11/28 |
+
+Version 3 is the default (`ANSWER_READER = 3`); 2 of its 2,340 replies on gold memory lacked the `Answer:` line. Even version 3 misses most boundary probes on gold memory, fewer than it gets right when memory was never written (14/28 and 12/28), so boundary probes reward not storing an ended preference; report them apart from the other probe types. `baseline.py --from-run OLD_RUN` re-reads a finished run with another version without running the policy again; the settings must match apart from the version.
 
 ## Not covered yet
 

@@ -154,7 +154,7 @@ ANSWER_READERS = {  # Answer Agent prompt versions: (lines before the reply inst
     3: ((READING_RULE,), "Before answering, say in one sentence which record applies on this date and in this "
                          "situation; then give your choice on a final line that starts with \"Answer:\".", 160),
 }
-ANSWER_READER = 1  # default version; run_config.json and answer_agent.json record the version a run used
+ANSWER_READER = 3  # chosen on dev gold memory (docs/evaluation.md); runs record the version they used
 ANSWER_LINE = re.compile(r"answer\s*:", re.I)
 
 
