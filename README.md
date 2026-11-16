@@ -13,7 +13,7 @@ fixtures/       handwritten toy timeline and a worked protocol v1 episode
 annotations/    blind annotation pilot: packet, author key, locked labels
 results/        small saved outputs of the scope_memory scripts
 docs/           experiment plan and one write-up per milestone
-training/       synthetic SFT corpus v0.1, its audit and the CPU preflight
+training/       synthetic corpora (v0.1, v1.1); SFT and baseline scripts for Babel in training/sft/
 ```
 
 ## Milestones
