@@ -12,6 +12,7 @@ Intervals: percentile bootstrap over episodes (one fictional user each).
   python3 -m scope_memory.evaluate rollout-score --data DATA.jsonl --trajectories traj.jsonl [--answers answers.jsonl]
 """
 import argparse
+import sys
 import copy
 import json
 import random
@@ -92,6 +93,7 @@ def teacher_forced(episodes, arm, completions):
 TEACHER_FORCED_METRICS = (  # name, rows it applies to (None = all), per-row value (None = not applicable)
     ("row_correct", None, lambda s: s["row_correct"]),
     ("state_correct", None, lambda s: s["state_correct"]),
+    ("state_correct_if_readable", None, lambda s: s["state_correct"] if s["status"] == "ok" else None),
     ("decision_correct", None, lambda s: s["decision_correct"]),
     ("invalid_or_rejected", None, lambda s: s["status"] in ("invalid", "rejected")),
     ("uninterpretable", None, lambda s: s["status"] == "uninterpretable"),
@@ -130,7 +132,7 @@ def answer_prompt(view, probe):
             "Reply with exactly one option.")
 
 
-def score_rollouts(episodes, trajectories, answers=None):
+def score_rollouts(episodes, trajectories, answers=None, count_tokens=None):
     """Score QA probes on rollout snapshots. answers maps '<episode>/<probe>/<arm>' to the Answer Agent's reply."""
     by_id = {e["episode_id"]: e for e in episodes}
     scored = []
@@ -152,8 +154,47 @@ def score_rollouts(episodes, trajectories, answers=None):
                            "answer": answer, "correct": answer == probe["gold"],
                            "reader": "oracle" if answers is None else "answer_agent",
                            "memory_records": len(view), "memory_words": len(json.dumps(view).split()),
+                           "memory_tokens": count_tokens(json.dumps(view)) if count_tokens else None,
                            "episode_rejected_outputs": rejected, "episode_steps": len(trajectory["steps"])})
     return scored
+
+
+ROLLOUT_WRITE_METRICS = (
+    ("rollout_false_overwrite", tuple(c for c in CATEGORIES if c != "general_update"), lambda s: s["general_changed"]),
+    ("rollout_missed_update", ("general_update",), lambda s: s["missed_update"]),
+    ("rollout_spurious_write", NO_CHANGE, lambda s: s["wrote"]),
+    ("rollout_unreadable_memory", None, lambda s: not s["readable"]),
+    ("rollout_state_matches_gold", None, lambda s: s["state_matches_gold"]),
+)
+
+
+def rollout_write_rows(episodes, trajectories):
+    """Per-event write behaviour along each arm's own memory (no gold roll-in); unreadable memory is not scored."""
+    by_id = {e["episode_id"]: e for e in episodes}
+    rows = []
+    for t in trajectories:
+        episode = by_id[t["episode_id"]]
+        catalogs = catalogs_of(episode)
+        memory = ScopeMemory() if t["arm"] == "scope" else CrudMemory()
+        memory.seed(episode["initial_state"], catalogs)
+        before_view = memory.view()
+        for event in episode["events"]:
+            after_view = t["snapshots"][event["event_id"]]
+            before, unread_before = READERS[t["arm"]](before_view, catalogs)
+            after, unread_after = READERS[t["arm"]](after_view, catalogs)
+            gold = canonical_state(event["gold"]["state_after"], catalogs)
+            category = event["gold"]["category"]
+            readable = not unread_before and not unread_after
+            general = lambda state, a: state.get(a, {}).get("general")
+            rows.append({"episode_id": episode["episode_id"], "event_id": event["event_id"], "arm": t["arm"],
+                         "category": category, "readable": readable, "wrote": after_view != before_view,
+                         "general_changed": any(general(after, a) != general(before, a) for a in gold) if readable else None,
+                         "missed_update": (any(general(after, a) != gold[a]["general"] for a in gold) if readable else None)
+                         if category == "general_update" else None,
+                         "state_matches_gold": readable and after == gold,
+                         "memory_after": after_view})
+            before_view = after_view
+    return rows
 
 
 def _ci(samples):
@@ -210,8 +251,9 @@ def summarize_teacher_forced(scored, bootstrap=2000, seed=0):
             "rejection_reasons": dict(Counter(s["reason"] for s in scored if s["reason"]))}
 
 
-def summarize_rollouts(scored, bootstrap=2000, seed=0):
+def summarize_rollouts(scored, bootstrap=2000, seed=0, write_rows=None):
     out = {}
+    probe_sets = {arm: {s["id"].rsplit("/", 1)[0] for s in scored if s["arm"] == arm} for arm in ARMS}
     for arm in ARMS:
         rows = [s for s in scored if s["arm"] == arm]
         if not rows:
@@ -227,8 +269,20 @@ def summarize_rollouts(scored, bootstrap=2000, seed=0):
                     "steps": sum(s["episode_steps"] for s in episodes.values()),
                     "mean_memory_records_at_probes": round(sum(s["memory_records"] for s in rows) / len(rows), 2),
                     "mean_memory_words_at_probes": round(sum(s["memory_words"] for s in rows) / len(rows), 1)}
+    for arm in ARMS:
+        if arm in out:
+            rows = [s for s in scored if s["arm"] == arm]
+            out[arm]["missing_answers"] = sum(s["reader"] == "answer_agent" and s["answer"] is None for s in rows)
+            tokens = [s["memory_tokens"] for s in rows if s.get("memory_tokens") is not None]
+            if tokens:
+                out[arm]["mean_memory_tokens_at_probes"] = round(sum(tokens) / len(tokens), 1)
+            if write_rows is not None:
+                out[arm]["write_metrics"] = summarize([r for r in write_rows if r["arm"] == arm],
+                                                      ROLLOUT_WRITE_METRICS, "category", bootstrap, seed)
     if all(arm in out for arm in ARMS):
-        out["scope_minus_crud"] = _paired_qa(scored, bootstrap, seed)
+        out["pairing_complete"] = probe_sets["scope"] == probe_sets["crud"]
+        if out["pairing_complete"]:
+            out["scope_minus_crud"] = _paired_qa(scored, bootstrap, seed)
     return out
 
 
@@ -313,6 +367,8 @@ def main(argv=None):
         if name == "rollout-score":
             p.add_argument("--trajectories", required=True, help="JSONL rows written by rollout()")
             p.add_argument("--answers", help="JSONL rows {id: '<episode>/<probe>/<arm>', answer}")
+            p.add_argument("--oracle-reader", action="store_true", help="score without answers (pipeline check only)")
+            p.add_argument("--tokenizer", help="tokenizer directory for memory token counts")
     args = parser.parse_args(argv)
     episodes = read_episodes(args.data)
     if args.command == "self-check":
@@ -326,7 +382,18 @@ def main(argv=None):
         trajectories = [json.loads(line) for line in Path(args.trajectories).read_text(encoding="utf-8").splitlines()
                         if line.strip()]
         answers = _read_keyed(args.answers, "answer") if args.answers else None
-        report = summarize_rollouts(score_rollouts(episodes, trajectories, answers), args.bootstrap, args.seed)
+        count_tokens = None
+        if args.tokenizer:
+            from transformers import AutoTokenizer
+            tokenizer = AutoTokenizer.from_pretrained(args.tokenizer)
+            count_tokens = lambda text: len(tokenizer(text, add_special_tokens=False)["input_ids"])
+        report = summarize_rollouts(score_rollouts(episodes, trajectories, answers, count_tokens), args.bootstrap,
+                                    args.seed, rollout_write_rows(episodes, trajectories))
+        if answers is None:
+            report["reader"] = "oracle: pipeline check only, not a formal result"
+            if not args.oracle_reader:
+                report["reader_warning"] = "no --answers given and --oracle-reader not set"
+                print("WARNING: scoring with the oracle reader; pass --answers for formal results", file=sys.stderr)
     report = {"data": args.data, "command": args.command, **report}
     text = json.dumps(report, indent=2)
     print(text)

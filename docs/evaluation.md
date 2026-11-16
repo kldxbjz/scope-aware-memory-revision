@@ -26,6 +26,14 @@ Answer Agent replies are passed as JSONL rows `{"id": "<episode>/<probe>/<arm>",
 
 Intervals are 95% percentile bootstraps over episodes (one fictional user each).
 
+## Safeguards and extra metrics
+
+- `rollout-score` without `--answers` uses the oracle reader, labels the report as a pipeline check and warns unless `--oracle-reader` is passed. Formal H1/H2 numbers need Answer Agent replies.
+- Rollout write metrics follow each arm's own memory: `rollout_false_overwrite`, `rollout_missed_update`, `rollout_spurious_write`, `rollout_state_matches_gold`, plus `rollout_unreadable_memory` for memory the canonical reader cannot parse.
+- CRUD format problems are kept apart from semantic errors: `state_correct_if_readable` scores only readable outputs, and `uninterpretable` counts the rest; Answer Agent QA does not depend on sentence format.
+- The paired scope-minus-CRUD difference is reported only when both arms cover the same episode and probe IDs (`pairing_complete`).
+- `--tokenizer DIR` adds memory token counts at the probes; otherwise memory size is in records and words.
+
 ## Commands
 
 ```sh

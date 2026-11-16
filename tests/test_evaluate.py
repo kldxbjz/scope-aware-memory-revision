@@ -87,5 +87,27 @@ class EvaluateTests(unittest.TestCase):
         self.assertEqual(report["teacher_forced_gold_crud"]["metrics"]["row_correct"]["rate"], 1.0)
 
 
+class RolloutWriteTests(unittest.TestCase):
+    def test_write_metrics_along_own_memory(self):
+        from scope_memory.evaluate import ROLLOUT_WRITE_METRICS, gold_policy, rollout_write_rows, summarize
+        gold = [rollout(EPISODE, arm, gold_policy([EPISODE])) for arm in ("scope", "crud")]
+        rows = rollout_write_rows([EPISODE], gold)
+        for arm in ("scope", "crud"):
+            m = summarize([r for r in rows if r["arm"] == arm], ROLLOUT_WRITE_METRICS, "category", 20)
+            self.assertEqual(metric({"metrics": m}, "rollout_false_overwrite"), (0, 6))
+            self.assertEqual(metric({"metrics": m}, "rollout_state_matches_gold"), (7, 7))
+        m = summarize(rollout_write_rows([EPISODE], [rollout(EPISODE, "scope", noop_policy)]), ROLLOUT_WRITE_METRICS,
+                      "category", 20)
+        self.assertEqual(metric({"metrics": m}, "rollout_missed_update"), (1, 1))
+
+    def test_incomplete_pairing_blocks_difference(self):
+        from scope_memory.evaluate import gold_policy
+        gold = [rollout(EPISODE, arm, gold_policy([EPISODE])) for arm in ("scope", "crud")]
+        scored = [s for s in score_rollouts([EPISODE], gold) if s["id"] != "fx-0001/p1/crud"]
+        report = summarize_rollouts(scored, bootstrap=20)
+        self.assertFalse(report["pairing_complete"])
+        self.assertNotIn("scope_minus_crud", report)
+
+
 if __name__ == "__main__":
     unittest.main()
