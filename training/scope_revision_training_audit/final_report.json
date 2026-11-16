@@ -1,0 +1,647 @@
+{
+  "source_sha256": "e4c1a8377afce9ca5e36215054bb5010125a89c7651f76b6a9358e2406a63c6d",
+  "n": 160,
+  "labels": {
+    "set_default": 40,
+    "set_exception": 40,
+    "no_op": 40,
+    "defer": 40
+  },
+  "cross_reference": {
+    "scope_revision_pilot/blind.jsonl::scope_revision_pilot/intended_key.jsonl": {
+      "id": [],
+      "family": [],
+      "domain": [],
+      "domain_family": [],
+      "template_family": [],
+      "contrast_group": [],
+      "exact_normalized_full": [],
+      "exact_normalized_last_user_only": [],
+      "exact_normalized_assistant_only": []
+    },
+    "scope_revision_heldout/blind.jsonl::scope_revision_heldout/authored_key.jsonl": {
+      "id": [],
+      "family": [],
+      "domain": [],
+      "domain_family": [],
+      "template_family": [],
+      "contrast_group": [],
+      "exact_normalized_full": [],
+      "exact_normalized_last_user_only": [],
+      "exact_normalized_assistant_only": []
+    }
+  },
+  "cue_probes": {
+    "last_user_only": {
+      "n_evaluable": 160,
+      "no_disjoint_neighbor": 0,
+      "expected_correct_uniform_label_ties": 40.0,
+      "accuracy": 0.25,
+      "excluded_same_groups": [
+        "family",
+        "domain_family",
+        "template_family",
+        "contrast_group"
+      ],
+      "interpretation": "Lexical trigram nearest-neighbor cue probe, not model performance or proof of no leakage."
+    },
+    "assistant_only": {
+      "n_evaluable": 160,
+      "no_disjoint_neighbor": 0,
+      "expected_correct_uniform_label_ties": 40.0,
+      "accuracy": 0.25,
+      "excluded_same_groups": [
+        "family",
+        "domain_family",
+        "template_family",
+        "contrast_group"
+      ],
+      "interpretation": "Lexical trigram nearest-neighbor cue probe, not model performance or proof of no leakage."
+    }
+  },
+  "limits": [
+    "Exact text and metadata overlap checks cannot establish semantic or template independence. Review domain aliases and paraphrases separately.",
+    "Last-user-only cues may legitimately identify explicit instructions; same-final-turn contrasting labels are the stronger context-dependence test.",
+    "No trained-model or heldout performance is measured."
+  ],
+  "split_overlaps": {
+    "dev vs train": {
+      "id": [],
+      "family": [],
+      "domain": [],
+      "domain_family": [],
+      "template_family": [],
+      "contrast_group": [],
+      "exact_normalized_full": [],
+      "exact_normalized_last_user_only": [],
+      "exact_normalized_assistant_only": []
+    }
+  },
+  "same_final_turn_contrasts": [
+    {
+      "ids": [
+        "sr-48722a11d343",
+        "sr-65f566bd8a8c",
+        "sr-3bdfb3fa6591",
+        "sr-0b3b45d5fdb0"
+      ],
+      "labels": [
+        "defer",
+        "no_op",
+        "set_default",
+        "set_exception"
+      ]
+    },
+    {
+      "ids": [
+        "sr-a3e9879e9cee",
+        "sr-6519008771f7",
+        "sr-1c9dea38ee47",
+        "sr-12b66777d5a8"
+      ],
+      "labels": [
+        "defer",
+        "no_op",
+        "set_default",
+        "set_exception"
+      ]
+    },
+    {
+      "ids": [
+        "sr-fdbe2b800ecc",
+        "sr-ad017f5dd829",
+        "sr-fb77d7912ea0",
+        "sr-5c8954114ba0"
+      ],
+      "labels": [
+        "defer",
+        "no_op",
+        "set_default",
+        "set_exception"
+      ]
+    },
+    {
+      "ids": [
+        "sr-7b3b7af5bc63",
+        "sr-d9b1b4b95ea9",
+        "sr-fc0d0fcdd27a",
+        "sr-ad8a5b1fc77a"
+      ],
+      "labels": [
+        "defer",
+        "no_op",
+        "set_default",
+        "set_exception"
+      ]
+    },
+    {
+      "ids": [
+        "sr-ff8361fb535c",
+        "sr-e6656145a1f1",
+        "sr-38eb195d2c00",
+        "sr-d1ff355bca5f"
+      ],
+      "labels": [
+        "defer",
+        "no_op",
+        "set_default",
+        "set_exception"
+      ]
+    },
+    {
+      "ids": [
+        "sr-c476347f4b5c",
+        "sr-bf46bc8c45e9",
+        "sr-b5fe5aa277e5",
+        "sr-131b53100de3"
+      ],
+      "labels": [
+        "defer",
+        "no_op",
+        "set_default",
+        "set_exception"
+      ]
+    },
+    {
+      "ids": [
+        "sr-0ee653b658b1",
+        "sr-6f241b28431a",
+        "sr-c0278ad9ac62",
+        "sr-8c3fda1ed5c1"
+      ],
+      "labels": [
+        "defer",
+        "no_op",
+        "set_default",
+        "set_exception"
+      ]
+    },
+    {
+      "ids": [
+        "sr-5e0e0c5ab6b8",
+        "sr-dc3cb2cb4a0e",
+        "sr-f3e139656294",
+        "sr-25621f2672e3"
+      ],
+      "labels": [
+        "defer",
+        "no_op",
+        "set_default",
+        "set_exception"
+      ]
+    },
+    {
+      "ids": [
+        "sr-58343b69eabd",
+        "sr-65b75e00fb7f",
+        "sr-e8bb906ec2c6",
+        "sr-accff9e6012c"
+      ],
+      "labels": [
+        "defer",
+        "no_op",
+        "set_default",
+        "set_exception"
+      ]
+    },
+    {
+      "ids": [
+        "sr-274341fb82be",
+        "sr-36550f38cecf",
+        "sr-511097da7cca",
+        "sr-9cd18d0b876d"
+      ],
+      "labels": [
+        "defer",
+        "no_op",
+        "set_default",
+        "set_exception"
+      ]
+    },
+    {
+      "ids": [
+        "sr-3f7b9f5e5a3c",
+        "sr-6520607af343",
+        "sr-77aa55e6bf3b",
+        "sr-c2ac7ebb13ab"
+      ],
+      "labels": [
+        "defer",
+        "no_op",
+        "set_default",
+        "set_exception"
+      ]
+    },
+    {
+      "ids": [
+        "sr-56357a27ed7f",
+        "sr-e4ca74c6bfe7",
+        "sr-306bc9dfd911",
+        "sr-0307692b8ef0"
+      ],
+      "labels": [
+        "defer",
+        "no_op",
+        "set_default",
+        "set_exception"
+      ]
+    },
+    {
+      "ids": [
+        "sr-590b1b3bd037",
+        "sr-a14c04d4b938",
+        "sr-6218287495bb",
+        "sr-2b8c6af9df17"
+      ],
+      "labels": [
+        "defer",
+        "no_op",
+        "set_default",
+        "set_exception"
+      ]
+    },
+    {
+      "ids": [
+        "sr-f528b3a1c044",
+        "sr-b3f9f000fb86",
+        "sr-2e600805cdf1",
+        "sr-ea4962ffceea"
+      ],
+      "labels": [
+        "defer",
+        "no_op",
+        "set_default",
+        "set_exception"
+      ]
+    },
+    {
+      "ids": [
+        "sr-ffdf1147813e",
+        "sr-4392b4dd75d7",
+        "sr-4e453803af22",
+        "sr-35028a70a458"
+      ],
+      "labels": [
+        "defer",
+        "no_op",
+        "set_default",
+        "set_exception"
+      ]
+    },
+    {
+      "ids": [
+        "sr-d50dbffba678",
+        "sr-24fd20e3b0cd",
+        "sr-d882dffa4346",
+        "sr-dfafd27a5e4b"
+      ],
+      "labels": [
+        "defer",
+        "no_op",
+        "set_default",
+        "set_exception"
+      ]
+    },
+    {
+      "ids": [
+        "sr-3f425a301416",
+        "sr-44f9db2bfd81",
+        "sr-7f5b4409a4ce",
+        "sr-ab6899acc008"
+      ],
+      "labels": [
+        "defer",
+        "no_op",
+        "set_default",
+        "set_exception"
+      ]
+    },
+    {
+      "ids": [
+        "sr-cde79e02a185",
+        "sr-992669a8feda",
+        "sr-11d124fe611a",
+        "sr-02ec24de0143"
+      ],
+      "labels": [
+        "defer",
+        "no_op",
+        "set_default",
+        "set_exception"
+      ]
+    },
+    {
+      "ids": [
+        "sr-811507f7985b",
+        "sr-019e5d1a8f6a",
+        "sr-cdd1543acdc9",
+        "sr-64bd3378905d"
+      ],
+      "labels": [
+        "defer",
+        "no_op",
+        "set_default",
+        "set_exception"
+      ]
+    },
+    {
+      "ids": [
+        "sr-35ab0699cbe0",
+        "sr-c45932dd939e",
+        "sr-7d511407d238",
+        "sr-66508822049b"
+      ],
+      "labels": [
+        "defer",
+        "no_op",
+        "set_default",
+        "set_exception"
+      ]
+    },
+    {
+      "ids": [
+        "sr-eebcf83ce256",
+        "sr-5d870a22d326",
+        "sr-f43a3cfb6344",
+        "sr-22d16eb7c1e9"
+      ],
+      "labels": [
+        "defer",
+        "no_op",
+        "set_default",
+        "set_exception"
+      ]
+    },
+    {
+      "ids": [
+        "sr-8d803d1d2ac2",
+        "sr-a4b1b51ef7bf",
+        "sr-a565afca1a60",
+        "sr-8228810174a4"
+      ],
+      "labels": [
+        "defer",
+        "no_op",
+        "set_default",
+        "set_exception"
+      ]
+    },
+    {
+      "ids": [
+        "sr-a14305583944",
+        "sr-b11ae2eaa472",
+        "sr-7de33e4f0625",
+        "sr-9d8b61676185"
+      ],
+      "labels": [
+        "defer",
+        "no_op",
+        "set_default",
+        "set_exception"
+      ]
+    },
+    {
+      "ids": [
+        "sr-b19a38ae7efe",
+        "sr-5fa0db1a95f2",
+        "sr-fbd824fedaa4",
+        "sr-ca8b1d557288"
+      ],
+      "labels": [
+        "defer",
+        "no_op",
+        "set_default",
+        "set_exception"
+      ]
+    },
+    {
+      "ids": [
+        "sr-a2f101d04c75",
+        "sr-00c57b2adc29",
+        "sr-5a0edf87f4e2",
+        "sr-b63b8371a489"
+      ],
+      "labels": [
+        "defer",
+        "no_op",
+        "set_default",
+        "set_exception"
+      ]
+    },
+    {
+      "ids": [
+        "sr-456f0db73293",
+        "sr-45ea67b45249",
+        "sr-e66a9cd45db0",
+        "sr-3b7756629925"
+      ],
+      "labels": [
+        "defer",
+        "no_op",
+        "set_default",
+        "set_exception"
+      ]
+    },
+    {
+      "ids": [
+        "sr-d806ad4a6f64",
+        "sr-4fccb54727fc",
+        "sr-f47346f62cb2",
+        "sr-83640bcd8b12"
+      ],
+      "labels": [
+        "defer",
+        "no_op",
+        "set_default",
+        "set_exception"
+      ]
+    },
+    {
+      "ids": [
+        "sr-1b3549668e60",
+        "sr-74d14c098e1d",
+        "sr-18e4cc2bfbf3",
+        "sr-2270b7c2662a"
+      ],
+      "labels": [
+        "defer",
+        "no_op",
+        "set_default",
+        "set_exception"
+      ]
+    },
+    {
+      "ids": [
+        "sr-0f4c7ab1c59f",
+        "sr-0ca0a065579d",
+        "sr-c2d2215e370c",
+        "sr-8a90db042dcd"
+      ],
+      "labels": [
+        "defer",
+        "no_op",
+        "set_default",
+        "set_exception"
+      ]
+    },
+    {
+      "ids": [
+        "sr-fada9b5cfe27",
+        "sr-bbb76aa822e0",
+        "sr-ff03e33f39b4",
+        "sr-4940636d3c57"
+      ],
+      "labels": [
+        "defer",
+        "no_op",
+        "set_default",
+        "set_exception"
+      ]
+    },
+    {
+      "ids": [
+        "sr-22fd6541053b",
+        "sr-2850588cc5cd",
+        "sr-cf8a6832d255",
+        "sr-50e3af34671d"
+      ],
+      "labels": [
+        "defer",
+        "no_op",
+        "set_default",
+        "set_exception"
+      ]
+    },
+    {
+      "ids": [
+        "sr-09cb48197c0e",
+        "sr-c3adbed3b102",
+        "sr-c8d9c7b594e9",
+        "sr-cf47ddaeed0f"
+      ],
+      "labels": [
+        "defer",
+        "no_op",
+        "set_default",
+        "set_exception"
+      ]
+    },
+    {
+      "ids": [
+        "sr-4584a6e72f59",
+        "sr-1e990d0b4b4f",
+        "sr-7f408bd225e7",
+        "sr-c50afa53ad25"
+      ],
+      "labels": [
+        "defer",
+        "no_op",
+        "set_default",
+        "set_exception"
+      ]
+    },
+    {
+      "ids": [
+        "sr-26140de9a9b1",
+        "sr-bf8519693eda",
+        "sr-b810671bb63f",
+        "sr-b0c48fd10df1"
+      ],
+      "labels": [
+        "defer",
+        "no_op",
+        "set_default",
+        "set_exception"
+      ]
+    },
+    {
+      "ids": [
+        "sr-30b5dcd8fd43",
+        "sr-fe71e6b70684",
+        "sr-d658cfe0a8c7",
+        "sr-f7e803a3c7be"
+      ],
+      "labels": [
+        "defer",
+        "no_op",
+        "set_default",
+        "set_exception"
+      ]
+    },
+    {
+      "ids": [
+        "sr-836af84416fa",
+        "sr-4a2b2b31fa39",
+        "sr-eefbc6faee15",
+        "sr-0a4a7415ca62"
+      ],
+      "labels": [
+        "defer",
+        "no_op",
+        "set_default",
+        "set_exception"
+      ]
+    },
+    {
+      "ids": [
+        "sr-683acbf3cf0c",
+        "sr-d438c92acf63",
+        "sr-eff7ba24e17f",
+        "sr-1d3940127351"
+      ],
+      "labels": [
+        "defer",
+        "no_op",
+        "set_default",
+        "set_exception"
+      ]
+    },
+    {
+      "ids": [
+        "sr-3dcfedf71dab",
+        "sr-7609302f69c9",
+        "sr-33e404ccb4d0",
+        "sr-202661f70ef7"
+      ],
+      "labels": [
+        "defer",
+        "no_op",
+        "set_default",
+        "set_exception"
+      ]
+    },
+    {
+      "ids": [
+        "sr-cc22aaed1ce6",
+        "sr-3e33a7531b96",
+        "sr-9a1c0ec8fe85",
+        "sr-417ed20e03c5"
+      ],
+      "labels": [
+        "defer",
+        "no_op",
+        "set_default",
+        "set_exception"
+      ]
+    },
+    {
+      "ids": [
+        "sr-080229298720",
+        "sr-39c253d3043a",
+        "sr-83d6952c07ae",
+        "sr-402eb0aeb068"
+      ],
+      "labels": [
+        "defer",
+        "no_op",
+        "set_default",
+        "set_exception"
+      ]
+    }
+  ],
+  "arm_input_identity": {
+    "same_ids": true,
+    "unequal_inputs": [],
+    "note": "Exact visible inputs only; target semantics and training hyperparameters require separate checks."
+  }
+}

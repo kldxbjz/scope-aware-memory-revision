@@ -1,0 +1,7 @@
+{
+  "n": 160,
+  "canonical_state_transitions": "PASS",
+  "crud_target_replay": "PASS",
+  "visible_prompt_identity": "PASS",
+  "limit": "Checks authored target algebra, not independent truth of conversational labels or a learned model."
+}

@@ -1,0 +1,22 @@
+{
+  "version": "0.1",
+  "records": 160,
+  "split_counts": {
+    "train": 128,
+    "dev": 32
+  },
+  "action_counts": {
+    "set_default": 40,
+    "set_exception": 40,
+    "no_op": 40,
+    "defer": 40
+  },
+  "independent_domain_families": 40,
+  "independent_discourse_template_families": 10,
+  "sha256": {
+    "crud_sft.jsonl": "e4a92bfa1665c13980b4477fb70099a68d7e4112e19b436f81023c4b94fce855",
+    "inputs.jsonl": "e4c1a8377afce9ca5e36215054bb5010125a89c7651f76b6a9358e2406a63c6d",
+    "labels.jsonl": "c6711ea1e391a1f865ceecf7b9b0b02c96de9c2cb6317818eb82968e9554aaa8",
+    "scope_sft.jsonl": "ba6a05f189b7e46e6213c3465499c22de4941018fe5588de68157fa67738fe26"
+  }
+}

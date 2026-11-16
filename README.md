@@ -13,6 +13,7 @@ fixtures/       handwritten toy timeline for the replay smoke test
 annotations/    blind annotation pilot: packet, author key, locked labels
 results/        small saved outputs of the scope_memory scripts
 docs/           experiment plan and one write-up per milestone
+training/       synthetic SFT corpus v0.1, its audit and the CPU preflight
 ```
 
 ## Milestones
@@ -24,6 +25,7 @@ docs/           experiment plan and one write-up per milestone
 | Six-case evidence spot-check, fictional paired pilot | [docs/evidence-spotcheck.md](docs/evidence-spotcheck.md) | `scope_memory/paired_pilot.py` | in the write-up |
 | Read vs write diagnostic | [docs/read-write-diagnostic.md](docs/read-write-diagnostic.md) | `scope_memory/read_write_diagnostic.py` | `results/read_write_results.json` |
 | Internal blind annotation pilot | [docs/blind-pilot.md](docs/blind-pilot.md) | `scope_memory/score_blind_pilot.py` | `results/blind_score.json` |
+| Synthetic SFT corpus v0.1 and CPU preflight | [docs/training-intake.md](docs/training-intake.md) | [training/](training/README.md) | in the write-up |
 
 ## Quickstart
 
@@ -37,7 +39,7 @@ python3 -m scope_memory.score_blind_pilot       # stdout = results/blind_score.j
 python3 -m scope_memory.audit_horizon PATH_TO_ROWS_RESPONSE --output results/audit_horizon_result.json
 ```
 
-The HorizonBench rows response is kept out of Git ([docs/horizon-audit.md](docs/horizon-audit.md)).
+The HorizonBench rows response is kept out of Git ([docs/horizon-audit.md](docs/horizon-audit.md)). Training-corpus checks are listed in [training/README.md](training/README.md).
 
 ## Replay smoke test
 
@@ -56,7 +58,8 @@ These are candidates, not verified ready-made per-event action-label datasets. P
 
 ## Data hygiene
 
-- Tracked: code, small handwritten fixtures and annotations, and small saved results.
+- Tracked: code, small handwritten fixtures and annotations, small saved results, and the synthetic training corpus v0.1 (about 0.4 MB of JSONL).
 - Not tracked: raw correspondence, raw dataset rows, credentials, checkpoints and run outputs (`local-notes/`, `private/`, `data/`, `outputs/`, `runs/`, `logs/`, `checkpoints/` are ignored).
 - The three audited HorizonBench users are audit-only and stay out of training, validation and final test.
 - The earlier 40-example smoke pilot and 24-example candidate eval set must never enter training.
+- `training/scope_revision_training/labels.jsonl` holds gold states and actions; never feed it to a model as input.
