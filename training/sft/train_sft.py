@@ -1,8 +1,11 @@
 """LoRA SFT of one arm on protocol-v1 rows with TRL; resumes from the last checkpoint after preemption.
 
 Usage: python train_sft.py --model DIR --sft-dir DIR --arm scope --output-dir DIR [--max-steps N | --epochs E]
+train_summary.json records the arm and the SHA-256 of the policy instruction in the rows; baseline.py checks both
+before it evaluates the adapter.
 """
 import argparse
+import hashlib
 import json
 import sys
 from pathlib import Path
@@ -41,6 +44,10 @@ def main():
     out.mkdir(parents=True, exist_ok=True)
     tokenizer = AutoTokenizer.from_pretrained(args.model)
     rows = load_rows(Path(args.sft_dir) / f"train_{args.arm}_sft.jsonl")
+    instructions = {r["system"] for r in rows}
+    if len(instructions) != 1 or any(r["arm"] != args.arm for r in rows):
+        sys.exit(f"rows must all be {args.arm} rows with one policy instruction")
+    instruction_sha = hashlib.sha256(instructions.pop().encode("utf-8")).hexdigest()
     lengths = length_report(tokenizer, rows, args.max_length)
     if lengths["over_max_length"]:
         sys.exit(f"refusing to truncate: {lengths}")
@@ -60,7 +67,8 @@ def main():
     trainer.train(resume_from_checkpoint=get_last_checkpoint(str(out)))
     trainer.save_model(str(out / "adapter"))
     tokenizer.save_pretrained(str(out / "adapter"))
-    summary = {"arm": args.arm, "rows": len(rows), "lengths": lengths, "args": vars(args),
+    summary = {"arm": args.arm, "rows": len(rows), "policy_instruction_sha256": instruction_sha, "lengths": lengths,
+               "args": vars(args),
                "log_history": trainer.state.log_history}
     (out / "train_summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
     (out / "DONE").write_text("ok\n", encoding="utf-8")

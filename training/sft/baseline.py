@@ -3,7 +3,7 @@ memory, and replies from a fixed Answer Agent to every probe.
 
 Without adapters this is the prompt baseline M0 (CRUD) / M1 (scope); `--shots k` adds fixed train
 demonstrations, the same events for both arms. With SFT, each arm loads only its own adapter (`--adapter-scope`,
-`--adapter-crud`). `--policy gold` and `--policy noop` replace the policy model with reference memories (the gold
+`--adapter-crud`), whose train_summary.json must name that arm and the current policy instruction. `--policy gold` and `--policy noop` replace the policy model with reference memories (the gold
 path, and memory never written), so the Answer Agent's ceiling and the do-nothing floor are measured the same way.
 The Answer Agent is always a freshly loaded base model without any adapter.
 Writes predictions_<arm>.jsonl (policy model only), trajectories.jsonl, answers.jsonl and answer_agent.json for
@@ -57,6 +57,19 @@ def lora_modules(model):
     return [name for name, _ in model.named_modules() if name.rsplit(".", 1)[-1].startswith("lora_")]
 
 
+def check_adapter(arm, adapter, instruction):
+    """Refuse an adapter trained on the other arm or with another policy instruction, as recorded by train_sft.py in
+    train_summary.json next to the adapter directory."""
+    path = Path(adapter).parent / "train_summary.json"
+    if not path.exists():
+        sys.exit(f"{path} is missing; evaluate adapters written by train_sft.py")
+    summary = json.loads(path.read_text(encoding="utf-8"))
+    if summary.get("arm") != arm:
+        sys.exit(f"{adapter} was trained on the {summary.get('arm')} arm, not {arm}")
+    if summary.get("policy_instruction_sha256") != hashlib.sha256(instruction.encode("utf-8")).hexdigest():
+        sys.exit(f"{adapter} was trained with another {arm} policy instruction")
+
+
 def pick_option(reply, options):
     text = " ".join(reply.lower().split())
     hits = [o for o in options if " ".join(o.lower().split()) in text]
@@ -104,6 +117,9 @@ def main():
     from scope_memory.evaluate import answer_prompt, gold_policy, noop_policy, parse_output, rollout
     from scope_memory.protocol import (ARMS, POLICY_INSTRUCTIONS, CrudMemory, ScopeMemory, canon, catalogs_of,
                                        policy_input, read_episodes, sft_rows)
+    for arm, adapter in adapters.items():
+        if adapter:
+            check_adapter(arm, adapter, POLICY_INSTRUCTIONS[arm])
 
     out = Path(args.out_dir)
     out.mkdir(parents=True, exist_ok=True)
