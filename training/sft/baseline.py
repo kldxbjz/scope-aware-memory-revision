@@ -2,9 +2,12 @@
 memory, and replies from a fixed Answer Agent to every probe.
 
 Without adapters this is the prompt baseline M0 (CRUD) / M1 (scope); `--shots k` adds fixed train
-demonstrations. With SFT, each arm loads only its own adapter (`--adapter-scope`, `--adapter-crud`).
+demonstrations, the same events for both arms. With SFT, each arm loads only its own adapter (`--adapter-scope`,
+`--adapter-crud`). `--policy gold` and `--policy noop` replace the policy model with reference memories (the gold
+path, and memory never written), so the Answer Agent's ceiling and the do-nothing floor are measured the same way.
 The Answer Agent is always a freshly loaded base model without any adapter.
-Writes predictions_<arm>.jsonl, trajectories.jsonl, answers.jsonl and answer_agent.json for scope_memory.evaluate.
+Writes predictions_<arm>.jsonl (policy model only), trajectories.jsonl, answers.jsonl and answer_agent.json for
+scope_memory.evaluate.
 """
 import argparse
 import gc
@@ -60,6 +63,21 @@ def pick_option(reply, options):
     return max(hits, key=len) if hits else reply.strip()
 
 
+def pick_demos(rows, shots, arms):
+    """One train event per event category, the same events for every arm: in each category the event whose rows
+    (prompt + completion, summed over the arms) are shortest. Returns {arm: rows in category order}."""
+    events = {}
+    for r in rows:
+        events.setdefault((r["episode_id"], r["event_id"]), {})[r["arm"]] = r
+    size = {key: sum(len(r["prompt"]) + len(r["completion"]) for r in by_arm.values()) for key, by_arm in events.items()}
+    by_category = {}
+    for key in sorted(events, key=lambda k: (size[k], k)):
+        if set(events[key]) == set(arms):
+            by_category.setdefault(events[key][arms[0]]["category"], key)
+    chosen = [by_category[c] for c in sorted(by_category)][:shots]
+    return {arm: [events[key][arm] for key in chosen] for arm in arms}
+
+
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--model", required=True)
@@ -73,19 +91,25 @@ def main():
     p.add_argument("--max-new-tokens", type=int, default=512)
     p.add_argument("--shots", type=int, default=0, help="fixed in-context demonstrations per arm (0 = zero-shot)")
     p.add_argument("--demo-episodes", help="split the demonstrations come from (train)")
+    p.add_argument("--policy", choices=("model", "gold", "noop"), default="model",
+                   help="model: the policy LLM (default); gold / noop: reference memories along the gold path or "
+                        "never written, answered by the same Answer Agent")
     args = p.parse_args()
     if bool(args.adapter_scope) != bool(args.adapter_crud):
         sys.exit("give both --adapter-scope and --adapter-crud, or neither")
+    if args.policy != "model" and (args.adapter_scope or args.shots):
+        sys.exit("--policy gold/noop takes no adapters or demonstrations")
     adapters = {"scope": args.adapter_scope, "crud": args.adapter_crud}
     sys.path.insert(0, args.repo)
-    from scope_memory.evaluate import answer_prompt, parse_output
+    from scope_memory.evaluate import answer_prompt, gold_policy, noop_policy, parse_output, rollout
     from scope_memory.protocol import (ARMS, POLICY_INSTRUCTIONS, CrudMemory, ScopeMemory, canon, catalogs_of,
                                        policy_input, read_episodes, sft_rows)
 
     out = Path(args.out_dir)
     out.mkdir(parents=True, exist_ok=True)
-    config = {"model": args.model, "episodes": args.episodes, "limit": args.limit, "adapters": adapters,
-              "shots": args.shots, "demo_episodes": args.demo_episodes, "answer_agent": "base model, no adapter",
+    config = {"model": args.model, "policy": args.policy, "episodes": args.episodes, "limit": args.limit,
+              "adapters": adapters, "shots": args.shots, "demo_episodes": args.demo_episodes,
+              "answer_agent": "base model, no adapter",
               "policy_instructions_sha256": {arm: hashlib.sha256(POLICY_INSTRUCTIONS[arm].encode("utf-8")).hexdigest()
                                              for arm in ARMS}}
     config_path = out / "run_config.json"  # a resumed run must use the same settings and instructions
@@ -95,16 +119,17 @@ def main():
     episodes = read_episodes(args.episodes)[:args.limit] if args.limit else read_episodes(args.episodes)
     (out / "episodes.jsonl").write_text("".join(json.dumps(e) + "\n" for e in episodes), encoding="utf-8")
     demos = {arm: [] for arm in ARMS}
-    if args.shots:  # shortest train example per event category, fixed for every prompt
+    if args.shots:  # one train event per category, the same events for both arms, fixed for every prompt
         pool = [r for e in read_episodes(args.demo_episodes) for r in sft_rows(e)]
-        for arm in ARMS:
-            by_category = {}
-            for r in sorted((r for r in pool if r["arm"] == arm), key=lambda r: len(r["prompt"]) + len(r["completion"])):
-                by_category.setdefault(r["category"], r)
-            chosen = [by_category[c] for c in sorted(by_category)][:args.shots]
+        for arm, chosen in pick_demos(pool, args.shots, ARMS).items():
             demos[arm] = [m for r in chosen for m in ({"role": "user", "content": r["prompt"]},
                                                        {"role": "assistant", "content": r["completion"]})]
             (out / f"demos_{arm}.json").write_text(json.dumps([r["id"] for r in chosen]) + "\n", encoding="utf-8")
+    reference = None  # policy model
+    if args.policy == "gold":
+        reference = gold_policy(episodes)
+    elif args.policy == "noop":
+        reference = noop_policy
 
     loaded = {"gen": None}
 
@@ -118,6 +143,13 @@ def main():
         return gen
 
     for arm in ARMS:
+        if reference is not None:  # reference memories: no policy model, no teacher-forced outputs
+            traj_path = out / f"trajectories_{arm}.jsonl"
+            if not traj_path.exists():
+                traj_path.write_text("".join(json.dumps(rollout(e, arm, reference)) + "\n" for e in episodes),
+                                     encoding="utf-8")
+                print(f"reference {args.policy} {arm}: {len(episodes)} trajectories", flush=True)
+            continue
         target = out / f"predictions_{arm}.jsonl"
         if not target.exists():  # teacher-forced
             rows = [r for e in episodes for r in sft_rows(e) if r["arm"] == arm]

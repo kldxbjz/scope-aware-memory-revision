@@ -15,6 +15,7 @@
 #   zero-shot M0/M1: no options
 #   six-shot ICL:    --shots 6 --demo-episodes <mirror>/training/scope_revision_v1/data/train.jsonl --batch-size 8
 #   SFT:             --adapter-scope DIR --adapter-crud DIR
+#   references:      --policy gold (Answer Agent on gold memory) or --policy noop (memory never written)
 set -euo pipefail
 RUN=${1:?usage: baseline.sbatch RUN_DIR [baseline.py options]}
 shift
@@ -31,6 +32,7 @@ echo "host=$(hostname) job=${SLURM_JOB_ID:-} options=$* $(date -Is)"; nvidia-smi
 cd "$MIRROR"
 # Primary: eval_rollout_answer_agent.json (Answer Agent QA). Diagnostic: eval_tf_*.json, eval_rollout_oracle_reader.json.
 for arm in scope crud; do
+  [ -f "$RUN/predictions_$arm.jsonl" ] || continue  # reference runs have no policy outputs to score
   "$PY" -m scope_memory.evaluate teacher-forced --data "$RUN/episodes.jsonl" --arm $arm \
     --predictions "$RUN/predictions_$arm.jsonl" --details "$RUN/details_$arm.jsonl" --out "$RUN/eval_tf_$arm.json" > /dev/null
 done

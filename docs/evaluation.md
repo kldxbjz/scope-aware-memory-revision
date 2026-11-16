@@ -69,7 +69,9 @@ python3 -m scope_memory.evaluate rollout-score --data DEV.jsonl --trajectories t
 
 ## Model runs
 
-`training/sft/baseline.py` produces the inputs on Babel: teacher-forced predictions, rollout trajectories and Answer Agent replies. Prompt baselines run without adapters. SFT runs pass `--adapter-scope` and `--adapter-crud`, so each arm generates only with its own adapter; the Answer Agent is then a freshly loaded base model, and the script stops if any LoRA module is present.
+`training/sft/baseline.py` produces the inputs on Babel: teacher-forced predictions, rollout trajectories and Answer Agent replies. Prompt baselines run without adapters; with `--shots k` both arms see demonstrations of the same train events, one per event category. SFT runs pass `--adapter-scope` and `--adapter-crud`, so each arm generates only with its own adapter; the Answer Agent is then a freshly loaded base model, and the script stops if any LoRA module is present.
+
+Two reference rows put the QA numbers in range, both read by the same Answer Agent: `--policy gold` gives it each arm's gold memory (its ceiling with correct memory) and `--policy noop` the memory as seeded, never written (the do-nothing floor). Chance is 25% (four options per probe).
 
 ## Not covered yet
 
