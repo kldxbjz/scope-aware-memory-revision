@@ -9,7 +9,7 @@ How should an AI agent revise stored preferences when a new statement is a conte
 ```text
 scope_memory/   stdlib-only Python code; run modules with python3 -m scope_memory.<name>
 tests/          unit tests for scope_memory
-fixtures/       handwritten toy timeline for the replay smoke test
+fixtures/       handwritten toy timeline and a worked protocol v1 episode
 annotations/    blind annotation pilot: packet, author key, locked labels
 results/        small saved outputs of the scope_memory scripts
 docs/           experiment plan and one write-up per milestone
@@ -26,16 +26,19 @@ training/       synthetic SFT corpus v0.1, its audit and the CPU preflight
 | Read vs write diagnostic | [docs/read-write-diagnostic.md](docs/read-write-diagnostic.md) | `scope_memory/read_write_diagnostic.py` | `results/read_write_results.json` |
 | Internal blind annotation pilot | [docs/blind-pilot.md](docs/blind-pilot.md) | `scope_memory/score_blind_pilot.py` | `results/blind_score.json` |
 | Synthetic SFT corpus v0.1 and CPU preflight | [docs/training-intake.md](docs/training-intake.md) | [training/](training/README.md) | in the write-up |
+| Memory revision protocol v1 (outline v2.7): executors, gold projection, data-generation prompt | [docs/protocol.md](docs/protocol.md) | `scope_memory/protocol.py` | none yet |
+| Evaluator: teacher-forced and rollout | [docs/evaluation.md](docs/evaluation.md) | `scope_memory/evaluate.py` | none yet |
 
 ## Quickstart
 
 Python 3 standard library only, no install step. From the repository root:
 
 ```sh
-python3 -m unittest -v                          # 21 tests
+python3 -m unittest -v                          # 37 tests
 python3 -m scope_memory.replay                  # replay smoke test
 python3 -m scope_memory.read_write_diagnostic   # stdout = results/read_write_results.json
 python3 -m scope_memory.score_blind_pilot       # stdout = results/blind_score.json
+python3 -m scope_memory.evaluate self-check --data fixtures/protocol_episode.json   # protocol pipeline check
 python3 -m scope_memory.audit_horizon PATH_TO_ROWS_RESPONSE --output results/audit_horizon_result.json
 ```
 

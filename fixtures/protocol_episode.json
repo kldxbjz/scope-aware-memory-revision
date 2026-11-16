@@ -1,0 +1,103 @@
+{
+  "episode_id": "fx-0001",
+  "split": "fixture",
+  "family": "fixture-drink-delivery",
+  "contrast_group": null,
+  "attributes": [
+    {"attribute": "afternoon drink",
+     "options": ["green tea", "regular coffee", "decaf coffee", "sparkling water"],
+     "value_aliases": {"decaf coffee": ["decaf"]},
+     "scopes": {"exam": {"scope": "exam weeks", "aliases": ["exam week", "during exams"]}}},
+    {"attribute": "grocery delivery window",
+     "options": ["morning", "afternoon", "evening"],
+     "value_aliases": {},
+     "scopes": {"renovation": {"scope": "the studio renovation", "aliases": ["renovation weeks"]}}}
+  ],
+  "initial_state": {
+    "afternoon drink": {"general": "green tea", "exceptions": {}},
+    "grocery delivery window": {"general": "morning", "exceptions": {}}
+  },
+  "events": [
+    {"event_id": "e1", "date": "2027-02-01",
+     "dialogue": [
+       {"role": "user", "content": "Exams start next week and I always crash around three."},
+       {"role": "assistant", "content": "Do you want me to suggest something different in the afternoons?"},
+       {"role": "user", "content": "During exam weeks, regular coffee from now on. Other weeks I'm happy with green tea."}],
+     "gold": {"category": "scoped_exception", "decision": "resolved", "evidence_message": 3,
+              "rationale": "A lasting rule for exam weeks; ordinary weeks keep green tea.",
+              "state_after": {
+                "afternoon drink": {"general": "green tea", "exceptions": {"exam": {"value": "regular coffee", "validity": {"kind": "persistent"}}}},
+                "grocery delivery window": {"general": "morning", "exceptions": {}}}}},
+    {"event_id": "e2", "date": "2027-02-08",
+     "dialogue": [
+       {"role": "user", "content": "My friend is coming over this afternoon. Can you add a coffee for her to today's order?"},
+       {"role": "assistant", "content": "Sure. Anything to change about your own afternoon drink?"},
+       {"role": "user", "content": "No, the coffee is just for her."}],
+     "gold": {"category": "stable_preference", "decision": "resolved", "evidence_message": 3,
+              "rationale": "Someone else's one-off drink.",
+              "state_after": {
+                "afternoon drink": {"general": "green tea", "exceptions": {"exam": {"value": "regular coffee", "validity": {"kind": "persistent"}}}},
+                "grocery delivery window": {"general": "morning", "exceptions": {}}}}},
+    {"event_id": "e3", "date": "2027-02-15",
+     "dialogue": [
+       {"role": "user", "content": "The exam-week coffee is keeping me up at night."},
+       {"role": "assistant", "content": "Should I suggest something else during exams?"},
+       {"role": "user", "content": "Make it decaf coffee for exam weeks from now on."}],
+     "gold": {"category": "exception_revision", "decision": "resolved", "evidence_message": 3,
+              "rationale": "The exam-week rule changes value; the general preference is untouched.",
+              "state_after": {
+                "afternoon drink": {"general": "green tea", "exceptions": {"exam": {"value": "decaf coffee", "validity": {"kind": "persistent"}}}},
+                "grocery delivery window": {"general": "morning", "exceptions": {}}}}},
+    {"event_id": "e4", "date": "2027-02-22",
+     "dialogue": [
+       {"role": "user", "content": "The studio downstairs is being renovated from March 10 through March 24, so mornings will be loud."},
+       {"role": "assistant", "content": "Should groceries come at a different time while that's going on?"},
+       {"role": "user", "content": "Yes, evenings for those two weeks, then back to mornings."}],
+     "gold": {"category": "scoped_exception", "decision": "resolved", "evidence_message": 3,
+              "rationale": "A dated window; mornings stay the general choice.",
+              "state_after": {
+                "afternoon drink": {"general": "green tea", "exceptions": {"exam": {"value": "decaf coffee", "validity": {"kind": "persistent"}}}},
+                "grocery delivery window": {"general": "morning", "exceptions": {"renovation": {"value": "evening", "validity": {"kind": "window", "from": "2027-03-10", "to": "2027-03-24"}}}}}}},
+    {"event_id": "e5", "date": "2027-03-01",
+     "dialogue": [
+       {"role": "user", "content": "I've been thinking about sparkling water in the afternoons."},
+       {"role": "assistant", "content": "For every afternoon, or only during exam weeks?"},
+       {"role": "user", "content": "I haven't decided yet. Let me think about it."}],
+     "gold": {"category": "clarify", "decision": "clarify", "evidence_message": 3,
+              "rationale": "The target is left open.",
+              "state_after": {
+                "afternoon drink": {"general": "green tea", "exceptions": {"exam": {"value": "decaf coffee", "validity": {"kind": "persistent"}}}},
+                "grocery delivery window": {"general": "morning", "exceptions": {"renovation": {"value": "evening", "validity": {"kind": "window", "from": "2027-03-10", "to": "2027-03-24"}}}}}}},
+    {"event_id": "e6", "date": "2027-03-05",
+     "dialogue": [
+       {"role": "user", "content": "I've decided: sparkling water is my normal afternoon drink now."},
+       {"role": "assistant", "content": "Got it. And during exam weeks?"},
+       {"role": "user", "content": "Keep the decaf for exams."}],
+     "gold": {"category": "general_update", "decision": "resolved", "evidence_message": 1,
+              "rationale": "The general preference changes; the exam-week rule stays.",
+              "state_after": {
+                "afternoon drink": {"general": "sparkling water", "exceptions": {"exam": {"value": "decaf coffee", "validity": {"kind": "persistent"}}}},
+                "grocery delivery window": {"general": "morning", "exceptions": {"renovation": {"value": "evening", "validity": {"kind": "window", "from": "2027-03-10", "to": "2027-03-24"}}}}}}},
+    {"event_id": "e7", "date": "2027-03-30",
+     "dialogue": [
+       {"role": "user", "content": "I finished my last course, so there are no more exam weeks."},
+       {"role": "assistant", "content": "Should exam weeks still get decaf coffee?"},
+       {"role": "user", "content": "No need for anything separate anymore; those afternoons can be like any other."}],
+     "gold": {"category": "exception_retirement", "decision": "resolved", "evidence_message": 3,
+              "rationale": "The exam-week rule is retired, so those afternoons inherit the general preference.",
+              "state_after": {
+                "afternoon drink": {"general": "sparkling water", "exceptions": {}},
+                "grocery delivery window": {"general": "morning", "exceptions": {"renovation": {"value": "evening", "validity": {"kind": "window", "from": "2027-03-10", "to": "2027-03-24"}}}}}}}
+  ],
+  "probes": [
+    {"probe_id": "p1", "after_event": "e1", "attribute": "afternoon drink", "question": "What afternoon drink should I suggest on 9 February 2027, during an exam week?", "date": "2027-02-09", "situation_scope_keys": ["exam"], "options": ["green tea", "regular coffee", "decaf coffee", "sparkling water"], "gold": "regular coffee", "category": "scoped_exception", "probe_type": "target"},
+    {"probe_id": "p2", "after_event": "e1", "attribute": "afternoon drink", "question": "What afternoon drink should I suggest on an ordinary day, 20 February 2027?", "date": "2027-02-20", "situation_scope_keys": [], "options": ["green tea", "regular coffee", "decaf coffee", "sparkling water"], "gold": "green tea", "category": "scoped_exception", "probe_type": "default"},
+    {"probe_id": "p3", "after_event": "e2", "attribute": "afternoon drink", "question": "What afternoon drink should I suggest for the user on an ordinary day?", "date": "2027-02-10", "situation_scope_keys": [], "options": ["green tea", "regular coffee", "decaf coffee", "sparkling water"], "gold": "green tea", "category": "stable_preference", "probe_type": "default"},
+    {"probe_id": "p4", "after_event": "e3", "attribute": "afternoon drink", "question": "What afternoon drink should I suggest during an exam week?", "date": "2027-02-16", "situation_scope_keys": ["exam"], "options": ["green tea", "regular coffee", "decaf coffee", "sparkling water"], "gold": "decaf coffee", "category": "exception_revision", "probe_type": "target"},
+    {"probe_id": "p5", "after_event": "e4", "attribute": "grocery delivery window", "question": "Which delivery window should I book for groceries arriving on 12 March 2027?", "date": "2027-03-12", "situation_scope_keys": ["renovation"], "options": ["morning", "afternoon", "evening"], "gold": "evening", "category": "scoped_exception", "probe_type": "target"},
+    {"probe_id": "p6", "after_event": "e4", "attribute": "grocery delivery window", "question": "Which delivery window should I book for groceries arriving on 25 March 2027?", "date": "2027-03-25", "situation_scope_keys": ["renovation"], "options": ["morning", "afternoon", "evening"], "gold": "morning", "category": "scoped_exception", "probe_type": "boundary"},
+    {"probe_id": "p7", "after_event": "e6", "attribute": "afternoon drink", "question": "What afternoon drink should I suggest on an ordinary day in March?", "date": "2027-03-06", "situation_scope_keys": [], "options": ["green tea", "regular coffee", "decaf coffee", "sparkling water"], "gold": "sparkling water", "category": "general_update", "probe_type": "target"},
+    {"probe_id": "p8", "after_event": "e6", "attribute": "afternoon drink", "question": "What afternoon drink should I suggest during an exam week in March?", "date": "2027-03-08", "situation_scope_keys": ["exam"], "options": ["green tea", "regular coffee", "decaf coffee", "sparkling water"], "gold": "decaf coffee", "category": "general_update", "probe_type": "neighbor"},
+    {"probe_id": "p9", "after_event": "e7", "attribute": "afternoon drink", "question": "What afternoon drink should I suggest during what used to be an exam week?", "date": "2027-04-05", "situation_scope_keys": ["exam"], "options": ["green tea", "regular coffee", "decaf coffee", "sparkling water"], "gold": "sparkling water", "category": "exception_revision", "probe_type": "target"}
+  ]
+}
