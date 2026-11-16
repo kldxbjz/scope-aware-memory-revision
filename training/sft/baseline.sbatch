@@ -16,6 +16,8 @@
 #   six-shot ICL:    --shots 6 --demo-episodes <mirror>/training/scope_revision_v1/data/train.jsonl --batch-size 8
 #   SFT:             --adapter-scope DIR --adapter-crud DIR
 #   references:      --policy gold (Answer Agent on gold memory) or --policy noop (memory never written)
+#   reader:          --reader-version N picks the Answer Agent prompt; --from-run OLD_RUN plus OLD_RUN's own options
+#                    reuses its policy outputs, so only the Answer Agent runs again
 set -euo pipefail
 RUN=${1:?usage: baseline.sbatch RUN_DIR [baseline.py options]}
 shift
@@ -37,7 +39,7 @@ for arm in scope crud; do
     --predictions "$RUN/predictions_$arm.jsonl" --details "$RUN/details_$arm.jsonl" --out "$RUN/eval_tf_$arm.json" > /dev/null
 done
 "$PY" -m scope_memory.evaluate rollout-score --data "$RUN/episodes.jsonl" --trajectories "$RUN/trajectories.jsonl" \
-  --answers "$RUN/answers.jsonl" --tokenizer "$BIG/models/Qwen3-4B-Instruct-2507" \
+  --answers "$RUN/answers.jsonl" --answer-agent "$RUN/answer_agent.json" --tokenizer "$BIG/models/Qwen3-4B-Instruct-2507" \
   --out "$RUN/eval_rollout_answer_agent.json" > /dev/null
 "$PY" -m scope_memory.evaluate rollout-score --data "$RUN/episodes.jsonl" --trajectories "$RUN/trajectories.jsonl" \
   --oracle-reader --out "$RUN/eval_rollout_oracle_reader.json" > /dev/null

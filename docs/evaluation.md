@@ -73,6 +73,12 @@ python3 -m scope_memory.evaluate rollout-score --data DEV.jsonl --trajectories t
 
 Two reference rows put the QA numbers in range, both read by the same Answer Agent: `--policy gold` gives it each arm's gold memory (its ceiling with correct memory) and `--policy noop` the memory as seeded, never written (the do-nothing floor). Chance is 25% (four options per probe).
 
+### Answer Agent prompt versions
+
+`ANSWER_READERS` in `scope_memory/evaluate.py` holds the Answer Agent prompts, the same for both arms. Version 1 is the original prompt. Version 2 adds one reading rule: "A record limited to a situation or to dates applies only in that situation and on those dates; when no limited record applies, use the general preference." Version 3 adds the rule and asks for a one-sentence check before a final `Answer:` line, which is where the option is read.
+
+Version 1 misread correct memory: on gold memory it failed every boundary probe (a date just after a temporary preference ended: 0/28 for CRUD, 2/28 for scope, against 14/28 and 12/28 when memory was never written) and answered default probes ("an ordinary occasion") with an exception's value (77.8% CRUD, 85.9% scope). The version for formal results is chosen on gold memory alone, before any SFT result exists: the highest QA averaged over the two arms, and the simpler version when two are within one point. `run_config.json`, `answer_agent.json` and the primary report record the version. `baseline.py --from-run OLD_RUN` re-reads a finished run with another version without running the policy again; the settings must match apart from the version.
+
 ## Not covered yet
 
 - Cost metrics beyond memory size and token counts at the probes.

@@ -5,7 +5,9 @@ Without adapters this is the prompt baseline M0 (CRUD) / M1 (scope); `--shots k`
 demonstrations, the same events for both arms. With SFT, each arm loads only its own adapter (`--adapter-scope`,
 `--adapter-crud`), whose train_summary.json must name that arm and the current policy instruction. `--policy gold` and `--policy noop` replace the policy model with reference memories (the gold
 path, and memory never written), so the Answer Agent's ceiling and the do-nothing floor are measured the same way.
-The Answer Agent is always a freshly loaded base model without any adapter.
+The Answer Agent is always a freshly loaded base model without any adapter; `--reader-version` picks its prompt
+(scope_memory.evaluate.ANSWER_READERS), and `--from-run` reuses a finished run's policy outputs so that only the
+Answer Agent runs again.
 Writes predictions_<arm>.jsonl (policy model only), trajectories.jsonl, answers.jsonl and answer_agent.json for
 scope_memory.evaluate.
 """
@@ -13,6 +15,7 @@ import argparse
 import gc
 import hashlib
 import json
+import shutil
 import sys
 from pathlib import Path
 
@@ -70,12 +73,6 @@ def check_adapter(arm, adapter, instruction):
         sys.exit(f"{adapter} was trained with another {arm} policy instruction")
 
 
-def pick_option(reply, options):
-    text = " ".join(reply.lower().split())
-    hits = [o for o in options if " ".join(o.lower().split()) in text]
-    return max(hits, key=len) if hits else reply.strip()
-
-
 def pick_demos(rows, shots, arms):
     """One train event per event category, the same events for every arm: in each category the event whose rows
     (prompt + completion, summed over the arms) are shortest. Returns {arm: rows in category order}."""
@@ -107,6 +104,10 @@ def main():
     p.add_argument("--policy", choices=("model", "gold", "noop"), default="model",
                    help="model: the policy LLM (default); gold / noop: reference memories along the gold path or "
                         "never written, answered by the same Answer Agent")
+    p.add_argument("--reader-version", type=int,
+                   help="Answer Agent prompt version (scope_memory.evaluate.ANSWER_READERS); default ANSWER_READER")
+    p.add_argument("--from-run", help="finished run whose policy outputs are reused, so only the Answer Agent runs "
+                                      "again; its settings must match apart from the reader version")
     args = p.parse_args()
     if bool(args.adapter_scope) != bool(args.adapter_crud):
         sys.exit("give both --adapter-scope and --adapter-crud, or neither")
@@ -114,20 +115,26 @@ def main():
         sys.exit("--policy gold/noop takes no adapters or demonstrations")
     adapters = {"scope": args.adapter_scope, "crud": args.adapter_crud}
     sys.path.insert(0, args.repo)
-    from scope_memory.evaluate import answer_prompt, gold_policy, noop_policy, parse_output, rollout
+    from scope_memory.evaluate import (ANSWER_LINE, ANSWER_READER, ANSWER_READERS, answer_prompt, gold_policy,
+                                       noop_policy, parse_output, pick_option, rollout)
     from scope_memory.protocol import (ARMS, POLICY_INSTRUCTIONS, CrudMemory, ScopeMemory, canon, catalogs_of,
                                        policy_input, read_episodes, sft_rows)
     for arm, adapter in adapters.items():
         if adapter:
             check_adapter(arm, adapter, POLICY_INSTRUCTIONS[arm])
+    reader = ANSWER_READER if args.reader_version is None else args.reader_version
+    if reader not in ANSWER_READERS:
+        sys.exit(f"--reader-version must be one of {sorted(ANSWER_READERS)}")
 
     out = Path(args.out_dir)
     out.mkdir(parents=True, exist_ok=True)
     config = {"model": args.model, "policy": args.policy, "episodes": args.episodes, "limit": args.limit,
               "adapters": adapters, "shots": args.shots, "demo_episodes": args.demo_episodes,
-              "answer_agent": "base model, no adapter",
+              "answer_agent": "base model, no adapter", "reader_version": reader,
               "policy_instructions_sha256": {arm: hashlib.sha256(POLICY_INSTRUCTIONS[arm].encode("utf-8")).hexdigest()
                                              for arm in ARMS}}
+    if args.from_run:
+        config["policy_outputs_from"] = args.from_run
     config_path = out / "run_config.json"  # a resumed run must use the same settings and instructions
     if config_path.exists() and json.loads(config_path.read_text(encoding="utf-8")) != config:
         sys.exit(f"{config_path} was written with other settings or instructions; use a new --out-dir")
@@ -141,6 +148,23 @@ def main():
             demos[arm] = [m for r in chosen for m in ({"role": "user", "content": r["prompt"]},
                                                        {"role": "assistant", "content": r["completion"]})]
             (out / f"demos_{arm}.json").write_text(json.dumps([r["id"] for r in chosen]) + "\n", encoding="utf-8")
+    if args.from_run:  # reuse a finished run's policy outputs: same settings apart from the reader version
+        source = Path(args.from_run)
+        if not (source / "ALL_DONE").exists():
+            sys.exit(f"{source} has no ALL_DONE marker")
+        theirs = {"policy": "model", "reader_version": 1,  # keys added after the first runs, at their old values
+                  **json.loads((source / "run_config.json").read_text(encoding="utf-8"))}
+        differ = sorted(k for k in set(config) | set(theirs)
+                        if k not in ("reader_version", "policy_outputs_from") and config.get(k) != theirs.get(k))
+        if differ:
+            sys.exit(f"{source} was run with other settings: {differ}")
+        for arm in ARMS:
+            if args.shots and (source / f"demos_{arm}.json").read_text(encoding="utf-8") != \
+                    (out / f"demos_{arm}.json").read_text(encoding="utf-8"):
+                sys.exit(f"{source} used other demonstrations")
+            for name in (f"predictions_{arm}.jsonl", f"trajectories_{arm}.jsonl"):
+                if (source / name).exists() and not (out / name).exists():
+                    shutil.copyfile(source / name, out / name)
     reference = None  # policy model
     if args.policy == "gold":
         reference = gold_policy(episodes)
@@ -212,19 +236,23 @@ def main():
         injected = lora_modules(gen.model)
         if injected:
             sys.exit(f"Answer Agent still has LoRA modules, e.g. {injected[0]}")
-        (out / "answer_agent.json").write_text(json.dumps({"model": args.model, "adapter": None, "lora_modules": 0})
-                                               + "\n", encoding="utf-8")
+        agent = {"model": args.model, "adapter": None, "lora_modules": 0, "reader_version": reader}
+        (out / "answer_agent.json").write_text(json.dumps(agent) + "\n", encoding="utf-8")
         by_id = {e["episode_id"]: e for e in episodes}
         items, prompts = [], []
         for line in trajectories_path.read_text(encoding="utf-8").splitlines():
             t = json.loads(line)
             for probe in by_id[t["episode_id"]]["probes"]:
                 items.append((f"{t['episode_id']}/{probe['probe_id']}/{t['arm']}", probe))
-                prompts.append([{"role": "user", "content": answer_prompt(t["snapshots"][probe["after_event"]], probe)}])
-        replies = gen(prompts, 48)
-        answers_path.write_text("".join(json.dumps({"id": i, "answer": pick_option(r, p["options"]), "raw": r}) + "\n"
-                                        for (i, p), r in zip(items, replies)), encoding="utf-8")
-        print(f"answers: {len(items)}", flush=True)
+                prompts.append([{"role": "user",
+                                 "content": answer_prompt(t["snapshots"][probe["after_event"]], probe, reader)}])
+        replies = gen(prompts, ANSWER_READERS[reader][2])
+        if reader == 3:  # replies whose final "Answer:" line is missing are read whole
+            agent["answer_line_missing"] = sum(len(ANSWER_LINE.split(r)) == 1 for r in replies)
+            (out / "answer_agent.json").write_text(json.dumps(agent) + "\n", encoding="utf-8")
+        answers_path.write_text("".join(json.dumps({"id": i, "answer": pick_option(r, p["options"], reader), "raw": r})
+                                        + "\n" for (i, p), r in zip(items, replies)), encoding="utf-8")
+        print(f"answers: {len(items)} (reader version {reader})", flush=True)
 
 
 if __name__ == "__main__":

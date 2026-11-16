@@ -137,5 +137,53 @@ class RolloutWriteTests(unittest.TestCase):
         self.assertNotIn("scope_minus_crud", report)
 
 
+class AnswerReaderTests(unittest.TestCase):
+    VIEW = [{"id": "m1", "text": "For drinks, the user prefers green tea."}]
+    PROBE = {"date": "2030-01-02", "question": "Which drink?", "options": ["green tea", "tea", "coffee", "water"]}
+
+    def test_version_1_is_the_original_prompt(self):
+        from scope_memory.evaluate import answer_prompt
+        original = (f"Memory records:\n{json.dumps(self.VIEW, ensure_ascii=False, indent=1)}\n\nDate: 2030-01-02\n"
+                    "Question: Which drink?\nOptions: green tea | tea | coffee | water\nReply with exactly one option.")
+        self.assertEqual(answer_prompt(self.VIEW, self.PROBE, 1), original)
+
+    def test_later_versions_add_the_reading_rule_for_both_arms_alike(self):
+        from scope_memory.evaluate import READING_RULE, answer_prompt
+        v2, v3 = (answer_prompt(self.VIEW, self.PROBE, v) for v in (2, 3))
+        self.assertEqual(v2.splitlines()[-2:], [READING_RULE, "Reply with exactly one option."])
+        self.assertIn(READING_RULE, v3)
+        self.assertTrue(v3.endswith('starts with "Answer:".'))
+
+    def test_pick_option(self):
+        from scope_memory.evaluate import pick_option
+        options = self.PROBE["options"]
+        self.assertEqual(pick_option("Green  tea.", options, 1), "green tea")  # longest contained option
+        self.assertEqual(pick_option("none of these", options, 2), "none of these")
+        reasoning = "The coffee record ends on January 1, so the general record applies.\nAnswer: green tea"
+        self.assertEqual(pick_option(reasoning, options, 3), "green tea")
+        self.assertEqual(pick_option("The coffee record applies.", options, 3), "coffee")  # no Answer line
+
+    def test_rollout_score_copies_the_answer_agent_description(self):
+        import tempfile
+        from pathlib import Path
+        from scope_memory.evaluate import gold_policy
+        with tempfile.TemporaryDirectory() as tmp:
+            trajectories = Path(tmp, "traj.jsonl")
+            trajectories.write_text("".join(json.dumps(rollout(EPISODE, arm, gold_policy([EPISODE]))) + "\n"
+                                            for arm in ("scope", "crud")), encoding="utf-8")
+            answers = Path(tmp, "answers.jsonl")
+            answers.write_text("".join(json.dumps({"id": f"fx-0001/{p['probe_id']}/{arm}", "answer": p["gold"]}) + "\n"
+                                       for p in EPISODE["probes"] for arm in ("scope", "crud")), encoding="utf-8")
+            agent = Path(tmp, "answer_agent.json")
+            agent.write_text(json.dumps({"reader_version": 2}), encoding="utf-8")
+            buffer = io.StringIO()
+            with contextlib.redirect_stdout(buffer):
+                main(["rollout-score", "--data", str(FIXTURES / "protocol_episode.json"), "--trajectories",
+                      str(trajectories), "--answers", str(answers), "--answer-agent", str(agent), "--bootstrap", "20"])
+        report = json.loads(buffer.getvalue())
+        self.assertEqual(report["answer_agent"], {"reader_version": 2})
+        self.assertEqual(report["role"], "primary")
+
+
 if __name__ == "__main__":
     unittest.main()

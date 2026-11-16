@@ -146,11 +146,34 @@ def rollout(episode, arm, policy):
     return {"episode_id": episode["episode_id"], "arm": arm, "steps": steps, "snapshots": snapshots}
 
 
-def answer_prompt(view, probe):
-    """Input for the fixed Answer Agent; identical wording for both arms."""
-    return (f"Memory records:\n{json.dumps(view, ensure_ascii=False, indent=1)}\n\nDate: {probe['date']}\n"
-            f"Question: {probe['question']}\nOptions: {' | '.join(probe['options'])}\n"
-            "Reply with exactly one option.")
+READING_RULE = ("A record limited to a situation or to dates applies only in that situation and on those dates; "
+                "when no limited record applies, use the general preference.")
+ANSWER_READERS = {  # Answer Agent prompt versions: (lines before the reply instruction, reply instruction, new tokens)
+    1: ((), "Reply with exactly one option.", 48),
+    2: ((READING_RULE,), "Reply with exactly one option.", 48),
+    3: ((READING_RULE,), "Before answering, say in one sentence which record applies on this date and in this "
+                         "situation; then give your choice on a final line that starts with \"Answer:\".", 160),
+}
+ANSWER_READER = 1  # default version; run_config.json and answer_agent.json record the version a run used
+ANSWER_LINE = re.compile(r"answer\s*:", re.I)
+
+
+def answer_prompt(view, probe, reader=ANSWER_READER):
+    """Input for the fixed Answer Agent; identical wording for both arms. Version 1 is the original prompt, version 2
+    adds one reading rule, version 3 the rule and a one-sentence check before the answer."""
+    before, reply, _ = ANSWER_READERS[reader]
+    return "\n".join([f"Memory records:\n{json.dumps(view, ensure_ascii=False, indent=1)}\n", f"Date: {probe['date']}",
+                      f"Question: {probe['question']}", f"Options: {' | '.join(probe['options'])}", *before, reply])
+
+
+def pick_option(reply, options, reader=ANSWER_READER):
+    """The Answer Agent's choice: the longest option contained in its reply, or in version 3 in the text after the last
+    "Answer:" (the whole reply when that line is missing); the stripped reply when no option is contained."""
+    if reader == 3:
+        reply = ANSWER_LINE.split(reply)[-1]
+    text = " ".join(reply.lower().split())
+    hits = [o for o in options if " ".join(o.lower().split()) in text]
+    return max(hits, key=len) if hits else reply.strip()
 
 
 def score_rollouts(episodes, trajectories, answers=None, count_tokens=None):
@@ -410,6 +433,7 @@ def main(argv=None):
             p.add_argument("--answers", help="JSONL rows {id: '<episode>/<probe>/<arm>', answer}")
             p.add_argument("--oracle-reader", action="store_true", help="score without answers (pipeline check only)")
             p.add_argument("--tokenizer", help="tokenizer directory for memory token counts")
+            p.add_argument("--answer-agent", help="answer_agent.json written with the answers; copied into the report")
     args = parser.parse_args(argv)
     episodes = read_episodes(args.data)
     if args.command == "self-check":
@@ -435,6 +459,8 @@ def main(argv=None):
             if not args.oracle_reader:
                 report["reader_warning"] = "no --answers given and --oracle-reader not set"
                 print("WARNING: scoring with the oracle reader; pass --answers for formal results", file=sys.stderr)
+        if args.answer_agent:
+            report["answer_agent"] = json.loads(Path(args.answer_agent).read_text(encoding="utf-8"))
     report = {"data": args.data, "command": args.command, **report}
     text = json.dumps(report, indent=2)
     print(text)
