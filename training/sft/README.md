@@ -19,4 +19,6 @@ The Answer Agent is the base model without any adapter in every condition, so di
 
 SFT runs (protocol 1.1): `train.sbatch sft-p11 ARM SEED` for both arms and seeds 0, 1, 2, then `baseline.sbatch runs/sft_p11_eval_sSEED --adapter-scope .../ckpt/sft-p11-scope-sSEED/adapter --adapter-crud .../ckpt/sft-p11-crud-sSEED/adapter` per seed. No hyperparameter is tuned on dev.
 
+Protocol 1.2 changes only the gold text (new values and situations in the user's words), not the policy instructions, so the instruction SHA-256 and the adapter check cannot tell 1.1 adapters from 1.2 ones: the run name carries the version (`sft-p12`). Under 1.2 the six-shot demonstrations and the gold reference change and are run again; the zero-shot baselines and the never-written reference do not depend on gold text and stay valid.
+
 Reports in each run directory: `eval_rollout_answer_agent.json` is the primary result (Answer Agent QA, `"role": "primary"`, with memory token counts). `eval_tf_<arm>.json` and `eval_rollout_oracle_reader.json` are rule-reader diagnostics (`"role": "diagnostic"`); CRUD parse failures are listed on their own in `parse_failures` and `crud_rule_reader_parse_failure`.

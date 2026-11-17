@@ -89,6 +89,8 @@ Calibration on the dev split (1,170 probes per arm):
 
 Version 3 is the default (`ANSWER_READER = 3`); 2 of its 2,340 replies on gold memory lacked the `Answer:` line. Even version 3 misses most boundary probes on gold memory, fewer than it gets right when memory was never written (14/28 and 12/28), so boundary probes reward not storing an ended preference; report them apart from the other probe types. `baseline.py --from-run OLD_RUN` re-reads a finished run with another version without running the policy again; the settings must match apart from the version.
 
+This calibration used protocol 1.1 gold memory, written with catalog names. Protocol 1.2 gold memory uses the user's words, so its gold reference is run again, but the version stays 3: it is not re-chosen on later results.
+
 ## Not covered yet
 
 - Cost metrics beyond memory size and token counts at the probes.

@@ -37,6 +37,30 @@ class ProtocolTests(unittest.TestCase):
         self.assertEqual(exam["relations"], [{"type": "EXCEPTION_TO", "target": "m1"}, {"type": "REPLACES", "target": "m3"}])
         self.assertNotIn("m3", {r["memory_id"] for r in view})
 
+    def test_gold_writes_the_users_words(self):
+        steps = {s["event"]["event_id"]: s for s in self.steps}
+        add = steps["e4"]["outputs"]["scope"]["actions"][0]
+        self.assertEqual((add["value"], add["scope"]), ("evening", "renovation weeks"))  # an alias, not the catalog name
+        self.assertEqual(steps["e4"]["outputs"]["crud"]["operations"][0]["text"],
+                         "For grocery delivery window when renovation weeks, the user prefers evening "
+                         "from 2027-03-10 through 2027-03-24.")
+        revise = steps["e3"]["outputs"]["scope"]["actions"][0]
+        self.assertEqual((revise["value"], revise["scope"]), ("decaf coffee", "exam weeks"))  # situation kept
+        self.assertEqual(replay_gold(self.episode)[3]["outputs"], steps["e4"]["outputs"])
+
+    def test_user_words_search_order(self):
+        from scope_memory.protocol import user_words
+        event = {"event_id": "e1", "gold": {"evidence_message": 3}, "dialogue": [
+            {"role": "user", "content": "Decaf is fine during exams."}, {"role": "assistant", "content": "Noted."},
+            {"role": "user", "content": "For exam week: decaf coffee, then decaf."}]}
+        situation = ["exam weeks", "exam week", "during exams"]
+        self.assertEqual(user_words(["decaf coffee", "decaf"], event, "value"), "decaf coffee")
+        self.assertEqual(user_words(situation, event, "situation"), "exam week")
+        event["dialogue"][2]["content"] = "Yes."
+        self.assertEqual(user_words(situation, event, "situation"), "during exams")
+        with self.assertRaisesRegex(ValueError, "no user message names the value 'green tea'"):
+            user_words(["green tea"], event, "value")
+
     def test_general_revision_repoints_exceptions(self):
         view = self.steps[5]["after_views"]["scope"]
         general = next(r for r in view if r["attribute"] == "afternoon drink" and r["scope"] == "general")
@@ -100,6 +124,10 @@ class ProtocolTests(unittest.TestCase):
         broken = fixture()
         broken["events"][0]["gold"]["evidence_message"] = 2
         with self.assertRaisesRegex(ValueError, "evidence_message"):
+            replay_gold(broken)
+        broken = fixture()
+        broken["events"][0]["dialogue"][2]["content"] = "During exam weeks, something stronger from now on."
+        with self.assertRaisesRegex(ValueError, "no user message names the value 'regular coffee'"):
             replay_gold(broken)
 
     def test_instruction_examples_are_valid_for_their_arm(self):

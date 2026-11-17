@@ -2,7 +2,8 @@
 
 The scope-aware and CRUD arms see byte-identical event evidence and differ only in
 how memory is represented and revised. Gold outputs for both arms are projected
-from consecutive arm-neutral gold states by one fixed mapping (protocol section 6).
+from consecutive arm-neutral gold states by one fixed mapping (protocol section 6); since protocol 1.2
+they write new values and situations in the user's own words.
 
   python3 -m scope_memory.protocol check training/scope_revision_v1/data/dev.jsonl
   python3 -m scope_memory.protocol export-sft training/scope_revision_v1/data/train.jsonl --out OUT_DIR
@@ -461,7 +462,63 @@ def category_matches(category, changes):
     return len(changes) == 1 and changes[0][0] == CHANGE_OF.get(category)
 
 
-def gold_scope_output(changes, gold, catalogs, keys, event_id):
+def value_forms(catalog, option):
+    return [option, *catalog.get("value_aliases", {}).get(option, [])]
+
+
+def scope_forms(catalog, key):
+    entry = catalog["scopes"][key]
+    return [entry["scope"], *entry.get("aliases", [])]
+
+
+def user_words(forms, event, what):
+    """The listed form (catalog name or alias) in which the user names a value or situation (protocol 1.2).
+
+    The evidence message is searched first, then the other user messages in order; inside a message the earliest
+    mention wins, and at one position the longest form. Raises ValueError when no user message names it."""
+    dialogue = event["dialogue"]
+    first = event["gold"]["evidence_message"] - 1
+    for i in [first] + [i for i, m in enumerate(dialogue) if m["role"] == "user" and i != first]:
+        text = norm(dialogue[i]["content"])
+        found = [(m.start(), m.start() - m.end(), form) for form in forms
+                 for m in re.finditer(r"(?<!\w)" + re.escape(norm(form)) + r"(?!\w)", text)]
+        if found:
+            return min(found)[2]
+    raise ValueError(f"{event['event_id']}: no user message names the {what} {forms[0]!r} in a listed form")
+
+
+def seed_words(state, catalogs):
+    """Text of the seed records, keyed (attribute, scope_key or None): catalog names."""
+    words = {}
+    for attribute, entry in state.items():
+        words[(attribute, None)] = {"value": entry["general"], "scope": GENERAL}
+        for key, exc in entry["exceptions"].items():
+            words[(attribute, key)] = {"value": exc["value"], "scope": catalogs[attribute]["scopes"][key]["scope"]}
+    return words
+
+
+def written_words(changes, state, event, catalogs, words):
+    """Text of every record a gold write creates (protocol 1.2): the user's own words for a new value or situation,
+    the stored record's text for a field the change keeps (a revised exception's situation, and its value when only
+    the validity changes). `words` holds the current records' text, as from `seed_words`."""
+    after, written = event["gold"]["state_after"], {}
+    for kind, attribute, key in changes:
+        catalog = catalogs[attribute]
+        if kind == "general":
+            written[(attribute, None)] = {
+                "value": user_words(value_forms(catalog, after[attribute]["general"]), event, "value"),
+                "scope": GENERAL}
+        elif kind in ("add", "revise"):
+            exc = after[attribute]["exceptions"][key]
+            old = words[(attribute, key)] if kind == "revise" else None
+            keep_value = old is not None and state[attribute]["exceptions"][key]["value"] == exc["value"]
+            written[(attribute, key)] = {
+                "value": old["value"] if keep_value else user_words(value_forms(catalog, exc["value"]), event, "value"),
+                "scope": old["scope"] if old else user_words(scope_forms(catalog, key), event, "situation")}
+    return written
+
+
+def gold_scope_output(changes, gold, written, keys, event_id):
     if not changes:
         return {"decision": gold["decision"], "actions": [{"operation": "NOOP"}]}
     after = gold["state_after"]
@@ -469,23 +526,23 @@ def gold_scope_output(changes, gold, catalogs, keys, event_id):
     for kind, attribute, key in changes:
         general_id = keys[(attribute, None)]
         if kind == "general":
-            actions.append({"operation": "REVISE", "target_id": general_id, "value": after[attribute]["general"],
-                            "scope": GENERAL, "validity": dict(PERSISTENT), "relations": [],
-                            "evidence_ids": [event_id]})
+            actions.append({"operation": "REVISE", "target_id": general_id,
+                            "value": written[(attribute, None)]["value"], "scope": GENERAL,
+                            "validity": dict(PERSISTENT), "relations": [], "evidence_ids": [event_id]})
         elif kind == "retire":
             actions.append({"operation": "RETIRE", "target_id": keys[(attribute, key)], "evidence_ids": [event_id]})
         else:
-            exc = after[attribute]["exceptions"][key]
+            exc, text = after[attribute]["exceptions"][key], written[(attribute, key)]
             head = ({"operation": "ADD", "attribute": attribute} if kind == "add"
                     else {"operation": "REVISE", "target_id": keys[(attribute, key)]})
-            actions.append({**head, "value": exc["value"], "scope": catalogs[attribute]["scopes"][key]["scope"],
+            actions.append({**head, "value": text["value"], "scope": text["scope"],
                             "validity": dict(exc["validity"]),
                             "relations": [{"type": "EXCEPTION_TO", "target": general_id}],
                             "evidence_ids": [event_id]})
     return {"decision": gold["decision"], "actions": actions}
 
 
-def gold_crud_output(changes, gold, catalogs, keys):
+def gold_crud_output(changes, gold, written, keys):
     if not changes:
         return {"decision": gold["decision"], "operations": [{"op": "NOOP"}]}
     after = gold["state_after"]
@@ -493,14 +550,14 @@ def gold_crud_output(changes, gold, catalogs, keys):
     for kind, attribute, key in changes:
         if kind == "general":
             operations.append({"op": "UPDATE", "id": keys[(attribute, None)],
-                               "text": crud_sentence(attribute, None, after[attribute]["general"], PERSISTENT)})
+                               "text": crud_sentence(attribute, None, written[(attribute, None)]["value"], PERSISTENT)})
         elif kind == "retire":
             operations.append({"op": "DELETE", "id": keys[(attribute, key)]})
         else:
-            exc = after[attribute]["exceptions"][key]
-            text = crud_sentence(attribute, catalogs[attribute]["scopes"][key]["scope"], exc["value"], exc["validity"])
-            operations.append({"op": "ADD", "text": text} if kind == "add"
-                              else {"op": "UPDATE", "id": keys[(attribute, key)], "text": text})
+            exc, text = after[attribute]["exceptions"][key], written[(attribute, key)]
+            sentence = crud_sentence(attribute, text["scope"], text["value"], exc["validity"])
+            operations.append({"op": "ADD", "text": sentence} if kind == "add"
+                              else {"op": "UPDATE", "id": keys[(attribute, key)], "text": sentence})
     return {"decision": gold["decision"], "operations": operations}
 
 
@@ -525,14 +582,20 @@ def gold_trajectory(episode):
     memories = {"scope": ScopeMemory(), "crud": CrudMemory()}
     state = episode["initial_state"]
     keys = {arm: memories[arm].seed(state, catalogs) for arm in ARMS}
+    words = seed_words(state, catalogs)
     seen = ["seed"]
     for event in episode["events"]:
         gold = event["gold"]
         changes = state_changes(state, gold["state_after"])
+        written = written_words(changes, state, event, catalogs, words)
         before = {arm: copy.deepcopy(memories[arm]) for arm in ARMS}
         seen.append(event["event_id"])
-        outputs = {"scope": gold_scope_output(changes, gold, catalogs, keys["scope"], event["event_id"]),
-                   "crud": gold_crud_output(changes, gold, catalogs, keys["crud"])}
+        outputs = {"scope": gold_scope_output(changes, gold, written, keys["scope"], event["event_id"]),
+                   "crud": gold_crud_output(changes, gold, written, keys["crud"])}
+        for kind, attribute, key in changes:
+            if kind == "retire":
+                del words[(attribute, key)]
+        words.update(written)
         rejections = {}
         for arm in ARMS:
             rejections[arm], created = memories[arm].apply(outputs[arm], event["event_id"], seen)

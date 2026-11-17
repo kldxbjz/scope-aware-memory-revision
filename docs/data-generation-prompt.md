@@ -66,3 +66,7 @@ v1 passed the contract checks (replay_gold 920/920, generator validation, contra
 5. Keep the protocol, split isolation, contrast pairs, LF line endings and byte-identical rebuild, and report the baselines of points 1 and 4 in `audit.json`.
 
 Measured on v1.1 (test): position plus exceptions 28.7%, last user message 28.8% (majority 17.7%); 1,772 distinct assistant messages in train; attribute named verbatim in 17.6% of events; 30% two-attribute episodes.
+
+## Protocol 1.2 (2026-11-16)
+
+Gold writes now copy the user's words (protocol §6), so the user's messages must name every new value and every new situation in a listed form: the catalog name or one of its aliases. v1.1 meets this without changes: across all splits, each of the 2,947 values written is named in the evidence message, and each of the 1,001 new situations in a user message (913 in the evidence message). The user uses the catalog name itself in about half of the writes. `replay_gold` rejects any event that breaks this, so new data must keep it.

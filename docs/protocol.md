@@ -1,6 +1,6 @@
 # Memory revision protocol v1
 
-Contract between the data generator (`training/scope_revision_v1/`), the executors and projections (`scope_memory/protocol.py`) and the evaluator (`scope_memory/evaluate.py`, see [evaluation.md](evaluation.md)). It implements sections 4–6 of the course outline v2.7, with the trims listed in section 10. The instructions given to the data generator are in [data-generation-prompt.md](data-generation-prompt.md); `fixtures/protocol_episode.json` is a complete worked episode. Version 1.1, 2026-11-15 (1.1 adds a worked example to each arm's instruction, section 7).
+Contract between the data generator (`training/scope_revision_v1/`), the executors and projections (`scope_memory/protocol.py`) and the evaluator (`scope_memory/evaluate.py`, see [evaluation.md](evaluation.md)). It implements sections 4–6 of the course outline v2.7, with the trims listed in section 10. The instructions given to the data generator are in [data-generation-prompt.md](data-generation-prompt.md); `fixtures/protocol_episode.json` is a complete worked episode. Version 1.2, 2026-11-16 (1.1 adds a worked example to each arm's instruction, section 7; 1.2 makes gold writes copy the user's words, section 6).
 
 ## 1. Episodes
 
@@ -108,6 +108,8 @@ Both arms' gold outputs are computed from consecutive gold states by `scope_memo
 | none | `NOOP` | `NOOP` |
 
 CRUD sentences: `For {attribute}, the user prefers {value}.` and `For {attribute} when {scope}, the user prefers {value}.`, with ` from {from} through {to}` or ` for now, with no end date given` before the final period for window and open validity. Seed records have evidence `seed`.
+
+Written text (since 1.2). A gold write names a new value or a new situation in the user's own words: the catalog name or listed alias that the user's messages use, searching the evidence message first and then the other user messages in order (inside a message the earliest mention, and at one position the longest form). A field that the change keeps, such as the situation of a revised exception or its value when only the validity changes, keeps the stored record's text. Seed records use the catalog names, and the attribute name is the catalog's (the policy sees it in the memory). Version 1.1 wrote catalog names, which the policy often could not see: in about half of the writes the user names the value or situation only by an alias. An event whose user messages name a new value or situation in no listed form fails `replay_gold`. The rule readers map aliases back to the catalog, so gold memory still reads back as the gold state.
 
 ## 7. Policy input and SFT rows
 

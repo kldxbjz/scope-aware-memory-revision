@@ -52,7 +52,7 @@
      "dialogue": [
        {"role": "user", "content": "The studio downstairs is being renovated from March 10 through March 24, so mornings will be loud."},
        {"role": "assistant", "content": "Should groceries come at a different time while that's going on?"},
-       {"role": "user", "content": "Yes, evenings for those two weeks, then back to mornings."}],
+       {"role": "user", "content": "Yes, evening delivery during the renovation weeks, then back to mornings."}],
      "gold": {"category": "scoped_exception", "decision": "resolved", "evidence_message": 3,
               "rationale": "A dated window; mornings stay the general choice.",
               "state_after": {
