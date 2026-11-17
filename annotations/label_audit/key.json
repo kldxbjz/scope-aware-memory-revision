@@ -1,0 +1,302 @@
+{
+ "L001": {
+  "file": "training/scope_revision_v1/data/test.jsonl",
+  "episode_id": "te-0106",
+  "event_id": "e78d64e1743f2a38c0146"
+ },
+ "L002": {
+  "file": "training/scope_revision_v1/data/test.jsonl",
+  "episode_id": "te-0127",
+  "event_id": "e0bf5f69e7743efc6b08e"
+ },
+ "L003": {
+  "file": "training/scope_revision_v1/data/test.jsonl",
+  "episode_id": "te-0133",
+  "event_id": "e6eef67cceb5a49b62f32"
+ },
+ "L004": {
+  "file": "training/scope_revision_v1/data/train.jsonl",
+  "episode_id": "tr-0359",
+  "event_id": "e6fd3a0ff4fe0823115a2"
+ },
+ "L005": {
+  "file": "training/scope_revision_v1/data/train.jsonl",
+  "episode_id": "tr-0121",
+  "event_id": "ea3d9669f21a21f7ef0e7"
+ },
+ "L006": {
+  "file": "training/scope_revision_v1/data/train.jsonl",
+  "episode_id": "tr-0272",
+  "event_id": "e12a76d94a1607affd66f"
+ },
+ "L007": {
+  "file": "training/scope_revision_v1/data/test.jsonl",
+  "episode_id": "te-0098",
+  "event_id": "e82df0513d9555ab8e050"
+ },
+ "L008": {
+  "file": "training/scope_revision_v1/data/train.jsonl",
+  "episode_id": "tr-0138",
+  "event_id": "ea041a7b9ad5c852f0a5a"
+ },
+ "L009": {
+  "file": "training/scope_revision_v1/data/test.jsonl",
+  "episode_id": "te-0082",
+  "event_id": "ed7b03dd6decd5fd8c590"
+ },
+ "L010": {
+  "file": "training/scope_revision_v1/data/train.jsonl",
+  "episode_id": "tr-0313",
+  "event_id": "ecded18daafc9b3affa07"
+ },
+ "L011": {
+  "file": "training/scope_revision_v1/data/train.jsonl",
+  "episode_id": "tr-0589",
+  "event_id": "e771e7eb6f35c9ffc6b92"
+ },
+ "L012": {
+  "file": "training/scope_revision_v1/data/test.jsonl",
+  "episode_id": "te-0090",
+  "event_id": "e8f3d744875a2174be36d"
+ },
+ "L013": {
+  "file": "training/scope_revision_v1/data/train.jsonl",
+  "episode_id": "tr-0241",
+  "event_id": "eb9fb6be87b097fb07f21"
+ },
+ "L014": {
+  "file": "training/scope_revision_v1/data/test.jsonl",
+  "episode_id": "te-0130",
+  "event_id": "e6115fda3991c9986030c"
+ },
+ "L015": {
+  "file": "training/scope_revision_v1/data/train.jsonl",
+  "episode_id": "tr-0086",
+  "event_id": "e1b9f6d2b6bacac0f8c3f"
+ },
+ "L016": {
+  "file": "training/scope_revision_v1/data/train.jsonl",
+  "episode_id": "tr-0369",
+  "event_id": "ed97a5edcef1ba2171611"
+ },
+ "L017": {
+  "file": "training/scope_revision_v1/data/train.jsonl",
+  "episode_id": "tr-0526",
+  "event_id": "ed221b79c553e78fcbfce"
+ },
+ "L018": {
+  "file": "training/scope_revision_v1/data/test.jsonl",
+  "episode_id": "te-0199",
+  "event_id": "e3ea84f24d094ff04c700"
+ },
+ "L019": {
+  "file": "training/scope_revision_v1/data/train.jsonl",
+  "episode_id": "tr-0076",
+  "event_id": "e59b166ee42c531475f28"
+ },
+ "L020": {
+  "file": "training/scope_revision_v1/data/test.jsonl",
+  "episode_id": "te-0181",
+  "event_id": "ee7702c52204988cbae34"
+ },
+ "L021": {
+  "file": "training/scope_revision_v1/data/test.jsonl",
+  "episode_id": "te-0094",
+  "event_id": "eb19486190e4ddb119d54"
+ },
+ "L022": {
+  "file": "training/scope_revision_v1/data/train.jsonl",
+  "episode_id": "tr-0548",
+  "event_id": "eae7a774ebc7c890cca29"
+ },
+ "L023": {
+  "file": "training/scope_revision_v1/data/train.jsonl",
+  "episode_id": "tr-0505",
+  "event_id": "ed9ecb32ae8c2bd0776bd"
+ },
+ "L024": {
+  "file": "training/scope_revision_v1/data/test.jsonl",
+  "episode_id": "te-0053",
+  "event_id": "ed705e548e140776853a7"
+ },
+ "L025": {
+  "file": "training/scope_revision_v1/data/train.jsonl",
+  "episode_id": "tr-0118",
+  "event_id": "e78d7aafc0adaeff6db9a"
+ },
+ "L026": {
+  "file": "training/scope_revision_v1/data/train.jsonl",
+  "episode_id": "tr-0038",
+  "event_id": "e879bfcc6aa01c506466c"
+ },
+ "L027": {
+  "file": "training/scope_revision_v1/data/test.jsonl",
+  "episode_id": "te-0117",
+  "event_id": "e36b1401430085a116525"
+ },
+ "L028": {
+  "file": "training/scope_revision_v1/data/train.jsonl",
+  "episode_id": "tr-0429",
+  "event_id": "ed20c2b153e1214fc9cfb"
+ },
+ "L029": {
+  "file": "training/scope_revision_v1/data/test.jsonl",
+  "episode_id": "te-0002",
+  "event_id": "e026a3ba8281e96062184"
+ },
+ "L030": {
+  "file": "training/scope_revision_v1/data/test.jsonl",
+  "episode_id": "te-0070",
+  "event_id": "e08fc62c1c559f676f5fe"
+ },
+ "L031": {
+  "file": "training/scope_revision_v1/data/train.jsonl",
+  "episode_id": "tr-0404",
+  "event_id": "e5a2a45af0bcd8082f3c7"
+ },
+ "L032": {
+  "file": "training/scope_revision_v1/data/test.jsonl",
+  "episode_id": "te-0158",
+  "event_id": "e2a64f8890d60698bb3da"
+ },
+ "L033": {
+  "file": "training/scope_revision_v1/data/train.jsonl",
+  "episode_id": "tr-0506",
+  "event_id": "eddb055836fa79b84d2c8"
+ },
+ "L034": {
+  "file": "training/scope_revision_v1/data/train.jsonl",
+  "episode_id": "tr-0211",
+  "event_id": "e82149becfba9566a82f9"
+ },
+ "L035": {
+  "file": "training/scope_revision_v1/data/test.jsonl",
+  "episode_id": "te-0012",
+  "event_id": "ec608565157fbd2e1bde7"
+ },
+ "L036": {
+  "file": "training/scope_revision_v1/data/train.jsonl",
+  "episode_id": "tr-0108",
+  "event_id": "ebc645c6093a9b92b7bcd"
+ },
+ "L037": {
+  "file": "training/scope_revision_v1/data/test.jsonl",
+  "episode_id": "te-0169",
+  "event_id": "e85ab7fdc97a5f977135a"
+ },
+ "L038": {
+  "file": "training/scope_revision_v1/data/train.jsonl",
+  "episode_id": "tr-0307",
+  "event_id": "e4f59600d6dffe8ae0963"
+ },
+ "L039": {
+  "file": "training/scope_revision_v1/data/test.jsonl",
+  "episode_id": "te-0005",
+  "event_id": "e43ec146156afb0f7ea12"
+ },
+ "L040": {
+  "file": "training/scope_revision_v1/data/test.jsonl",
+  "episode_id": "te-0043",
+  "event_id": "edc5922d8a37c56b647e5"
+ },
+ "L041": {
+  "file": "training/scope_revision_v1/data/train.jsonl",
+  "episode_id": "tr-0535",
+  "event_id": "ed99df36c5b0faa95e548"
+ },
+ "L042": {
+  "file": "training/scope_revision_v1/data/test.jsonl",
+  "episode_id": "te-0125",
+  "event_id": "ed2411fa0175873618676"
+ },
+ "L043": {
+  "file": "training/scope_revision_v1/data/test.jsonl",
+  "episode_id": "te-0116",
+  "event_id": "e9092bffe65ffedbf6d0d"
+ },
+ "L044": {
+  "file": "training/scope_revision_v1/data/test.jsonl",
+  "episode_id": "te-0159",
+  "event_id": "e66ac11165f070991683e"
+ },
+ "L045": {
+  "file": "training/scope_revision_v1/data/test.jsonl",
+  "episode_id": "te-0107",
+  "event_id": "e393abea489209cf40f17"
+ },
+ "L046": {
+  "file": "training/scope_revision_v1/data/train.jsonl",
+  "episode_id": "tr-0133",
+  "event_id": "e5fab41200240ca64d090"
+ },
+ "L047": {
+  "file": "training/scope_revision_v1/data/test.jsonl",
+  "episode_id": "te-0166",
+  "event_id": "e2a6be6da3da69bb422e2"
+ },
+ "L048": {
+  "file": "training/scope_revision_v1/data/train.jsonl",
+  "episode_id": "tr-0492",
+  "event_id": "e9ced62f1be9865fdd9fe"
+ },
+ "L049": {
+  "file": "training/scope_revision_v1/data/test.jsonl",
+  "episode_id": "te-0028",
+  "event_id": "eda740c454a11c5f48587"
+ },
+ "L050": {
+  "file": "training/scope_revision_v1/data/train.jsonl",
+  "episode_id": "tr-0260",
+  "event_id": "eb5cdef76761524248aa0"
+ },
+ "L051": {
+  "file": "training/scope_revision_v1/data/test.jsonl",
+  "episode_id": "te-0030",
+  "event_id": "ecadf79e3012b5a254015"
+ },
+ "L052": {
+  "file": "training/scope_revision_v1/data/train.jsonl",
+  "episode_id": "tr-0425",
+  "event_id": "e45c1126d43edfa23ab68"
+ },
+ "L053": {
+  "file": "training/scope_revision_v1/data/test.jsonl",
+  "episode_id": "te-0045",
+  "event_id": "e6de045f43a853ea04d2a"
+ },
+ "L054": {
+  "file": "training/scope_revision_v1/data/train.jsonl",
+  "episode_id": "tr-0555",
+  "event_id": "ebaedc60e8af9f1d6a23d"
+ },
+ "L055": {
+  "file": "training/scope_revision_v1/data/train.jsonl",
+  "episode_id": "tr-0358",
+  "event_id": "ebcc7968e9dff7050f9ee"
+ },
+ "L056": {
+  "file": "training/scope_revision_v1/data/test.jsonl",
+  "episode_id": "te-0110",
+  "event_id": "ea3fd5a36ab908786b003"
+ },
+ "L057": {
+  "file": "training/scope_revision_v1/data/test.jsonl",
+  "episode_id": "te-0083",
+  "event_id": "e510fb2d3279059b30b88"
+ },
+ "L058": {
+  "file": "training/scope_revision_v1/data/test.jsonl",
+  "episode_id": "te-0067",
+  "event_id": "e974337152240e5a35d8d"
+ },
+ "L059": {
+  "file": "training/scope_revision_v1/data/train.jsonl",
+  "episode_id": "tr-0254",
+  "event_id": "ee68a0bfc31052e021991"
+ },
+ "L060": {
+  "file": "training/scope_revision_v1/data/train.jsonl",
+  "episode_id": "tr-0436",
+  "event_id": "e5f2f8558448b8627823f"
+ }
+}

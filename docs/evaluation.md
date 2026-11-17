@@ -89,9 +89,25 @@ Calibration on the dev split (1,170 probes per arm):
 
 Version 3 is the default (`ANSWER_READER = 3`); 2 of its 2,340 replies on gold memory lacked the `Answer:` line. Even version 3 misses most boundary probes on gold memory, fewer than it gets right when memory was never written (14/28 and 12/28), so boundary probes reward not storing an ended preference; report them apart from the other probe types. `baseline.py --from-run OLD_RUN` re-reads a finished run with another version without running the policy again; the settings must match apart from the version.
 
-This calibration used protocol 1.1 gold memory, written with catalog names. Protocol 1.2 gold memory uses the user's words, so its gold reference is run again, but the version stays 3: it is not re-chosen on later results.
+This calibration used protocol 1.1 gold memory, written with catalog names. Protocol 1.2 gold memory uses the user's words, so its gold reference is run again, but the version stays 3: it is not re-chosen on later results. On dev, protocol 1.2 gold memory scores CRUD 91.4, scope 91.5 (scope − CRUD +0.1 [−2.4, +2.5]).
+
+## Cost
+
+Each run directory gets `cost.json` from `training/sft/cost_report.py` (older runs: run it by hand with `--runs`). Per arm it counts policy calls (one per rollout event) with chat-templated input tokens and generated tokens, Answer Agent calls (one per probe) with input and generated tokens, memory tokens at the probes, and rejected outputs. `--sft-rows` adds the prompt and completion (loss) tokens of exported SFT rows, which differ between the arms because the scope arm's outputs are longer. GPU time comes from Slurm accounting (`sacct --duplicates`, summing preempted attempts); the cluster charges no money, so cost is reported in tokens, calls and GPU-hours.
+
+## Final test evaluation
+
+The test split is read once, after everything below is frozen; nothing is re-chosen after its results.
+
+- Protocol 1.2 (gold copies the user's words), the policy instructions and the Answer Agent prompt version 3.
+- Base model Qwen3-4B-Instruct-2507, greedy decoding, 512 new tokens for the policy.
+- Prompt baselines M0 / M1: zero-shot, and six-shot with the six train events `pick_demos` chooses (the same as in the protocol 1.2 dev run).
+- SFT M2 / M3: LoRA r16 / alpha 32, 2 epochs, lr 1e-4, effective batch 16, seeds 0, 1 and 2, the final checkpoint of each seed (`sft-p12`); results pool the three seeds per probe.
+- Reference rows: gold memory and never-written memory.
+- The analyses and their settings in [analysis.md](analysis.md): the main table (`report`), boundary probes reported apart, the rule-reader diagnostics, and the pre-specified samples for the manual error analysis.
+
+`bash ~/scope-sft-work/sft/submit_test.sh` (Babel login node) submits the seven runs with `SPLIT=test` into `runs/test_p12_*`; every run directory gets a `SUBMITTED` marker, so a second call submits nothing again.
 
 ## Not covered yet
 
-- Cost metrics beyond memory size and token counts at the probes.
 - The v0.1 corpus in `training/scope_revision_training/`, which predates this protocol.

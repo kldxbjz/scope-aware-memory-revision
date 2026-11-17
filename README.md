@@ -2,7 +2,7 @@
 
 How should an AI agent revise stored preferences when a new statement is a contextual exception rather than a global preference change? This three-person final project compares an SFT-trained generic CRUD memory manager (add / update / delete / no-op over free-text memories) with an SFT-trained manager that also represents preference scope and relationships between memories. RL is a stretch goal and has not started. The experiment design is in [docs/sft-plan.md](docs/sft-plan.md).
 
-> **Status (2026-11-15):** no model has been trained and no SFT or GPU job has been launched. Everything here is evaluation plumbing, a data audit or data preparation, not evidence of learned performance.
+> **Status (2026-11-16):** prompt baselines (zero-shot and six-shot) and SFT for both arms (Qwen3-4B-Instruct-2507, LoRA, three seeds) have run on the dev split under protocol 1.1. Protocol 1.2 changes the gold text to the user's own words; its SFT runs, six-shot baseline and gold reference are being rerun on dev. The test split has not been read: it is evaluated once after the freeze in [docs/evaluation.md](docs/evaluation.md#final-test-evaluation). Dev numbers are not final results.
 
 ## Repository layout
 
@@ -10,7 +10,7 @@ How should an AI agent revise stored preferences when a new statement is a conte
 scope_memory/   stdlib-only Python code; run modules with python3 -m scope_memory.<name>
 tests/          unit tests for scope_memory
 fixtures/       handwritten toy timeline and a worked protocol v1 episode
-annotations/    blind annotation pilot: packet, author key, locked labels
+annotations/    blind annotation pilot; label audit packet of the synthetic data
 results/        small saved outputs of the scope_memory scripts
 docs/           experiment plan and one write-up per milestone
 training/       synthetic corpora (v0.1, v1.1); SFT and baseline scripts for Babel in training/sft/
@@ -26,16 +26,18 @@ training/       synthetic corpora (v0.1, v1.1); SFT and baseline scripts for Bab
 | Read vs write diagnostic | [docs/read-write-diagnostic.md](docs/read-write-diagnostic.md) | `scope_memory/read_write_diagnostic.py` | `results/read_write_results.json` |
 | Internal blind annotation pilot | [docs/blind-pilot.md](docs/blind-pilot.md) | `scope_memory/score_blind_pilot.py` | `results/blind_score.json` |
 | Synthetic SFT corpus v0.1 and CPU preflight | [docs/training-intake.md](docs/training-intake.md) | [training/](training/README.md) | in the write-up |
-| Memory revision protocol v1 (outline v2.7): executors, gold projection, data-generation prompt | [docs/protocol.md](docs/protocol.md) | `scope_memory/protocol.py` | none yet |
-| Evaluator: teacher-forced and rollout | [docs/evaluation.md](docs/evaluation.md) | `scope_memory/evaluate.py` | none yet |
+| Memory revision protocol v1 (outline v2.7): executors, gold projection, data-generation prompt; 1.2 writes the user's own words | [docs/protocol.md](docs/protocol.md) | `scope_memory/protocol.py` | none |
+| Evaluator: teacher-forced and rollout; Answer Agent prompt versions; cost; final test procedure | [docs/evaluation.md](docs/evaluation.md) | `scope_memory/evaluate.py` | run directories on Babel |
 | Synthetic chronological corpus v1.1 (920 episodes, protocol v1) | [training/scope_revision_v1/README.md](training/scope_revision_v1/README.md), [docs/data-generation-prompt.md](docs/data-generation-prompt.md) | `training/scope_revision_v1/build.py` | `training/scope_revision_v1/data/` |
+| Prompt baselines and SFT on Babel | [training/sft/README.md](training/sft/README.md) | `training/sft/` | run directories on Babel |
+| Analyses for the report: main table, memory classes, structure errors, error-analysis and label-audit packets | [docs/analysis.md](docs/analysis.md) | `scope_memory/analysis.py` | `annotations/label_audit/` |
 
 ## Quickstart
 
 Python 3 standard library only, no install step. From the repository root:
 
 ```sh
-python3 -m unittest -v                          # 37 tests
+python3 -m unittest -v                          # 55 tests
 python3 -m scope_memory.replay                  # replay smoke test
 python3 -m scope_memory.read_write_diagnostic   # stdout = results/read_write_results.json
 python3 -m scope_memory.score_blind_pilot       # stdout = results/blind_score.json
