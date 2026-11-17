@@ -90,4 +90,20 @@ boundary probes are exactly the dates outside a window.
 
 ## Data fixes after the reference runs
 
-None yet.
+None. The two reference runs finished on 2026-11-17 (`runs/challenge_p12_ffeb6a87_{noop,gold}`, Answer Agent
+reader 3):
+
+| Memory | CRUD | scope |
+|---|---|---|
+| gold, without boundary probes | 501/547 = 91.6% | 511/547 = 93.4% |
+| gold, all probes | 510/567 = 89.9% | 517/567 = 91.2% |
+| gold, boundary probes only | 9/20 | 6/20 |
+| never written (seed records only), all probes | 278/567 = 49.0% | 268/567 = 47.3% |
+
+Both arms pass the 85% check on gold memory. The Answer Agent gets 25 probes wrong on gold memory in both arms
+(target 9, neighbor 7, boundary 8, default 1). Each was read against its dialogues, and all 25 are Answer Agent
+errors, not data errors ([reference_check.md](reference_check.md) lists them): 8 dates outside a window read
+as inside it, 12 probes where the reply applied another situation's record although the general value holds,
+and 5 records stored in the user's own words that the reply did not match to the question's situation or to an
+option. The data stays `ffeb6a87`; `runs/challenge_p12_ffeb6a87_REFERENCES_CHECKED` records the check, and the five
+policy runs were submitted once after it.
