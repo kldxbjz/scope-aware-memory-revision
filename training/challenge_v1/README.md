@@ -107,3 +107,63 @@ as inside it, 12 probes where the reply applied another situation's record altho
 and 5 records stored in the user's own words that the reply did not match to the question's situation or to an
 option. The data stays `ffeb6a87`; `runs/challenge_p12_ffeb6a87_REFERENCES_CHECKED` records the check, and the five
 policy runs were submitted once after it.
+
+## Results (2026-11-17)
+
+Run directories `runs/challenge_p12_ffeb6a87_*` on Babel, Answer Agent reader 3. The tables come from
+`python3 -m scope_memory.analysis report`, where SFT pools the three `sft-p12` seeds per probe; intervals are 95%
+episode bootstraps. Answer Agent QA in %, all 567 probes / the 547 without boundary probes:
+
+| Condition | CRUD | scope | scope − CRUD, all probes | scope − CRUD, no boundary |
+|---|---|---|---|---|
+| never written (seed records) | 49.0 / 48.8 | 47.3 / 47.2 | −1.8 [−4.4, +0.7] | −1.7 [−4.3, +0.8] |
+| zero-shot | 64.2 / 65.6 | 58.6 / 60.2 | −5.6 [−15.1, +2.9] | −5.5 [−15.2, +3.2] |
+| six-shot | 68.6 / 70.4 | 56.3 / 57.2 | −12.3 [−22.6, −2.3] | −13.2 [−23.6, −2.9] |
+| SFT, 3 seeds | 80.6 / 82.4 | 81.0 / 83.1 | **+0.4 [−2.9, +4.0]** | **+0.6 [−2.9, +4.4]** |
+| gold memory | 89.9 / 91.6 | 91.2 / 93.4 | +1.2 [−2.6, +4.9] | +1.8 [−1.5, +5.2] |
+
+Primary result: after SFT the two arms tie on this set (+0.4 [−2.9, +4.0]; without boundary probes +0.6
+[−2.9, +4.4]). On dev the scope arm trailed by 2.5 [−5.2, +0.3]. The shift goes in the direction the plan names for
+explicit structure helping where the cases need it, but it does not establish that:
+
+- The interval is wide and contains the dev gap.
+- The seeds disagree, which they did not on dev. Scope − CRUD is +6.7 [+1.6, +12.2] for seed 0 (CRUD 78.8, scope
+  85.5), −2.8 [−8.1, +2.3] for seed 1 (81.8 vs 79.0) and −2.6 [−8.3, +3.5] for seed 2 (81.1 vs 78.5). Two of the
+  three seeds reproduce the dev deficit.
+- On gold memory the scope arm reads 1.2 points better here (dev: +0.1), so part of the shift is on the reading side.
+
+Within this design, then, the scope arm's dev deficit does not grow on structure-heavy cases, and there is no evidence
+that it turns into an advantage.
+
+Secondary results (descriptive; four episodes per stressor). SFT scope − CRUD per stressor, with CRUD / scope
+accuracy:
+
+| Stressor | scope − CRUD | CRUD / scope | Note |
+|---|---|---|---|
+| chain | +7.3 | 82.0 / 89.4 | mostly ch-0014, where CRUD gets 49% |
+| confusable | 0.0 | 72.9 / 72.9 | on gold memory scope reads 10.4 points better |
+| dense | +1.0 | 88.0 / 89.0 | |
+| distractor | −4.5 | 93.1 / 88.5 | gold memory −3.1 |
+| shared | −0.3 | 78.7 / 78.3 | |
+| temporal | −0.8 | 67.4 / 66.7 | |
+
+By QA group the differences stay within ±2.3 points. By probe type they stay within ±3.0, except boundary at −5.0
+(20 probes). SFT gains over the prompt baselines are CRUD +16.4 (zero-shot) and +12.0 (six-shot), and scope +22.5 and
++24.8; all four intervals exclude 0.
+
+Diagnostics (rule readers and teacher forcing; not primary):
+
+- Teacher-forced operations match gold on 85.9% of events for scope and 84.9% for CRUD (dev: 92–95% and 96–97%), so
+  the harder cases cost CRUD more. CRUD's most common mismatches:
+  - an UPDATE on a no-write event (18);
+  - a retirement written as an UPDATE (15);
+  - a new exception written as an UPDATE of another record (14).
+  Scope's most common mismatch is a general update written as ADD (14) or NOOP (7).
+- At the probe, memory maps exactly to the gold state on 49.8% of probes for scope and 38.7% for CRUD (dev: 80% and
+  87%).
+- Written values that are not a listed form (the catalog name or the user's words) rose from 3–4% on dev to 18%
+  (scope) and 22% (CRUD). Words new to both models are often not copied exactly.
+- Prompt baselines: the executor rejected 43 (zero-shot) and 85 (six-shot) of 166 scope outputs, against 5 and 5 for
+  CRUD. Most rejections are records with a missing or invalid field: a REVISE without its target, an ADD without a
+  valid attribute, or an exception without its single EXCEPTION_TO edge.
+- Memory at the probes takes about 370 tokens for scope and 130 for CRUD (seed records alone: 266 and 111).
