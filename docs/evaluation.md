@@ -106,6 +106,20 @@ The test split is read once, after everything below is frozen; nothing is re-cho
 - Reference rows: gold memory and never-written memory.
 - The analyses and their settings in [analysis.md](analysis.md): the main table (`report`), boundary probes reported apart, the rule-reader diagnostics, and the pre-specified samples for the manual error analysis.
 
+Frozen on 2026-11-17 (git tag `freeze-p12`), after the challenge-set results. The three pre-registered SFT seeds are
+kept; no seed or setting was added or changed after the challenge set. Identifiers:
+
+| Item | Value |
+|---|---|
+| Data v1.1, `training/scope_revision_v1/data/` | SHA-256 train `494b76c7…`, dev `c8bd3dea…`, test `f5e680a1…` (full values in `manifest.json`) |
+| Policy instructions | SHA-256 scope `a41fed14…`, CRUD `6d54c95c…` |
+| SFT rows (protocol 1.2 export) | SHA-256 scope `beaca8bd…`, CRUD `e5745306…` |
+| SFT adapters | `/data/user_data/zichuwu/scope-sft/ckpt/sft-p12-{scope,crud}-s{0,1,2}/adapter`; each run's `train_summary.json` records its arm and instruction SHA-256, which `baseline.py` checks |
+| Answer Agent | prompt version 3 |
+
+Before the run, the label audit in [analysis.md](analysis.md#label-audit-of-the-synthetic-data) is done and the team
+decides whether its error rate needs a data fix. Then `submit_test.sh` runs once.
+
 `bash ~/scope-sft-work/sft/submit_test.sh` (Babel login node) submits the seven runs with `SPLIT=test` into `runs/test_p12_*`; every run directory gets a `SUBMITTED` marker, so a second call submits nothing again.
 
 ## Challenge set
