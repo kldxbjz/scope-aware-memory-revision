@@ -1,0 +1,47 @@
+{
+  "annotators": {
+    "A": {
+      "labelled": 166,
+      "labels": {
+        "stable_preference": 44,
+        "scoped_exception": 32,
+        "general_update": 26,
+        "exception_retirement": 21,
+        "clarify": 12,
+        "exception_revision": 31
+      }
+    },
+    "B": {
+      "labelled": 166,
+      "labels": {
+        "stable_preference": 44,
+        "scoped_exception": 32,
+        "general_update": 26,
+        "exception_retirement": 21,
+        "clarify": 12,
+        "exception_revision": 31
+      }
+    }
+  },
+  "pairwise": {
+    "A vs B": {
+      "items": 166,
+      "agreement": 1.0,
+      "kappa": 1.0
+    }
+  },
+  "against_gold": {
+    "A": {
+      "items": 166,
+      "agreement": 1.0,
+      "kappa": 1.0,
+      "disagreements": []
+    },
+    "B": {
+      "items": 166,
+      "agreement": 1.0,
+      "kappa": 1.0,
+      "disagreements": []
+    }
+  }
+}

@@ -66,6 +66,19 @@ class AnalysisTests(unittest.TestCase):
         self.assertIn("type_boundary", mine)
         self.assertEqual(mine["all"]["probes"], len(fixture()["probes"]))
 
+    def test_challenge_stressor_groups(self):
+        run = make_run(self.tmp.name, "mixed", self.gold, mixed)
+        info = analysis.probe_info(run["episodes"])
+        self.assertNotIn("stressor_dense", analysis.paired(analysis.correctness([run], "scope"),
+                                                           analysis.correctness([run], "crud"), info, bootstrap=50))
+        for episode in run["episodes"]:
+            episode["family"] = "challenge-dense-fixture"
+        info = analysis.probe_info(run["episodes"])
+        mine = analysis.paired(analysis.correctness([run], "scope"), analysis.correctness([run], "crud"), info,
+                               bootstrap=50)
+        self.assertEqual(mine["stressor_dense"], mine["all"])
+        self.assertIsNone(analysis.stressor_of({"family": "dev-dumpling-sauce-placement"}))
+
     def test_report_pools_seeds_and_compares_conditions(self):
         good = make_run(self.tmp.name, "good", self.gold, right)
         half = make_run(self.tmp.name, "half", self.gold, mixed)

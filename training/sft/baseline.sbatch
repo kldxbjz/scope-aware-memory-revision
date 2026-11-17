@@ -10,8 +10,9 @@
 #SBATCH --time=06:00:00
 #SBATCH --exclude=babel-z5-20,babel-l5-[16,20,28,32],babel-l9-[16,20,28,32],babel-m9-[16,20,28,32],babel-n9-20,babel-z5-[16,28,32],babel-z9-[16,20,24]
 #SBATCH --output=/home/zichuwu/scope-sft-work/runs/slurm-%j.out
-# Policy runs and scoring on the full v1.1 dev split (default) or, with SPLIT=test, the test split, with
-# Qwen3-4B-Instruct-2507; resumable. The test split is run once, after the freeze (docs/evaluation.md; submit_test.sh).
+# Policy runs and scoring on the full v1.1 dev split (default), with SPLIT=test the test split, or with
+# SPLIT=challenge the challenge set (training/challenge_v1), with Qwen3-4B-Instruct-2507; resumable. The test split is
+# run once, after the freeze (docs/evaluation.md; submit_test.sh); the challenge set by submit_challenge.sh.
 # Usage: mkdir -p RUN && sbatch [--export=ALL,SPLIT=test] --job-name=NAME --output=RUN/slurm-%j.out baseline.sbatch RUN [baseline.py options]
 #   zero-shot M0/M1: no options
 #   six-shot ICL:    --shots 6 --demo-episodes <mirror>/training/scope_revision_v1/data/train.jsonl --batch-size 8
@@ -23,8 +24,12 @@ set -euo pipefail
 RUN=${1:?usage: baseline.sbatch RUN_DIR [baseline.py options]}
 shift
 SPLIT=${SPLIT:-dev}
-case "$SPLIT" in dev|test) ;; *) echo "SPLIT must be dev or test, not $SPLIT"; exit 2 ;; esac
 MIRROR=/home/zichuwu/scope-aware-memory-revision
+case "$SPLIT" in
+  dev|test) DATA=$MIRROR/training/scope_revision_v1/data/$SPLIT.jsonl ;;
+  challenge) DATA=$MIRROR/training/challenge_v1/data/challenge.jsonl ;;
+  *) echo "SPLIT must be dev, test or challenge, not $SPLIT"; exit 2 ;;
+esac
 CODE=/home/zichuwu/scope-sft-work/sft
 BIG=/data/user_data/zichuwu/scope-sft
 PY=$BIG/venv-trl024/bin/python
@@ -33,7 +38,7 @@ mkdir -p "$RUN"
 [ -f "$RUN/ALL_DONE" ] && { echo "already done"; exit 0; }
 echo "host=$(hostname) job=${SLURM_JOB_ID:-} split=$SPLIT options=$* $(date -Is)"; nvidia-smi --query-gpu=name,memory.total --format=csv,noheader
 "$PY" "$CODE/baseline.py" --model "$BIG/models/Qwen3-4B-Instruct-2507" --repo "$MIRROR" \
-  --episodes "$MIRROR/training/scope_revision_v1/data/$SPLIT.jsonl" --out-dir "$RUN" "$@"
+  --episodes "$DATA" --out-dir "$RUN" "$@"
 cd "$MIRROR"
 # Primary: eval_rollout_answer_agent.json (Answer Agent QA). Diagnostic: eval_tf_*.json, eval_rollout_oracle_reader.json.
 for arm in scope crud; do

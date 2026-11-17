@@ -1,0 +1,832 @@
+{
+ "L001": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0009",
+  "event_id": "e7b45cdbac0b1fd25306c"
+ },
+ "L002": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0023",
+  "event_id": "e95a4f0cc1fb1c3980a94"
+ },
+ "L003": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0022",
+  "event_id": "ee0ac2655feb288dd07fc"
+ },
+ "L004": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0017",
+  "event_id": "eb680b870012ca8f6203c"
+ },
+ "L005": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0002",
+  "event_id": "e6d4709837bc03facd5b9"
+ },
+ "L006": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0022",
+  "event_id": "e713561c16be5c8fc3431"
+ },
+ "L007": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0015",
+  "event_id": "e8143856dafae93779a7c"
+ },
+ "L008": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0004",
+  "event_id": "e1b5c9b596a6675b3ab70"
+ },
+ "L009": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0016",
+  "event_id": "ed5675faed7a5bccb4a10"
+ },
+ "L010": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0009",
+  "event_id": "e19a917d7c24ba1e5ebea"
+ },
+ "L011": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0006",
+  "event_id": "e99515bb5106576dc76ae"
+ },
+ "L012": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0017",
+  "event_id": "ec78b03e4b00353c3e5a2"
+ },
+ "L013": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0022",
+  "event_id": "e7ee08a5d2007b548d696"
+ },
+ "L014": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0002",
+  "event_id": "e7c751222a551132057b1"
+ },
+ "L015": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0024",
+  "event_id": "e8d287a250e92cacda22b"
+ },
+ "L016": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0010",
+  "event_id": "e29618f76a17abec9888a"
+ },
+ "L017": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0009",
+  "event_id": "e5b4969b3818a37fb6c2d"
+ },
+ "L018": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0010",
+  "event_id": "e16dcc8c7cd42030b39ed"
+ },
+ "L019": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0017",
+  "event_id": "ef014b2586f0ddc7f2314"
+ },
+ "L020": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0007",
+  "event_id": "e6ddf975b7162537a68f0"
+ },
+ "L021": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0022",
+  "event_id": "e510e9ad61fa45c1dab9b"
+ },
+ "L022": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0023",
+  "event_id": "e371fd538f4723da526d9"
+ },
+ "L023": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0013",
+  "event_id": "e6fdf4cb77000ea39883e"
+ },
+ "L024": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0001",
+  "event_id": "eb75593f1b8f43e52b6cb"
+ },
+ "L025": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0018",
+  "event_id": "e157e1bbfc6b5201a3dc0"
+ },
+ "L026": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0013",
+  "event_id": "ebd7636cbfbd2487193a2"
+ },
+ "L027": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0008",
+  "event_id": "eb611502c5be8920d55e7"
+ },
+ "L028": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0015",
+  "event_id": "e07aeec4175177f4ea0e5"
+ },
+ "L029": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0011",
+  "event_id": "ea139d0923d5b6db591b4"
+ },
+ "L030": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0003",
+  "event_id": "e37cad3f7659895c9e345"
+ },
+ "L031": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0004",
+  "event_id": "e51b10fc81fe2f0792cc7"
+ },
+ "L032": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0016",
+  "event_id": "e118428bbce223329619a"
+ },
+ "L033": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0001",
+  "event_id": "e12b2d02bfa8727260213"
+ },
+ "L034": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0003",
+  "event_id": "e83fdd7bae57ecf9df727"
+ },
+ "L035": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0005",
+  "event_id": "e26b7a3d1facda461df26"
+ },
+ "L036": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0024",
+  "event_id": "e31b10b2e69755bc0b794"
+ },
+ "L037": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0005",
+  "event_id": "e0005d16d7307414358d6"
+ },
+ "L038": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0015",
+  "event_id": "e3ff14b7812bfc37a85f5"
+ },
+ "L039": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0016",
+  "event_id": "e786648a05605ef134fae"
+ },
+ "L040": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0020",
+  "event_id": "e85844e60394f5c18db00"
+ },
+ "L041": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0024",
+  "event_id": "e2ad6add386480f8c2eac"
+ },
+ "L042": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0020",
+  "event_id": "e7e8faa79b631a40e6d6d"
+ },
+ "L043": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0018",
+  "event_id": "e8caddb890fdc0b072d40"
+ },
+ "L044": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0020",
+  "event_id": "edeab86784d7c3f1fd0fa"
+ },
+ "L045": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0006",
+  "event_id": "ef485507d378c75762094"
+ },
+ "L046": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0008",
+  "event_id": "ec1345fee64a72f853e52"
+ },
+ "L047": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0015",
+  "event_id": "eb47d9e5b93d0c61af0ea"
+ },
+ "L048": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0011",
+  "event_id": "ea615857564b21fc61b45"
+ },
+ "L049": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0023",
+  "event_id": "ec27a5fcb130dc36098cb"
+ },
+ "L050": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0002",
+  "event_id": "ec78483985ffbd4b4db3f"
+ },
+ "L051": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0021",
+  "event_id": "e0507419601e6c9fb5211"
+ },
+ "L052": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0022",
+  "event_id": "e2918e9070a4b3f06dc26"
+ },
+ "L053": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0019",
+  "event_id": "eec2310a8226de11331c1"
+ },
+ "L054": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0004",
+  "event_id": "ef930b64ac5e8a1154513"
+ },
+ "L055": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0015",
+  "event_id": "e955fbc9afc0a3db19414"
+ },
+ "L056": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0012",
+  "event_id": "e9fdab5db61c8d4cc8042"
+ },
+ "L057": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0024",
+  "event_id": "e98b17cc6d6eba51397b2"
+ },
+ "L058": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0021",
+  "event_id": "ed2e0d732cd7ac0b10df8"
+ },
+ "L059": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0013",
+  "event_id": "eb99744d8f40f24fda182"
+ },
+ "L060": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0010",
+  "event_id": "e3fa7946e2c905cacb5ac"
+ },
+ "L061": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0003",
+  "event_id": "e06dcc80d739d90f40620"
+ },
+ "L062": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0007",
+  "event_id": "eeaa09c91f7b40741c7b6"
+ },
+ "L063": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0020",
+  "event_id": "e7c1477e2bed3acf9a044"
+ },
+ "L064": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0014",
+  "event_id": "e7d5222de1cd59938492c"
+ },
+ "L065": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0002",
+  "event_id": "ec9c0b35e0cb6e9c40887"
+ },
+ "L066": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0022",
+  "event_id": "e5ebbc1580574b361ed8a"
+ },
+ "L067": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0003",
+  "event_id": "ef728015c51e89ac93267"
+ },
+ "L068": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0009",
+  "event_id": "eced270adb6c418d1794e"
+ },
+ "L069": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0010",
+  "event_id": "e2b113476b9f382b0c8e0"
+ },
+ "L070": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0016",
+  "event_id": "e7ae17cd3eee295c8fc4e"
+ },
+ "L071": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0004",
+  "event_id": "e853235276af2b29e4954"
+ },
+ "L072": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0014",
+  "event_id": "e3f582d1f3171a17f8751"
+ },
+ "L073": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0010",
+  "event_id": "e41a7398ab0c44abe75c3"
+ },
+ "L074": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0009",
+  "event_id": "e728bbd97f3d27b1d7fa7"
+ },
+ "L075": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0007",
+  "event_id": "e618da2f27b6d6b7ce18c"
+ },
+ "L076": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0013",
+  "event_id": "e7c63f87bd82c491787d7"
+ },
+ "L077": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0023",
+  "event_id": "eeb101cb8dfa6b4daf72b"
+ },
+ "L078": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0022",
+  "event_id": "e2e34a03f1379b842efd8"
+ },
+ "L079": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0024",
+  "event_id": "e42bf5dac4dc1595442a3"
+ },
+ "L080": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0009",
+  "event_id": "ef99a9c577b1dd1c3aa4c"
+ },
+ "L081": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0021",
+  "event_id": "e006cf2ef81f8c6880f56"
+ },
+ "L082": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0014",
+  "event_id": "e121644f286a833170c16"
+ },
+ "L083": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0017",
+  "event_id": "e8682a4904458be818fa9"
+ },
+ "L084": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0009",
+  "event_id": "e38a7a38775b5136676be"
+ },
+ "L085": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0014",
+  "event_id": "eedfcfd40738e96847863"
+ },
+ "L086": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0012",
+  "event_id": "ebde0a31dc834715463a8"
+ },
+ "L087": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0024",
+  "event_id": "ecaa1c52ec86e563b3563"
+ },
+ "L088": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0006",
+  "event_id": "ec8a07cb4bbd998e93966"
+ },
+ "L089": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0021",
+  "event_id": "ee6b2d3f6c00ea21d78c9"
+ },
+ "L090": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0001",
+  "event_id": "e7cf855f109878f3f9807"
+ },
+ "L091": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0015",
+  "event_id": "e6064640f3c4e4e804ed3"
+ },
+ "L092": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0013",
+  "event_id": "ea4f87241a93b18637a60"
+ },
+ "L093": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0017",
+  "event_id": "e1948085ab2eacfe055bd"
+ },
+ "L094": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0014",
+  "event_id": "e387a2f6d4602c631efc9"
+ },
+ "L095": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0002",
+  "event_id": "eaee2f69ea0dbd1fb1b9a"
+ },
+ "L096": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0019",
+  "event_id": "e5eb7a43cb9f7be80ad45"
+ },
+ "L097": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0005",
+  "event_id": "e3b8fb6f4dd9c41e4d8cb"
+ },
+ "L098": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0011",
+  "event_id": "eccfb85c5845e25bec88a"
+ },
+ "L099": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0010",
+  "event_id": "ec9f208fb9217a883d743"
+ },
+ "L100": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0019",
+  "event_id": "e54b358a5834e365560d1"
+ },
+ "L101": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0003",
+  "event_id": "e3b559134e40c6e425f9a"
+ },
+ "L102": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0005",
+  "event_id": "ef9d94643db2e571c6617"
+ },
+ "L103": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0006",
+  "event_id": "e89ef2c372981c5fb1fce"
+ },
+ "L104": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0001",
+  "event_id": "e7ab9126b446062817409"
+ },
+ "L105": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0004",
+  "event_id": "e7411ada79fe7d2ac0331"
+ },
+ "L106": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0021",
+  "event_id": "ea8f6f234d9520ecb4b82"
+ },
+ "L107": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0019",
+  "event_id": "e811bb582f0912fbe89c0"
+ },
+ "L108": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0016",
+  "event_id": "e805c740cf6f41eb3d681"
+ },
+ "L109": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0012",
+  "event_id": "e478ab1b2e245f3d2f508"
+ },
+ "L110": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0011",
+  "event_id": "eb370e15f6a7cdec48b75"
+ },
+ "L111": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0018",
+  "event_id": "eca642515c7711195a728"
+ },
+ "L112": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0012",
+  "event_id": "e43db2993358e90b5a031"
+ },
+ "L113": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0004",
+  "event_id": "eae6461ecd5ee5a8e8537"
+ },
+ "L114": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0006",
+  "event_id": "ecc972da10019fecab054"
+ },
+ "L115": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0015",
+  "event_id": "ea0ebb54b07e060207d7b"
+ },
+ "L116": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0005",
+  "event_id": "e7cf1cf57abce4fdc8132"
+ },
+ "L117": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0001",
+  "event_id": "e1b31aa8f309ddab0c7e5"
+ },
+ "L118": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0021",
+  "event_id": "e756fa4cd4c0306a64bf4"
+ },
+ "L119": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0017",
+  "event_id": "e98ea3ef5b3d99378eb21"
+ },
+ "L120": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0018",
+  "event_id": "e8fd6113c6edde209b736"
+ },
+ "L121": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0023",
+  "event_id": "e2ce74bdd9616da81a650"
+ },
+ "L122": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0002",
+  "event_id": "eb2f4970fccd6ae9e5924"
+ },
+ "L123": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0013",
+  "event_id": "e122ae670dea158c63c5b"
+ },
+ "L124": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0008",
+  "event_id": "e69e4d4b5a0b0fe96a4ca"
+ },
+ "L125": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0007",
+  "event_id": "e30d45e1abb0591f4596a"
+ },
+ "L126": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0008",
+  "event_id": "e908b8a597701d9fc2e29"
+ },
+ "L127": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0004",
+  "event_id": "e044f4ebb7c8994c27707"
+ },
+ "L128": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0012",
+  "event_id": "e7ebaacf3ad614baf1560"
+ },
+ "L129": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0023",
+  "event_id": "eef609bb47b94f3e94922"
+ },
+ "L130": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0007",
+  "event_id": "ed5871a644d58b70d3895"
+ },
+ "L131": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0020",
+  "event_id": "ec45a027c18ad115655ae"
+ },
+ "L132": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0018",
+  "event_id": "ed07329285f028984b418"
+ },
+ "L133": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0002",
+  "event_id": "e2eb8e53b41557fd7c387"
+ },
+ "L134": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0020",
+  "event_id": "e15cdf133295e7f5e83c1"
+ },
+ "L135": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0024",
+  "event_id": "e550deeeaa1ff39150d61"
+ },
+ "L136": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0008",
+  "event_id": "e4ce4e234a17c2ab3846e"
+ },
+ "L137": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0022",
+  "event_id": "e82fe5b67110baf438199"
+ },
+ "L138": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0011",
+  "event_id": "e1ca8d3e8e51fef515176"
+ },
+ "L139": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0005",
+  "event_id": "e40a91b5c30f12fa6cccc"
+ },
+ "L140": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0001",
+  "event_id": "e23334dc06155980cf426"
+ },
+ "L141": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0006",
+  "event_id": "e0add2039f573dac4c7da"
+ },
+ "L142": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0003",
+  "event_id": "e375746f2b1993cb55c65"
+ },
+ "L143": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0024",
+  "event_id": "e006061ffb7db7ab3f876"
+ },
+ "L144": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0013",
+  "event_id": "ed80244c5d31f5b6a420b"
+ },
+ "L145": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0007",
+  "event_id": "ee2738ebaa9b4322e4ae8"
+ },
+ "L146": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0023",
+  "event_id": "e9ff094616494f06b2ebd"
+ },
+ "L147": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0021",
+  "event_id": "e3cb99f4ce06eae90542c"
+ },
+ "L148": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0018",
+  "event_id": "e28d67222d08707072f38"
+ },
+ "L149": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0001",
+  "event_id": "e6304dccb65e2ae913379"
+ },
+ "L150": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0019",
+  "event_id": "e3a34c62d245192c5524f"
+ },
+ "L151": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0012",
+  "event_id": "e485f84e6eca363bd31d8"
+ },
+ "L152": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0016",
+  "event_id": "e3fed383433e4d856bcd5"
+ },
+ "L153": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0008",
+  "event_id": "e3f480d0caeb83db473b4"
+ },
+ "L154": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0005",
+  "event_id": "e0e17ea8f519a6820b6d0"
+ },
+ "L155": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0019",
+  "event_id": "e7a863b3d103edd9fee10"
+ },
+ "L156": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0023",
+  "event_id": "e7dc371a80c633a6d9ab7"
+ },
+ "L157": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0006",
+  "event_id": "e0e578873b1d82d5926cb"
+ },
+ "L158": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0012",
+  "event_id": "e79f1896163753c1c2182"
+ },
+ "L159": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0011",
+  "event_id": "eab646080574b829e4864"
+ },
+ "L160": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0003",
+  "event_id": "e93272d235fdae1d50366"
+ },
+ "L161": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0021",
+  "event_id": "e4c8f667d0f859d25b3f1"
+ },
+ "L162": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0011",
+  "event_id": "efd7f8a42eed8b6af34b9"
+ },
+ "L163": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0014",
+  "event_id": "eea05cad2fb147e5173df"
+ },
+ "L164": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0007",
+  "event_id": "e329d32312d589e014967"
+ },
+ "L165": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0010",
+  "event_id": "eef1cb32db91c60f905c2"
+ },
+ "L166": {
+  "file": "training/challenge_v1/data/challenge.jsonl",
+  "episode_id": "ch-0014",
+  "event_id": "e99e3e4a2c019c6a8fbc7"
+ }
+}

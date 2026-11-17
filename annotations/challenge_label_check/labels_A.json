@@ -1,0 +1,844 @@
+{
+ "annotator": "A",
+ "field": "category",
+ "allowed": [
+  "general_update",
+  "scoped_exception",
+  "exception_revision",
+  "exception_retirement",
+  "stable_preference",
+  "clarify"
+ ],
+ "items": [
+  {
+   "id": "L001",
+   "category": "stable_preference",
+   "note": "nothing: restates outdoor bike rides -> no audio; buddy's habit is his own"
+  },
+  {
+   "id": "L002",
+   "category": "stable_preference",
+   "note": "nothing: partner's EV idea rejected; client meetings stay premium car"
+  },
+  {
+   "id": "L003",
+   "category": "scoped_exception",
+   "note": "new: wedding gifts -> glossy paper with satin ribbon, lasting"
+  },
+  {
+   "id": "L004",
+   "category": "general_update",
+   "note": "usual -> mid-afternoon (around 3 pm)"
+  },
+  {
+   "id": "L005",
+   "category": "exception_retirement",
+   "note": "retire homework hour"
+  },
+  {
+   "id": "L006",
+   "category": "stable_preference",
+   "note": "nothing: one-off wrap request restating coworker gifts -> kraft paper and twine"
+  },
+  {
+   "id": "L007",
+   "category": "exception_retirement",
+   "note": "retire strawberry patch"
+  },
+  {
+   "id": "L008",
+   "category": "scoped_exception",
+   "note": "new: evening classes -> vibrate only, lasting"
+  },
+  {
+   "id": "L009",
+   "category": "general_update",
+   "note": "usual -> dusting of icing sugar"
+  },
+  {
+   "id": "L010",
+   "category": "clarify",
+   "note": "nothing yet: unclear whether short-run or long-run audio changes"
+  },
+  {
+   "id": "L011",
+   "category": "stable_preference",
+   "note": "nothing: one-off (suit carrier for the wedding trip only)"
+  },
+  {
+   "id": "L012",
+   "category": "exception_revision",
+   "note": "revise candidate interviews -> late afternoon"
+  },
+  {
+   "id": "L013",
+   "category": "clarify",
+   "note": "nothing yet: unclear whether nieces/nephews or coworker wrapping changes"
+  },
+  {
+   "id": "L014",
+   "category": "stable_preference",
+   "note": "nothing: one-off (all lights off for tonight's film)"
+  },
+  {
+   "id": "L015",
+   "category": "exception_revision",
+   "note": "revise sketching page layouts -> square grid (graph paper)"
+  },
+  {
+   "id": "L016",
+   "category": "scoped_exception",
+   "note": "new: cotton jumpers -> indoor drying rack (clothes horse), lasting"
+  },
+  {
+   "id": "L017",
+   "category": "exception_revision",
+   "note": "revise short runs -> upbeat playlist (fast music)"
+  },
+  {
+   "id": "L018",
+   "category": "scoped_exception",
+   "note": "new: dark bath towels -> indoor drying rack, lasting"
+  },
+  {
+   "id": "L019",
+   "category": "stable_preference",
+   "note": "nothing: manager's schedule; restates candidate interviews -> right after lunch"
+  },
+  {
+   "id": "L020",
+   "category": "exception_revision",
+   "note": "revise evenings with the kids (film genre) -> wildlife film; music unchanged"
+  },
+  {
+   "id": "L021",
+   "category": "general_update",
+   "note": "usual -> reusable cloth wrap"
+  },
+  {
+   "id": "L022",
+   "category": "stable_preference",
+   "note": "nothing: EV suggestion rejected; airport stays compact hatchback"
+  },
+  {
+   "id": "L023",
+   "category": "stable_preference",
+   "note": "nothing: restates obedience classes -> liver bites"
+  },
+  {
+   "id": "L024",
+   "category": "exception_revision",
+   "note": "revise conference trips -> room next to the stairwell"
+  },
+  {
+   "id": "L025",
+   "category": "exception_retirement",
+   "note": "retire family visits up north (back to usual direct train)"
+  },
+  {
+   "id": "L026",
+   "category": "general_update",
+   "note": "usual -> apple slices"
+  },
+  {
+   "id": "L027",
+   "category": "exception_retirement",
+   "note": "retire release weeks (meeting length); quick-question video call unchanged"
+  },
+  {
+   "id": "L028",
+   "category": "scoped_exception",
+   "note": "new: strawberry patch -> grass clippings, lasting"
+  },
+  {
+   "id": "L029",
+   "category": "scoped_exception",
+   "note": "new: dinners out alone -> vibration only, lasting"
+  },
+  {
+   "id": "L030",
+   "category": "stable_preference",
+   "note": "nothing: hypothetical (if they get the team lead role)"
+  },
+  {
+   "id": "L031",
+   "category": "exception_revision",
+   "note": "revise work meetings -> total silence"
+  },
+  {
+   "id": "L032",
+   "category": "general_update",
+   "note": "usual -> simple lemon glaze"
+  },
+  {
+   "id": "L033",
+   "category": "clarify",
+   "note": "nothing yet: unclear whether layovers or grandparent trips change"
+  },
+  {
+   "id": "L034",
+   "category": "exception_revision",
+   "note": "revise deadline weeks -> early-morning delivery"
+  },
+  {
+   "id": "L035",
+   "category": "exception_retirement",
+   "note": "retire gym days (commute mode); gym-day lunch unchanged"
+  },
+  {
+   "id": "L036",
+   "category": "general_update",
+   "note": "usual -> plain blank pages"
+  },
+  {
+   "id": "L037",
+   "category": "clarify",
+   "note": "nothing yet: unclear whether rainy-day commute or rainy-day lunch changes"
+  },
+  {
+   "id": "L038",
+   "category": "general_update",
+   "note": "usual -> leaf mould"
+  },
+  {
+   "id": "L039",
+   "category": "stable_preference",
+   "note": "nothing: colleague's idea declined; restates bake sales -> caramel drizzle"
+  },
+  {
+   "id": "L040",
+   "category": "scoped_exception",
+   "note": "new: board game nights -> takeaway night, 2028-09-20 to 2028-10-03"
+  },
+  {
+   "id": "L041",
+   "category": "stable_preference",
+   "note": "nothing: one-off (black pen for tomorrow's lease signing)"
+  },
+  {
+   "id": "L042",
+   "category": "general_update",
+   "note": "usual -> buffet spread"
+  },
+  {
+   "id": "L043",
+   "category": "scoped_exception",
+   "note": "new: trips to the head office -> stopping train, 2028-05-08 to 2028-05-21"
+  },
+  {
+   "id": "L044",
+   "category": "exception_revision",
+   "note": "revise family Sunday lunches -> sit-down meal"
+  },
+  {
+   "id": "L045",
+   "category": "scoped_exception",
+   "note": "new: camping trips -> big rucksack (hiking backpack), lasting"
+  },
+  {
+   "id": "L046",
+   "category": "stable_preference",
+   "note": "nothing: one-off (phone calls instead of chat tomorrow)"
+  },
+  {
+   "id": "L047",
+   "category": "stable_preference",
+   "note": "nothing: neighbour's pine-needle idea declined; strawberry patch follows usual"
+  },
+  {
+   "id": "L048",
+   "category": "stable_preference",
+   "note": "nothing: louder-phone suggestion rejected; evening train stays silent banners"
+  },
+  {
+   "id": "L049",
+   "category": "clarify",
+   "note": "unsure: stable_preference; nothing yet: airport small car lasting vs trip by trip undecided"
+  },
+  {
+   "id": "L050",
+   "category": "clarify",
+   "note": "nothing yet: unclear whether movie-night or dinner-party lighting changes"
+  },
+  {
+   "id": "L051",
+   "category": "exception_retirement",
+   "note": "retire parcels that need a signature"
+  },
+  {
+   "id": "L052",
+   "category": "stable_preference",
+   "note": "nothing: hypothetical (if they got the manager job)"
+  },
+  {
+   "id": "L053",
+   "category": "stable_preference",
+   "note": "nothing: one-off (5:30 alarm on the 17th only)"
+  },
+  {
+   "id": "L054",
+   "category": "general_update",
+   "note": "usual -> favorites-only ringing"
+  },
+  {
+   "id": "L055",
+   "category": "scoped_exception",
+   "note": "new: vegetable beds -> barley straw, lasting"
+  },
+  {
+   "id": "L056",
+   "category": "stable_preference",
+   "note": "nothing: restates takeaway nights with guests -> chili on the side"
+  },
+  {
+   "id": "L057",
+   "category": "clarify",
+   "note": "nothing yet: unclear whether layout or budget page ruling changes"
+  },
+  {
+   "id": "L058",
+   "category": "stable_preference",
+   "note": "nothing: one-off (first available slot for this furniture delivery)"
+  },
+  {
+   "id": "L059",
+   "category": "exception_retirement",
+   "note": "retire obedience classes"
+  },
+  {
+   "id": "L060",
+   "category": "stable_preference",
+   "note": "nothing: one-off (dark towels in the dryer on high today)"
+  },
+  {
+   "id": "L061",
+   "category": "scoped_exception",
+   "note": "new: weeks with house guests -> mid-afternoon delivery, lasting"
+  },
+  {
+   "id": "L062",
+   "category": "exception_retirement",
+   "note": "retire date nights (background music); rom-com unchanged"
+  },
+  {
+   "id": "L063",
+   "category": "stable_preference",
+   "note": "nothing: brother's hosting style; restates family Sunday lunches -> potluck"
+  },
+  {
+   "id": "L064",
+   "category": "clarify",
+   "note": "nothing yet: unclear whether bedtime or housework speed changes"
+  },
+  {
+   "id": "L065",
+   "category": "exception_revision",
+   "note": "revise dinner parties -> warm low glow (dim setting)"
+  },
+  {
+   "id": "L066",
+   "category": "stable_preference",
+   "note": "nothing: friend's preference; wedding gifts stay glossy paper"
+  },
+  {
+   "id": "L067",
+   "category": "exception_retirement",
+   "note": "retire home-office weeks"
+  },
+  {
+   "id": "L068",
+   "category": "exception_revision",
+   "note": "revise indoor trainer rides -> guided coaching track"
+  },
+  {
+   "id": "L069",
+   "category": "exception_revision",
+   "note": "revise white bath towels -> high-heat tumble dry"
+  },
+  {
+   "id": "L070",
+   "category": "exception_revision",
+   "note": "revise birthday parties -> whipped cream"
+  },
+  {
+   "id": "L071",
+   "category": "stable_preference",
+   "note": "nothing: manager's rule rejected; work meetings stay vibrate only"
+  },
+  {
+   "id": "L072",
+   "category": "scoped_exception",
+   "note": "new: bedtime listening -> 0.75x speed, for now (no end date)"
+  },
+  {
+   "id": "L073",
+   "category": "general_update",
+   "note": "usual -> line drying outside"
+  },
+  {
+   "id": "L074",
+   "category": "exception_retirement",
+   "note": "retire long runs"
+  },
+  {
+   "id": "L075",
+   "category": "general_update",
+   "note": "usual -> classical piano"
+  },
+  {
+   "id": "L076",
+   "category": "stable_preference",
+   "note": "nothing: one-off (cheese cubes for Saturday's test)"
+  },
+  {
+   "id": "L077",
+   "category": "exception_revision",
+   "note": "revise rides to the airport -> compact hatchback"
+  },
+  {
+   "id": "L078",
+   "category": "stable_preference",
+   "note": "nothing: one-off (brown paper for nephew's birthday)"
+  },
+  {
+   "id": "L079",
+   "category": "stable_preference",
+   "note": "nothing: restates signing contracts -> navy blue ink"
+  },
+  {
+   "id": "L080",
+   "category": "general_update",
+   "note": "usual -> comedy podcast"
+  },
+  {
+   "id": "L081",
+   "category": "stable_preference",
+   "note": "nothing: mid-afternoon suggestion rejected; groceries stay evening"
+  },
+  {
+   "id": "L082",
+   "category": "exception_revision",
+   "note": "revise bedtime listening (0.75x): now lasting"
+  },
+  {
+   "id": "L083",
+   "category": "scoped_exception",
+   "note": "new: client calls -> first thing in the morning, 2028-03-10 to 2028-03-16"
+  },
+  {
+   "id": "L084",
+   "category": "scoped_exception",
+   "note": "new: long runs -> audiobook, for now (no end date)"
+  },
+  {
+   "id": "L085",
+   "category": "exception_retirement",
+   "note": "retire bedtime listening"
+  },
+  {
+   "id": "L086",
+   "category": "scoped_exception",
+   "note": "new: weekend lunch orders -> medium heat, lasting"
+  },
+  {
+   "id": "L087",
+   "category": "stable_preference",
+   "note": "nothing: designer's preference; restates layouts -> dot grid"
+  },
+  {
+   "id": "L088",
+   "category": "general_update",
+   "note": "usual -> intercity coach"
+  },
+  {
+   "id": "L089",
+   "category": "stable_preference",
+   "note": "nothing: hypothetical (job across town)"
+  },
+  {
+   "id": "L090",
+   "category": "general_update",
+   "note": "usual -> room near the lifts"
+  },
+  {
+   "id": "L091",
+   "category": "exception_revision",
+   "note": "revise strawberry patch -> pine needles"
+  },
+  {
+   "id": "L092",
+   "category": "general_update",
+   "note": "usual -> carrot sticks"
+  },
+  {
+   "id": "L093",
+   "category": "stable_preference",
+   "note": "nothing: one-off (late-morning interview on the 13th)"
+  },
+  {
+   "id": "L094",
+   "category": "exception_revision",
+   "note": "revise bedtime listening -> normal speed"
+  },
+  {
+   "id": "L095",
+   "category": "scoped_exception",
+   "note": "new: video calls -> bright white light, lasting"
+  },
+  {
+   "id": "L096",
+   "category": "exception_retirement",
+   "note": "retire commuting days"
+  },
+  {
+   "id": "L097",
+   "category": "scoped_exception",
+   "note": "new: gym days (packed lunch) -> chicken and rice bowl, lasting"
+  },
+  {
+   "id": "L098",
+   "category": "scoped_exception",
+   "note": "new: morning train ride -> alerts held for later, 2028-06-12 to 2028-06-23"
+  },
+  {
+   "id": "L099",
+   "category": "stable_preference",
+   "note": "nothing: hypothetical (if the dryer had a wool cycle)"
+  },
+  {
+   "id": "L100",
+   "category": "general_update",
+   "note": "usual -> half past seven"
+  },
+  {
+   "id": "L101",
+   "category": "stable_preference",
+   "note": "nothing: school-holiday lunchtime suggestion rejected"
+  },
+  {
+   "id": "L102",
+   "category": "exception_revision",
+   "note": "revise rainy days (packed lunch) -> cold pasta, for now (until new thermos)"
+  },
+  {
+   "id": "L103",
+   "category": "exception_revision",
+   "note": "revise work trips (travel bag) -> big suitcase; transport unchanged"
+  },
+  {
+   "id": "L104",
+   "category": "stable_preference",
+   "note": "nothing: coworker's preference; restates conference trips -> near the lifts"
+  },
+  {
+   "id": "L105",
+   "category": "exception_revision",
+   "note": "revise overnight hours -> full-volume ringing, for now (no end date)"
+  },
+  {
+   "id": "L106",
+   "category": "scoped_exception",
+   "note": "new: courier pickups for returns -> lunchtime slot, lasting"
+  },
+  {
+   "id": "L107",
+   "category": "exception_revision",
+   "note": "revise remote workdays (5:30): now 2028-07-05 to 2028-07-24"
+  },
+  {
+   "id": "L108",
+   "category": "scoped_exception",
+   "note": "new: afternoon tea with neighbours -> cream cheese frosting, lasting"
+  },
+  {
+   "id": "L109",
+   "category": "exception_revision",
+   "note": "revise takeaway nights with guests -> no chili at all"
+  },
+  {
+   "id": "L110",
+   "category": "exception_retirement",
+   "note": "retire dinners out alone"
+  },
+  {
+   "id": "L111",
+   "category": "stable_preference",
+   "note": "nothing: one-off (express coach for the board meeting on the 12th)"
+  },
+  {
+   "id": "L112",
+   "category": "clarify",
+   "note": "nothing yet: unclear whether takeaway nights alone or with guests change"
+  },
+  {
+   "id": "L113",
+   "category": "scoped_exception",
+   "note": "new: train commute -> total silence, lasting"
+  },
+  {
+   "id": "L114",
+   "category": "exception_revision",
+   "note": "revise work trips (transport) -> overnight sleeper; bag unchanged"
+  },
+  {
+   "id": "L115",
+   "category": "general_update",
+   "note": "usual -> shredded bark"
+  },
+  {
+   "id": "L116",
+   "category": "stable_preference",
+   "note": "nothing: teammate's habit; restates rainy days -> express bus and soup"
+  },
+  {
+   "id": "L117",
+   "category": "scoped_exception",
+   "note": "new: road trips -> room overlooking the courtyard, lasting"
+  },
+  {
+   "id": "L118",
+   "category": "stable_preference",
+   "note": "nothing: brother's preference, declined"
+  },
+  {
+   "id": "L119",
+   "category": "exception_retirement",
+   "note": "retire team retrospectives"
+  },
+  {
+   "id": "L120",
+   "category": "exception_revision",
+   "note": "revise trips to the head office: end date -> 2028-05-28"
+  },
+  {
+   "id": "L121",
+   "category": "general_update",
+   "note": "usual -> fully electric car"
+  },
+  {
+   "id": "L122",
+   "category": "exception_revision",
+   "note": "revise movie nights -> warm low glow (dim setting)"
+  },
+  {
+   "id": "L123",
+   "category": "exception_revision",
+   "note": "revise trips to the vet -> freeze-dried liver bites"
+  },
+  {
+   "id": "L124",
+   "category": "general_update",
+   "note": "usual -> short email"
+  },
+  {
+   "id": "L125",
+   "category": "scoped_exception",
+   "note": "new: date nights (film genre) -> romantic comedy, lasting; music unchanged"
+  },
+  {
+   "id": "L126",
+   "category": "exception_revision",
+   "note": "revise release weeks (quick-question channel) -> five-minute video call"
+  },
+  {
+   "id": "L127",
+   "category": "exception_retirement",
+   "note": "retire overnight hours"
+  },
+  {
+   "id": "L128",
+   "category": "exception_retirement",
+   "note": "retire takeaway nights alone"
+  },
+  {
+   "id": "L129",
+   "category": "stable_preference",
+   "note": "nothing: hypothetical (whole sales team at client meetings)"
+  },
+  {
+   "id": "L130",
+   "category": "exception_revision",
+   "note": "revise evenings with the kids (music) -> film soundtracks; film unchanged"
+  },
+  {
+   "id": "L131",
+   "category": "exception_retirement",
+   "note": "retire team socials"
+  },
+  {
+   "id": "L132",
+   "category": "stable_preference",
+   "note": "nothing: hypothetical (rumoured autumn closure)"
+  },
+  {
+   "id": "L133",
+   "category": "general_update",
+   "note": "usual -> floor lamps alone"
+  },
+  {
+   "id": "L134",
+   "category": "scoped_exception",
+   "note": "new: book club evenings -> drinks and nibbles, 2028-09-11 to 2028-09-24"
+  },
+  {
+   "id": "L135",
+   "category": "stable_preference",
+   "note": "nothing: hypothetical (if they took the teaching job)"
+  },
+  {
+   "id": "L136",
+   "category": "scoped_exception",
+   "note": "new: remote days (meeting length) -> 25 minutes, 2028-11-27 to 2028-12-08"
+  },
+  {
+   "id": "L137",
+   "category": "exception_revision",
+   "note": "revise presents for nieces and nephews -> brown kraft paper with twine"
+  },
+  {
+   "id": "L138",
+   "category": "stable_preference",
+   "note": "nothing: one-off (full volume on tonight's train home)"
+  },
+  {
+   "id": "L139",
+   "category": "exception_revision",
+   "note": "revise rainy days (commute) -> commuter train; lunch unchanged"
+  },
+  {
+   "id": "L140",
+   "category": "scoped_exception",
+   "note": "new: trips to see grandparents -> room on a high floor, lasting"
+  },
+  {
+   "id": "L141",
+   "category": "scoped_exception",
+   "note": "new: weekend getaways (transport) -> rental car, lasting"
+  },
+  {
+   "id": "L142",
+   "category": "general_update",
+   "note": "usual -> late-night delivery"
+  },
+  {
+   "id": "L143",
+   "category": "scoped_exception",
+   "note": "new: marking up drafts -> green ink, for now (no end date)"
+  },
+  {
+   "id": "L144",
+   "category": "scoped_exception",
+   "note": "new: long hikes -> chicken jerky strips, lasting"
+  },
+  {
+   "id": "L145",
+   "category": "stable_preference",
+   "note": "nothing: friend's opinion rejected; restates date nights -> rom-com"
+  },
+  {
+   "id": "L146",
+   "category": "exception_retirement",
+   "note": "retire rides to client meetings"
+  },
+  {
+   "id": "L147",
+   "category": "clarify",
+   "note": "nothing yet: unclear whether signature parcels or grocery slot changes"
+  },
+  {
+   "id": "L148",
+   "category": "scoped_exception",
+   "note": "new: concert nights in the city -> stopping train, lasting"
+  },
+  {
+   "id": "L149",
+   "category": "exception_retirement",
+   "note": "retire beach holidays"
+  },
+  {
+   "id": "L150",
+   "category": "clarify",
+   "note": "unsure: stable_preference; nothing yet: whether remote-workday 5:30 outlasts the builders is open"
+  },
+  {
+   "id": "L151",
+   "category": "general_update",
+   "note": "usual -> mild heat level (hint of spice)"
+  },
+  {
+   "id": "L152",
+   "category": "stable_preference",
+   "note": "nothing: one-off (ganache for niece's party only)"
+  },
+  {
+   "id": "L153",
+   "category": "stable_preference",
+   "note": "nothing: manager's habit; restates remote days -> chat message"
+  },
+  {
+   "id": "L154",
+   "category": "general_update",
+   "note": "usual -> veggie wrap"
+  },
+  {
+   "id": "L155",
+   "category": "scoped_exception",
+   "note": "new: remote workdays -> half past five, for now (no end date)"
+  },
+  {
+   "id": "L156",
+   "category": "stable_preference",
+   "note": "nothing: one-off (small car for this airport run)"
+  },
+  {
+   "id": "L157",
+   "category": "exception_retirement",
+   "note": "retire weekend getaways (travel bag); transport unchanged"
+  },
+  {
+   "id": "L158",
+   "category": "exception_revision",
+   "note": "revise weekday lunch orders -> no chili at all"
+  },
+  {
+   "id": "L159",
+   "category": "general_update",
+   "note": "usual -> full sound and vibration"
+  },
+  {
+   "id": "L160",
+   "category": "scoped_exception",
+   "note": "new: school holidays -> early-morning delivery, lasting"
+  },
+  {
+   "id": "L161",
+   "category": "general_update",
+   "note": "usual -> mid-afternoon slot"
+  },
+  {
+   "id": "L162",
+   "category": "exception_revision",
+   "note": "revise dinners out with friends -> silent banners"
+  },
+  {
+   "id": "L163",
+   "category": "general_update",
+   "note": "usual -> double speed"
+  },
+  {
+   "id": "L164",
+   "category": "clarify",
+   "note": "nothing yet: unclear whether kids' film or kids' music changes"
+  },
+  {
+   "id": "L165",
+   "category": "exception_retirement",
+   "note": "retire cotton jumpers"
+  },
+  {
+   "id": "L166",
+   "category": "stable_preference",
+   "note": "nothing: one-off (double speed tonight)"
+  }
+ ]
+}

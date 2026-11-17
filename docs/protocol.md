@@ -123,12 +123,12 @@ Main metric (outline v2.7 §6): a fixed Answer Agent reads each arm's active mem
 
 ## 9. Splits and isolation
 
-Train, dev and test are disjoint in attributes, scope phrases, families and phrase-bank templates. Test is frozen before any prompt, checkpoint or threshold is chosen. The 40-example smoke pilot, the 24-example candidate eval, the v0.1 corpus and the v0.2 hard pilot are not used for generation; the v0.2 test split stays a separate challenge set.
+Train, dev and test are disjoint in attributes, scope phrases, families and phrase-bank templates. Test is frozen before any prompt, checkpoint or threshold is chosen. The 40-example smoke pilot, the 24-example candidate eval, the v0.1 corpus and the v0.2 hard pilot are not used for generation. The v0.2 hard pilot cannot be evaluated under this protocol (old CRUD-only format, no probes); the challenge set is `training/challenge_v1/`, hand-written in this protocol and disjoint from the v1.1 strings.
 
 ## 10. Trims relative to outline v2.7
 
-- No `SUPPORTS` relation, and no overlapping scopes or precedence rules in the generated set (the v0.2 challenge set keeps such cases).
-- One state change per event; multi-record events are left to the v0.2 challenge set.
+- No `SUPPORTS` relation, and no overlapping scopes or precedence rules (neither the generated set nor the challenge set has them).
+- One state change per event; events with several changes are not covered.
 - Validity has three kinds; `status` is implicit (active records are shown, retired ones stay in the audit log).
 - General preferences change immediately; there are no future-dated general updates.
 - `clarify` is an explicit decision for genuinely unresolved targets, kept from the earlier pilots.

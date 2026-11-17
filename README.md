@@ -2,7 +2,7 @@
 
 How should an AI agent revise stored preferences when a new statement is a contextual exception rather than a global preference change? This three-person final project compares an SFT-trained generic CRUD memory manager (add / update / delete / no-op over free-text memories) with an SFT-trained manager that also represents preference scope and relationships between memories. RL is a stretch goal and has not started. The experiment design is in [docs/sft-plan.md](docs/sft-plan.md).
 
-> **Status (2026-11-16):** prompt baselines (zero-shot and six-shot) and SFT for both arms (Qwen3-4B-Instruct-2507, LoRA, three seeds) have run on the dev split under protocol 1.1. Protocol 1.2 changes the gold text to the user's own words; its SFT runs, six-shot baseline and gold reference are being rerun on dev. The test split has not been read: it is evaluated once after the freeze in [docs/evaluation.md](docs/evaluation.md#final-test-evaluation). Dev numbers are not final results.
+> **Status (2026-11-17):** prompt baselines (zero-shot and six-shot) and SFT for both arms (Qwen3-4B-Instruct-2507, LoRA, three seeds) have run on the dev split under protocol 1.2 (gold text in the user's own words). On dev the scope arm trails CRUD after SFT (86.3 vs 88.8 Answer Agent QA, −2.5 [−5.2, +0.3]) while both score about the same on gold memory. A hand-written challenge set of structure-heavy episodes ([training/challenge_v1/](training/challenge_v1/README.md)) tests whether that changes where the cases need more structure; its evaluation plan was fixed before any model ran on it. The test split has not been read: it is evaluated once after the freeze in [docs/evaluation.md](docs/evaluation.md#final-test-evaluation). Dev numbers are not final results.
 
 ## Repository layout
 
@@ -13,7 +13,7 @@ fixtures/       handwritten toy timeline and a worked protocol v1 episode
 annotations/    blind annotation pilot; label audit packet of the synthetic data
 results/        small saved outputs of the scope_memory scripts
 docs/           experiment plan and one write-up per milestone
-training/       synthetic corpora (v0.1, v1.1); SFT and baseline scripts for Babel in training/sft/
+training/       synthetic corpora (v0.1, v1.1), challenge set v1; SFT and baseline scripts for Babel in training/sft/
 ```
 
 ## Milestones
@@ -31,6 +31,7 @@ training/       synthetic corpora (v0.1, v1.1); SFT and baseline scripts for Bab
 | Synthetic chronological corpus v1.1 (920 episodes, protocol v1) | [training/scope_revision_v1/README.md](training/scope_revision_v1/README.md), [docs/data-generation-prompt.md](docs/data-generation-prompt.md) | `training/scope_revision_v1/build.py` | `training/scope_revision_v1/data/` |
 | Prompt baselines and SFT on Babel | [training/sft/README.md](training/sft/README.md) | `training/sft/` | run directories on Babel |
 | Analyses for the report: main table, memory classes, structure errors, error-analysis and label-audit packets | [docs/analysis.md](docs/analysis.md) | `scope_memory/analysis.py` | `annotations/label_audit/` |
+| Challenge set v1: 24 hand-written episodes in six structure-heavy stressors, evaluation plan fixed in advance | [training/challenge_v1/README.md](training/challenge_v1/README.md) | `training/challenge_v1/build.py` | `training/challenge_v1/data/`, `samples.md` |
 
 ## Quickstart
 

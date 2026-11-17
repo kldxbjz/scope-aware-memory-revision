@@ -1,0 +1,55 @@
+{
+ "file": "data/challenge.jsonl",
+ "sha256": "ffeb6a872c9d88d8be66704c9ffb83f009307c169853c00950684c74fb9a7b05",
+ "episodes": 24,
+ "events": 166,
+ "probes": 567,
+ "episodes_per_stressor": {
+  "dense": 4,
+  "shared": 4,
+  "confusable": 4,
+  "chain": 4,
+  "temporal": 4,
+  "distractor": 4
+ },
+ "two_attribute_episodes": 5,
+ "events_per_category": {
+  "general_update": 26,
+  "scoped_exception": 32,
+  "exception_revision": 31,
+  "exception_retirement": 21,
+  "stable_preference": 44,
+  "clarify": 12
+ },
+ "probes_per_qa_group": {
+  "exception_revision": 196,
+  "general_update": 101,
+  "scoped_exception": 126,
+  "stable_preference": 144
+ },
+ "probes_per_type": {
+  "target": 170,
+  "default": 124,
+  "neighbor": 253,
+  "boundary": 20
+ },
+ "probes_per_stressor": {
+  "dense": 100,
+  "shared": 97,
+  "confusable": 96,
+  "chain": 91,
+  "temporal": 87,
+  "distractor": 96
+ },
+ "written_exception_validity": {
+  "open": 6,
+  "persistent": 49,
+  "window": 8
+ },
+ "max_active_exceptions_per_attribute": {
+  "2": 5,
+  "3": 9,
+  "4": 8,
+  "5": 2
+ }
+}

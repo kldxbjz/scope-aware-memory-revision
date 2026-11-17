@@ -108,6 +108,10 @@ The test split is read once, after everything below is frozen; nothing is re-cho
 
 `bash ~/scope-sft-work/sft/submit_test.sh` (Babel login node) submits the seven runs with `SPLIT=test` into `runs/test_p12_*`; every run directory gets a `SUBMITTED` marker, so a second call submits nothing again.
 
+## Challenge set
+
+`training/challenge_v1/` holds 24 hand-written episodes of structure-heavy cases (dense memory, a situation shared by two attributes, confusable situations, order-dependent chains, windows, distractors). Its README gives the design and the evaluation plan, fixed before any model ran on it. `baseline.sbatch` reads it with `SPLIT=challenge`. `bash ~/scope-sft-work/sft/submit_challenge.sh references` runs the never-written and gold references first; after the data check on gold memory, `submit_challenge.sh policies` runs zero-shot, six-shot and the three `sft-p12` seeds once, with the settings frozen for the test split. `analysis.py report` adds a `stressor_<name>` group per stressor. The set is evaluation data only and does not replace the test split.
+
 ## Not covered yet
 
 - The v0.1 corpus in `training/scope_revision_training/`, which predates this protocol.

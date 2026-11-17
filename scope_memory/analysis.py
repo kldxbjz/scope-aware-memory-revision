@@ -43,11 +43,22 @@ def load_run(path):
             "scored": {s["id"]: s for s in scored}}
 
 
+def stressor_of(episode):
+    """The stressor of a challenge-set episode (family challenge-<stressor>-<name>), otherwise None."""
+    family = str(episode.get("family") or "")
+    return family.split("-")[1] if family.startswith("challenge-") and family.count("-") >= 2 else None
+
+
 def probe_info(episodes):
-    """'<episode>/<probe>' -> episode, QA group and probe type."""
+    """'<episode>/<probe>' -> episode, QA group, probe type and challenge-set stressor (None outside it)."""
     return {f"{e['episode_id']}/{p['probe_id']}": {"episode_id": e["episode_id"], "qa_group": p["category"],
-                                                   "probe_type": p["probe_type"]}
+                                                   "probe_type": p["probe_type"], "stressor": stressor_of(e)}
             for e in episodes for p in e.get("probes", [])}
+
+
+def groups_for(info):
+    """GROUPS plus a stressor_<name> group for each challenge-set stressor among the probes."""
+    return GROUPS + tuple(f"stressor_{s}" for s in sorted({i["stressor"] for i in info.values() if i.get("stressor")}))
 
 
 def correctness(runs, arm):
@@ -67,6 +78,8 @@ def _in_group(info, group):
         return info["probe_type"] != "boundary"
     if group.startswith("type_"):
         return info["probe_type"] == group[len("type_"):]
+    if group.startswith("stressor_"):
+        return info.get("stressor") == group[len("stressor_"):]
     return info["qa_group"] == group
 
 
@@ -94,11 +107,12 @@ def _summarize_cells(cells, picks):
             "ci95": _ci(diffs), "sum_difference": round(sum_a - sum_b, 2)}
 
 
-def paired(a, b, info, groups=GROUPS, bootstrap=2000, seed=0):
-    """Means of a and b (probe -> value in [0, 1]) and of a - b in each group, with episode-bootstrap intervals for the
-    difference. a, b and info must cover the same probes."""
+def paired(a, b, info, groups=None, bootstrap=2000, seed=0):
+    """Means of a and b (probe -> value in [0, 1]) and of a - b in each group (default: groups_for(info)), with
+    episode-bootstrap intervals for the difference. a, b and info must cover the same probes."""
     if set(a) != set(info) or set(b) != set(info):
         raise ValueError("a, b and the probe table cover different probes")
+    groups = groups or groups_for(info)
     picks = _picks({i["episode_id"] for i in info.values()}, bootstrap, seed)
     out = {}
     for group in groups:
@@ -115,7 +129,7 @@ def paired(a, b, info, groups=GROUPS, bootstrap=2000, seed=0):
     return out
 
 
-def accuracy(a, info, groups=GROUPS, bootstrap=2000, seed=0):
+def accuracy(a, info, groups=None, bootstrap=2000, seed=0):
     """Mean of a in each group with an episode-bootstrap interval."""
     out = {}
     for group, s in paired(a, {k: 0.0 for k in a}, info, groups, bootstrap, seed).items():
