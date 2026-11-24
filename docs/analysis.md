@@ -70,3 +70,23 @@ python3 -m scope_memory.analysis agreement --labels A.json B.json --key annotati
 ```
 
 The first command draws 5 events of every category from train and from test (60 events, shuffled, opaque ids) and writes `packet.md` (the stored preferences before the event, written as CRUD sentences, and the conversation, no labels), `labels_template.json` and `key.json`, which names the event behind each id. Two team members copy the template, label every item alone with one category from protocol §3 without opening the data files, and run the second command. It reports each annotator's agreement with the gold category and the disagreements, and the agreement and kappa between the annotators. A gold label both annotators reject is counted as a label error; the team decides on the error rate before the test evaluation whether the data need fixing.
+
+### Result (2026-11-23)
+
+One team member (Raina) labelled all 60 items alone, from the packet and a Chinese instruction sheet with the same six
+categories and a recommended order of checks. Her file is `annotations/label_audit/labels_raina.json`, as received
+(SHA-256 `3d162e9f…`, no notes). `agreement --labels annotations/label_audit/labels_raina.json --key
+annotations/label_audit/key.json` wrote `annotations/label_audit/agreement_raina.json`: she chose the gold category
+for 58 of the 60 items (96.7%; Cohen's kappa against gold 0.96). The two disagreements were checked against the
+category definitions and the stored preferences shown in the packet. This check was not blind: the checker saw the
+gold labels.
+
+| Item | Source | Annotator | Gold | Reading |
+|---|---|---|---|---|
+| L008 | train `tr-0138` | `exception_revision` | `stable_preference` | There is no stored rule for the situation (typing without gloves), so there is nothing to revise, and the user limits the change to today ("Once this occasion is over, keep my earlier preferences"), which makes it a one-off request. Gold holds. |
+| L024 | test `te-0053` | `general_update` | `exception_revision` | The stored preferences already hold a rule for lodgings used for a single night; the user changes its value and says the rest of the preferences stay. Gold holds. |
+
+The audit therefore found no label error in 60 events (one-sided 95% upper bound 4.9%). Even if both disagreements
+counted as errors, the rate would be 2 of 60 (3.3%, 95% CI 0.4–11.5%). No data were changed. A second annotator was
+not available, so there is no agreement between annotators to report; the team decided on 2026-11-23 to go ahead
+with one annotator.

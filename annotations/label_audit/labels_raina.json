@@ -1,0 +1,314 @@
+{
+ "annotator": "Raina",
+ "field": "category",
+ "allowed": [
+  "general_update",
+  "scoped_exception",
+  "exception_revision",
+  "exception_retirement",
+  "stable_preference",
+  "clarify"
+ ],
+ "items": [
+  {
+   "id": "L001",
+   "category": "exception_retirement",
+   "note": ""
+  },
+  {
+   "id": "L002",
+   "category": "scoped_exception",
+   "note": ""
+  },
+  {
+   "id": "L003",
+   "category": "scoped_exception",
+   "note": ""
+  },
+  {
+   "id": "L004",
+   "category": "general_update",
+   "note": ""
+  },
+  {
+   "id": "L005",
+   "category": "clarify",
+   "note": ""
+  },
+  {
+   "id": "L006",
+   "category": "exception_revision",
+   "note": ""
+  },
+  {
+   "id": "L007",
+   "category": "clarify",
+   "note": ""
+  },
+  {
+   "id": "L008",
+   "category": "exception_revision",
+   "note": ""
+  },
+  {
+   "id": "L009",
+   "category": "stable_preference",
+   "note": ""
+  },
+  {
+   "id": "L010",
+   "category": "scoped_exception",
+   "note": ""
+  },
+  {
+   "id": "L011",
+   "category": "exception_revision",
+   "note": ""
+  },
+  {
+   "id": "L012",
+   "category": "stable_preference",
+   "note": ""
+  },
+  {
+   "id": "L013",
+   "category": "general_update",
+   "note": ""
+  },
+  {
+   "id": "L014",
+   "category": "exception_retirement",
+   "note": ""
+  },
+  {
+   "id": "L015",
+   "category": "clarify",
+   "note": ""
+  },
+  {
+   "id": "L016",
+   "category": "clarify",
+   "note": ""
+  },
+  {
+   "id": "L017",
+   "category": "exception_retirement",
+   "note": ""
+  },
+  {
+   "id": "L018",
+   "category": "clarify",
+   "note": ""
+  },
+  {
+   "id": "L019",
+   "category": "exception_retirement",
+   "note": ""
+  },
+  {
+   "id": "L020",
+   "category": "exception_revision",
+   "note": ""
+  },
+  {
+   "id": "L021",
+   "category": "general_update",
+   "note": ""
+  },
+  {
+   "id": "L022",
+   "category": "stable_preference",
+   "note": ""
+  },
+  {
+   "id": "L023",
+   "category": "general_update",
+   "note": ""
+  },
+  {
+   "id": "L024",
+   "category": "general_update",
+   "note": ""
+  },
+  {
+   "id": "L025",
+   "category": "clarify",
+   "note": ""
+  },
+  {
+   "id": "L026",
+   "category": "general_update",
+   "note": ""
+  },
+  {
+   "id": "L027",
+   "category": "exception_revision",
+   "note": ""
+  },
+  {
+   "id": "L028",
+   "category": "scoped_exception",
+   "note": ""
+  },
+  {
+   "id": "L029",
+   "category": "exception_retirement",
+   "note": ""
+  },
+  {
+   "id": "L030",
+   "category": "stable_preference",
+   "note": ""
+  },
+  {
+   "id": "L031",
+   "category": "general_update",
+   "note": ""
+  },
+  {
+   "id": "L032",
+   "category": "general_update",
+   "note": ""
+  },
+  {
+   "id": "L033",
+   "category": "exception_revision",
+   "note": ""
+  },
+  {
+   "id": "L034",
+   "category": "exception_revision",
+   "note": ""
+  },
+  {
+   "id": "L035",
+   "category": "exception_revision",
+   "note": ""
+  },
+  {
+   "id": "L036",
+   "category": "exception_retirement",
+   "note": ""
+  },
+  {
+   "id": "L037",
+   "category": "clarify",
+   "note": ""
+  },
+  {
+   "id": "L038",
+   "category": "stable_preference",
+   "note": ""
+  },
+  {
+   "id": "L039",
+   "category": "exception_revision",
+   "note": ""
+  },
+  {
+   "id": "L040",
+   "category": "clarify",
+   "note": ""
+  },
+  {
+   "id": "L041",
+   "category": "clarify",
+   "note": ""
+  },
+  {
+   "id": "L042",
+   "category": "stable_preference",
+   "note": ""
+  },
+  {
+   "id": "L043",
+   "category": "scoped_exception",
+   "note": ""
+  },
+  {
+   "id": "L044",
+   "category": "exception_retirement",
+   "note": ""
+  },
+  {
+   "id": "L045",
+   "category": "scoped_exception",
+   "note": ""
+  },
+  {
+   "id": "L046",
+   "category": "exception_revision",
+   "note": ""
+  },
+  {
+   "id": "L047",
+   "category": "general_update",
+   "note": ""
+  },
+  {
+   "id": "L048",
+   "category": "stable_preference",
+   "note": ""
+  },
+  {
+   "id": "L049",
+   "category": "stable_preference",
+   "note": ""
+  },
+  {
+   "id": "L050",
+   "category": "scoped_exception",
+   "note": ""
+  },
+  {
+   "id": "L051",
+   "category": "exception_retirement",
+   "note": ""
+  },
+  {
+   "id": "L052",
+   "category": "exception_retirement",
+   "note": ""
+  },
+  {
+   "id": "L053",
+   "category": "scoped_exception",
+   "note": ""
+  },
+  {
+   "id": "L054",
+   "category": "exception_retirement",
+   "note": ""
+  },
+  {
+   "id": "L055",
+   "category": "scoped_exception",
+   "note": ""
+  },
+  {
+   "id": "L056",
+   "category": "general_update",
+   "note": ""
+  },
+  {
+   "id": "L057",
+   "category": "general_update",
+   "note": ""
+  },
+  {
+   "id": "L058",
+   "category": "clarify",
+   "note": ""
+  },
+  {
+   "id": "L059",
+   "category": "stable_preference",
+   "note": ""
+  },
+  {
+   "id": "L060",
+   "category": "scoped_exception",
+   "note": ""
+  }
+ ]
+}

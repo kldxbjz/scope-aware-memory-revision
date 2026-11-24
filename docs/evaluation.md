@@ -120,6 +120,10 @@ kept; no seed or setting was added or changed after the challenge set. Identifie
 Before the run, the label audit in [analysis.md](analysis.md#label-audit-of-the-synthetic-data) is done and the team
 decides whether its error rate needs a data fix. Then `submit_test.sh` runs once.
 
+The label audit was done on 2026-11-23 with one annotator, who confirmed 58 of the 60 gold categories; both
+disagreements are annotator slips, so no label error was found and no data were changed
+([result](analysis.md#result-2026-11-23)).
+
 `bash ~/scope-sft-work/sft/submit_test.sh` (Babel login node) submits the seven runs with `SPLIT=test` into `runs/test_p12_*`; every run directory gets a `SUBMITTED` marker, so a second call submits nothing again.
 
 ## Challenge set
