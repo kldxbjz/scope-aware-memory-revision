@@ -1,0 +1,840 @@
+{
+  "role": "diagnostic",
+  "note": "Post-hoc: written after the single test run to describe it; not part of the pre-specified analysis. The pre-specified numbers are in results/test_p12/report.json. Teacher-forced metrics read memory with the rule readers.",
+  "runs": [
+    "runs/test_p12_sft_s0",
+    "runs/test_p12_sft_s1",
+    "runs/test_p12_sft_s2"
+  ],
+  "episodes": 200,
+  "events": {
+    "scope": 3573,
+    "crud": 3573
+  },
+  "checks": [
+    {
+      "run": "runs/test_p12_sft_s0",
+      "arm": "scope",
+      "matches_eval_tf": true
+    },
+    {
+      "run": "runs/test_p12_sft_s0",
+      "arm": "crud",
+      "matches_eval_tf": true
+    },
+    {
+      "run": "runs/test_p12_sft_s1",
+      "arm": "scope",
+      "matches_eval_tf": true
+    },
+    {
+      "run": "runs/test_p12_sft_s1",
+      "arm": "crud",
+      "matches_eval_tf": true
+    },
+    {
+      "run": "runs/test_p12_sft_s2",
+      "arm": "scope",
+      "matches_eval_tf": true
+    },
+    {
+      "run": "runs/test_p12_sft_s2",
+      "arm": "crud",
+      "matches_eval_tf": true
+    }
+  ],
+  "rule_reader_metrics": [
+    "row_correct",
+    "row_correct_if_readable",
+    "state_correct",
+    "state_correct_if_readable",
+    "false_overwrite",
+    "missed_update",
+    "exception_disturbed"
+  ],
+  "metrics": {
+    "row_correct": {
+      "scope": {
+        "count": 3260,
+        "denominator": 3573,
+        "rate": 0.9124,
+        "ci95": [
+          0.8986,
+          0.9248
+        ]
+      },
+      "crud": {
+        "count": 3276,
+        "denominator": 3573,
+        "rate": 0.9169,
+        "ci95": [
+          0.9042,
+          0.9298
+        ]
+      },
+      "scope_minus_crud": {
+        "difference": -0.0045,
+        "ci95": [
+          -0.0166,
+          0.007
+        ]
+      }
+    },
+    "row_correct_if_readable": {
+      "scope": {
+        "count": 3260,
+        "denominator": 3496,
+        "rate": 0.9325,
+        "ci95": [
+          0.9191,
+          0.9447
+        ]
+      },
+      "crud": {
+        "count": 3276,
+        "denominator": 3504,
+        "rate": 0.9349,
+        "ci95": [
+          0.9232,
+          0.9471
+        ]
+      },
+      "scope_minus_crud": {
+        "difference": -0.0024,
+        "ci95": [
+          -0.0127,
+          0.0082
+        ]
+      }
+    },
+    "state_correct": {
+      "scope": {
+        "count": 3281,
+        "denominator": 3573,
+        "rate": 0.9183,
+        "ci95": [
+          0.9052,
+          0.9301
+        ]
+      },
+      "crud": {
+        "count": 3288,
+        "denominator": 3573,
+        "rate": 0.9202,
+        "ci95": [
+          0.9079,
+          0.9331
+        ]
+      },
+      "scope_minus_crud": {
+        "difference": -0.002,
+        "ci95": [
+          -0.0129,
+          0.0083
+        ]
+      }
+    },
+    "state_correct_if_readable": {
+      "scope": {
+        "count": 3281,
+        "denominator": 3496,
+        "rate": 0.9385,
+        "ci95": [
+          0.9263,
+          0.9498
+        ]
+      },
+      "crud": {
+        "count": 3288,
+        "denominator": 3504,
+        "rate": 0.9384,
+        "ci95": [
+          0.9268,
+          0.95
+        ]
+      },
+      "scope_minus_crud": {
+        "difference": 0.0001,
+        "ci95": [
+          -0.0091,
+          0.0094
+        ]
+      }
+    },
+    "decision_correct": {
+      "scope": {
+        "count": 3541,
+        "denominator": 3573,
+        "rate": 0.991,
+        "ci95": [
+          0.9875,
+          0.9944
+        ]
+      },
+      "crud": {
+        "count": 3560,
+        "denominator": 3573,
+        "rate": 0.9964,
+        "ci95": [
+          0.9937,
+          0.9986
+        ]
+      },
+      "scope_minus_crud": {
+        "difference": -0.0053,
+        "ci95": [
+          -0.0087,
+          -0.0017
+        ]
+      }
+    },
+    "false_overwrite": {
+      "scope": {
+        "count": 9,
+        "denominator": 2914,
+        "rate": 0.0031,
+        "ci95": [
+          0.001,
+          0.0055
+        ]
+      },
+      "crud": {
+        "count": 17,
+        "denominator": 2919,
+        "rate": 0.0058,
+        "ci95": [
+          0.0023,
+          0.0102
+        ]
+      },
+      "scope_minus_crud": {
+        "difference": -0.0027,
+        "ci95": [
+          -0.0059,
+          0.0
+        ]
+      }
+    },
+    "missed_update": {
+      "scope": {
+        "count": 38,
+        "denominator": 582,
+        "rate": 0.0653,
+        "ci95": [
+          0.0393,
+          0.0951
+        ]
+      },
+      "crud": {
+        "count": 37,
+        "denominator": 585,
+        "rate": 0.0632,
+        "ci95": [
+          0.0372,
+          0.0908
+        ]
+      },
+      "scope_minus_crud": {
+        "difference": 0.002,
+        "ci95": [
+          -0.0239,
+          0.0295
+        ]
+      }
+    },
+    "exception_disturbed": {
+      "scope": {
+        "count": 45,
+        "denominator": 2477,
+        "rate": 0.0182,
+        "ci95": [
+          0.0122,
+          0.0245
+        ]
+      },
+      "crud": {
+        "count": 45,
+        "denominator": 2489,
+        "rate": 0.0181,
+        "ci95": [
+          0.0115,
+          0.0258
+        ]
+      },
+      "scope_minus_crud": {
+        "difference": 0.0001,
+        "ci95": [
+          -0.0063,
+          0.0063
+        ]
+      }
+    },
+    "spurious_write": {
+      "scope": {
+        "count": 31,
+        "denominator": 1209,
+        "rate": 0.0256,
+        "ci95": [
+          0.015,
+          0.0366
+        ]
+      },
+      "crud": {
+        "count": 25,
+        "denominator": 1209,
+        "rate": 0.0207,
+        "ci95": [
+          0.0109,
+          0.0326
+        ]
+      },
+      "scope_minus_crud": {
+        "difference": 0.005,
+        "ci95": [
+          -0.0055,
+          0.0147
+        ]
+      }
+    },
+    "clarify_recall": {
+      "scope": {
+        "count": 410,
+        "denominator": 426,
+        "rate": 0.9624,
+        "ci95": [
+          0.9367,
+          0.9818
+        ]
+      },
+      "crud": {
+        "count": 423,
+        "denominator": 426,
+        "rate": 0.993,
+        "ci95": [
+          0.9843,
+          1.0
+        ]
+      },
+      "scope_minus_crud": {
+        "difference": -0.0305,
+        "ci95": [
+          -0.0522,
+          -0.0136
+        ]
+      }
+    },
+    "false_clarify": {
+      "scope": {
+        "count": 6,
+        "denominator": 3147,
+        "rate": 0.0019,
+        "ci95": [
+          0.0003,
+          0.004
+        ]
+      },
+      "crud": {
+        "count": 10,
+        "denominator": 3147,
+        "rate": 0.0032,
+        "ci95": [
+          0.0009,
+          0.0061
+        ]
+      },
+      "scope_minus_crud": {
+        "difference": -0.0013,
+        "ci95": [
+          -0.0044,
+          0.0013
+        ]
+      }
+    },
+    "structure_matches_gold": {
+      "scope": {
+        "count": 3393,
+        "denominator": 3573,
+        "rate": 0.9496,
+        "ci95": [
+          0.9394,
+          0.9587
+        ]
+      },
+      "crud": {
+        "count": 3433,
+        "denominator": 3573,
+        "rate": 0.9608,
+        "ci95": [
+          0.9514,
+          0.9695
+        ]
+      },
+      "scope_minus_crud": {
+        "difference": -0.0112,
+        "ci95": [
+          -0.0197,
+          -0.0028
+        ]
+      }
+    },
+    "invalid_output": {
+      "scope": {
+        "count": 0,
+        "denominator": 3573,
+        "rate": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "crud": {
+        "count": 0,
+        "denominator": 3573,
+        "rate": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "scope_minus_crud": {
+        "difference": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "rejected_by_executor": {
+      "scope": {
+        "count": 10,
+        "denominator": 3573,
+        "rate": 0.0028,
+        "ci95": [
+          0.0011,
+          0.0046
+        ]
+      },
+      "crud": {
+        "count": 0,
+        "denominator": 3573,
+        "rate": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "scope_minus_crud": {
+        "difference": 0.0028,
+        "ci95": [
+          0.0011,
+          0.0046
+        ]
+      }
+    },
+    "rule_reader_parse_failure": {
+      "scope": {
+        "count": 77,
+        "denominator": 3573,
+        "rate": 0.0216,
+        "ci95": [
+          0.0149,
+          0.0288
+        ]
+      },
+      "crud": {
+        "count": 69,
+        "denominator": 3573,
+        "rate": 0.0193,
+        "ci95": [
+          0.0137,
+          0.0254
+        ]
+      },
+      "scope_minus_crud": {
+        "difference": 0.0022,
+        "ci95": [
+          -0.0036,
+          0.0082
+        ]
+      }
+    },
+    "rule_reader_parse_failure_if_accepted": {
+      "scope": {
+        "count": 77,
+        "denominator": 3563,
+        "rate": 0.0216,
+        "ci95": [
+          0.0149,
+          0.0289
+        ]
+      },
+      "crud": {
+        "count": 69,
+        "denominator": 3573,
+        "rate": 0.0193,
+        "ci95": [
+          0.0137,
+          0.0254
+        ]
+      },
+      "scope_minus_crud": {
+        "difference": 0.0023,
+        "ci95": [
+          -0.0036,
+          0.0082
+        ]
+      }
+    }
+  },
+  "by_category": {
+    "row_correct": {
+      "general_update": {
+        "scope": {
+          "count": 544,
+          "denominator": 585,
+          "rate": 0.9299,
+          "ci95": [
+            0.9015,
+            0.9558
+          ]
+        },
+        "crud": {
+          "count": 548,
+          "denominator": 585,
+          "rate": 0.9368,
+          "ci95": [
+            0.9092,
+            0.9628
+          ]
+        },
+        "scope_minus_crud": {
+          "difference": -0.0068,
+          "ci95": [
+            -0.0341,
+            0.0199
+          ]
+        }
+      },
+      "scoped_exception": {
+        "scope": {
+          "count": 505,
+          "denominator": 633,
+          "rate": 0.7978,
+          "ci95": [
+            0.7548,
+            0.8418
+          ]
+        },
+        "crud": {
+          "count": 497,
+          "denominator": 633,
+          "rate": 0.7852,
+          "ci95": [
+            0.742,
+            0.8299
+          ]
+        },
+        "scope_minus_crud": {
+          "difference": 0.0126,
+          "ci95": [
+            -0.0276,
+            0.0505
+          ]
+        }
+      },
+      "exception_revision": {
+        "scope": {
+          "count": 597,
+          "denominator": 681,
+          "rate": 0.8767,
+          "ci95": [
+            0.8392,
+            0.9091
+          ]
+        },
+        "crud": {
+          "count": 606,
+          "denominator": 681,
+          "rate": 0.8899,
+          "ci95": [
+            0.8553,
+            0.923
+          ]
+        },
+        "scope_minus_crud": {
+          "difference": -0.0132,
+          "ci95": [
+            -0.0415,
+            0.0131
+          ]
+        }
+      },
+      "exception_retirement": {
+        "scope": {
+          "count": 457,
+          "denominator": 465,
+          "rate": 0.9828,
+          "ci95": [
+            0.9644,
+            0.996
+          ]
+        },
+        "crud": {
+          "count": 453,
+          "denominator": 465,
+          "rate": 0.9742,
+          "ci95": [
+            0.9505,
+            0.9932
+          ]
+        },
+        "scope_minus_crud": {
+          "difference": 0.0086,
+          "ci95": [
+            -0.0047,
+            0.0236
+          ]
+        }
+      },
+      "stable_preference": {
+        "scope": {
+          "count": 747,
+          "denominator": 783,
+          "rate": 0.954,
+          "ci95": [
+            0.9338,
+            0.973
+          ]
+        },
+        "crud": {
+          "count": 749,
+          "denominator": 783,
+          "rate": 0.9566,
+          "ci95": [
+            0.9363,
+            0.9745
+          ]
+        },
+        "scope_minus_crud": {
+          "difference": -0.0026,
+          "ci95": [
+            -0.0208,
+            0.0179
+          ]
+        }
+      },
+      "clarify": {
+        "scope": {
+          "count": 410,
+          "denominator": 426,
+          "rate": 0.9624,
+          "ci95": [
+            0.9367,
+            0.9818
+          ]
+        },
+        "crud": {
+          "count": 423,
+          "denominator": 426,
+          "rate": 0.993,
+          "ci95": [
+            0.9843,
+            1.0
+          ]
+        },
+        "scope_minus_crud": {
+          "difference": -0.0305,
+          "ci95": [
+            -0.0522,
+            -0.0136
+          ]
+        }
+      }
+    },
+    "structure_matches_gold": {
+      "general_update": {
+        "scope": {
+          "count": 557,
+          "denominator": 585,
+          "rate": 0.9521,
+          "ci95": [
+            0.9269,
+            0.9735
+          ]
+        },
+        "crud": {
+          "count": 568,
+          "denominator": 585,
+          "rate": 0.9709,
+          "ci95": [
+            0.9481,
+            0.989
+          ]
+        },
+        "scope_minus_crud": {
+          "difference": -0.0188,
+          "ci95": [
+            -0.0423,
+            0.0019
+          ]
+        }
+      },
+      "scoped_exception": {
+        "scope": {
+          "count": 582,
+          "denominator": 633,
+          "rate": 0.9194,
+          "ci95": [
+            0.8927,
+            0.9424
+          ]
+        },
+        "crud": {
+          "count": 587,
+          "denominator": 633,
+          "rate": 0.9273,
+          "ci95": [
+            0.9,
+            0.952
+          ]
+        },
+        "scope_minus_crud": {
+          "difference": -0.0079,
+          "ci95": [
+            -0.0348,
+            0.0164
+          ]
+        }
+      },
+      "exception_revision": {
+        "scope": {
+          "count": 619,
+          "denominator": 681,
+          "rate": 0.909,
+          "ci95": [
+            0.8798,
+            0.9342
+          ]
+        },
+        "crud": {
+          "count": 641,
+          "denominator": 681,
+          "rate": 0.9413,
+          "ci95": [
+            0.9154,
+            0.9651
+          ]
+        },
+        "scope_minus_crud": {
+          "difference": -0.0323,
+          "ci95": [
+            -0.0561,
+            -0.0087
+          ]
+        }
+      },
+      "exception_retirement": {
+        "scope": {
+          "count": 457,
+          "denominator": 465,
+          "rate": 0.9828,
+          "ci95": [
+            0.9644,
+            0.996
+          ]
+        },
+        "crud": {
+          "count": 453,
+          "denominator": 465,
+          "rate": 0.9742,
+          "ci95": [
+            0.9505,
+            0.9932
+          ]
+        },
+        "scope_minus_crud": {
+          "difference": 0.0086,
+          "ci95": [
+            -0.0047,
+            0.0236
+          ]
+        }
+      },
+      "stable_preference": {
+        "scope": {
+          "count": 753,
+          "denominator": 783,
+          "rate": 0.9617,
+          "ci95": [
+            0.9447,
+            0.9779
+          ]
+        },
+        "crud": {
+          "count": 759,
+          "denominator": 783,
+          "rate": 0.9693,
+          "ci95": [
+            0.9518,
+            0.9838
+          ]
+        },
+        "scope_minus_crud": {
+          "difference": -0.0077,
+          "ci95": [
+            -0.0222,
+            0.0088
+          ]
+        }
+      },
+      "clarify": {
+        "scope": {
+          "count": 425,
+          "denominator": 426,
+          "rate": 0.9977,
+          "ci95": [
+            0.9926,
+            1.0
+          ]
+        },
+        "crud": {
+          "count": 425,
+          "denominator": 426,
+          "rate": 0.9977,
+          "ci95": [
+            0.9925,
+            1.0
+          ]
+        },
+        "scope_minus_crud": {
+          "difference": 0.0,
+          "ci95": [
+            -0.0068,
+            0.0068
+          ]
+        }
+      }
+    }
+  },
+  "status": {
+    "scope": {
+      "ok": 3486,
+      "uninterpretable": 77,
+      "rejected": 10
+    },
+    "crud": {
+      "ok": 3504,
+      "uninterpretable": 69
+    }
+  },
+  "rejection_reasons": {
+    "scope": {
+      "revise_changes_kind": 3,
+      "bad_general_record": 1,
+      "retire_general": 4,
+      "exception_needs_one_edge": 1,
+      "bad_evidence": 1
+    },
+    "crud": {}
+  }
+}

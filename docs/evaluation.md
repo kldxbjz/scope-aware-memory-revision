@@ -203,6 +203,10 @@ cancelled while pending, and the seed-2 copy started, printed "already done" and
 seed 2 has no full log; its result files are complete. After download all seven runs were checked: the same 2,027
 probes per arm, no duplicate answers, the test file, reader 3, and adapters that match the seed.
 
+Post-hoc analyses added afterwards (format against writing with intervals over episodes and over attributes, the
+comparison with dev, teacher-forced write metrics, cost, and the figures for the report) are in
+[analysis.md](analysis.md#post-hoc-analyses-2026-11-24); they re-read these runs and change none of the numbers above.
+
 Next is the manual error analysis fixed in [analysis.md](analysis.md#manual-error-analysis-pre-specified). Its packets
 are in [annotations/error_analysis/](../annotations/error_analysis/): 40 of the 275 wrong scope probes and 40 of the
 332 wrong CRUD probes of seed 0, each to be labelled by two annotators.

@@ -1,0 +1,282 @@
+{
+  "note": "Post-hoc: written after the single test run to describe it; not part of the pre-specified analysis. The pre-specified numbers are in results/test_p12/report.json.",
+  "conditions": {
+    "noop": {
+      "runs": [
+        "runs/test_p12_noop"
+      ],
+      "arms": {
+        "scope": {
+          "answer_input_tokens": {
+            "calls": 2027,
+            "total": 779967,
+            "mean": 384.8
+          },
+          "answer_output_tokens": {
+            "calls": 2027,
+            "total": 85968,
+            "mean": 42.4
+          },
+          "memory_tokens_at_probes": {
+            "calls": 2027,
+            "total": 372926,
+            "mean": 184.0
+          },
+          "rejected_outputs": 0
+        },
+        "crud": {
+          "answer_input_tokens": {
+            "calls": 2027,
+            "total": 499083,
+            "mean": 246.2
+          },
+          "answer_output_tokens": {
+            "calls": 2027,
+            "total": 93300,
+            "mean": 46.0
+          },
+          "memory_tokens_at_probes": {
+            "calls": 2027,
+            "total": 184673,
+            "mean": 91.1
+          },
+          "rejected_outputs": 0
+        }
+      }
+    },
+    "zero_shot": {
+      "runs": [
+        "runs/test_p12_zero_shot"
+      ],
+      "arms": {
+        "scope": {
+          "policy_input_tokens": {
+            "calls": 1191,
+            "total": 1038739,
+            "mean": 872.2
+          },
+          "policy_output_tokens": {
+            "calls": 1191,
+            "total": 136948,
+            "mean": 115.0
+          },
+          "answer_input_tokens": {
+            "calls": 2027,
+            "total": 872548,
+            "mean": 430.5
+          },
+          "answer_output_tokens": {
+            "calls": 2027,
+            "total": 98193,
+            "mean": 48.4
+          },
+          "memory_tokens_at_probes": {
+            "calls": 2027,
+            "total": 452821,
+            "mean": 223.4
+          },
+          "rejected_outputs": 312
+        },
+        "crud": {
+          "policy_input_tokens": {
+            "calls": 1191,
+            "total": 742617,
+            "mean": 623.5
+          },
+          "policy_output_tokens": {
+            "calls": 1191,
+            "total": 114684,
+            "mean": 96.3
+          },
+          "answer_input_tokens": {
+            "calls": 2027,
+            "total": 574596,
+            "mean": 283.5
+          },
+          "answer_output_tokens": {
+            "calls": 2027,
+            "total": 106430,
+            "mean": 52.5
+          },
+          "memory_tokens_at_probes": {
+            "calls": 2027,
+            "total": 261407,
+            "mean": 129.0
+          },
+          "rejected_outputs": 5
+        }
+      }
+    },
+    "six_shot": {
+      "runs": [
+        "runs/test_p12_six_shot"
+      ],
+      "arms": {
+        "scope": {
+          "policy_input_tokens": {
+            "calls": 1191,
+            "total": 3211801,
+            "mean": 2696.7
+          },
+          "policy_output_tokens": {
+            "calls": 1191,
+            "total": 103270,
+            "mean": 86.7
+          },
+          "answer_input_tokens": {
+            "calls": 2027,
+            "total": 884252,
+            "mean": 436.2
+          },
+          "answer_output_tokens": {
+            "calls": 2027,
+            "total": 102099,
+            "mean": 50.4
+          },
+          "memory_tokens_at_probes": {
+            "calls": 2027,
+            "total": 462117,
+            "mean": 228.0
+          },
+          "rejected_outputs": 371
+        },
+        "crud": {
+          "policy_input_tokens": {
+            "calls": 1191,
+            "total": 2282084,
+            "mean": 1916.1
+          },
+          "policy_output_tokens": {
+            "calls": 1191,
+            "total": 58794,
+            "mean": 49.4
+          },
+          "answer_input_tokens": {
+            "calls": 2027,
+            "total": 473439,
+            "mean": 233.6
+          },
+          "answer_output_tokens": {
+            "calls": 2027,
+            "total": 100039,
+            "mean": 49.4
+          },
+          "memory_tokens_at_probes": {
+            "calls": 2027,
+            "total": 162389,
+            "mean": 80.1
+          },
+          "rejected_outputs": 13
+        }
+      }
+    },
+    "sft": {
+      "runs": [
+        "runs/test_p12_sft_s0",
+        "runs/test_p12_sft_s1",
+        "runs/test_p12_sft_s2"
+      ],
+      "arms": {
+        "scope": {
+          "policy_input_tokens": {
+            "calls": 3573,
+            "total": 3156900,
+            "mean": 883.5
+          },
+          "policy_output_tokens": {
+            "calls": 3573,
+            "total": 231692,
+            "mean": 64.8
+          },
+          "answer_input_tokens": {
+            "calls": 6081,
+            "total": 2805538,
+            "mean": 461.4
+          },
+          "answer_output_tokens": {
+            "calls": 6081,
+            "total": 320372,
+            "mean": 52.7
+          },
+          "memory_tokens_at_probes": {
+            "calls": 6081,
+            "total": 1508209,
+            "mean": 248.0
+          },
+          "rejected_outputs": 11
+        },
+        "crud": {
+          "policy_input_tokens": {
+            "calls": 3573,
+            "total": 2155915,
+            "mean": 603.4
+          },
+          "policy_output_tokens": {
+            "calls": 3573,
+            "total": 128969,
+            "mean": 36.1
+          },
+          "answer_input_tokens": {
+            "calls": 6081,
+            "total": 1597129,
+            "mean": 262.6
+          },
+          "answer_output_tokens": {
+            "calls": 6081,
+            "total": 310139,
+            "mean": 51.0
+          },
+          "memory_tokens_at_probes": {
+            "calls": 6081,
+            "total": 649114,
+            "mean": 106.7
+          },
+          "rejected_outputs": 0
+        }
+      }
+    },
+    "gold": {
+      "runs": [
+        "runs/test_p12_gold"
+      ],
+      "arms": {
+        "scope": {
+          "answer_input_tokens": {
+            "calls": 2027,
+            "total": 941506,
+            "mean": 464.5
+          },
+          "answer_output_tokens": {
+            "calls": 2027,
+            "total": 107446,
+            "mean": 53.0
+          },
+          "memory_tokens_at_probes": {
+            "calls": 2027,
+            "total": 507753,
+            "mean": 250.5
+          },
+          "rejected_outputs": 0
+        },
+        "crud": {
+          "answer_input_tokens": {
+            "calls": 2027,
+            "total": 532755,
+            "mean": 262.8
+          },
+          "answer_output_tokens": {
+            "calls": 2027,
+            "total": 103660,
+            "mean": 51.1
+          },
+          "memory_tokens_at_probes": {
+            "calls": 2027,
+            "total": 216719,
+            "mean": 106.9
+          },
+          "rejected_outputs": 0
+        }
+      }
+    }
+  }
+}

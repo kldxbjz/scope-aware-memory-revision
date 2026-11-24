@@ -91,3 +91,121 @@ The audit therefore found no label error in 60 events (one-sided 95% upper bound
 counted as errors, the rate would be 2 of 60 (3.3%, 95% CI 0.4–11.5%). No data were changed. A second annotator was
 not available, so there is no agreement between annotators to report; the team decided on 2026-11-23 to go ahead
 with one annotator.
+
+## Post-hoc analyses (2026-11-24)
+
+The team asked for these after the single test run, to describe it and to compare it with dev. None was planned
+before the test run, none changes a setting or a pre-specified number, and the test split was not evaluated again:
+everything below re-reads the stored run directories (the seven test runs, and the protocol-1.2 dev runs
+`sft_p12_eval_s0`–`s2` and `reference_gold_p12`). Code: `scope_memory/posthoc.py`; reports:
+[results/posthoc/](../results/posthoc/); figures and the tables behind them: [results/figures/](../results/figures/)
+(`tables.md`).
+
+```sh
+# from a folder that holds the run directories under runs/ (on Babel: ~/scope-sft-work/runs), with REPO the
+# repository and PYTHONPATH=$REPO
+P="python3 -m scope_memory.posthoc"; T=runs/test_p12; D=runs/sft_p12_eval; O=$REPO/results/posthoc
+$P decompose --sft ${T}_sft_s0 ${T}_sft_s1 ${T}_sft_s2 --gold ${T}_gold --out $O/decomposition_test.json
+$P decompose --sft ${D}_s0 ${D}_s1 ${D}_s2 --gold runs/reference_gold_p12 --out $O/decomposition_dev.json
+$P mechanism ${T}_sft_s0 ${T}_sft_s1 ${T}_sft_s2 --out $O/mechanism_test.json
+$P mechanism ${D}_s0 ${D}_s1 ${D}_s2 --out $O/mechanism_dev.json
+$P cost --noop ${T}_noop --zero-shot ${T}_zero_shot --six-shot ${T}_six_shot \
+  --sft ${T}_sft_s0 ${T}_sft_s1 ${T}_sft_s2 --gold ${T}_gold --out $O/cost_test.json
+$P composition $REPO/training/scope_revision_v1/data/{train,dev,test}.jsonl --out $O/composition.json
+$P dev-vs-test --dev-sft ${D}_s0 ${D}_s1 ${D}_s2 --dev-gold runs/reference_gold_p12 \
+  --test-sft ${T}_sft_s0 ${T}_sft_s1 ${T}_sft_s2 --test-gold ${T}_gold --out $O/dev_vs_test.json
+python3 -m scope_memory.figures --results $REPO/results --out $REPO/results/figures   # needs matplotlib
+```
+
+### Format against writing
+
+The SFT difference on every probe splits into two parts that add up to it:
+
+- format = gold scope − gold CRUD: what the Answer Agent gains from the scope format when the memory is right;
+- writing = (SFT scope − gold scope) − (SFT CRUD − gold CRUD): how much less the scope policy loses against its own
+  gold memory than the CRUD policy does (negative: it loses more).
+
+The intervals use two resampling units: the episode, as in the pre-specified analyses, and the family. A family is one
+preference attribute. Train, dev and test have 28 attributes each and share none, so the family interval shows how
+far a result carries over to other attributes.
+
+| Points (scope − CRUD) | Test | Dev | Test − dev |
+|---|---|---|---|
+| Total, after SFT | +2.7 [+0.9, +4.5]; family [+0.9, +4.6] | −2.5 [−5.2, +0.3]; family [−6.3, +0.9] | +5.2 [+1.9, +8.3] |
+| Format | +2.7 [+1.2, +4.2]; family [+0.9, +4.5] | +0.1 [−2.4, +2.5]; family [−3.1, +3.2] | +2.6 [−0.2, +5.4] |
+| Writing | +0.0 [−1.5, +1.3]; family [−1.9, +1.6] | −2.5 [−4.3, −1.0]; family [−4.9, −0.5] | +2.6 [+0.4, +4.8] |
+
+The total reproduces the pre-specified H1 interval exactly (the same draws). On test the whole lead is format: the
+two policies write equally well against their own gold memory. Per question type on test, total = format + writing
+is +11.2 = +11.1 + 0.1 for default probes, +25.8 = +26.1 − 0.4 for boundary probes, −2.4 = −1.6 − 0.8 for target
+and −1.4 = −2.2 + 0.8 for neighbor probes; for scoped-exception questions it is +4.3 = +4.5 − 0.2. The family
+intervals on test are about as wide as the episode intervals, so the test result does not rest on a few attributes.
+
+### Dev against test
+
+- The splits share no attribute, but their mixes are close (Table 6 of `tables.md`): target, default and neighbor
+  probes make up the same shares; boundary probes are 2.4% of dev and 4.3% of test, scoped-exception questions 23.8%
+  and 27.5%, exception-revision events 24.4% and 19.1%.
+- The mix explains little. Dev reweighted to test's mix of question types gives −1.8 [−4.7, +1.0], to test's mix of
+  QA groups −2.2 [−5.1, +0.5]; test with dev's mixes gives +2.4 and +2.7.
+- Both parts moved by the same amount (+2.6 each). The format pattern by question type has the same sign on both
+  splits (default +5.3 on dev and +11.1 on test, boundary +14.3 and +26.1, target −2.5 and −1.6, neighbor −2.4 and
+  −2.2); on dev the gains and losses cancel. The writing loss is a dev effect: −2.5 there, +0.0 on test.
+- The difference varies strongly between attributes (`fig5_attributes`): per attribute it ranges from −33.3 to
+  +12.8 points on dev (SD 10.3; scope ahead in 9 of 28) and from −9.9 to +13.2 on test (SD 4.9; scope ahead in 20).
+  On dev the four lowest attributes (calendar alert title visibility −33.3, saved-search alert grouping −27.5, desk
+  cable arrangement −19.4, short work break activity −15.4) lose 34.7 probes net, more than the whole dev deficit
+  (28.7). In the first two it is writing (−23.3 and −24.5), in the other two format (−19.4 and −14.8).
+- Teacher-forced (below), the dev writing loss sits in new scoped exceptions: events handled exactly right 94.4% for
+  CRUD against 84.7% for scope (−9.7 [−13.6, −5.4]) on dev, 78.5% against 79.8% (+1.3 [−2.8, +5.1]) on test.
+
+Reading: dev and test are two samples of 28 attributes each, and the arms' difference depends strongly on the
+attribute, so a sign flip between two such samples is not surprising. What both splits agree on is the pattern by
+question type: the scope format reads better on default and boundary probes and slightly worse on target and neighbor
+probes. Whether that nets out positive depends on the attributes and the mix. The test numbers are the reported
+result; the dev comparison qualifies how far they generalise.
+
+### Teacher-forced write metrics (diagnostic)
+
+`mechanism` re-scores every SFT output with the evaluator's teacher-forced rules (each event's output applied to the
+gold memory before it); its counts equal each run's stored `eval_tf_<arm>.json`. It adds whether the operation
+structure matches gold. These metrics read memory with the rule readers, so they describe the write policies and are
+not results. Test, three seeds pooled (3,573 events per arm), in %:
+
+| Metric | CRUD | Scope | Scope − CRUD |
+|---|---|---|---|
+| Event handled exactly right (state and decision) | 91.7 | 91.2 | −0.4 [−1.7, +0.7] |
+| Operation structure matches gold | 96.1 | 95.0 | −1.1 [−2.0, −0.3] |
+| General value overwritten by mistake | 0.6 | 0.3 | −0.3 [−0.6, +0.0] |
+| General update missed | 6.3 | 6.5 | +0.2 [−2.4, +2.9] |
+| Untouched situation record changed | 1.8 | 1.8 | +0.0 [−0.6, +0.6] |
+| Write on a no-change event | 2.1 | 2.6 | +0.5 [−0.5, +1.5] |
+| Clarifies when it should | 99.3 | 96.2 | −3.0 [−5.2, −1.4] |
+| Output rejected by the executor | 0.0 | 0.3 | +0.3 [+0.1, +0.5] |
+
+On test the two policies make about the same write errors. The scope policy misses more clarifications (16 of 426
+against 3), and the executor rejected 10 of its outputs (for example a RETIRE of the general record or a REVISE that
+changes the kind of validity). On dev the scope policy was behind on events handled exactly right (−2.4 [−3.9, −1.1]),
+mostly in new scoped exceptions (above). Table 4 of `tables.md` has dev beside test and the rows per event category.
+
+### Cost
+
+From each run's `cost.json`, pooled over the three SFT seeds: per event the scope policy reads 884 tokens and writes
+65 (CRUD 603 and 36: ×1.46 and ×1.80); per question the Answer Agent reads 461 tokens (CRUD 263, ×1.76); the memory
+at a question is 248 tokens (CRUD 107, ×2.32). In the rollouts the executor rejected 11 of 3,573 scope outputs and no
+CRUD output. Latency per call was not recorded; GPU-hours per run are in
+[evaluation.md](evaluation.md#test-results-2026-11-24). Table 5 of `tables.md` has every condition.
+
+### Figures
+
+`python3 -m scope_memory.figures` (needs matplotlib) draws five figures from these reports and
+`results/test_p12/report.json`, each as PDF for the report and PNG (300 dpi) for the poster, and writes `tables.md`
+with the numbers behind them. CRUD is blue and scope-aware orange in every figure; differences between the arms are
+drawn in black, the comparison (gold memory, dev) as hollow grey circles.
+
+1. `fig1_main_results`: QA accuracy per condition and arm (pre-specified numbers).
+2. `fig2_difference_by_group_and_type`: scope − CRUD per QA group and question type, after SFT and on gold memory
+   (pre-specified numbers).
+3. `fig3_format_vs_writing`: the decomposition on test and dev (post-hoc).
+4. `fig4_cost`: tokens per call after SFT (post-hoc summary).
+5. `fig5_attributes`: scope − CRUD per attribute on test and dev (post-hoc).
