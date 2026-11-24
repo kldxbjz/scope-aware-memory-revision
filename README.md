@@ -2,7 +2,7 @@
 
 How should an AI agent revise stored preferences when a new statement is a contextual exception rather than a global preference change? This three-person final project compares an SFT-trained generic CRUD memory manager (add / update / delete / no-op over free-text memories) with an SFT-trained manager that also represents preference scope and relationships between memories. RL is a stretch goal and has not started. The experiment design is in [docs/sft-plan.md](docs/sft-plan.md).
 
-> **Status (2026-11-23):** prompt baselines (zero-shot and six-shot) and SFT for both arms (Qwen3-4B-Instruct-2507, LoRA, three seeds) have run on the dev split under protocol 1.2 (gold text in the user's own words). On dev the scope arm trails CRUD after SFT (86.3 vs 88.8 Answer Agent QA, −2.5 [−5.2, +0.3]) while both score about the same on gold memory. A hand-written challenge set of structure-heavy episodes ([training/challenge_v1/](training/challenge_v1/README.md#results-2026-11-17)) had its evaluation plan fixed before any model ran on it. On it the two arms tie after SFT: 81.0 vs 80.6, +0.4 [−2.9, +4.0]. Only seed 0 is ahead; seeds 1 and 2 trail by about as much as on dev. So the set does not show that the scope format helps on such cases. The settings were frozen on 2026-11-17 (git tag `freeze-p12`), keeping the three pre-registered seeds. The label audit of the synthetic data (2026-11-23, one annotator, 58 of 60 gold categories confirmed) found no label error, so no data were changed. The test split has not been read yet. It is evaluated once, as described in [docs/evaluation.md](docs/evaluation.md#final-test-evaluation). Dev numbers are not final results.
+> **Status (2026-11-24):** the test split has been evaluated once, with the settings frozen on 2026-11-17 (git tag `freeze-p12`) and after a label audit of the synthetic data found no label error (2026-11-23, one annotator, 58 of 60 gold categories confirmed). On test, SFT beats the zero-shot and six-shot prompts in both arms by 21–30 points of Answer Agent QA (H2). After SFT the scope arm leads CRUD: 86.1 vs 83.3, +2.7 [+0.9, +4.5]; without boundary probes +1.7 [−0.2, +3.4] (H1). The lead is as large as the two formats' gap on gold memory (+2.7) and sits in default and boundary probes, so it reflects how well the Answer Agent reads the scope format; both SFT policies lose about the same against their own gold memory. On dev the scope arm had trailed (−2.5 [−5.2, +0.3]) and on the hand-written challenge set ([training/challenge_v1/](training/challenge_v1/README.md#results-2026-11-17)) the arms tied (+0.4 [−2.9, +4.0]), so the sign of H1 depends on the episode set. Details: [docs/evaluation.md](docs/evaluation.md#test-results-2026-11-24). Next: the manual error analysis on the packets in `annotations/error_analysis/`.
 
 ## Repository layout
 
@@ -10,7 +10,7 @@ How should an AI agent revise stored preferences when a new statement is a conte
 scope_memory/   stdlib-only Python code; run modules with python3 -m scope_memory.<name>
 tests/          unit tests for scope_memory
 fixtures/       handwritten toy timeline and a worked protocol v1 episode
-annotations/    blind annotation pilot; label audit packet of the synthetic data
+annotations/    blind annotation pilot; label audit of the synthetic data; error-analysis packets of the test run
 results/        small saved outputs of the scope_memory scripts
 docs/           experiment plan and one write-up per milestone
 training/       synthetic corpora (v0.1, v1.1), challenge set v1; SFT and baseline scripts for Babel in training/sft/
@@ -32,6 +32,7 @@ training/       synthetic corpora (v0.1, v1.1), challenge set v1; SFT and baseli
 | Prompt baselines and SFT on Babel | [training/sft/README.md](training/sft/README.md) | `training/sft/` | run directories on Babel |
 | Analyses for the report: main table, memory classes, structure errors, error-analysis and label-audit packets | [docs/analysis.md](docs/analysis.md) | `scope_memory/analysis.py` | `annotations/label_audit/` |
 | Challenge set v1: 24 hand-written episodes in six structure-heavy stressors, evaluation plan fixed in advance | [training/challenge_v1/README.md](training/challenge_v1/README.md) | `training/challenge_v1/build.py` | `training/challenge_v1/data/`, `samples.md` |
+| Final test evaluation (run once, 2026-11-23/24) and error-analysis packets | [docs/evaluation.md](docs/evaluation.md#test-results-2026-11-24) | `scope_memory/analysis.py` | `results/test_p12/`, `annotations/error_analysis/` |
 
 ## Quickstart
 

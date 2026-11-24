@@ -1,0 +1,144 @@
+{
+  "runs": 3,
+  "probes": 6081,
+  "classes": {
+    "scope": {
+      "matches_gold": {
+        "probes": 5077,
+        "share": 0.8349,
+        "accuracy": 0.9003
+      },
+      "same_structure": {
+        "probes": 337,
+        "share": 0.0554,
+        "accuracy": 0.6053
+      },
+      "different_structure": {
+        "probes": 437,
+        "share": 0.0719,
+        "accuracy": 0.5789
+      },
+      "unreadable": {
+        "probes": 230,
+        "share": 0.0378,
+        "accuracy": 0.8957
+      }
+    },
+    "crud": {
+      "matches_gold": {
+        "probes": 5121,
+        "share": 0.8421,
+        "accuracy": 0.8694
+      },
+      "same_structure": {
+        "probes": 409,
+        "share": 0.0673,
+        "accuracy": 0.6455
+      },
+      "different_structure": {
+        "probes": 362,
+        "share": 0.0595,
+        "accuracy": 0.5718
+      },
+      "unreadable": {
+        "probes": 189,
+        "share": 0.0311,
+        "accuracy": 0.7672
+      }
+    }
+  },
+  "paired_by_class": {
+    "by_scope_class": {
+      "matches_gold": {
+        "probes": 5077,
+        "scope": 0.9003,
+        "crud": 0.8485,
+        "difference": 0.0518,
+        "ci95": [
+          0.0369,
+          0.0675
+        ],
+        "gap_probes": 263.0
+      },
+      "same_structure": {
+        "probes": 337,
+        "scope": 0.6053,
+        "crud": 0.7715,
+        "difference": -0.1662,
+        "ci95": [
+          -0.3323,
+          -0.0485
+        ],
+        "gap_probes": -56.0
+      },
+      "different_structure": {
+        "probes": 437,
+        "scope": 0.5789,
+        "crud": 0.6911,
+        "difference": -0.1121,
+        "ci95": [
+          -0.1891,
+          -0.0387
+        ],
+        "gap_probes": -49.0
+      },
+      "unreadable": {
+        "probes": 230,
+        "scope": 0.8957,
+        "crud": 0.8609,
+        "difference": 0.0348,
+        "ci95": [
+          0.0,
+          0.0691
+        ],
+        "gap_probes": 8.0
+      }
+    },
+    "by_crud_class": {
+      "matches_gold": {
+        "probes": 5121,
+        "scope": 0.8781,
+        "crud": 0.8694,
+        "difference": 0.0088,
+        "ci95": [
+          -0.0112,
+          0.0273
+        ],
+        "gap_probes": 45.0
+      },
+      "same_structure": {
+        "probes": 409,
+        "scope": 0.7751,
+        "crud": 0.6455,
+        "difference": 0.1296,
+        "ci95": [
+          0.0697,
+          0.2074
+        ],
+        "gap_probes": 53.0
+      },
+      "different_structure": {
+        "probes": 362,
+        "scope": 0.7431,
+        "crud": 0.5718,
+        "difference": 0.1713,
+        "ci95": [
+          0.0962,
+          0.2392
+        ],
+        "gap_probes": 62.0
+      },
+      "unreadable": {
+        "probes": 189,
+        "scope": 0.7989,
+        "crud": 0.7672,
+        "difference": 0.0317,
+        "ci95": [
+          -0.049,
+          0.0909
+        ],
+        "gap_probes": 6.0
+      }
+    }
+  }
+}

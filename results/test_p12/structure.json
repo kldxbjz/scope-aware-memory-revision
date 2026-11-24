@@ -1,0 +1,288 @@
+{
+  "scope": {
+    "structure_matches_gold": {
+      "count": 3393,
+      "of": 3573,
+      "rate": 0.9496,
+      "by_category": {
+        "clarify": "425/426",
+        "exception_retirement": "457/465",
+        "exception_revision": "619/681",
+        "general_update": "557/585",
+        "scoped_exception": "582/633",
+        "stable_preference": "753/783"
+      }
+    },
+    "top_mismatches": [
+      {
+        "count": 19,
+        "category": "scoped_exception",
+        "gold": [
+          "ADD:open"
+        ],
+        "predicted": [
+          "NOOP"
+        ]
+      },
+      {
+        "count": 16,
+        "category": "general_update",
+        "gold": [
+          "REVISE:persistent"
+        ],
+        "predicted": [
+          "REVISE:persistent"
+        ]
+      },
+      {
+        "count": 12,
+        "category": "exception_revision",
+        "gold": [
+          "REVISE:open"
+        ],
+        "predicted": [
+          "NOOP"
+        ]
+      },
+      {
+        "count": 11,
+        "category": "exception_revision",
+        "gold": [
+          "REVISE:open"
+        ],
+        "predicted": [
+          "ADD:open"
+        ]
+      },
+      {
+        "count": 11,
+        "category": "scoped_exception",
+        "gold": [
+          "ADD:persistent"
+        ],
+        "predicted": [
+          "REVISE:persistent"
+        ]
+      },
+      {
+        "count": 10,
+        "category": "exception_revision",
+        "gold": [
+          "REVISE:persistent"
+        ],
+        "predicted": [
+          "ADD:persistent"
+        ]
+      },
+      {
+        "count": 10,
+        "category": "stable_preference",
+        "gold": [
+          "NOOP"
+        ],
+        "predicted": [
+          "ADD:persistent"
+        ]
+      },
+      {
+        "count": 9,
+        "category": "exception_revision",
+        "gold": [
+          "REVISE:persistent"
+        ],
+        "predicted": [
+          "RETIRE"
+        ]
+      },
+      {
+        "count": 8,
+        "category": "scoped_exception",
+        "gold": [
+          "ADD:persistent"
+        ],
+        "predicted": [
+          "NOOP"
+        ]
+      },
+      {
+        "count": 8,
+        "category": "exception_retirement",
+        "gold": [
+          "RETIRE"
+        ],
+        "predicted": [
+          "RETIRE"
+        ]
+      },
+      {
+        "count": 8,
+        "category": "stable_preference",
+        "gold": [
+          "NOOP"
+        ],
+        "predicted": [
+          "REVISE:persistent"
+        ]
+      },
+      {
+        "count": 7,
+        "category": "exception_revision",
+        "gold": [
+          "REVISE:persistent"
+        ],
+        "predicted": [
+          "NOOP"
+        ]
+      }
+    ],
+    "written_forms": {
+      "situation:listed": 1216,
+      "situation:other": 58,
+      "value:listed": 1774,
+      "value:other": 77
+    }
+  },
+  "crud": {
+    "structure_matches_gold": {
+      "count": 3433,
+      "of": 3573,
+      "rate": 0.9608,
+      "by_category": {
+        "clarify": "425/426",
+        "exception_retirement": "453/465",
+        "exception_revision": "641/681",
+        "general_update": "568/585",
+        "scoped_exception": "587/633",
+        "stable_preference": "759/783"
+      }
+    },
+    "top_mismatches": [
+      {
+        "count": 26,
+        "category": "scoped_exception",
+        "gold": [
+          "ADD"
+        ],
+        "predicted": [
+          "NOOP"
+        ]
+      },
+      {
+        "count": 20,
+        "category": "scoped_exception",
+        "gold": [
+          "ADD"
+        ],
+        "predicted": [
+          "UPDATE"
+        ]
+      },
+      {
+        "count": 20,
+        "category": "exception_revision",
+        "gold": [
+          "UPDATE"
+        ],
+        "predicted": [
+          "NOOP"
+        ]
+      },
+      {
+        "count": 18,
+        "category": "exception_revision",
+        "gold": [
+          "UPDATE"
+        ],
+        "predicted": [
+          "ADD"
+        ]
+      },
+      {
+        "count": 17,
+        "category": "stable_preference",
+        "gold": [
+          "NOOP"
+        ],
+        "predicted": [
+          "UPDATE"
+        ]
+      },
+      {
+        "count": 13,
+        "category": "general_update",
+        "gold": [
+          "UPDATE"
+        ],
+        "predicted": [
+          "UPDATE"
+        ]
+      },
+      {
+        "count": 8,
+        "category": "exception_retirement",
+        "gold": [
+          "DELETE"
+        ],
+        "predicted": [
+          "DELETE"
+        ]
+      },
+      {
+        "count": 7,
+        "category": "stable_preference",
+        "gold": [
+          "NOOP"
+        ],
+        "predicted": [
+          "DELETE"
+        ]
+      },
+      {
+        "count": 4,
+        "category": "exception_retirement",
+        "gold": [
+          "DELETE"
+        ],
+        "predicted": [
+          "UPDATE"
+        ]
+      },
+      {
+        "count": 3,
+        "category": "general_update",
+        "gold": [
+          "UPDATE"
+        ],
+        "predicted": [
+          "NOOP"
+        ]
+      },
+      {
+        "count": 2,
+        "category": "exception_revision",
+        "gold": [
+          "UPDATE"
+        ],
+        "predicted": [
+          "UPDATE"
+        ]
+      },
+      {
+        "count": 1,
+        "category": "clarify",
+        "gold": [
+          "NOOP"
+        ],
+        "predicted": [
+          "ADD"
+        ]
+      }
+    ],
+    "written_forms": {
+      "situation:listed": 1231,
+      "situation:other": 47,
+      "value:listed": 1763,
+      "value:other": 108
+    }
+  }
+}

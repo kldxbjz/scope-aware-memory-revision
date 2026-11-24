@@ -45,6 +45,7 @@ Outline v2.7 §6 asks to separate action choice, executor rejection, reader matc
 - Run: `runs/test_p12_sft_s0` (SFT seed 0), both arms.
 - Sample: `python3 -m scope_memory.analysis error-sample RUN --arm scope --n 40 --seed 0 --out DIR`, and the same with `--arm crud`: 40 probes the Answer Agent got wrong per arm, drawn with seed 0 from the sorted wrong probe ids (all of them when fewer). `packet_<arm>.md` shows the question, options, gold, the Answer Agent's reply, the arm's memory and the gold memory at the probe, and every event up to the probe with its gold output and the policy's output.
 - Two annotators label every item alone in a copy of `labels_<arm>.json`, then run `agreement --labels A.json B.json`, settle disagreements by discussion, and the report gives the settled counts per source and arm with the raw agreement and kappa.
+- Made on 2026-11-24 after the test run, with the commands above: [annotations/error_analysis/](../annotations/error_analysis/) holds `packet_<arm>.md`, `sample_<arm>.json` and the empty `labels_<arm>.json` (40 of 275 wrong scope probes, 40 of 332 wrong CRUD probes). Not labelled yet.
 
 Sources, taking the first that applies:
 

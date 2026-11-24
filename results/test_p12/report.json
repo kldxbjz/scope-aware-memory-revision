@@ -1,0 +1,1969 @@
+{
+  "conditions": {
+    "noop": 1,
+    "zero_shot": 1,
+    "six_shot": 1,
+    "sft": 3,
+    "gold": 1
+  },
+  "accuracy": {
+    "noop": {
+      "scope": {
+        "all": {
+          "probes": 2027,
+          "accuracy": 0.5012,
+          "ci95": [
+            0.4755,
+            0.5275
+          ]
+        },
+        "all_but_boundary": {
+          "probes": 1939,
+          "accuracy": 0.4966,
+          "ci95": [
+            0.4698,
+            0.5227
+          ]
+        },
+        "general_update": {
+          "probes": 279,
+          "accuracy": 0.362,
+          "ci95": [
+            0.2946,
+            0.4271
+          ]
+        },
+        "scoped_exception": {
+          "probes": 558,
+          "accuracy": 0.4875,
+          "ci95": [
+            0.4451,
+            0.5312
+          ]
+        },
+        "exception_revision": {
+          "probes": 596,
+          "accuracy": 0.5201,
+          "ci95": [
+            0.4859,
+            0.552
+          ]
+        },
+        "stable_preference": {
+          "probes": 594,
+          "accuracy": 0.5606,
+          "ci95": [
+            0.5074,
+            0.6114
+          ]
+        },
+        "type_target": {
+          "probes": 691,
+          "accuracy": 0.2315,
+          "ci95": [
+            0.1989,
+            0.2654
+          ]
+        },
+        "type_default": {
+          "probes": 531,
+          "accuracy": 0.7439,
+          "ci95": [
+            0.692,
+            0.7936
+          ]
+        },
+        "type_neighbor": {
+          "probes": 717,
+          "accuracy": 0.569,
+          "ci95": [
+            0.5241,
+            0.6117
+          ]
+        },
+        "type_boundary": {
+          "probes": 88,
+          "accuracy": 0.6023,
+          "ci95": [
+            0.4574,
+            0.75
+          ]
+        }
+      },
+      "crud": {
+        "all": {
+          "probes": 2027,
+          "accuracy": 0.4815,
+          "ci95": [
+            0.4547,
+            0.5079
+          ]
+        },
+        "all_but_boundary": {
+          "probes": 1939,
+          "accuracy": 0.4755,
+          "ci95": [
+            0.4486,
+            0.5021
+          ]
+        },
+        "general_update": {
+          "probes": 279,
+          "accuracy": 0.3656,
+          "ci95": [
+            0.3,
+            0.4291
+          ]
+        },
+        "scoped_exception": {
+          "probes": 558,
+          "accuracy": 0.4695,
+          "ci95": [
+            0.4261,
+            0.5131
+          ]
+        },
+        "exception_revision": {
+          "probes": 596,
+          "accuracy": 0.4899,
+          "ci95": [
+            0.4547,
+            0.5251
+          ]
+        },
+        "stable_preference": {
+          "probes": 594,
+          "accuracy": 0.5387,
+          "ci95": [
+            0.4876,
+            0.5899
+          ]
+        },
+        "type_target": {
+          "probes": 691,
+          "accuracy": 0.2243,
+          "ci95": [
+            0.1903,
+            0.2593
+          ]
+        },
+        "type_default": {
+          "probes": 531,
+          "accuracy": 0.6667,
+          "ci95": [
+            0.6155,
+            0.7159
+          ]
+        },
+        "type_neighbor": {
+          "probes": 717,
+          "accuracy": 0.576,
+          "ci95": [
+            0.5306,
+            0.6178
+          ]
+        },
+        "type_boundary": {
+          "probes": 88,
+          "accuracy": 0.6136,
+          "ci95": [
+            0.4545,
+            0.7683
+          ]
+        }
+      }
+    },
+    "zero_shot": {
+      "scope": {
+        "all": {
+          "probes": 2027,
+          "accuracy": 0.5703,
+          "ci95": [
+            0.545,
+            0.5969
+          ]
+        },
+        "all_but_boundary": {
+          "probes": 1939,
+          "accuracy": 0.5725,
+          "ci95": [
+            0.5458,
+            0.6001
+          ]
+        },
+        "general_update": {
+          "probes": 279,
+          "accuracy": 0.5914,
+          "ci95": [
+            0.5148,
+            0.6634
+          ]
+        },
+        "scoped_exception": {
+          "probes": 558,
+          "accuracy": 0.5502,
+          "ci95": [
+            0.5086,
+            0.5906
+          ]
+        },
+        "exception_revision": {
+          "probes": 596,
+          "accuracy": 0.6443,
+          "ci95": [
+            0.5997,
+            0.6909
+          ]
+        },
+        "stable_preference": {
+          "probes": 594,
+          "accuracy": 0.5051,
+          "ci95": [
+            0.4552,
+            0.5531
+          ]
+        },
+        "type_target": {
+          "probes": 691,
+          "accuracy": 0.5441,
+          "ci95": [
+            0.5015,
+            0.5892
+          ]
+        },
+        "type_default": {
+          "probes": 531,
+          "accuracy": 0.629,
+          "ci95": [
+            0.5825,
+            0.675
+          ]
+        },
+        "type_neighbor": {
+          "probes": 717,
+          "accuracy": 0.5579,
+          "ci95": [
+            0.5144,
+            0.6022
+          ]
+        },
+        "type_boundary": {
+          "probes": 88,
+          "accuracy": 0.5227,
+          "ci95": [
+            0.3913,
+            0.6602
+          ]
+        }
+      },
+      "crud": {
+        "all": {
+          "probes": 2027,
+          "accuracy": 0.5664,
+          "ci95": [
+            0.5402,
+            0.5928
+          ]
+        },
+        "all_but_boundary": {
+          "probes": 1939,
+          "accuracy": 0.5823,
+          "ci95": [
+            0.555,
+            0.6084
+          ]
+        },
+        "general_update": {
+          "probes": 279,
+          "accuracy": 0.7491,
+          "ci95": [
+            0.6797,
+            0.8105
+          ]
+        },
+        "scoped_exception": {
+          "probes": 558,
+          "accuracy": 0.5358,
+          "ci95": [
+            0.502,
+            0.5702
+          ]
+        },
+        "exception_revision": {
+          "probes": 596,
+          "accuracy": 0.5403,
+          "ci95": [
+            0.4958,
+            0.588
+          ]
+        },
+        "stable_preference": {
+          "probes": 594,
+          "accuracy": 0.5354,
+          "ci95": [
+            0.4853,
+            0.5854
+          ]
+        },
+        "type_target": {
+          "probes": 691,
+          "accuracy": 0.6368,
+          "ci95": [
+            0.6003,
+            0.6749
+          ]
+        },
+        "type_default": {
+          "probes": 531,
+          "accuracy": 0.4105,
+          "ci95": [
+            0.3607,
+            0.4592
+          ]
+        },
+        "type_neighbor": {
+          "probes": 717,
+          "accuracy": 0.6569,
+          "ci95": [
+            0.6128,
+            0.699
+          ]
+        },
+        "type_boundary": {
+          "probes": 88,
+          "accuracy": 0.2159,
+          "ci95": [
+            0.1099,
+            0.3425
+          ]
+        }
+      }
+    },
+    "six_shot": {
+      "scope": {
+        "all": {
+          "probes": 2027,
+          "accuracy": 0.6532,
+          "ci95": [
+            0.629,
+            0.6762
+          ]
+        },
+        "all_but_boundary": {
+          "probes": 1939,
+          "accuracy": 0.6653,
+          "ci95": [
+            0.6396,
+            0.6888
+          ]
+        },
+        "general_update": {
+          "probes": 279,
+          "accuracy": 0.6595,
+          "ci95": [
+            0.586,
+            0.7283
+          ]
+        },
+        "scoped_exception": {
+          "probes": 558,
+          "accuracy": 0.6523,
+          "ci95": [
+            0.6137,
+            0.6923
+          ]
+        },
+        "exception_revision": {
+          "probes": 596,
+          "accuracy": 0.6594,
+          "ci95": [
+            0.6125,
+            0.7044
+          ]
+        },
+        "stable_preference": {
+          "probes": 594,
+          "accuracy": 0.6448,
+          "ci95": [
+            0.5978,
+            0.6892
+          ]
+        },
+        "type_target": {
+          "probes": 691,
+          "accuracy": 0.631,
+          "ci95": [
+            0.594,
+            0.6676
+          ]
+        },
+        "type_default": {
+          "probes": 531,
+          "accuracy": 0.7326,
+          "ci95": [
+            0.6907,
+            0.7719
+          ]
+        },
+        "type_neighbor": {
+          "probes": 717,
+          "accuracy": 0.6485,
+          "ci95": [
+            0.6105,
+            0.6883
+          ]
+        },
+        "type_boundary": {
+          "probes": 88,
+          "accuracy": 0.3864,
+          "ci95": [
+            0.2727,
+            0.5181
+          ]
+        }
+      },
+      "crud": {
+        "all": {
+          "probes": 2027,
+          "accuracy": 0.5377,
+          "ci95": [
+            0.5143,
+            0.5622
+          ]
+        },
+        "all_but_boundary": {
+          "probes": 1939,
+          "accuracy": 0.5482,
+          "ci95": [
+            0.524,
+            0.5742
+          ]
+        },
+        "general_update": {
+          "probes": 279,
+          "accuracy": 0.7384,
+          "ci95": [
+            0.6768,
+            0.7992
+          ]
+        },
+        "scoped_exception": {
+          "probes": 558,
+          "accuracy": 0.5233,
+          "ci95": [
+            0.4875,
+            0.5581
+          ]
+        },
+        "exception_revision": {
+          "probes": 596,
+          "accuracy": 0.5453,
+          "ci95": [
+            0.5039,
+            0.5904
+          ]
+        },
+        "stable_preference": {
+          "probes": 594,
+          "accuracy": 0.4495,
+          "ci95": [
+            0.4026,
+            0.4976
+          ]
+        },
+        "type_target": {
+          "probes": 691,
+          "accuracy": 0.7019,
+          "ci95": [
+            0.6681,
+            0.7359
+          ]
+        },
+        "type_default": {
+          "probes": 531,
+          "accuracy": 0.3503,
+          "ci95": [
+            0.3055,
+            0.3962
+          ]
+        },
+        "type_neighbor": {
+          "probes": 717,
+          "accuracy": 0.5467,
+          "ci95": [
+            0.5062,
+            0.591
+          ]
+        },
+        "type_boundary": {
+          "probes": 88,
+          "accuracy": 0.3068,
+          "ci95": [
+            0.2062,
+            0.4059
+          ]
+        }
+      }
+    },
+    "sft": {
+      "scope": {
+        "all": {
+          "probes": 2027,
+          "accuracy": 0.8607,
+          "ci95": [
+            0.8394,
+            0.8803
+          ]
+        },
+        "all_but_boundary": {
+          "probes": 1939,
+          "accuracy": 0.8802,
+          "ci95": [
+            0.8594,
+            0.8983
+          ]
+        },
+        "general_update": {
+          "probes": 279,
+          "accuracy": 0.9032,
+          "ci95": [
+            0.8616,
+            0.9368
+          ]
+        },
+        "scoped_exception": {
+          "probes": 558,
+          "accuracy": 0.779,
+          "ci95": [
+            0.75,
+            0.8081
+          ]
+        },
+        "exception_revision": {
+          "probes": 596,
+          "accuracy": 0.8719,
+          "ci95": [
+            0.8391,
+            0.9036
+          ]
+        },
+        "stable_preference": {
+          "probes": 594,
+          "accuracy": 0.9063,
+          "ci95": [
+            0.8817,
+            0.9295
+          ]
+        },
+        "type_target": {
+          "probes": 691,
+          "accuracy": 0.8437,
+          "ci95": [
+            0.8141,
+            0.871
+          ]
+        },
+        "type_default": {
+          "probes": 531,
+          "accuracy": 0.9096,
+          "ci95": [
+            0.8807,
+            0.9341
+          ]
+        },
+        "type_neighbor": {
+          "probes": 717,
+          "accuracy": 0.8935,
+          "ci95": [
+            0.8665,
+            0.9172
+          ]
+        },
+        "type_boundary": {
+          "probes": 88,
+          "accuracy": 0.4318,
+          "ci95": [
+            0.336,
+            0.5289
+          ]
+        }
+      },
+      "crud": {
+        "all": {
+          "probes": 2027,
+          "accuracy": 0.8334,
+          "ci95": [
+            0.8124,
+            0.8532
+          ]
+        },
+        "all_but_boundary": {
+          "probes": 1939,
+          "accuracy": 0.8633,
+          "ci95": [
+            0.8442,
+            0.8808
+          ]
+        },
+        "general_update": {
+          "probes": 279,
+          "accuracy": 0.8961,
+          "ci95": [
+            0.8561,
+            0.9344
+          ]
+        },
+        "scoped_exception": {
+          "probes": 558,
+          "accuracy": 0.736,
+          "ci95": [
+            0.705,
+            0.7691
+          ]
+        },
+        "exception_revision": {
+          "probes": 596,
+          "accuracy": 0.844,
+          "ci95": [
+            0.8129,
+            0.8753
+          ]
+        },
+        "stable_preference": {
+          "probes": 594,
+          "accuracy": 0.885,
+          "ci95": [
+            0.8571,
+            0.911
+          ]
+        },
+        "type_target": {
+          "probes": 691,
+          "accuracy": 0.8678,
+          "ci95": [
+            0.8372,
+            0.8955
+          ]
+        },
+        "type_default": {
+          "probes": 531,
+          "accuracy": 0.7972,
+          "ci95": [
+            0.7599,
+            0.8333
+          ]
+        },
+        "type_neighbor": {
+          "probes": 717,
+          "accuracy": 0.9079,
+          "ci95": [
+            0.8879,
+            0.927
+          ]
+        },
+        "type_boundary": {
+          "probes": 88,
+          "accuracy": 0.1742,
+          "ci95": [
+            0.1014,
+            0.248
+          ]
+        }
+      }
+    },
+    "gold": {
+      "scope": {
+        "all": {
+          "probes": 2027,
+          "accuracy": 0.8959,
+          "ci95": [
+            0.8796,
+            0.9127
+          ]
+        },
+        "all_but_boundary": {
+          "probes": 1939,
+          "accuracy": 0.917,
+          "ci95": [
+            0.9023,
+            0.9309
+          ]
+        },
+        "general_update": {
+          "probes": 279,
+          "accuracy": 0.9427,
+          "ci95": [
+            0.9175,
+            0.9667
+          ]
+        },
+        "scoped_exception": {
+          "probes": 558,
+          "accuracy": 0.81,
+          "ci95": [
+            0.7826,
+            0.8396
+          ]
+        },
+        "exception_revision": {
+          "probes": 596,
+          "accuracy": 0.9077,
+          "ci95": [
+            0.8795,
+            0.9343
+          ]
+        },
+        "stable_preference": {
+          "probes": 594,
+          "accuracy": 0.9428,
+          "ci95": [
+            0.9229,
+            0.9616
+          ]
+        },
+        "type_target": {
+          "probes": 691,
+          "accuracy": 0.9045,
+          "ci95": [
+            0.8743,
+            0.9319
+          ]
+        },
+        "type_default": {
+          "probes": 531,
+          "accuracy": 0.9284,
+          "ci95": [
+            0.9041,
+            0.9503
+          ]
+        },
+        "type_neighbor": {
+          "probes": 717,
+          "accuracy": 0.9205,
+          "ci95": [
+            0.9004,
+            0.9389
+          ]
+        },
+        "type_boundary": {
+          "probes": 88,
+          "accuracy": 0.4318,
+          "ci95": [
+            0.3214,
+            0.5465
+          ]
+        }
+      },
+      "crud": {
+        "all": {
+          "probes": 2027,
+          "accuracy": 0.8688,
+          "ci95": [
+            0.8494,
+            0.8894
+          ]
+        },
+        "all_but_boundary": {
+          "probes": 1939,
+          "accuracy": 0.9005,
+          "ci95": [
+            0.884,
+            0.9168
+          ]
+        },
+        "general_update": {
+          "probes": 279,
+          "accuracy": 0.9211,
+          "ci95": [
+            0.8874,
+            0.954
+          ]
+        },
+        "scoped_exception": {
+          "probes": 558,
+          "accuracy": 0.7652,
+          "ci95": [
+            0.7314,
+            0.8011
+          ]
+        },
+        "exception_revision": {
+          "probes": 596,
+          "accuracy": 0.8809,
+          "ci95": [
+            0.8536,
+            0.908
+          ]
+        },
+        "stable_preference": {
+          "probes": 594,
+          "accuracy": 0.9293,
+          "ci95": [
+            0.9055,
+            0.9509
+          ]
+        },
+        "type_target": {
+          "probes": 691,
+          "accuracy": 0.9204,
+          "ci95": [
+            0.8928,
+            0.9457
+          ]
+        },
+        "type_default": {
+          "probes": 531,
+          "accuracy": 0.8173,
+          "ci95": [
+            0.7813,
+            0.8529
+          ]
+        },
+        "type_neighbor": {
+          "probes": 717,
+          "accuracy": 0.9428,
+          "ci95": [
+            0.9257,
+            0.9585
+          ]
+        },
+        "type_boundary": {
+          "probes": 88,
+          "accuracy": 0.1705,
+          "ci95": [
+            0.092,
+            0.2535
+          ]
+        }
+      }
+    }
+  },
+  "scope_minus_crud": {
+    "noop": {
+      "all": {
+        "probes": 2027,
+        "a": 0.5012,
+        "b": 0.4815,
+        "difference": 0.0197,
+        "ci95": [
+          0.0102,
+          0.0296
+        ],
+        "sum_difference": 40.0
+      },
+      "all_but_boundary": {
+        "probes": 1939,
+        "a": 0.4966,
+        "b": 0.4755,
+        "difference": 0.0211,
+        "ci95": [
+          0.012,
+          0.0302
+        ],
+        "sum_difference": 41.0
+      },
+      "general_update": {
+        "probes": 279,
+        "a": 0.362,
+        "b": 0.3656,
+        "difference": -0.0036,
+        "ci95": [
+          -0.0235,
+          0.014
+        ],
+        "sum_difference": -1.0
+      },
+      "scoped_exception": {
+        "probes": 558,
+        "a": 0.4875,
+        "b": 0.4695,
+        "difference": 0.0179,
+        "ci95": [
+          -0.0034,
+          0.0422
+        ],
+        "sum_difference": 10.0
+      },
+      "exception_revision": {
+        "probes": 596,
+        "a": 0.5201,
+        "b": 0.4899,
+        "difference": 0.0302,
+        "ci95": [
+          0.0174,
+          0.0444
+        ],
+        "sum_difference": 18.0
+      },
+      "stable_preference": {
+        "probes": 594,
+        "a": 0.5606,
+        "b": 0.5387,
+        "difference": 0.0219,
+        "ci95": [
+          0.0033,
+          0.0407
+        ],
+        "sum_difference": 13.0
+      },
+      "type_target": {
+        "probes": 691,
+        "a": 0.2315,
+        "b": 0.2243,
+        "difference": 0.0072,
+        "ci95": [
+          -0.003,
+          0.0185
+        ],
+        "sum_difference": 5.0
+      },
+      "type_default": {
+        "probes": 531,
+        "a": 0.7439,
+        "b": 0.6667,
+        "difference": 0.0772,
+        "ci95": [
+          0.0515,
+          0.1047
+        ],
+        "sum_difference": 41.0
+      },
+      "type_neighbor": {
+        "probes": 717,
+        "a": 0.569,
+        "b": 0.576,
+        "difference": -0.007,
+        "ci95": [
+          -0.0194,
+          0.0043
+        ],
+        "sum_difference": -5.0
+      },
+      "type_boundary": {
+        "probes": 88,
+        "a": 0.6023,
+        "b": 0.6136,
+        "difference": -0.0114,
+        "ci95": [
+          -0.0984,
+          0.0795
+        ],
+        "sum_difference": -1.0
+      }
+    },
+    "zero_shot": {
+      "all": {
+        "probes": 2027,
+        "a": 0.5703,
+        "b": 0.5664,
+        "difference": 0.0039,
+        "ci95": [
+          -0.0292,
+          0.0368
+        ],
+        "sum_difference": 8.0
+      },
+      "all_but_boundary": {
+        "probes": 1939,
+        "a": 0.5725,
+        "b": 0.5823,
+        "difference": -0.0098,
+        "ci95": [
+          -0.0417,
+          0.0237
+        ],
+        "sum_difference": -19.0
+      },
+      "general_update": {
+        "probes": 279,
+        "a": 0.5914,
+        "b": 0.7491,
+        "difference": -0.1577,
+        "ci95": [
+          -0.2489,
+          -0.0687
+        ],
+        "sum_difference": -44.0
+      },
+      "scoped_exception": {
+        "probes": 558,
+        "a": 0.5502,
+        "b": 0.5358,
+        "difference": 0.0143,
+        "ci95": [
+          -0.0357,
+          0.0643
+        ],
+        "sum_difference": 8.0
+      },
+      "exception_revision": {
+        "probes": 596,
+        "a": 0.6443,
+        "b": 0.5403,
+        "difference": 0.104,
+        "ci95": [
+          0.0554,
+          0.1519
+        ],
+        "sum_difference": 62.0
+      },
+      "stable_preference": {
+        "probes": 594,
+        "a": 0.5051,
+        "b": 0.5354,
+        "difference": -0.0303,
+        "ci95": [
+          -0.0926,
+          0.033
+        ],
+        "sum_difference": -18.0
+      },
+      "type_target": {
+        "probes": 691,
+        "a": 0.5441,
+        "b": 0.6368,
+        "difference": -0.0926,
+        "ci95": [
+          -0.1504,
+          -0.0387
+        ],
+        "sum_difference": -64.0
+      },
+      "type_default": {
+        "probes": 531,
+        "a": 0.629,
+        "b": 0.4105,
+        "difference": 0.2185,
+        "ci95": [
+          0.154,
+          0.2826
+        ],
+        "sum_difference": 116.0
+      },
+      "type_neighbor": {
+        "probes": 717,
+        "a": 0.5579,
+        "b": 0.6569,
+        "difference": -0.099,
+        "ci95": [
+          -0.152,
+          -0.0471
+        ],
+        "sum_difference": -71.0
+      },
+      "type_boundary": {
+        "probes": 88,
+        "a": 0.5227,
+        "b": 0.2159,
+        "difference": 0.3068,
+        "ci95": [
+          0.125,
+          0.4804
+        ],
+        "sum_difference": 27.0
+      }
+    },
+    "six_shot": {
+      "all": {
+        "probes": 2027,
+        "a": 0.6532,
+        "b": 0.5377,
+        "difference": 0.1154,
+        "ci95": [
+          0.0812,
+          0.1487
+        ],
+        "sum_difference": 234.0
+      },
+      "all_but_boundary": {
+        "probes": 1939,
+        "a": 0.6653,
+        "b": 0.5482,
+        "difference": 0.1171,
+        "ci95": [
+          0.0814,
+          0.1513
+        ],
+        "sum_difference": 227.0
+      },
+      "general_update": {
+        "probes": 279,
+        "a": 0.6595,
+        "b": 0.7384,
+        "difference": -0.0789,
+        "ci95": [
+          -0.1616,
+          0.0
+        ],
+        "sum_difference": -22.0
+      },
+      "scoped_exception": {
+        "probes": 558,
+        "a": 0.6523,
+        "b": 0.5233,
+        "difference": 0.129,
+        "ci95": [
+          0.0829,
+          0.1802
+        ],
+        "sum_difference": 72.0
+      },
+      "exception_revision": {
+        "probes": 596,
+        "a": 0.6594,
+        "b": 0.5453,
+        "difference": 0.1141,
+        "ci95": [
+          0.055,
+          0.1704
+        ],
+        "sum_difference": 68.0
+      },
+      "stable_preference": {
+        "probes": 594,
+        "a": 0.6448,
+        "b": 0.4495,
+        "difference": 0.1953,
+        "ci95": [
+          0.1357,
+          0.254
+        ],
+        "sum_difference": 116.0
+      },
+      "type_target": {
+        "probes": 691,
+        "a": 0.631,
+        "b": 0.7019,
+        "difference": -0.0709,
+        "ci95": [
+          -0.1156,
+          -0.0253
+        ],
+        "sum_difference": -49.0
+      },
+      "type_default": {
+        "probes": 531,
+        "a": 0.7326,
+        "b": 0.3503,
+        "difference": 0.3823,
+        "ci95": [
+          0.3192,
+          0.4424
+        ],
+        "sum_difference": 203.0
+      },
+      "type_neighbor": {
+        "probes": 717,
+        "a": 0.6485,
+        "b": 0.5467,
+        "difference": 0.1018,
+        "ci95": [
+          0.0499,
+          0.1552
+        ],
+        "sum_difference": 73.0
+      },
+      "type_boundary": {
+        "probes": 88,
+        "a": 0.3864,
+        "b": 0.3068,
+        "difference": 0.0795,
+        "ci95": [
+          -0.0612,
+          0.24
+        ],
+        "sum_difference": 7.0
+      }
+    },
+    "sft": {
+      "all": {
+        "probes": 2027,
+        "a": 0.8607,
+        "b": 0.8334,
+        "difference": 0.0273,
+        "ci95": [
+          0.0085,
+          0.0448
+        ],
+        "sum_difference": 55.33
+      },
+      "all_but_boundary": {
+        "probes": 1939,
+        "a": 0.8802,
+        "b": 0.8633,
+        "difference": 0.0168,
+        "ci95": [
+          -0.0022,
+          0.0342
+        ],
+        "sum_difference": 32.67
+      },
+      "general_update": {
+        "probes": 279,
+        "a": 0.9032,
+        "b": 0.8961,
+        "difference": 0.0072,
+        "ci95": [
+          -0.0426,
+          0.0508
+        ],
+        "sum_difference": 2.0
+      },
+      "scoped_exception": {
+        "probes": 558,
+        "a": 0.779,
+        "b": 0.736,
+        "difference": 0.043,
+        "ci95": [
+          0.0149,
+          0.0704
+        ],
+        "sum_difference": 24.0
+      },
+      "exception_revision": {
+        "probes": 596,
+        "a": 0.8719,
+        "b": 0.844,
+        "difference": 0.028,
+        "ci95": [
+          -0.0011,
+          0.0552
+        ],
+        "sum_difference": 16.67
+      },
+      "stable_preference": {
+        "probes": 594,
+        "a": 0.9063,
+        "b": 0.885,
+        "difference": 0.0213,
+        "ci95": [
+          -0.0054,
+          0.0483
+        ],
+        "sum_difference": 12.67
+      },
+      "type_target": {
+        "probes": 691,
+        "a": 0.8437,
+        "b": 0.8678,
+        "difference": -0.0241,
+        "ci95": [
+          -0.0508,
+          0.0034
+        ],
+        "sum_difference": -16.67
+      },
+      "type_default": {
+        "probes": 531,
+        "a": 0.9096,
+        "b": 0.7972,
+        "difference": 0.1124,
+        "ci95": [
+          0.0788,
+          0.1479
+        ],
+        "sum_difference": 59.67
+      },
+      "type_neighbor": {
+        "probes": 717,
+        "a": 0.8935,
+        "b": 0.9079,
+        "difference": -0.0144,
+        "ci95": [
+          -0.0416,
+          0.0099
+        ],
+        "sum_difference": -10.33
+      },
+      "type_boundary": {
+        "probes": 88,
+        "a": 0.4318,
+        "b": 0.1742,
+        "difference": 0.2576,
+        "ci95": [
+          0.1572,
+          0.3596
+        ],
+        "sum_difference": 22.67
+      }
+    },
+    "gold": {
+      "all": {
+        "probes": 2027,
+        "a": 0.8959,
+        "b": 0.8688,
+        "difference": 0.0271,
+        "ci95": [
+          0.0125,
+          0.0418
+        ],
+        "sum_difference": 55.0
+      },
+      "all_but_boundary": {
+        "probes": 1939,
+        "a": 0.917,
+        "b": 0.9005,
+        "difference": 0.0165,
+        "ci95": [
+          0.0015,
+          0.031
+        ],
+        "sum_difference": 32.0
+      },
+      "general_update": {
+        "probes": 279,
+        "a": 0.9427,
+        "b": 0.9211,
+        "difference": 0.0215,
+        "ci95": [
+          -0.0119,
+          0.0561
+        ],
+        "sum_difference": 6.0
+      },
+      "scoped_exception": {
+        "probes": 558,
+        "a": 0.81,
+        "b": 0.7652,
+        "difference": 0.0448,
+        "ci95": [
+          0.0157,
+          0.0736
+        ],
+        "sum_difference": 25.0
+      },
+      "exception_revision": {
+        "probes": 596,
+        "a": 0.9077,
+        "b": 0.8809,
+        "difference": 0.0268,
+        "ci95": [
+          -0.0017,
+          0.054
+        ],
+        "sum_difference": 16.0
+      },
+      "stable_preference": {
+        "probes": 594,
+        "a": 0.9428,
+        "b": 0.9293,
+        "difference": 0.0135,
+        "ci95": [
+          -0.01,
+          0.0387
+        ],
+        "sum_difference": 8.0
+      },
+      "type_target": {
+        "probes": 691,
+        "a": 0.9045,
+        "b": 0.9204,
+        "difference": -0.0159,
+        "ci95": [
+          -0.0411,
+          0.01
+        ],
+        "sum_difference": -11.0
+      },
+      "type_default": {
+        "probes": 531,
+        "a": 0.9284,
+        "b": 0.8173,
+        "difference": 0.1111,
+        "ci95": [
+          0.0751,
+          0.1491
+        ],
+        "sum_difference": 59.0
+      },
+      "type_neighbor": {
+        "probes": 717,
+        "a": 0.9205,
+        "b": 0.9428,
+        "difference": -0.0223,
+        "ci95": [
+          -0.0413,
+          -0.0028
+        ],
+        "sum_difference": -16.0
+      },
+      "type_boundary": {
+        "probes": 88,
+        "a": 0.4318,
+        "b": 0.1705,
+        "difference": 0.2614,
+        "ci95": [
+          0.1415,
+          0.3797
+        ],
+        "sum_difference": 23.0
+      }
+    }
+  },
+  "h1_sft_scope_minus_crud": {
+    "all": {
+      "probes": 2027,
+      "a": 0.8607,
+      "b": 0.8334,
+      "difference": 0.0273,
+      "ci95": [
+        0.0085,
+        0.0448
+      ],
+      "sum_difference": 55.33
+    },
+    "all_but_boundary": {
+      "probes": 1939,
+      "a": 0.8802,
+      "b": 0.8633,
+      "difference": 0.0168,
+      "ci95": [
+        -0.0022,
+        0.0342
+      ],
+      "sum_difference": 32.67
+    },
+    "general_update": {
+      "probes": 279,
+      "a": 0.9032,
+      "b": 0.8961,
+      "difference": 0.0072,
+      "ci95": [
+        -0.0426,
+        0.0508
+      ],
+      "sum_difference": 2.0
+    },
+    "scoped_exception": {
+      "probes": 558,
+      "a": 0.779,
+      "b": 0.736,
+      "difference": 0.043,
+      "ci95": [
+        0.0149,
+        0.0704
+      ],
+      "sum_difference": 24.0
+    },
+    "exception_revision": {
+      "probes": 596,
+      "a": 0.8719,
+      "b": 0.844,
+      "difference": 0.028,
+      "ci95": [
+        -0.0011,
+        0.0552
+      ],
+      "sum_difference": 16.67
+    },
+    "stable_preference": {
+      "probes": 594,
+      "a": 0.9063,
+      "b": 0.885,
+      "difference": 0.0213,
+      "ci95": [
+        -0.0054,
+        0.0483
+      ],
+      "sum_difference": 12.67
+    },
+    "type_target": {
+      "probes": 691,
+      "a": 0.8437,
+      "b": 0.8678,
+      "difference": -0.0241,
+      "ci95": [
+        -0.0508,
+        0.0034
+      ],
+      "sum_difference": -16.67
+    },
+    "type_default": {
+      "probes": 531,
+      "a": 0.9096,
+      "b": 0.7972,
+      "difference": 0.1124,
+      "ci95": [
+        0.0788,
+        0.1479
+      ],
+      "sum_difference": 59.67
+    },
+    "type_neighbor": {
+      "probes": 717,
+      "a": 0.8935,
+      "b": 0.9079,
+      "difference": -0.0144,
+      "ci95": [
+        -0.0416,
+        0.0099
+      ],
+      "sum_difference": -10.33
+    },
+    "type_boundary": {
+      "probes": 88,
+      "a": 0.4318,
+      "b": 0.1742,
+      "difference": 0.2576,
+      "ci95": [
+        0.1572,
+        0.3596
+      ],
+      "sum_difference": 22.67
+    }
+  },
+  "h2_sft_minus_prompt": {
+    "scope": {
+      "sft_minus_zero_shot": {
+        "all": {
+          "probes": 2027,
+          "a": 0.8607,
+          "b": 0.5703,
+          "difference": 0.2904,
+          "ci95": [
+            0.2605,
+            0.3213
+          ],
+          "sum_difference": 588.67
+        },
+        "all_but_boundary": {
+          "probes": 1939,
+          "a": 0.8802,
+          "b": 0.5725,
+          "difference": 0.3077,
+          "ci95": [
+            0.2772,
+            0.3386
+          ],
+          "sum_difference": 596.67
+        },
+        "general_update": {
+          "probes": 279,
+          "a": 0.9032,
+          "b": 0.5914,
+          "difference": 0.3118,
+          "ci95": [
+            0.241,
+            0.3854
+          ],
+          "sum_difference": 87.0
+        },
+        "scoped_exception": {
+          "probes": 558,
+          "a": 0.779,
+          "b": 0.5502,
+          "difference": 0.2288,
+          "ci95": [
+            0.1776,
+            0.2806
+          ],
+          "sum_difference": 127.67
+        },
+        "exception_revision": {
+          "probes": 596,
+          "a": 0.8719,
+          "b": 0.6443,
+          "difference": 0.2276,
+          "ci95": [
+            0.1792,
+            0.2748
+          ],
+          "sum_difference": 135.67
+        },
+        "stable_preference": {
+          "probes": 594,
+          "a": 0.9063,
+          "b": 0.5051,
+          "difference": 0.4012,
+          "ci95": [
+            0.3519,
+            0.4521
+          ],
+          "sum_difference": 238.33
+        },
+        "type_target": {
+          "probes": 691,
+          "a": 0.8437,
+          "b": 0.5441,
+          "difference": 0.2996,
+          "ci95": [
+            0.2463,
+            0.3482
+          ],
+          "sum_difference": 207.0
+        },
+        "type_default": {
+          "probes": 531,
+          "a": 0.9096,
+          "b": 0.629,
+          "difference": 0.2806,
+          "ci95": [
+            0.2291,
+            0.3297
+          ],
+          "sum_difference": 149.0
+        },
+        "type_neighbor": {
+          "probes": 717,
+          "a": 0.8935,
+          "b": 0.5579,
+          "difference": 0.3357,
+          "ci95": [
+            0.2922,
+            0.3786
+          ],
+          "sum_difference": 240.67
+        },
+        "type_boundary": {
+          "probes": 88,
+          "a": 0.4318,
+          "b": 0.5227,
+          "difference": -0.0909,
+          "ci95": [
+            -0.2235,
+            0.0383
+          ],
+          "sum_difference": -8.0
+        }
+      },
+      "sft_minus_six_shot": {
+        "all": {
+          "probes": 2027,
+          "a": 0.8607,
+          "b": 0.6532,
+          "difference": 0.2075,
+          "ci95": [
+            0.1801,
+            0.234
+          ],
+          "sum_difference": 420.67
+        },
+        "all_but_boundary": {
+          "probes": 1939,
+          "a": 0.8802,
+          "b": 0.6653,
+          "difference": 0.2149,
+          "ci95": [
+            0.1876,
+            0.2423
+          ],
+          "sum_difference": 416.67
+        },
+        "general_update": {
+          "probes": 279,
+          "a": 0.9032,
+          "b": 0.6595,
+          "difference": 0.2437,
+          "ci95": [
+            0.178,
+            0.3124
+          ],
+          "sum_difference": 68.0
+        },
+        "scoped_exception": {
+          "probes": 558,
+          "a": 0.779,
+          "b": 0.6523,
+          "difference": 0.1266,
+          "ci95": [
+            0.0807,
+            0.172
+          ],
+          "sum_difference": 70.67
+        },
+        "exception_revision": {
+          "probes": 596,
+          "a": 0.8719,
+          "b": 0.6594,
+          "difference": 0.2125,
+          "ci95": [
+            0.1618,
+            0.2633
+          ],
+          "sum_difference": 126.67
+        },
+        "stable_preference": {
+          "probes": 594,
+          "a": 0.9063,
+          "b": 0.6448,
+          "difference": 0.2615,
+          "ci95": [
+            0.2167,
+            0.3067
+          ],
+          "sum_difference": 155.33
+        },
+        "type_target": {
+          "probes": 691,
+          "a": 0.8437,
+          "b": 0.631,
+          "difference": 0.2127,
+          "ci95": [
+            0.1747,
+            0.2527
+          ],
+          "sum_difference": 147.0
+        },
+        "type_default": {
+          "probes": 531,
+          "a": 0.9096,
+          "b": 0.7326,
+          "difference": 0.177,
+          "ci95": [
+            0.137,
+            0.2196
+          ],
+          "sum_difference": 94.0
+        },
+        "type_neighbor": {
+          "probes": 717,
+          "a": 0.8935,
+          "b": 0.6485,
+          "difference": 0.245,
+          "ci95": [
+            0.2051,
+            0.2844
+          ],
+          "sum_difference": 175.67
+        },
+        "type_boundary": {
+          "probes": 88,
+          "a": 0.4318,
+          "b": 0.3864,
+          "difference": 0.0455,
+          "ci95": [
+            -0.0854,
+            0.1646
+          ],
+          "sum_difference": 4.0
+        }
+      }
+    },
+    "crud": {
+      "sft_minus_zero_shot": {
+        "all": {
+          "probes": 2027,
+          "a": 0.8334,
+          "b": 0.5664,
+          "difference": 0.2671,
+          "ci95": [
+            0.2365,
+            0.2984
+          ],
+          "sum_difference": 541.33
+        },
+        "all_but_boundary": {
+          "probes": 1939,
+          "a": 0.8633,
+          "b": 0.5823,
+          "difference": 0.2811,
+          "ci95": [
+            0.2505,
+            0.3115
+          ],
+          "sum_difference": 545.0
+        },
+        "general_update": {
+          "probes": 279,
+          "a": 0.8961,
+          "b": 0.7491,
+          "difference": 0.147,
+          "ci95": [
+            0.0916,
+            0.2113
+          ],
+          "sum_difference": 41.0
+        },
+        "scoped_exception": {
+          "probes": 558,
+          "a": 0.736,
+          "b": 0.5358,
+          "difference": 0.2001,
+          "ci95": [
+            0.1529,
+            0.2504
+          ],
+          "sum_difference": 111.67
+        },
+        "exception_revision": {
+          "probes": 596,
+          "a": 0.844,
+          "b": 0.5403,
+          "difference": 0.3037,
+          "ci95": [
+            0.2531,
+            0.3536
+          ],
+          "sum_difference": 181.0
+        },
+        "stable_preference": {
+          "probes": 594,
+          "a": 0.885,
+          "b": 0.5354,
+          "difference": 0.3496,
+          "ci95": [
+            0.2934,
+            0.4034
+          ],
+          "sum_difference": 207.67
+        },
+        "type_target": {
+          "probes": 691,
+          "a": 0.8678,
+          "b": 0.6368,
+          "difference": 0.2311,
+          "ci95": [
+            0.1905,
+            0.2717
+          ],
+          "sum_difference": 159.67
+        },
+        "type_default": {
+          "probes": 531,
+          "a": 0.7972,
+          "b": 0.4105,
+          "difference": 0.3867,
+          "ci95": [
+            0.3271,
+            0.4444
+          ],
+          "sum_difference": 205.33
+        },
+        "type_neighbor": {
+          "probes": 717,
+          "a": 0.9079,
+          "b": 0.6569,
+          "difference": 0.251,
+          "ci95": [
+            0.2077,
+            0.2958
+          ],
+          "sum_difference": 180.0
+        },
+        "type_boundary": {
+          "probes": 88,
+          "a": 0.1742,
+          "b": 0.2159,
+          "difference": -0.0417,
+          "ci95": [
+            -0.1958,
+            0.0912
+          ],
+          "sum_difference": -3.67
+        }
+      },
+      "sft_minus_six_shot": {
+        "all": {
+          "probes": 2027,
+          "a": 0.8334,
+          "b": 0.5377,
+          "difference": 0.2957,
+          "ci95": [
+            0.2657,
+            0.3244
+          ],
+          "sum_difference": 599.33
+        },
+        "all_but_boundary": {
+          "probes": 1939,
+          "a": 0.8633,
+          "b": 0.5482,
+          "difference": 0.3151,
+          "ci95": [
+            0.2859,
+            0.3437
+          ],
+          "sum_difference": 611.0
+        },
+        "general_update": {
+          "probes": 279,
+          "a": 0.8961,
+          "b": 0.7384,
+          "difference": 0.1577,
+          "ci95": [
+            0.0928,
+            0.2207
+          ],
+          "sum_difference": 44.0
+        },
+        "scoped_exception": {
+          "probes": 558,
+          "a": 0.736,
+          "b": 0.5233,
+          "difference": 0.2127,
+          "ci95": [
+            0.1745,
+            0.2552
+          ],
+          "sum_difference": 118.67
+        },
+        "exception_revision": {
+          "probes": 596,
+          "a": 0.844,
+          "b": 0.5453,
+          "difference": 0.2987,
+          "ci95": [
+            0.2455,
+            0.3445
+          ],
+          "sum_difference": 178.0
+        },
+        "stable_preference": {
+          "probes": 594,
+          "a": 0.885,
+          "b": 0.4495,
+          "difference": 0.4355,
+          "ci95": [
+            0.3841,
+            0.4866
+          ],
+          "sum_difference": 258.67
+        },
+        "type_target": {
+          "probes": 691,
+          "a": 0.8678,
+          "b": 0.7019,
+          "difference": 0.1659,
+          "ci95": [
+            0.1256,
+            0.2077
+          ],
+          "sum_difference": 114.67
+        },
+        "type_default": {
+          "probes": 531,
+          "a": 0.7972,
+          "b": 0.3503,
+          "difference": 0.447,
+          "ci95": [
+            0.3911,
+            0.5022
+          ],
+          "sum_difference": 237.33
+        },
+        "type_neighbor": {
+          "probes": 717,
+          "a": 0.9079,
+          "b": 0.5467,
+          "difference": 0.3612,
+          "ci95": [
+            0.3167,
+            0.4052
+          ],
+          "sum_difference": 259.0
+        },
+        "type_boundary": {
+          "probes": 88,
+          "a": 0.1742,
+          "b": 0.3068,
+          "difference": -0.1326,
+          "ci95": [
+            -0.2603,
+            -0.0128
+          ],
+          "sum_difference": -11.67
+        }
+      }
+    }
+  }
+}

@@ -126,6 +126,87 @@ disagreements are annotator slips, so no label error was found and no data were 
 
 `bash ~/scope-sft-work/sft/submit_test.sh` (Babel login node) submits the seven runs with `SPLIT=test` into `runs/test_p12_*`; every run directory gets a `SUBMITTED` marker, so a second call submits nothing again.
 
+## Test results (2026-11-24)
+
+The seven runs from `submit_test.sh` (jobs 11262743–11262749, submitted once on 2026-11-23 at 21:41 ET) finished on
+2026-11-24 at 00:03 ET. Every run covers the 200 test episodes and the same 2,027 probes per arm with Answer Agent
+prompt version 3, and each SFT run used the `sft-p12` adapters of its own seed. The tables come from the analyses
+fixed in [analysis.md](analysis.md); their JSON output is in [results/test_p12/](../results/test_p12/).
+
+Answer Agent QA in % of probes (SFT pools the three seeds per probe; 95% intervals from the episode bootstrap):
+
+| Condition | CRUD | Scope | Scope − CRUD | Without the 88 boundary probes: CRUD / scope, scope − CRUD |
+|---|---|---|---|---|
+| Never written | 48.1 | 50.1 | +2.0 [+1.0, +3.0] | 47.5 / 49.7, +2.1 [+1.2, +3.0] |
+| Zero-shot | 56.6 | 57.0 | +0.4 [−2.9, +3.7] | 58.2 / 57.2, −1.0 [−4.2, +2.4] |
+| Six-shot | 53.8 | 65.3 | +11.5 [+8.1, +14.9] | 54.8 / 66.5, +11.7 [+8.1, +15.1] |
+| SFT, three seeds | 83.3 | 86.1 | **+2.7 [+0.9, +4.5]** | 86.3 / 88.0, **+1.7 [−0.2, +3.4]** |
+| Gold memory | 86.9 | 89.6 | +2.7 [+1.2, +4.2] | 90.0 / 91.7, +1.7 [+0.1, +3.1] |
+
+**H1** (SFT scope minus SFT CRUD): +2.7 [+0.9, +4.5] on all probes and +1.7 [−0.2, +3.4] without boundary probes. The
+three seeds point the same way (description only): +2.8 [+0.4, +5.0], +0.8 [−1.4, +3.0] and +4.5 [+2.6, +6.4]
+(CRUD 83.6 / 83.8 / 82.6, scope 86.4 / 84.6 / 87.2). The development sets did not show this: on dev the scope arm
+trailed (−2.5 [−5.2, +0.3]; without boundary probes −3.3 [−6.0, −0.5]), and on the challenge set the arms tied
+(+0.4 [−2.9, +4.0]) with seeds that disagreed.
+
+**H2** (SFT minus the prompt baselines): CRUD +26.7 [+23.6, +29.8] over zero-shot and +29.6 [+26.6, +32.4] over
+six-shot; scope +29.0 [+26.1, +32.1] and +20.8 [+18.0, +23.4]. Without boundary probes: +28.1, +31.5, +30.8 and
++21.5, every interval far from zero. SFT closes about 91% of the gap between never-written and gold memory in both
+arms.
+
+By probe type and QA group (SFT pooled over the seeds, and gold memory for comparison):
+
+| Group | Probes | SFT CRUD / scope | SFT scope − CRUD | Gold CRUD / scope | Gold scope − CRUD |
+|---|---|---|---|---|---|
+| Target probes | 691 | 86.8 / 84.4 | −2.4 [−5.1, +0.3] | 92.0 / 90.5 | −1.6 [−4.1, +1.0] |
+| Default probes | 531 | 79.7 / 91.0 | +11.2 [+7.9, +14.8] | 81.7 / 92.8 | +11.1 [+7.5, +14.9] |
+| Neighbor probes | 717 | 90.8 / 89.3 | −1.4 [−4.2, +1.0] | 94.3 / 92.0 | −2.2 [−4.1, −0.3] |
+| Boundary probes | 88 | 17.4 / 43.2 | +25.8 [+15.7, +36.0] | 17.1 / 43.2 | +26.1 [+14.1, +38.0] |
+| `general_update` | 279 | 89.6 / 90.3 | +0.7 [−4.3, +5.1] | 92.1 / 94.3 | +2.1 [−1.2, +5.6] |
+| `scoped_exception` | 558 | 73.6 / 77.9 | +4.3 [+1.5, +7.0] | 76.5 / 81.0 | +4.5 [+1.6, +7.4] |
+| `exception_revision` | 596 | 84.4 / 87.2 | +2.8 [−0.1, +5.5] | 88.1 / 90.8 | +2.7 [−0.2, +5.4] |
+| `stable_preference` | 594 | 88.5 / 90.6 | +2.1 [−0.5, +4.8] | 92.9 / 94.3 | +1.4 [−1.0, +3.9] |
+
+Reading, after the fact (not a pre-registered test). The SFT difference is as large as the difference on gold memory
+(+2.7 both), where the two arms hold the same content in their own formats, and it sits in the same probes: default
+probes ("an ordinary occasion"), which the Answer Agent gets wrong more often from CRUD text, and boundary probes (the
+day after a temporary preference ended). On target and neighbor probes CRUD is slightly ahead in both conditions. Each
+SFT policy loses about as much against its own gold memory (CRUD −3.6, scope −3.5 points). On dev the scope policy
+lost twice as much (−5.2 against −2.6), which accounts for the dev deficit. So on the test split the scope arm's lead
+reflects how well the Answer Agent reads the scope format, while the two policies' own write errors cost about the
+same.
+
+Diagnostics (rule readers; descriptive):
+
+- Memory at the probe, three seeds pooled (6,081 probe-seed pairs per arm): it matches gold for CRUD 84.2% and scope
+  83.5%, and its structure differs from gold for CRUD 6.0% and scope 7.2% (dev 7.6% and 12.4%). Split by the scope
+  arm's class, scope leads by +5.2 [+3.7, +6.8] where its memory matches gold (263 probe-seeds net) and trails where it
+  does not: −16.6 [−33.2, −4.9] with the same structure but another value (−56) and −11.2 [−18.9, −3.9] with another
+  structure (−49).
+- Teacher-forced structure match (3,573 events per arm over the seeds): CRUD 96.1%, scope 95.0% (dev 96–97% and
+  92–95%). Among the most common errors, both arms skip a new scoped exception (NOOP: CRUD 26, scope 27) or overwrite
+  another record with it (CRUD UPDATE 20, scope REVISE 11), turn an exception revision into a NOOP or a new record
+  (CRUD 38, scope 40), and write on stable-preference events (CRUD 24, scope 18).
+- Written words: 4.2% of the values the scope policy writes are not a listed form (77 of 1,851), 5.8% for CRUD
+  (108 of 1,871).
+- Executor rejections in the rollouts, of 1,191 events per arm: SFT scope 1 / 9 / 1 by seed, CRUD 0; zero-shot scope
+  312, CRUD 5; six-shot scope 371, CRUD 13.
+
+Cost: per call (SFT seed 0), the policy reads 886 tokens for scope and 604 for CRUD and writes 66 and 36; the Answer
+Agent reads 468 and 263; the memory at a probe is 253 and 107 tokens (`cost.json` in each run directory). Slurm
+accounting, summing preempted attempts: 8.2 GPU-hours for the seven runs, one GPU each (mixed GPU types): SFT
+1.06 / 1.37 / 1.37 h, six-shot 2.18 h, zero-shot 1.62 h, never-written 0.25 h and gold 0.34 h.
+
+Run notes. Zero-shot (11262745) was preempted once and SFT seed 2 (11262749) twice; `baseline.py` resumed them,
+keeping the stages already written. After `ALL_DONE` the preemption quirk requeued both: the zero-shot copy was
+cancelled while pending, and the seed-2 copy started, printed "already done" and overwrote that run's Slurm log, so
+seed 2 has no full log; its result files are complete. After download all seven runs were checked: the same 2,027
+probes per arm, no duplicate answers, the test file, reader 3, and adapters that match the seed.
+
+Next is the manual error analysis fixed in [analysis.md](analysis.md#manual-error-analysis-pre-specified). Its packets
+are in [annotations/error_analysis/](../annotations/error_analysis/): 40 of the 275 wrong scope probes and 40 of the
+332 wrong CRUD probes of seed 0, each to be labelled by two annotators.
+
 ## Challenge set
 
 `training/challenge_v1/` holds 24 hand-written episodes of structure-heavy cases (dense memory, a situation shared by two attributes, confusable situations, order-dependent chains, windows, distractors). Its README gives the design and the evaluation plan, fixed before any model ran on it. `baseline.sbatch` reads it with `SPLIT=challenge`. `bash ~/scope-sft-work/sft/submit_challenge.sh references` runs the never-written and gold references first; after the data check on gold memory, `submit_challenge.sh policies` runs zero-shot, six-shot and the three `sft-p12` seeds once, with the settings frozen for the test split. `analysis.py report` adds a `stressor_<name>` group per stressor. The set is evaluation data only and does not replace the test split.
