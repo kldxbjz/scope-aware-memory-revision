@@ -234,3 +234,71 @@ drawn in black, the comparison (gold memory, dev) as hollow grey circles.
 3. `fig3_format_vs_writing`: the decomposition on test and dev (post-hoc).
 4. `fig4_cost`: tokens per call after SFT (post-hoc summary).
 5. `fig5_attributes`: scope − CRUD per attribute on test and dev (post-hoc).
+
+## Read-time experiments (post-hoc, 2026-11-24)
+
+The team's mid-project update of 2026-11-24 asked for two experiments that change only what the frozen Answer Agent
+reads. Both were proposed after the single test run, so they are post-hoc and exploratory: they are reported apart
+from the main table, which stays as it is. Code: `scope_memory/readtime.py` (prompts and reports; standard library)
+and `training/sft/reread.py` (Answer Agent runs on Babel); `training/sft/submit_readtime.sh` submits them.
+
+The Answer Agent is the frozen one in every condition: Qwen3-4B-Instruct-2507 without an adapter, greedy decoding,
+batch size 16, the reply format and the 160-token budget of prompt version 3. Replies are parsed with `pick_option`
+and scored as in `rollout-score`. Every probe of dev (1,170) and test (2,027) is answered.
+
+**A, raw history.** No memory manager. The prompt holds the user's preferences at the start of the episode, as the
+fixed CRUD sentences that also seed the CRUD arm's memory; then the date and the messages of every event up to and
+including the probe's, oldest first; then the probe exactly as in prompt version 3. Nothing else of the events (no
+gold state, category or output) and no later event enters it. In place of the memory reading rule it gets three
+sentences: the conversations are in time order and a later one can change or end an earlier preference; only the
+user's own lasting preferences count (one-off requests, other people's preferences and unsettled changes do not),
+which is what the policy instructions tell both memory managers; and the reading rule with "preference" for "record".
+The reply instruction is prompt version 3's, also with "preference" for "record". Prompts are given whole: the
+longest history has about 4,500 characters, and `history_check.json` records the token counts.
+
+Compared with SFT scope and SFT CRUD (pooled over the three seeds), the gold memory of both arms and, on test, the
+never-written memory: paired differences per group with episode and family intervals; per seed, the probes that only
+the history gets right and those that only the memory gets right; and the tokens of one run (a memory arm: every
+policy call on every event plus every Answer Agent call; the history: its Answer Agent calls).
+
+**B, the display of the same memory.** For each finished scope rollout (SFT seeds 0-2 and gold memory, dev and test),
+the memory at every probe is shown three ways:
+
+- `replay`: the original prompt, answered again; this measures how much the answers change on a second run (another
+  GPU type, other neighbours in a batch);
+- `compact`: one block per attribute with the general preference and one line per situation with its dates
+  (`; for now, with no end date given` or `; from YYYY-MM-DD through YYYY-MM-DD`); memory ids, relations and
+  evidence ids are left out;
+- `sentences`: the CRUD arm's own display, every record as its fixed CRUD sentence in `{"id", "text"}` records.
+
+Nothing is repaired, selected or dropped, errors included. Leaving out the relations loses nothing the reader could
+use, because every situation record points at its own attribute's general record and REPLACES points only at retired
+records: `display_check.json` counts both, and both counts are 0 in all stored dev and test SFT snapshots. On gold
+memory, `sentences` shows exactly the CRUD arm's gold texts (checked on all 702 dev and 1,191 test snapshots), so it
+differs from the CRUD prompt only in record ids and order. Reported: the accuracy of each display, paired against the
+stored original answers and against the CRUD arm per group; scope minus CRUD split into a display part (original -
+sentences) and a content part (sentences - CRUD); answers lost and gained per run; replay agreement; and the tokens
+of the memory block and of the prompt.
+
+Procedure, fixed before any run:
+
+1. Smoke: `bash ~/scope-sft-work/sft/submit_readtime.sh smoke` answers the first 5 dev episodes (A, and B on seed 0's
+   memory). It checks the pipeline only: every probe answered, the "Answer:" line present, no prompt cut, prompts as
+   intended, replay agreeing with the stored answers. A smoke result may change code only to fix such an error; its
+   accuracies decide nothing.
+2. Freeze: `runs/readtime/FROZEN` names the commit of the settings.
+3. `bash ~/scope-sft-work/sft/submit_readtime.sh full` runs dev and test once (ten jobs). Every result is reported,
+   whichever way it falls.
+
+```sh
+P="python3 -m scope_memory.readtime"; R=runs/readtime; T=runs/test_p12; D=runs/sft_p12_eval; O=$REPO/results/posthoc
+$P a --history $R/test_history --sft ${T}_sft_s0 ${T}_sft_s1 ${T}_sft_s2 --gold ${T}_gold --noop ${T}_noop \
+  --cost ${T}_sft_s0/cost.json ${T}_sft_s1/cost.json ${T}_sft_s2/cost.json --out $O/readtime_a_test.json
+$P a --history $R/dev_history --sft ${D}_s0 ${D}_s1 ${D}_s2 --gold runs/reference_gold_p12 \
+  --cost $R/dev_history/cost_runs.json --out $O/readtime_a_dev.json
+$P b --display $R/test_sft_s0 $R/test_sft_s1 $R/test_sft_s2 $R/test_gold \
+  --sft ${T}_sft_s0 ${T}_sft_s1 ${T}_sft_s2 --gold ${T}_gold --out $O/readtime_b_test.json
+$P b --display $R/dev_sft_s0 $R/dev_sft_s1 $R/dev_sft_s2 $R/dev_gold \
+  --sft ${D}_s0 ${D}_s1 ${D}_s2 --gold runs/reference_gold_p12 --out $O/readtime_b_dev.json
+$P show --data DATA --probe EPISODE/PROBE [--run RUN --condition compact]   # print one prompt
+```
