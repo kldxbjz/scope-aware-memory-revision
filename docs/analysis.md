@@ -314,3 +314,76 @@ $P b --display $R/dev_sft_s0 $R/dev_sft_s1 $R/dev_sft_s2 $R/dev_gold \
 $P show --data DATA --probe EPISODE/PROBE [--run RUN --condition compact]   # print one prompt
 ```
 
+### Results (2026-11-24, read-time)
+
+Runs. The smoke ran from a staged copy of the files of `587525c` (byte-identical; WSL, where commits are made, was
+busy) as jobs 11271161 and 11271162 and passed every check: all 54 probes answered in each condition, no "Answer:"
+line missing, history prompts at most 1,216 tokens, replay equal to the stored answers on 54 of 54. No code changed,
+and `runs/readtime/FROZEN` names `587525c`. The ten runs (11271278-11271287) finished on 2026-11-24 between 21:16
+and 21:53 ET on A100, A6000, L40, L40S and RTX 6000 Ada GPUs. Two of them (test seed 1, dev seed 2) first landed on
+a Blackwell node that was missing from the exclude list (babel-aa9-24; torch 2.6 has no kernels for it) and failed
+before answering anything; they were resubmitted (11271408, 11271409) with all 24 such nodes excluded, which the job
+scripts now list. Dev gold was preempted once and resumed; the requeue quirk later overwrote its log ("already
+done"), and its result files are complete. Every probe got exactly one answer per condition; the "Answer:" line is
+missing in at most 0.6% of the replies (CRUD sentences on dev: 21 of 3,510). Reports:
+`results/posthoc/readtime_{a,b}_{test,dev}.json`; Figures 6 and 7 and Tables 8 and 9 in `results/figures/`.
+
+**A, raw history.** Accuracy in %, 95% episode-bootstrap intervals, SFT pooled over the three seeds:
+
+| | Test (2,027 questions) | Dev (1,170) |
+|---|---|---|
+| Raw history, no memory | 58.2 [55.7, 60.6] | 50.8 [47.5, 54.1] |
+| SFT CRUD memory | 83.3 | 88.8 |
+| SFT scope-aware memory | 86.1 | 86.3 |
+| Gold memory, CRUD / scope-aware | 86.9 / 89.6 | 91.4 / 91.5 |
+| Never-written memory, CRUD / scope-aware | 48.1 / 50.1 | |
+| History − SFT CRUD | −25.2 [−28.0, −22.4] | −37.9 [−41.8, −34.2] |
+| History − SFT scope-aware | −27.9 [−30.4, −25.4] | −35.5 [−39.7, −31.4] |
+
+- Without memory, the same Answer Agent answers 58.2% of the test questions: 25-28 points below either SFT memory
+  and only 8-10 points above memory that was never written. Resampling the attributes instead of the episodes gives
+  about the same intervals.
+- It does worst on ordinary-occasion questions (test 48.0%; the SFT memories 79.7-91.0%) and in the question groups
+  of stable preferences and revised exceptions (56.1%, 53.5%). Its replies apply a situation's or a stopgap
+  preference to an ordinary occasion, or take a hypothetical or one-off request for a change. On boundary questions
+  it is close to CRUD (20.4% against 17.4%) and far below scope-aware (43.2%).
+- Per seed on test, the memory answers 620-677 questions right that the history misses, and misses 89-124 that the
+  history gets right.
+- Tokens of one test run: history 1.55 M (766 per question; its prompts average 714 tokens), CRUD 1.40 M,
+  scope-aware 2.17 M, counting every policy call on every event. On these short timelines (at most 8 events) the raw
+  history is 11% dearer than the CRUD memory and 29% cheaper than the scope-aware memory, at a far lower accuracy.
+- Limits: one small reader with one prompt written for this experiment and not tuned; a larger reader may read raw
+  histories much better, and longer histories cost more per question.
+
+**B, the display of the same memory.** Test accuracy in %:
+
+| Scope-aware memory shown as | SFT, 3 seeds | Gold memory | Memory block, tokens (SFT) |
+|---|---|---|---|
+| original (the stored answers) | 86.1 | 89.6 | 315 |
+| replay (the same prompt, answered again) | 86.1 | 89.6 | 315 |
+| compact | 83.1 | 87.4 | 58 |
+| CRUD sentences | 82.8 | 86.9 | 116 |
+| (the CRUD arm's memory, its own display) | 83.3 | 86.9 | |
+
+- Replay: answering the original prompts again gives the stored answer on 99.7% of the SFT probes (gold 98.7%; dev
+  99.7% and 99.9%), and the accuracy moves by at most 0.1 point, so the differences below are effects of the display.
+- Compact cuts the memory block by 82% and the prompt from 461 to 205 tokens, but costs accuracy against the replay:
+  test SFT −3.0 [−4.3, −1.6], gold −2.3 [−3.6, −1.0]; dev −2.2 [−4.4, +0.3] and −2.6 [−5.0, −0.1]. The loss sits in
+  boundary questions (test SFT 42.8 with the replay, 15.2 compact) and neighbouring situations (−3.9 [−5.8, −2.1]);
+  ordinary-occasion and target questions are unchanged. Some replies name the right rule and then give another
+  line's value. This compact display is therefore not a free saving.
+- As CRUD sentences, the scope-aware memory is read no better than the CRUD memory: test SFT −0.5 [−2.2, +1.1], gold
+  +0.1 [−1.2, +1.1]. Scope minus CRUD on test (+2.7) thus splits into display (original − sentences) +3.2 [+1.9,
+  +4.5] and content (sentences − CRUD) −0.5 [−2.2, +1.1]: measured on the SFT memories themselves, the lead is the
+  display, as the decomposition with gold memory suggested. It sits in ordinary-occasion questions (+10.0 [+6.9,
+  +13.2]) and boundary questions (+18.9 [+10.6, +27.9]), where the explicit general record and validity fields help
+  the reader.
+- On dev the display helps about as much (SFT +2.0 [−0.4, +4.2]; gold +2.5 [+0.3, +4.7]), but under the same display
+  the scope-aware memory is behind CRUD's (−4.4 [−6.6, −2.3]). Part of this is record order: on dev gold memory, the
+  very same sentences in the scope-aware arm's order (a revised record moves to the end) are read 2.4 points worse
+  than in the CRUD arm's order ([−4.1, −0.9]; test +0.1 [−1.2, +1.1]), so the content part also holds an order
+  effect.
+
+In short: with this reader both memories beat the raw history by 25-38 points; the structured scope-aware display is
+worth about 2-3 points on both splits, while what the scope-aware policy writes is no better than CRUD's on test and
+worse on dev; and the compact display trades 2-3 points for 82% fewer memory tokens.

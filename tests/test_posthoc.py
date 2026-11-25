@@ -207,6 +207,25 @@ class PosthocTests(unittest.TestCase):
         made = sorted(p.name for p in (self.root / "figures").iterdir())
         self.assertEqual(len(made), 11)
         self.assertIn("## Table 4.", (self.root / "figures" / "tables.md").read_text(encoding="utf-8"))
+        # with the read-time reports: two more figures and Tables 8 and 9
+        from scope_memory import readtime
+        from tests.test_readtime import display_run, history_run, stored_scope
+        history = history_run(self.root, "history", self.episodes, mixed)
+        displays = [display_run(self.root, f"d_{Path(r['path']).name}", r,
+                                {"replay": stored_scope(r), "compact": right, "sentences": crud_slips})
+                    for r in runs["sft"] + runs["gold"]]
+        a = readtime.experiment_a(history, runs["sft"], runs["gold"][0], runs["noop"][0],
+                                  [Path(r["path"]) / "cost.json" for r in runs["sft"]], bootstrap=20)
+        b = readtime.experiment_b(displays, runs["sft"], runs["gold"][0], bootstrap=20)
+        for split in ("test", "dev"):
+            (results / "posthoc" / f"readtime_a_{split}.json").write_text(json.dumps(a))
+            (results / "posthoc" / f"readtime_b_{split}.json").write_text(json.dumps(b))
+        with contextlib.redirect_stdout(io.StringIO()):
+            figures.main(["--results", str(results), "--out", str(self.root / "figures_rt")])
+        made = sorted(p.name for p in (self.root / "figures_rt").iterdir())
+        self.assertEqual(len(made), 15)
+        self.assertIn("fig7_memory_display.png", made)
+        self.assertIn("## Table 9.", (self.root / "figures_rt" / "tables.md").read_text(encoding="utf-8"))
 
 
 if __name__ == "__main__":

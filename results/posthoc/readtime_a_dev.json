@@ -1,0 +1,1589 @@
+{
+  "note": "Post-hoc and exploratory: proposed after the single test run (mid-project update, 2026-11-24). The pre-specified results are in results/test_p12/report.json.",
+  "history_run": "runs/readtime/dev_history",
+  "sft_runs": [
+    "runs/sft_p12_eval_s0",
+    "runs/sft_p12_eval_s1",
+    "runs/sft_p12_eval_s2"
+  ],
+  "gold_run": "runs/reference_gold_p12",
+  "noop_run": null,
+  "probes": 1170,
+  "episodes": 120,
+  "history_check": {
+    "prompts": 1170,
+    "episodes": 120,
+    "events_per_prompt": {
+      "1": 160,
+      "2": 172,
+      "3": 186,
+      "4": 224,
+      "5": 118,
+      "6": 148,
+      "7": 90,
+      "8": 72
+    },
+    "input_tokens": {
+      "mean": 744.8,
+      "max": 1351
+    },
+    "prompts_over_32k_tokens": 0,
+    "truncation": "none: every prompt is given whole"
+  },
+  "by_unit": {
+    "episode": {
+      "all": {
+        "probes": 1170,
+        "units": 120,
+        "history": {
+          "mean": 0.5085,
+          "ci95": [
+            0.4748,
+            0.5408
+          ]
+        },
+        "sft_scope": {
+          "mean": 0.8632,
+          "ci95": [
+            0.835,
+            0.8895
+          ]
+        },
+        "sft_crud": {
+          "mean": 0.8877,
+          "ci95": [
+            0.8662,
+            0.9101
+          ]
+        },
+        "gold_scope": {
+          "mean": 0.9145,
+          "ci95": [
+            0.8957,
+            0.9321
+          ]
+        },
+        "gold_crud": {
+          "mean": 0.9137,
+          "ci95": [
+            0.8921,
+            0.9337
+          ]
+        },
+        "history_minus_sft_scope": {
+          "mean": -0.3547,
+          "ci95": [
+            -0.3971,
+            -0.3143
+          ]
+        },
+        "history_minus_sft_crud": {
+          "mean": -0.3792,
+          "ci95": [
+            -0.4181,
+            -0.3419
+          ]
+        },
+        "history_minus_gold_scope": {
+          "mean": -0.406,
+          "ci95": [
+            -0.4435,
+            -0.37
+          ]
+        },
+        "history_minus_gold_crud": {
+          "mean": -0.4051,
+          "ci95": [
+            -0.4431,
+            -0.3657
+          ]
+        }
+      },
+      "all_but_boundary": {
+        "probes": 1142,
+        "units": 120,
+        "history": {
+          "mean": 0.514,
+          "ci95": [
+            0.4789,
+            0.5473
+          ]
+        },
+        "sft_scope": {
+          "mean": 0.8719,
+          "ci95": [
+            0.8439,
+            0.8976
+          ]
+        },
+        "sft_crud": {
+          "mean": 0.9046,
+          "ci95": [
+            0.8853,
+            0.9254
+          ]
+        },
+        "gold_scope": {
+          "mean": 0.9282,
+          "ci95": [
+            0.9103,
+            0.9447
+          ]
+        },
+        "gold_crud": {
+          "mean": 0.9308,
+          "ci95": [
+            0.9128,
+            0.9477
+          ]
+        },
+        "history_minus_sft_scope": {
+          "mean": -0.3579,
+          "ci95": [
+            -0.4014,
+            -0.3169
+          ]
+        },
+        "history_minus_sft_crud": {
+          "mean": -0.3905,
+          "ci95": [
+            -0.4289,
+            -0.355
+          ]
+        },
+        "history_minus_gold_scope": {
+          "mean": -0.4142,
+          "ci95": [
+            -0.4523,
+            -0.378
+          ]
+        },
+        "history_minus_gold_crud": {
+          "mean": -0.4168,
+          "ci95": [
+            -0.4551,
+            -0.379
+          ]
+        }
+      },
+      "general_update": {
+        "probes": 156,
+        "units": 46,
+        "history": {
+          "mean": 0.5449,
+          "ci95": [
+            0.4667,
+            0.6144
+          ]
+        },
+        "sft_scope": {
+          "mean": 0.9744,
+          "ci95": [
+            0.9518,
+            0.9922
+          ]
+        },
+        "sft_crud": {
+          "mean": 0.9274,
+          "ci95": [
+            0.8889,
+            0.969
+          ]
+        },
+        "gold_scope": {
+          "mean": 0.9936,
+          "ci95": [
+            0.9783,
+            1.0
+          ]
+        },
+        "gold_crud": {
+          "mean": 0.9295,
+          "ci95": [
+            0.8889,
+            0.971
+          ]
+        },
+        "history_minus_sft_scope": {
+          "mean": -0.4295,
+          "ci95": [
+            -0.5111,
+            -0.3586
+          ]
+        },
+        "history_minus_sft_crud": {
+          "mean": -0.3825,
+          "ci95": [
+            -0.4606,
+            -0.3071
+          ]
+        },
+        "history_minus_gold_scope": {
+          "mean": -0.4487,
+          "ci95": [
+            -0.5273,
+            -0.3788
+          ]
+        },
+        "history_minus_gold_crud": {
+          "mean": -0.3846,
+          "ci95": [
+            -0.4641,
+            -0.3086
+          ]
+        }
+      },
+      "scoped_exception": {
+        "probes": 279,
+        "units": 67,
+        "history": {
+          "mean": 0.552,
+          "ci95": [
+            0.5071,
+            0.5972
+          ]
+        },
+        "sft_scope": {
+          "mean": 0.7873,
+          "ci95": [
+            0.7476,
+            0.8253
+          ]
+        },
+        "sft_crud": {
+          "mean": 0.7933,
+          "ci95": [
+            0.7526,
+            0.8373
+          ]
+        },
+        "gold_scope": {
+          "mean": 0.828,
+          "ci95": [
+            0.7936,
+            0.8622
+          ]
+        },
+        "gold_crud": {
+          "mean": 0.8029,
+          "ci95": [
+            0.7589,
+            0.8465
+          ]
+        },
+        "history_minus_sft_scope": {
+          "mean": -0.2354,
+          "ci95": [
+            -0.296,
+            -0.175
+          ]
+        },
+        "history_minus_sft_crud": {
+          "mean": -0.2413,
+          "ci95": [
+            -0.291,
+            -0.191
+          ]
+        },
+        "history_minus_gold_scope": {
+          "mean": -0.276,
+          "ci95": [
+            -0.3304,
+            -0.2203
+          ]
+        },
+        "history_minus_gold_crud": {
+          "mean": -0.2509,
+          "ci95": [
+            -0.3026,
+            -0.1949
+          ]
+        }
+      },
+      "exception_revision": {
+        "probes": 375,
+        "units": 86,
+        "history": {
+          "mean": 0.5173,
+          "ci95": [
+            0.4646,
+            0.5664
+          ]
+        },
+        "sft_scope": {
+          "mean": 0.8516,
+          "ci95": [
+            0.8008,
+            0.8941
+          ]
+        },
+        "sft_crud": {
+          "mean": 0.9147,
+          "ci95": [
+            0.8844,
+            0.9436
+          ]
+        },
+        "gold_scope": {
+          "mean": 0.9173,
+          "ci95": [
+            0.8831,
+            0.9474
+          ]
+        },
+        "gold_crud": {
+          "mean": 0.9467,
+          "ci95": [
+            0.9204,
+            0.9689
+          ]
+        },
+        "history_minus_sft_scope": {
+          "mean": -0.3342,
+          "ci95": [
+            -0.3986,
+            -0.2684
+          ]
+        },
+        "history_minus_sft_crud": {
+          "mean": -0.3973,
+          "ci95": [
+            -0.449,
+            -0.347
+          ]
+        },
+        "history_minus_gold_scope": {
+          "mean": -0.4,
+          "ci95": [
+            -0.4609,
+            -0.342
+          ]
+        },
+        "history_minus_gold_crud": {
+          "mean": -0.4293,
+          "ci95": [
+            -0.4825,
+            -0.3772
+          ]
+        }
+      },
+      "stable_preference": {
+        "probes": 360,
+        "units": 84,
+        "history": {
+          "mean": 0.45,
+          "ci95": [
+            0.3788,
+            0.5149
+          ]
+        },
+        "sft_scope": {
+          "mean": 0.8861,
+          "ci95": [
+            0.8465,
+            0.9213
+          ]
+        },
+        "sft_crud": {
+          "mean": 0.9157,
+          "ci95": [
+            0.884,
+            0.944
+          ]
+        },
+        "gold_scope": {
+          "mean": 0.9444,
+          "ci95": [
+            0.9159,
+            0.9699
+          ]
+        },
+        "gold_crud": {
+          "mean": 0.9583,
+          "ci95": [
+            0.9375,
+            0.9774
+          ]
+        },
+        "history_minus_sft_scope": {
+          "mean": -0.4361,
+          "ci95": [
+            -0.505,
+            -0.3691
+          ]
+        },
+        "history_minus_sft_crud": {
+          "mean": -0.4657,
+          "ci95": [
+            -0.5424,
+            -0.3954
+          ]
+        },
+        "history_minus_gold_scope": {
+          "mean": -0.4944,
+          "ci95": [
+            -0.5621,
+            -0.4306
+          ]
+        },
+        "history_minus_gold_crud": {
+          "mean": -0.5083,
+          "ci95": [
+            -0.5819,
+            -0.4377
+          ]
+        }
+      },
+      "type_target": {
+        "probes": 398,
+        "units": 120,
+        "history": {
+          "mean": 0.5955,
+          "ci95": [
+            0.5461,
+            0.6475
+          ]
+        },
+        "sft_scope": {
+          "mean": 0.861,
+          "ci95": [
+            0.8226,
+            0.8967
+          ]
+        },
+        "sft_crud": {
+          "mean": 0.9305,
+          "ci95": [
+            0.9021,
+            0.9547
+          ]
+        },
+        "gold_scope": {
+          "mean": 0.9447,
+          "ci95": [
+            0.9175,
+            0.9684
+          ]
+        },
+        "gold_crud": {
+          "mean": 0.9698,
+          "ci95": [
+            0.9509,
+            0.9871
+          ]
+        },
+        "history_minus_sft_scope": {
+          "mean": -0.2655,
+          "ci95": [
+            -0.3178,
+            -0.21
+          ]
+        },
+        "history_minus_sft_crud": {
+          "mean": -0.335,
+          "ci95": [
+            -0.3839,
+            -0.2827
+          ]
+        },
+        "history_minus_gold_scope": {
+          "mean": -0.3492,
+          "ci95": [
+            -0.4021,
+            -0.2987
+          ]
+        },
+        "history_minus_gold_crud": {
+          "mean": -0.3744,
+          "ci95": [
+            -0.4248,
+            -0.3219
+          ]
+        }
+      },
+      "type_default": {
+        "probes": 320,
+        "units": 120,
+        "history": {
+          "mean": 0.3969,
+          "ci95": [
+            0.3302,
+            0.4596
+          ]
+        },
+        "sft_scope": {
+          "mean": 0.8625,
+          "ci95": [
+            0.8184,
+            0.903
+          ]
+        },
+        "sft_crud": {
+          "mean": 0.8417,
+          "ci95": [
+            0.7941,
+            0.8882
+          ]
+        },
+        "gold_scope": {
+          "mean": 0.9031,
+          "ci95": [
+            0.8694,
+            0.9317
+          ]
+        },
+        "gold_crud": {
+          "mean": 0.85,
+          "ci95": [
+            0.8044,
+            0.8956
+          ]
+        },
+        "history_minus_sft_scope": {
+          "mean": -0.4656,
+          "ci95": [
+            -0.541,
+            -0.3937
+          ]
+        },
+        "history_minus_sft_crud": {
+          "mean": -0.4448,
+          "ci95": [
+            -0.538,
+            -0.3603
+          ]
+        },
+        "history_minus_gold_scope": {
+          "mean": -0.5062,
+          "ci95": [
+            -0.5785,
+            -0.4395
+          ]
+        },
+        "history_minus_gold_crud": {
+          "mean": -0.4531,
+          "ci95": [
+            -0.5418,
+            -0.3687
+          ]
+        }
+      },
+      "type_neighbor": {
+        "probes": 424,
+        "units": 120,
+        "history": {
+          "mean": 0.5259,
+          "ci95": [
+            0.4739,
+            0.582
+          ]
+        },
+        "sft_scope": {
+          "mean": 0.8892,
+          "ci95": [
+            0.8543,
+            0.9204
+          ]
+        },
+        "sft_crud": {
+          "mean": 0.9277,
+          "ci95": [
+            0.9011,
+            0.9527
+          ]
+        },
+        "gold_scope": {
+          "mean": 0.9316,
+          "ci95": [
+            0.9038,
+            0.957
+          ]
+        },
+        "gold_crud": {
+          "mean": 0.9552,
+          "ci95": [
+            0.9294,
+            0.9773
+          ]
+        },
+        "history_minus_sft_scope": {
+          "mean": -0.3632,
+          "ci95": [
+            -0.423,
+            -0.303
+          ]
+        },
+        "history_minus_sft_crud": {
+          "mean": -0.4017,
+          "ci95": [
+            -0.4551,
+            -0.3487
+          ]
+        },
+        "history_minus_gold_scope": {
+          "mean": -0.4057,
+          "ci95": [
+            -0.463,
+            -0.3465
+          ]
+        },
+        "history_minus_gold_crud": {
+          "mean": -0.4292,
+          "ci95": [
+            -0.4852,
+            -0.3771
+          ]
+        }
+      },
+      "type_boundary": {
+        "probes": 28,
+        "units": 26,
+        "history": {
+          "mean": 0.2857,
+          "ci95": [
+            0.12,
+            0.4643
+          ]
+        },
+        "sft_scope": {
+          "mean": 0.5119,
+          "ci95": [
+            0.3457,
+            0.6778
+          ]
+        },
+        "sft_crud": {
+          "mean": 0.2024,
+          "ci95": [
+            0.0667,
+            0.3636
+          ]
+        },
+        "gold_scope": {
+          "mean": 0.3571,
+          "ci95": [
+            0.1786,
+            0.55
+          ]
+        },
+        "gold_crud": {
+          "mean": 0.2143,
+          "ci95": [
+            0.0714,
+            0.3913
+          ]
+        },
+        "history_minus_sft_scope": {
+          "mean": -0.2262,
+          "ci95": [
+            -0.4568,
+            0.0208
+          ]
+        },
+        "history_minus_sft_crud": {
+          "mean": 0.0833,
+          "ci95": [
+            -0.0725,
+            0.2424
+          ]
+        },
+        "history_minus_gold_scope": {
+          "mean": -0.0714,
+          "ci95": [
+            -0.2963,
+            0.1481
+          ]
+        },
+        "history_minus_gold_crud": {
+          "mean": 0.0714,
+          "ci95": [
+            -0.0952,
+            0.2414
+          ]
+        }
+      }
+    },
+    "family": {
+      "all": {
+        "probes": 1170,
+        "units": 28,
+        "history": {
+          "mean": 0.5085,
+          "ci95": [
+            0.4578,
+            0.5571
+          ]
+        },
+        "sft_scope": {
+          "mean": 0.8632,
+          "ci95": [
+            0.8241,
+            0.8977
+          ]
+        },
+        "sft_crud": {
+          "mean": 0.8877,
+          "ci95": [
+            0.8543,
+            0.9217
+          ]
+        },
+        "gold_scope": {
+          "mean": 0.9145,
+          "ci95": [
+            0.8856,
+            0.9402
+          ]
+        },
+        "gold_crud": {
+          "mean": 0.9137,
+          "ci95": [
+            0.8816,
+            0.9436
+          ]
+        },
+        "history_minus_sft_scope": {
+          "mean": -0.3547,
+          "ci95": [
+            -0.4056,
+            -0.3072
+          ]
+        },
+        "history_minus_sft_crud": {
+          "mean": -0.3792,
+          "ci95": [
+            -0.4392,
+            -0.3232
+          ]
+        },
+        "history_minus_gold_scope": {
+          "mean": -0.406,
+          "ci95": [
+            -0.4602,
+            -0.357
+          ]
+        },
+        "history_minus_gold_crud": {
+          "mean": -0.4051,
+          "ci95": [
+            -0.464,
+            -0.3484
+          ]
+        }
+      },
+      "all_but_boundary": {
+        "probes": 1142,
+        "units": 28,
+        "history": {
+          "mean": 0.514,
+          "ci95": [
+            0.4625,
+            0.5645
+          ]
+        },
+        "sft_scope": {
+          "mean": 0.8719,
+          "ci95": [
+            0.8311,
+            0.9062
+          ]
+        },
+        "sft_crud": {
+          "mean": 0.9046,
+          "ci95": [
+            0.873,
+            0.9362
+          ]
+        },
+        "gold_scope": {
+          "mean": 0.9282,
+          "ci95": [
+            0.8983,
+            0.9532
+          ]
+        },
+        "gold_crud": {
+          "mean": 0.9308,
+          "ci95": [
+            0.902,
+            0.9575
+          ]
+        },
+        "history_minus_sft_scope": {
+          "mean": -0.3579,
+          "ci95": [
+            -0.4129,
+            -0.3066
+          ]
+        },
+        "history_minus_sft_crud": {
+          "mean": -0.3905,
+          "ci95": [
+            -0.4484,
+            -0.335
+          ]
+        },
+        "history_minus_gold_scope": {
+          "mean": -0.4142,
+          "ci95": [
+            -0.4704,
+            -0.3634
+          ]
+        },
+        "history_minus_gold_crud": {
+          "mean": -0.4168,
+          "ci95": [
+            -0.4736,
+            -0.3616
+          ]
+        }
+      },
+      "general_update": {
+        "probes": 156,
+        "units": 18,
+        "history": {
+          "mean": 0.5449,
+          "ci95": [
+            0.4321,
+            0.6552
+          ]
+        },
+        "sft_scope": {
+          "mean": 0.9744,
+          "ci95": [
+            0.9512,
+            0.9944
+          ]
+        },
+        "sft_crud": {
+          "mean": 0.9274,
+          "ci95": [
+            0.8636,
+            0.9792
+          ]
+        },
+        "gold_scope": {
+          "mean": 0.9936,
+          "ci95": [
+            0.9773,
+            1.0
+          ]
+        },
+        "gold_crud": {
+          "mean": 0.9295,
+          "ci95": [
+            0.8667,
+            0.9808
+          ]
+        },
+        "history_minus_sft_scope": {
+          "mean": -0.4295,
+          "ci95": [
+            -0.533,
+            -0.3234
+          ]
+        },
+        "history_minus_sft_crud": {
+          "mean": -0.3825,
+          "ci95": [
+            -0.4978,
+            -0.254
+          ]
+        },
+        "history_minus_gold_scope": {
+          "mean": -0.4487,
+          "ci95": [
+            -0.5577,
+            -0.34
+          ]
+        },
+        "history_minus_gold_crud": {
+          "mean": -0.3846,
+          "ci95": [
+            -0.5,
+            -0.256
+          ]
+        }
+      },
+      "scoped_exception": {
+        "probes": 279,
+        "units": 26,
+        "history": {
+          "mean": 0.552,
+          "ci95": [
+            0.4981,
+            0.6056
+          ]
+        },
+        "sft_scope": {
+          "mean": 0.7873,
+          "ci95": [
+            0.732,
+            0.8333
+          ]
+        },
+        "sft_crud": {
+          "mean": 0.7933,
+          "ci95": [
+            0.745,
+            0.8467
+          ]
+        },
+        "gold_scope": {
+          "mean": 0.828,
+          "ci95": [
+            0.7763,
+            0.8738
+          ]
+        },
+        "gold_crud": {
+          "mean": 0.8029,
+          "ci95": [
+            0.748,
+            0.8594
+          ]
+        },
+        "history_minus_sft_scope": {
+          "mean": -0.2354,
+          "ci95": [
+            -0.3011,
+            -0.1673
+          ]
+        },
+        "history_minus_sft_crud": {
+          "mean": -0.2413,
+          "ci95": [
+            -0.3089,
+            -0.1812
+          ]
+        },
+        "history_minus_gold_scope": {
+          "mean": -0.276,
+          "ci95": [
+            -0.3367,
+            -0.2101
+          ]
+        },
+        "history_minus_gold_crud": {
+          "mean": -0.2509,
+          "ci95": [
+            -0.3217,
+            -0.1845
+          ]
+        }
+      },
+      "exception_revision": {
+        "probes": 375,
+        "units": 28,
+        "history": {
+          "mean": 0.5173,
+          "ci95": [
+            0.4526,
+            0.5758
+          ]
+        },
+        "sft_scope": {
+          "mean": 0.8516,
+          "ci95": [
+            0.7787,
+            0.9069
+          ]
+        },
+        "sft_crud": {
+          "mean": 0.9147,
+          "ci95": [
+            0.8694,
+            0.9531
+          ]
+        },
+        "gold_scope": {
+          "mean": 0.9173,
+          "ci95": [
+            0.8702,
+            0.9554
+          ]
+        },
+        "gold_crud": {
+          "mean": 0.9467,
+          "ci95": [
+            0.9079,
+            0.9764
+          ]
+        },
+        "history_minus_sft_scope": {
+          "mean": -0.3342,
+          "ci95": [
+            -0.4109,
+            -0.2537
+          ]
+        },
+        "history_minus_sft_crud": {
+          "mean": -0.3973,
+          "ci95": [
+            -0.4602,
+            -0.3414
+          ]
+        },
+        "history_minus_gold_scope": {
+          "mean": -0.4,
+          "ci95": [
+            -0.4673,
+            -0.3387
+          ]
+        },
+        "history_minus_gold_crud": {
+          "mean": -0.4293,
+          "ci95": [
+            -0.4931,
+            -0.3724
+          ]
+        }
+      },
+      "stable_preference": {
+        "probes": 360,
+        "units": 28,
+        "history": {
+          "mean": 0.45,
+          "ci95": [
+            0.354,
+            0.5385
+          ]
+        },
+        "sft_scope": {
+          "mean": 0.8861,
+          "ci95": [
+            0.8432,
+            0.9244
+          ]
+        },
+        "sft_crud": {
+          "mean": 0.9157,
+          "ci95": [
+            0.8737,
+            0.9553
+          ]
+        },
+        "gold_scope": {
+          "mean": 0.9444,
+          "ci95": [
+            0.9113,
+            0.9725
+          ]
+        },
+        "gold_crud": {
+          "mean": 0.9583,
+          "ci95": [
+            0.9301,
+            0.9843
+          ]
+        },
+        "history_minus_sft_scope": {
+          "mean": -0.4361,
+          "ci95": [
+            -0.5215,
+            -0.3546
+          ]
+        },
+        "history_minus_sft_crud": {
+          "mean": -0.4657,
+          "ci95": [
+            -0.5727,
+            -0.3635
+          ]
+        },
+        "history_minus_gold_scope": {
+          "mean": -0.4944,
+          "ci95": [
+            -0.5833,
+            -0.4116
+          ]
+        },
+        "history_minus_gold_crud": {
+          "mean": -0.5083,
+          "ci95": [
+            -0.6121,
+            -0.4074
+          ]
+        }
+      },
+      "type_target": {
+        "probes": 398,
+        "units": 28,
+        "history": {
+          "mean": 0.5955,
+          "ci95": [
+            0.5339,
+            0.6633
+          ]
+        },
+        "sft_scope": {
+          "mean": 0.861,
+          "ci95": [
+            0.8052,
+            0.9129
+          ]
+        },
+        "sft_crud": {
+          "mean": 0.9305,
+          "ci95": [
+            0.8934,
+            0.9637
+          ]
+        },
+        "gold_scope": {
+          "mean": 0.9447,
+          "ci95": [
+            0.8995,
+            0.9852
+          ]
+        },
+        "gold_crud": {
+          "mean": 0.9698,
+          "ci95": [
+            0.9404,
+            0.9923
+          ]
+        },
+        "history_minus_sft_scope": {
+          "mean": -0.2655,
+          "ci95": [
+            -0.3239,
+            -0.2012
+          ]
+        },
+        "history_minus_sft_crud": {
+          "mean": -0.335,
+          "ci95": [
+            -0.3998,
+            -0.2638
+          ]
+        },
+        "history_minus_gold_scope": {
+          "mean": -0.3492,
+          "ci95": [
+            -0.4121,
+            -0.285
+          ]
+        },
+        "history_minus_gold_crud": {
+          "mean": -0.3744,
+          "ci95": [
+            -0.441,
+            -0.3024
+          ]
+        }
+      },
+      "type_default": {
+        "probes": 320,
+        "units": 28,
+        "history": {
+          "mean": 0.3969,
+          "ci95": [
+            0.3116,
+            0.4788
+          ]
+        },
+        "sft_scope": {
+          "mean": 0.8625,
+          "ci95": [
+            0.7967,
+            0.9137
+          ]
+        },
+        "sft_crud": {
+          "mean": 0.8417,
+          "ci95": [
+            0.7698,
+            0.9106
+          ]
+        },
+        "gold_scope": {
+          "mean": 0.9031,
+          "ci95": [
+            0.8588,
+            0.9404
+          ]
+        },
+        "gold_crud": {
+          "mean": 0.85,
+          "ci95": [
+            0.7762,
+            0.9162
+          ]
+        },
+        "history_minus_sft_scope": {
+          "mean": -0.4656,
+          "ci95": [
+            -0.5495,
+            -0.3826
+          ]
+        },
+        "history_minus_sft_crud": {
+          "mean": -0.4448,
+          "ci95": [
+            -0.5681,
+            -0.3244
+          ]
+        },
+        "history_minus_gold_scope": {
+          "mean": -0.5062,
+          "ci95": [
+            -0.5864,
+            -0.4281
+          ]
+        },
+        "history_minus_gold_crud": {
+          "mean": -0.4531,
+          "ci95": [
+            -0.5737,
+            -0.3293
+          ]
+        }
+      },
+      "type_neighbor": {
+        "probes": 424,
+        "units": 28,
+        "history": {
+          "mean": 0.5259,
+          "ci95": [
+            0.4363,
+            0.608
+          ]
+        },
+        "sft_scope": {
+          "mean": 0.8892,
+          "ci95": [
+            0.8343,
+            0.9327
+          ]
+        },
+        "sft_crud": {
+          "mean": 0.9277,
+          "ci95": [
+            0.8902,
+            0.9591
+          ]
+        },
+        "gold_scope": {
+          "mean": 0.9316,
+          "ci95": [
+            0.893,
+            0.9628
+          ]
+        },
+        "gold_crud": {
+          "mean": 0.9552,
+          "ci95": [
+            0.9225,
+            0.9823
+          ]
+        },
+        "history_minus_sft_scope": {
+          "mean": -0.3632,
+          "ci95": [
+            -0.456,
+            -0.2711
+          ]
+        },
+        "history_minus_sft_crud": {
+          "mean": -0.4017,
+          "ci95": [
+            -0.4853,
+            -0.3245
+          ]
+        },
+        "history_minus_gold_scope": {
+          "mean": -0.4057,
+          "ci95": [
+            -0.5,
+            -0.3148
+          ]
+        },
+        "history_minus_gold_crud": {
+          "mean": -0.4292,
+          "ci95": [
+            -0.5135,
+            -0.3514
+          ]
+        }
+      },
+      "type_boundary": {
+        "probes": 28,
+        "units": 13,
+        "history": {
+          "mean": 0.2857,
+          "ci95": [
+            0.0667,
+            0.5556
+          ]
+        },
+        "sft_scope": {
+          "mean": 0.5119,
+          "ci95": [
+            0.2963,
+            0.7333
+          ]
+        },
+        "sft_crud": {
+          "mean": 0.2024,
+          "ci95": [
+            0.0,
+            0.4444
+          ]
+        },
+        "gold_scope": {
+          "mean": 0.3571,
+          "ci95": [
+            0.1333,
+            0.625
+          ]
+        },
+        "gold_crud": {
+          "mean": 0.2143,
+          "ci95": [
+            0.0,
+            0.4615
+          ]
+        },
+        "history_minus_sft_scope": {
+          "mean": -0.2262,
+          "ci95": [
+            -0.5417,
+            0.1354
+          ]
+        },
+        "history_minus_sft_crud": {
+          "mean": 0.0833,
+          "ci95": [
+            -0.1515,
+            0.3333
+          ]
+        },
+        "history_minus_gold_scope": {
+          "mean": -0.0714,
+          "ci95": [
+            -0.3684,
+            0.2273
+          ]
+        },
+        "history_minus_gold_crud": {
+          "mean": 0.0714,
+          "ci95": [
+            -0.1818,
+            0.3333
+          ]
+        }
+      }
+    }
+  },
+  "flips_per_seed": [
+    {
+      "run": "runs/sft_p12_eval_s0",
+      "arm": "scope",
+      "history_only": 55,
+      "memory_only": 471,
+      "both": 540,
+      "neither": 104,
+      "by_probe_type": {
+        "target": {
+          "history_only": 19,
+          "memory_only": 125,
+          "probes": 398
+        },
+        "default": {
+          "history_only": 19,
+          "memory_only": 170,
+          "probes": 320
+        },
+        "neighbor": {
+          "history_only": 13,
+          "memory_only": 165,
+          "probes": 424
+        },
+        "boundary": {
+          "history_only": 4,
+          "memory_only": 11,
+          "probes": 28
+        }
+      }
+    },
+    {
+      "run": "runs/sft_p12_eval_s0",
+      "arm": "crud",
+      "history_only": 40,
+      "memory_only": 488,
+      "both": 555,
+      "neither": 87,
+      "by_probe_type": {
+        "target": {
+          "history_only": 15,
+          "memory_only": 147,
+          "probes": 398
+        },
+        "default": {
+          "history_only": 17,
+          "memory_only": 169,
+          "probes": 320
+        },
+        "neighbor": {
+          "history_only": 4,
+          "memory_only": 170,
+          "probes": 424
+        },
+        "boundary": {
+          "history_only": 4,
+          "memory_only": 2,
+          "probes": 28
+        }
+      }
+    },
+    {
+      "run": "runs/sft_p12_eval_s1",
+      "arm": "scope",
+      "history_only": 67,
+      "memory_only": 485,
+      "both": 528,
+      "neither": 90,
+      "by_probe_type": {
+        "target": {
+          "history_only": 30,
+          "memory_only": 131,
+          "probes": 398
+        },
+        "default": {
+          "history_only": 20,
+          "memory_only": 172,
+          "probes": 320
+        },
+        "neighbor": {
+          "history_only": 13,
+          "memory_only": 168,
+          "probes": 424
+        },
+        "boundary": {
+          "history_only": 4,
+          "memory_only": 14,
+          "probes": 28
+        }
+      }
+    },
+    {
+      "run": "runs/sft_p12_eval_s1",
+      "arm": "crud",
+      "history_only": 44,
+      "memory_only": 492,
+      "both": 551,
+      "neither": 83,
+      "by_probe_type": {
+        "target": {
+          "history_only": 11,
+          "memory_only": 148,
+          "probes": 398
+        },
+        "default": {
+          "history_only": 24,
+          "memory_only": 165,
+          "probes": 320
+        },
+        "neighbor": {
+          "history_only": 5,
+          "memory_only": 177,
+          "probes": 424
+        },
+        "boundary": {
+          "history_only": 4,
+          "memory_only": 2,
+          "probes": 28
+        }
+      }
+    },
+    {
+      "run": "runs/sft_p12_eval_s2",
+      "arm": "scope",
+      "history_only": 47,
+      "memory_only": 458,
+      "both": 548,
+      "neither": 117,
+      "by_probe_type": {
+        "target": {
+          "history_only": 13,
+          "memory_only": 123,
+          "probes": 398
+        },
+        "default": {
+          "history_only": 20,
+          "memory_only": 164,
+          "probes": 320
+        },
+        "neighbor": {
+          "history_only": 10,
+          "memory_only": 165,
+          "probes": 424
+        },
+        "boundary": {
+          "history_only": 4,
+          "memory_only": 6,
+          "probes": 28
+        }
+      }
+    },
+    {
+      "run": "runs/sft_p12_eval_s2",
+      "arm": "crud",
+      "history_only": 47,
+      "memory_only": 482,
+      "both": 548,
+      "neither": 93,
+      "by_probe_type": {
+        "target": {
+          "history_only": 12,
+          "memory_only": 143,
+          "probes": 398
+        },
+        "default": {
+          "history_only": 27,
+          "memory_only": 161,
+          "probes": 320
+        },
+        "neighbor": {
+          "history_only": 4,
+          "memory_only": 177,
+          "probes": 424
+        },
+        "boundary": {
+          "history_only": 4,
+          "memory_only": 1,
+          "probes": 28
+        }
+      }
+    }
+  ],
+  "cost_per_run": {
+    "history": {
+      "policy_calls": 0,
+      "answer_calls": 1170,
+      "answer_input_tokens": 871398,
+      "answer_output_tokens": 59510,
+      "total_tokens": 930908
+    },
+    "scope": {
+      "policy_calls": 702.0,
+      "answer_calls": 1170.0,
+      "policy_input_tokens": 625245.0,
+      "policy_output_tokens": 46396.7,
+      "answer_input_tokens": 554044.0,
+      "answer_output_tokens": 52523.7,
+      "total_tokens": 1278209.3
+    },
+    "crud": {
+      "policy_calls": 702.0,
+      "answer_calls": 1170.0,
+      "policy_input_tokens": 422349.3,
+      "policy_output_tokens": 25908.0,
+      "answer_input_tokens": 301310.3,
+      "answer_output_tokens": 57815.0,
+      "total_tokens": 807382.7
+    }
+  },
+  "answer_line_missing": 2
+}

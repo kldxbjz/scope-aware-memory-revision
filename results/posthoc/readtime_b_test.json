@@ -1,0 +1,4903 @@
+{
+  "note": "Post-hoc and exploratory: proposed after the single test run (mid-project update, 2026-11-24). The pre-specified results are in results/test_p12/report.json.",
+  "sets": {
+    "sft": {
+      "runs": [
+        "runs/test_p12_sft_s0",
+        "runs/test_p12_sft_s1",
+        "runs/test_p12_sft_s2"
+      ],
+      "probes": 2027,
+      "by_unit": {
+        "episode": {
+          "all": {
+            "probes": 2027,
+            "units": 200,
+            "original": {
+              "mean": 0.8607,
+              "ci95": [
+                0.8394,
+                0.8803
+              ]
+            },
+            "crud": {
+              "mean": 0.8334,
+              "ci95": [
+                0.8124,
+                0.8532
+              ]
+            },
+            "replay": {
+              "mean": 0.8607,
+              "ci95": [
+                0.8396,
+                0.8808
+              ]
+            },
+            "compact": {
+              "mean": 0.8311,
+              "ci95": [
+                0.8079,
+                0.8537
+              ]
+            },
+            "sentences": {
+              "mean": 0.8285,
+              "ci95": [
+                0.8064,
+                0.8514
+              ]
+            },
+            "replay_minus_original": {
+              "mean": 0.0,
+              "ci95": [
+                -0.0013,
+                0.0015
+              ]
+            },
+            "replay_minus_crud": {
+              "mean": 0.0273,
+              "ci95": [
+                0.0083,
+                0.0448
+              ]
+            },
+            "compact_minus_original": {
+              "mean": -0.0296,
+              "ci95": [
+                -0.0432,
+                -0.0167
+              ]
+            },
+            "compact_minus_crud": {
+              "mean": -0.0023,
+              "ci95": [
+                -0.0243,
+                0.0181
+              ]
+            },
+            "sentences_minus_original": {
+              "mean": -0.0322,
+              "ci95": [
+                -0.045,
+                -0.0194
+              ]
+            },
+            "sentences_minus_crud": {
+              "mean": -0.0049,
+              "ci95": [
+                -0.0222,
+                0.0115
+              ]
+            },
+            "compact_minus_replay": {
+              "mean": -0.0296,
+              "ci95": [
+                -0.0432,
+                -0.0164
+              ]
+            },
+            "sentences_minus_replay": {
+              "mean": -0.0322,
+              "ci95": [
+                -0.0452,
+                -0.0192
+              ]
+            },
+            "original_minus_crud": {
+              "mean": 0.0273,
+              "ci95": [
+                0.0085,
+                0.0448
+              ]
+            },
+            "display_part": {
+              "mean": 0.0322,
+              "ci95": [
+                0.0194,
+                0.045
+              ]
+            },
+            "content_part": {
+              "mean": -0.0049,
+              "ci95": [
+                -0.0222,
+                0.0115
+              ]
+            }
+          },
+          "all_but_boundary": {
+            "probes": 1939,
+            "units": 200,
+            "original": {
+              "mean": 0.8802,
+              "ci95": [
+                0.8594,
+                0.8983
+              ]
+            },
+            "crud": {
+              "mean": 0.8633,
+              "ci95": [
+                0.8442,
+                0.8808
+              ]
+            },
+            "replay": {
+              "mean": 0.8804,
+              "ci95": [
+                0.8598,
+                0.8986
+              ]
+            },
+            "compact": {
+              "mean": 0.862,
+              "ci95": [
+                0.8398,
+                0.8815
+              ]
+            },
+            "sentences": {
+              "mean": 0.8551,
+              "ci95": [
+                0.8331,
+                0.8763
+              ]
+            },
+            "replay_minus_original": {
+              "mean": 0.0002,
+              "ci95": [
+                -0.0011,
+                0.0015
+              ]
+            },
+            "replay_minus_crud": {
+              "mean": 0.017,
+              "ci95": [
+                -0.0022,
+                0.0343
+              ]
+            },
+            "compact_minus_original": {
+              "mean": -0.0182,
+              "ci95": [
+                -0.0311,
+                -0.0058
+              ]
+            },
+            "compact_minus_crud": {
+              "mean": -0.0014,
+              "ci95": [
+                -0.0237,
+                0.0188
+              ]
+            },
+            "sentences_minus_original": {
+              "mean": -0.0251,
+              "ci95": [
+                -0.0383,
+                -0.0119
+              ]
+            },
+            "sentences_minus_crud": {
+              "mean": -0.0083,
+              "ci95": [
+                -0.0259,
+                0.0085
+              ]
+            },
+            "compact_minus_replay": {
+              "mean": -0.0184,
+              "ci95": [
+                -0.0315,
+                -0.0058
+              ]
+            },
+            "sentences_minus_replay": {
+              "mean": -0.0253,
+              "ci95": [
+                -0.0385,
+                -0.0121
+              ]
+            },
+            "original_minus_crud": {
+              "mean": 0.0168,
+              "ci95": [
+                -0.0022,
+                0.0342
+              ]
+            },
+            "display_part": {
+              "mean": 0.0251,
+              "ci95": [
+                0.0119,
+                0.0383
+              ]
+            },
+            "content_part": {
+              "mean": -0.0083,
+              "ci95": [
+                -0.0259,
+                0.0085
+              ]
+            }
+          },
+          "general_update": {
+            "probes": 279,
+            "units": 65,
+            "original": {
+              "mean": 0.9032,
+              "ci95": [
+                0.8616,
+                0.9368
+              ]
+            },
+            "crud": {
+              "mean": 0.8961,
+              "ci95": [
+                0.8561,
+                0.9344
+              ]
+            },
+            "replay": {
+              "mean": 0.9068,
+              "ci95": [
+                0.8636,
+                0.9413
+              ]
+            },
+            "compact": {
+              "mean": 0.9008,
+              "ci95": [
+                0.8561,
+                0.9384
+              ]
+            },
+            "sentences": {
+              "mean": 0.8519,
+              "ci95": [
+                0.8034,
+                0.8944
+              ]
+            },
+            "replay_minus_original": {
+              "mean": 0.0036,
+              "ci95": [
+                -0.0013,
+                0.009
+              ]
+            },
+            "replay_minus_crud": {
+              "mean": 0.0108,
+              "ci95": [
+                -0.0391,
+                0.0563
+              ]
+            },
+            "compact_minus_original": {
+              "mean": -0.0024,
+              "ci95": [
+                -0.0352,
+                0.0283
+              ]
+            },
+            "compact_minus_crud": {
+              "mean": 0.0048,
+              "ci95": [
+                -0.0497,
+                0.0528
+              ]
+            },
+            "sentences_minus_original": {
+              "mean": -0.0514,
+              "ci95": [
+                -0.085,
+                -0.0197
+              ]
+            },
+            "sentences_minus_crud": {
+              "mean": -0.0442,
+              "ci95": [
+                -0.0974,
+                0.0057
+              ]
+            },
+            "compact_minus_replay": {
+              "mean": -0.006,
+              "ci95": [
+                -0.0415,
+                0.0259
+              ]
+            },
+            "sentences_minus_replay": {
+              "mean": -0.055,
+              "ci95": [
+                -0.0877,
+                -0.0242
+              ]
+            },
+            "original_minus_crud": {
+              "mean": 0.0072,
+              "ci95": [
+                -0.0426,
+                0.0508
+              ]
+            },
+            "display_part": {
+              "mean": 0.0514,
+              "ci95": [
+                0.0197,
+                0.085
+              ]
+            },
+            "content_part": {
+              "mean": -0.0442,
+              "ci95": [
+                -0.0974,
+                0.0057
+              ]
+            }
+          },
+          "scoped_exception": {
+            "probes": 558,
+            "units": 116,
+            "original": {
+              "mean": 0.779,
+              "ci95": [
+                0.75,
+                0.8081
+              ]
+            },
+            "crud": {
+              "mean": 0.736,
+              "ci95": [
+                0.705,
+                0.7691
+              ]
+            },
+            "replay": {
+              "mean": 0.7766,
+              "ci95": [
+                0.7468,
+                0.8065
+              ]
+            },
+            "compact": {
+              "mean": 0.7288,
+              "ci95": [
+                0.6941,
+                0.766
+              ]
+            },
+            "sentences": {
+              "mean": 0.7425,
+              "ci95": [
+                0.7082,
+                0.7751
+              ]
+            },
+            "replay_minus_original": {
+              "mean": -0.0024,
+              "ci95": [
+                -0.0063,
+                0.0012
+              ]
+            },
+            "replay_minus_crud": {
+              "mean": 0.0406,
+              "ci95": [
+                0.011,
+                0.0693
+              ]
+            },
+            "compact_minus_original": {
+              "mean": -0.0502,
+              "ci95": [
+                -0.085,
+                -0.0156
+              ]
+            },
+            "compact_minus_crud": {
+              "mean": -0.0072,
+              "ci95": [
+                -0.037,
+                0.0234
+              ]
+            },
+            "sentences_minus_original": {
+              "mean": -0.0364,
+              "ci95": [
+                -0.063,
+                -0.008
+              ]
+            },
+            "sentences_minus_crud": {
+              "mean": 0.0066,
+              "ci95": [
+                -0.014,
+                0.028
+              ]
+            },
+            "compact_minus_replay": {
+              "mean": -0.0478,
+              "ci95": [
+                -0.0833,
+                -0.0126
+              ]
+            },
+            "sentences_minus_replay": {
+              "mean": -0.0341,
+              "ci95": [
+                -0.0617,
+                -0.005
+              ]
+            },
+            "original_minus_crud": {
+              "mean": 0.043,
+              "ci95": [
+                0.0149,
+                0.0704
+              ]
+            },
+            "display_part": {
+              "mean": 0.0364,
+              "ci95": [
+                0.008,
+                0.063
+              ]
+            },
+            "content_part": {
+              "mean": 0.0066,
+              "ci95": [
+                -0.014,
+                0.028
+              ]
+            }
+          },
+          "exception_revision": {
+            "probes": 596,
+            "units": 129,
+            "original": {
+              "mean": 0.8719,
+              "ci95": [
+                0.8391,
+                0.9036
+              ]
+            },
+            "crud": {
+              "mean": 0.844,
+              "ci95": [
+                0.8129,
+                0.8753
+              ]
+            },
+            "replay": {
+              "mean": 0.8725,
+              "ci95": [
+                0.8404,
+                0.904
+              ]
+            },
+            "compact": {
+              "mean": 0.84,
+              "ci95": [
+                0.8053,
+                0.8723
+              ]
+            },
+            "sentences": {
+              "mean": 0.8462,
+              "ci95": [
+                0.8107,
+                0.8803
+              ]
+            },
+            "replay_minus_original": {
+              "mean": 0.0006,
+              "ci95": [
+                -0.0011,
+                0.0025
+              ]
+            },
+            "replay_minus_crud": {
+              "mean": 0.0285,
+              "ci95": [
+                -0.0005,
+                0.056
+              ]
+            },
+            "compact_minus_original": {
+              "mean": -0.0319,
+              "ci95": [
+                -0.0545,
+                -0.0101
+              ]
+            },
+            "compact_minus_crud": {
+              "mean": -0.0039,
+              "ci95": [
+                -0.0372,
+                0.028
+              ]
+            },
+            "sentences_minus_original": {
+              "mean": -0.0257,
+              "ci95": [
+                -0.0512,
+                0.0012
+              ]
+            },
+            "sentences_minus_crud": {
+              "mean": 0.0022,
+              "ci95": [
+                -0.0206,
+                0.024
+              ]
+            },
+            "compact_minus_replay": {
+              "mean": -0.0324,
+              "ci95": [
+                -0.055,
+                -0.0105
+              ]
+            },
+            "sentences_minus_replay": {
+              "mean": -0.0263,
+              "ci95": [
+                -0.0527,
+                0.0011
+              ]
+            },
+            "original_minus_crud": {
+              "mean": 0.028,
+              "ci95": [
+                -0.0011,
+                0.0552
+              ]
+            },
+            "display_part": {
+              "mean": 0.0257,
+              "ci95": [
+                -0.0012,
+                0.0512
+              ]
+            },
+            "content_part": {
+              "mean": 0.0022,
+              "ci95": [
+                -0.0206,
+                0.024
+              ]
+            }
+          },
+          "stable_preference": {
+            "probes": 594,
+            "units": 137,
+            "original": {
+              "mean": 0.9063,
+              "ci95": [
+                0.8817,
+                0.9295
+              ]
+            },
+            "crud": {
+              "mean": 0.885,
+              "ci95": [
+                0.8571,
+                0.911
+              ]
+            },
+            "replay": {
+              "mean": 0.9063,
+              "ci95": [
+                0.8817,
+                0.9295
+              ]
+            },
+            "compact": {
+              "mean": 0.8855,
+              "ci95": [
+                0.8571,
+                0.9118
+              ]
+            },
+            "sentences": {
+              "mean": 0.8805,
+              "ci95": [
+                0.8496,
+                0.9096
+              ]
+            },
+            "replay_minus_original": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "replay_minus_crud": {
+              "mean": 0.0213,
+              "ci95": [
+                -0.0054,
+                0.0483
+              ]
+            },
+            "compact_minus_original": {
+              "mean": -0.0208,
+              "ci95": [
+                -0.04,
+                -0.0006
+              ]
+            },
+            "compact_minus_crud": {
+              "mean": 0.0006,
+              "ci95": [
+                -0.0275,
+                0.0285
+              ]
+            },
+            "sentences_minus_original": {
+              "mean": -0.0258,
+              "ci95": [
+                -0.0463,
+                -0.0053
+              ]
+            },
+            "sentences_minus_crud": {
+              "mean": -0.0045,
+              "ci95": [
+                -0.0281,
+                0.017
+              ]
+            },
+            "compact_minus_replay": {
+              "mean": -0.0208,
+              "ci95": [
+                -0.04,
+                -0.0006
+              ]
+            },
+            "sentences_minus_replay": {
+              "mean": -0.0258,
+              "ci95": [
+                -0.0463,
+                -0.0053
+              ]
+            },
+            "original_minus_crud": {
+              "mean": 0.0213,
+              "ci95": [
+                -0.0054,
+                0.0483
+              ]
+            },
+            "display_part": {
+              "mean": 0.0258,
+              "ci95": [
+                0.0053,
+                0.0463
+              ]
+            },
+            "content_part": {
+              "mean": -0.0045,
+              "ci95": [
+                -0.0281,
+                0.017
+              ]
+            }
+          },
+          "type_target": {
+            "probes": 691,
+            "units": 200,
+            "original": {
+              "mean": 0.8437,
+              "ci95": [
+                0.8141,
+                0.871
+              ]
+            },
+            "crud": {
+              "mean": 0.8678,
+              "ci95": [
+                0.8372,
+                0.8955
+              ]
+            },
+            "replay": {
+              "mean": 0.8456,
+              "ci95": [
+                0.8161,
+                0.8729
+              ]
+            },
+            "compact": {
+              "mean": 0.8398,
+              "ci95": [
+                0.8087,
+                0.8684
+              ]
+            },
+            "sentences": {
+              "mean": 0.8567,
+              "ci95": [
+                0.8279,
+                0.8837
+              ]
+            },
+            "replay_minus_original": {
+              "mean": 0.0019,
+              "ci95": [
+                -0.0005,
+                0.0047
+              ]
+            },
+            "replay_minus_crud": {
+              "mean": -0.0222,
+              "ci95": [
+                -0.0487,
+                0.0055
+              ]
+            },
+            "compact_minus_original": {
+              "mean": -0.0039,
+              "ci95": [
+                -0.0298,
+                0.0218
+              ]
+            },
+            "compact_minus_crud": {
+              "mean": -0.028,
+              "ci95": [
+                -0.06,
+                0.0024
+              ]
+            },
+            "sentences_minus_original": {
+              "mean": 0.013,
+              "ci95": [
+                -0.0099,
+                0.0357
+              ]
+            },
+            "sentences_minus_crud": {
+              "mean": -0.0111,
+              "ci95": [
+                -0.0334,
+                0.0123
+              ]
+            },
+            "compact_minus_replay": {
+              "mean": -0.0058,
+              "ci95": [
+                -0.0314,
+                0.0196
+              ]
+            },
+            "sentences_minus_replay": {
+              "mean": 0.0111,
+              "ci95": [
+                -0.0126,
+                0.0341
+              ]
+            },
+            "original_minus_crud": {
+              "mean": -0.0241,
+              "ci95": [
+                -0.0508,
+                0.0034
+              ]
+            },
+            "display_part": {
+              "mean": -0.013,
+              "ci95": [
+                -0.0357,
+                0.0099
+              ]
+            },
+            "content_part": {
+              "mean": -0.0111,
+              "ci95": [
+                -0.0334,
+                0.0123
+              ]
+            }
+          },
+          "type_default": {
+            "probes": 531,
+            "units": 200,
+            "original": {
+              "mean": 0.9096,
+              "ci95": [
+                0.8807,
+                0.9341
+              ]
+            },
+            "crud": {
+              "mean": 0.7972,
+              "ci95": [
+                0.7599,
+                0.8333
+              ]
+            },
+            "replay": {
+              "mean": 0.909,
+              "ci95": [
+                0.8796,
+                0.934
+              ]
+            },
+            "compact": {
+              "mean": 0.9021,
+              "ci95": [
+                0.8718,
+                0.9293
+              ]
+            },
+            "sentences": {
+              "mean": 0.8092,
+              "ci95": [
+                0.7728,
+                0.8429
+              ]
+            },
+            "replay_minus_original": {
+              "mean": -0.0006,
+              "ci95": [
+                -0.0019,
+                0.0
+              ]
+            },
+            "replay_minus_crud": {
+              "mean": 0.1117,
+              "ci95": [
+                0.0781,
+                0.1475
+              ]
+            },
+            "compact_minus_original": {
+              "mean": -0.0075,
+              "ci95": [
+                -0.0352,
+                0.0203
+              ]
+            },
+            "compact_minus_crud": {
+              "mean": 0.1048,
+              "ci95": [
+                0.0678,
+                0.143
+              ]
+            },
+            "sentences_minus_original": {
+              "mean": -0.1004,
+              "ci95": [
+                -0.1318,
+                -0.0687
+              ]
+            },
+            "sentences_minus_crud": {
+              "mean": 0.0119,
+              "ci95": [
+                -0.0128,
+                0.0374
+              ]
+            },
+            "compact_minus_replay": {
+              "mean": -0.0069,
+              "ci95": [
+                -0.035,
+                0.0208
+              ]
+            },
+            "sentences_minus_replay": {
+              "mean": -0.0998,
+              "ci95": [
+                -0.1311,
+                -0.0685
+              ]
+            },
+            "original_minus_crud": {
+              "mean": 0.1124,
+              "ci95": [
+                0.0788,
+                0.1479
+              ]
+            },
+            "display_part": {
+              "mean": 0.1004,
+              "ci95": [
+                0.0687,
+                0.1318
+              ]
+            },
+            "content_part": {
+              "mean": 0.0119,
+              "ci95": [
+                -0.0128,
+                0.0374
+              ]
+            }
+          },
+          "type_neighbor": {
+            "probes": 717,
+            "units": 200,
+            "original": {
+              "mean": 0.8935,
+              "ci95": [
+                0.8665,
+                0.9172
+              ]
+            },
+            "crud": {
+              "mean": 0.9079,
+              "ci95": [
+                0.8879,
+                0.927
+              ]
+            },
+            "replay": {
+              "mean": 0.8926,
+              "ci95": [
+                0.8664,
+                0.9169
+              ]
+            },
+            "compact": {
+              "mean": 0.8536,
+              "ci95": [
+                0.8223,
+                0.8831
+              ]
+            },
+            "sentences": {
+              "mean": 0.8875,
+              "ci95": [
+                0.859,
+                0.9129
+              ]
+            },
+            "replay_minus_original": {
+              "mean": -0.0009,
+              "ci95": [
+                -0.0032,
+                0.0014
+              ]
+            },
+            "replay_minus_crud": {
+              "mean": -0.0153,
+              "ci95": [
+                -0.0425,
+                0.0088
+              ]
+            },
+            "compact_minus_original": {
+              "mean": -0.04,
+              "ci95": [
+                -0.0592,
+                -0.0224
+              ]
+            },
+            "compact_minus_crud": {
+              "mean": -0.0544,
+              "ci95": [
+                -0.0852,
+                -0.0274
+              ]
+            },
+            "sentences_minus_original": {
+              "mean": -0.006,
+              "ci95": [
+                -0.0245,
+                0.0129
+              ]
+            },
+            "sentences_minus_crud": {
+              "mean": -0.0205,
+              "ci95": [
+                -0.046,
+                0.0014
+              ]
+            },
+            "compact_minus_replay": {
+              "mean": -0.0391,
+              "ci95": [
+                -0.0584,
+                -0.0209
+              ]
+            },
+            "sentences_minus_replay": {
+              "mean": -0.0051,
+              "ci95": [
+                -0.023,
+                0.0138
+              ]
+            },
+            "original_minus_crud": {
+              "mean": -0.0144,
+              "ci95": [
+                -0.0416,
+                0.0099
+              ]
+            },
+            "display_part": {
+              "mean": 0.006,
+              "ci95": [
+                -0.0129,
+                0.0245
+              ]
+            },
+            "content_part": {
+              "mean": -0.0205,
+              "ci95": [
+                -0.046,
+                0.0014
+              ]
+            }
+          },
+          "type_boundary": {
+            "probes": 88,
+            "units": 45,
+            "original": {
+              "mean": 0.4318,
+              "ci95": [
+                0.336,
+                0.5289
+              ]
+            },
+            "crud": {
+              "mean": 0.1742,
+              "ci95": [
+                0.1014,
+                0.248
+              ]
+            },
+            "replay": {
+              "mean": 0.428,
+              "ci95": [
+                0.3297,
+                0.5238
+              ]
+            },
+            "compact": {
+              "mean": 0.1515,
+              "ci95": [
+                0.0778,
+                0.2338
+              ]
+            },
+            "sentences": {
+              "mean": 0.2424,
+              "ci95": [
+                0.1494,
+                0.3369
+              ]
+            },
+            "replay_minus_original": {
+              "mean": -0.0038,
+              "ci95": [
+                -0.0178,
+                0.0085
+              ]
+            },
+            "replay_minus_crud": {
+              "mean": 0.2538,
+              "ci95": [
+                0.1536,
+                0.3538
+              ]
+            },
+            "compact_minus_original": {
+              "mean": -0.2803,
+              "ci95": [
+                -0.3686,
+                -0.197
+              ]
+            },
+            "compact_minus_crud": {
+              "mean": -0.0227,
+              "ci95": [
+                -0.119,
+                0.0741
+              ]
+            },
+            "sentences_minus_original": {
+              "mean": -0.1894,
+              "ci95": [
+                -0.2785,
+                -0.1059
+              ]
+            },
+            "sentences_minus_crud": {
+              "mean": 0.0682,
+              "ci95": [
+                0.011,
+                0.1326
+              ]
+            },
+            "compact_minus_replay": {
+              "mean": -0.2765,
+              "ci95": [
+                -0.3673,
+                -0.1926
+              ]
+            },
+            "sentences_minus_replay": {
+              "mean": -0.1856,
+              "ci95": [
+                -0.2739,
+                -0.1016
+              ]
+            },
+            "original_minus_crud": {
+              "mean": 0.2576,
+              "ci95": [
+                0.1572,
+                0.3596
+              ]
+            },
+            "display_part": {
+              "mean": 0.1894,
+              "ci95": [
+                0.1059,
+                0.2785
+              ]
+            },
+            "content_part": {
+              "mean": 0.0682,
+              "ci95": [
+                0.011,
+                0.1326
+              ]
+            }
+          }
+        },
+        "family": {
+          "all": {
+            "probes": 2027,
+            "units": 28,
+            "original": {
+              "mean": 0.8607,
+              "ci95": [
+                0.8269,
+                0.8909
+              ]
+            },
+            "crud": {
+              "mean": 0.8334,
+              "ci95": [
+                0.8042,
+                0.8622
+              ]
+            },
+            "replay": {
+              "mean": 0.8607,
+              "ci95": [
+                0.8273,
+                0.8908
+              ]
+            },
+            "compact": {
+              "mean": 0.8311,
+              "ci95": [
+                0.7956,
+                0.865
+              ]
+            },
+            "sentences": {
+              "mean": 0.8285,
+              "ci95": [
+                0.7933,
+                0.8606
+              ]
+            },
+            "replay_minus_original": {
+              "mean": 0.0,
+              "ci95": [
+                -0.0019,
+                0.0018
+              ]
+            },
+            "replay_minus_crud": {
+              "mean": 0.0273,
+              "ci95": [
+                0.0091,
+                0.0457
+              ]
+            },
+            "compact_minus_original": {
+              "mean": -0.0296,
+              "ci95": [
+                -0.0491,
+                -0.0123
+              ]
+            },
+            "compact_minus_crud": {
+              "mean": -0.0023,
+              "ci95": [
+                -0.0287,
+                0.0228
+              ]
+            },
+            "sentences_minus_original": {
+              "mean": -0.0322,
+              "ci95": [
+                -0.049,
+                -0.0173
+              ]
+            },
+            "sentences_minus_crud": {
+              "mean": -0.0049,
+              "ci95": [
+                -0.0252,
+                0.0153
+              ]
+            },
+            "compact_minus_replay": {
+              "mean": -0.0296,
+              "ci95": [
+                -0.0485,
+                -0.0122
+              ]
+            },
+            "sentences_minus_replay": {
+              "mean": -0.0322,
+              "ci95": [
+                -0.0493,
+                -0.017
+              ]
+            },
+            "original_minus_crud": {
+              "mean": 0.0273,
+              "ci95": [
+                0.0091,
+                0.0456
+              ]
+            },
+            "display_part": {
+              "mean": 0.0322,
+              "ci95": [
+                0.0173,
+                0.049
+              ]
+            },
+            "content_part": {
+              "mean": -0.0049,
+              "ci95": [
+                -0.0252,
+                0.0153
+              ]
+            }
+          },
+          "all_but_boundary": {
+            "probes": 1939,
+            "units": 28,
+            "original": {
+              "mean": 0.8802,
+              "ci95": [
+                0.8469,
+                0.9109
+              ]
+            },
+            "crud": {
+              "mean": 0.8633,
+              "ci95": [
+                0.8373,
+                0.8899
+              ]
+            },
+            "replay": {
+              "mean": 0.8804,
+              "ci95": [
+                0.8474,
+                0.9104
+              ]
+            },
+            "compact": {
+              "mean": 0.862,
+              "ci95": [
+                0.8302,
+                0.8919
+              ]
+            },
+            "sentences": {
+              "mean": 0.8551,
+              "ci95": [
+                0.8215,
+                0.8868
+              ]
+            },
+            "replay_minus_original": {
+              "mean": 0.0002,
+              "ci95": [
+                -0.0016,
+                0.002
+              ]
+            },
+            "replay_minus_crud": {
+              "mean": 0.017,
+              "ci95": [
+                -0.0032,
+                0.0367
+              ]
+            },
+            "compact_minus_original": {
+              "mean": -0.0182,
+              "ci95": [
+                -0.039,
+                0.0
+              ]
+            },
+            "compact_minus_crud": {
+              "mean": -0.0014,
+              "ci95": [
+                -0.0279,
+                0.0234
+              ]
+            },
+            "sentences_minus_original": {
+              "mean": -0.0251,
+              "ci95": [
+                -0.0423,
+                -0.0087
+              ]
+            },
+            "sentences_minus_crud": {
+              "mean": -0.0083,
+              "ci95": [
+                -0.0299,
+                0.0127
+              ]
+            },
+            "compact_minus_replay": {
+              "mean": -0.0184,
+              "ci95": [
+                -0.0391,
+                -0.0007
+              ]
+            },
+            "sentences_minus_replay": {
+              "mean": -0.0253,
+              "ci95": [
+                -0.0427,
+                -0.0089
+              ]
+            },
+            "original_minus_crud": {
+              "mean": 0.0168,
+              "ci95": [
+                -0.0037,
+                0.0363
+              ]
+            },
+            "display_part": {
+              "mean": 0.0251,
+              "ci95": [
+                0.0087,
+                0.0423
+              ]
+            },
+            "content_part": {
+              "mean": -0.0083,
+              "ci95": [
+                -0.0299,
+                0.0127
+              ]
+            }
+          },
+          "general_update": {
+            "probes": 279,
+            "units": 23,
+            "original": {
+              "mean": 0.9032,
+              "ci95": [
+                0.8427,
+                0.9482
+              ]
+            },
+            "crud": {
+              "mean": 0.8961,
+              "ci95": [
+                0.8456,
+                0.9376
+              ]
+            },
+            "replay": {
+              "mean": 0.9068,
+              "ci95": [
+                0.8455,
+                0.9532
+              ]
+            },
+            "compact": {
+              "mean": 0.9008,
+              "ci95": [
+                0.8365,
+                0.9491
+              ]
+            },
+            "sentences": {
+              "mean": 0.8519,
+              "ci95": [
+                0.7872,
+                0.9119
+              ]
+            },
+            "replay_minus_original": {
+              "mean": 0.0036,
+              "ci95": [
+                -0.0025,
+                0.0126
+              ]
+            },
+            "replay_minus_crud": {
+              "mean": 0.0108,
+              "ci95": [
+                -0.0437,
+                0.0657
+              ]
+            },
+            "compact_minus_original": {
+              "mean": -0.0024,
+              "ci95": [
+                -0.0475,
+                0.0396
+              ]
+            },
+            "compact_minus_crud": {
+              "mean": 0.0048,
+              "ci95": [
+                -0.0617,
+                0.0629
+              ]
+            },
+            "sentences_minus_original": {
+              "mean": -0.0514,
+              "ci95": [
+                -0.0958,
+                -0.0051
+              ]
+            },
+            "sentences_minus_crud": {
+              "mean": -0.0442,
+              "ci95": [
+                -0.1024,
+                0.013
+              ]
+            },
+            "compact_minus_replay": {
+              "mean": -0.006,
+              "ci95": [
+                -0.0533,
+                0.0392
+              ]
+            },
+            "sentences_minus_replay": {
+              "mean": -0.055,
+              "ci95": [
+                -0.0969,
+                -0.0126
+              ]
+            },
+            "original_minus_crud": {
+              "mean": 0.0072,
+              "ci95": [
+                -0.0451,
+                0.059
+              ]
+            },
+            "display_part": {
+              "mean": 0.0514,
+              "ci95": [
+                0.0051,
+                0.0958
+              ]
+            },
+            "content_part": {
+              "mean": -0.0442,
+              "ci95": [
+                -0.1024,
+                0.013
+              ]
+            }
+          },
+          "scoped_exception": {
+            "probes": 558,
+            "units": 28,
+            "original": {
+              "mean": 0.779,
+              "ci95": [
+                0.7394,
+                0.8148
+              ]
+            },
+            "crud": {
+              "mean": 0.736,
+              "ci95": [
+                0.691,
+                0.7832
+              ]
+            },
+            "replay": {
+              "mean": 0.7766,
+              "ci95": [
+                0.7392,
+                0.8119
+              ]
+            },
+            "compact": {
+              "mean": 0.7288,
+              "ci95": [
+                0.6774,
+                0.7756
+              ]
+            },
+            "sentences": {
+              "mean": 0.7425,
+              "ci95": [
+                0.6932,
+                0.7914
+              ]
+            },
+            "replay_minus_original": {
+              "mean": -0.0024,
+              "ci95": [
+                -0.0067,
+                0.0013
+              ]
+            },
+            "replay_minus_crud": {
+              "mean": 0.0406,
+              "ci95": [
+                0.0089,
+                0.0688
+              ]
+            },
+            "compact_minus_original": {
+              "mean": -0.0502,
+              "ci95": [
+                -0.0994,
+                -0.008
+              ]
+            },
+            "compact_minus_crud": {
+              "mean": -0.0072,
+              "ci95": [
+                -0.0523,
+                0.0313
+              ]
+            },
+            "sentences_minus_original": {
+              "mean": -0.0364,
+              "ci95": [
+                -0.0675,
+                0.0027
+              ]
+            },
+            "sentences_minus_crud": {
+              "mean": 0.0066,
+              "ci95": [
+                -0.0166,
+                0.0298
+              ]
+            },
+            "compact_minus_replay": {
+              "mean": -0.0478,
+              "ci95": [
+                -0.0973,
+                -0.0057
+              ]
+            },
+            "sentences_minus_replay": {
+              "mean": -0.0341,
+              "ci95": [
+                -0.0651,
+                0.005
+              ]
+            },
+            "original_minus_crud": {
+              "mean": 0.043,
+              "ci95": [
+                0.0119,
+                0.0709
+              ]
+            },
+            "display_part": {
+              "mean": 0.0364,
+              "ci95": [
+                -0.0027,
+                0.0675
+              ]
+            },
+            "content_part": {
+              "mean": 0.0066,
+              "ci95": [
+                -0.0166,
+                0.0298
+              ]
+            }
+          },
+          "exception_revision": {
+            "probes": 596,
+            "units": 28,
+            "original": {
+              "mean": 0.8719,
+              "ci95": [
+                0.8223,
+                0.9156
+              ]
+            },
+            "crud": {
+              "mean": 0.844,
+              "ci95": [
+                0.8052,
+                0.8809
+              ]
+            },
+            "replay": {
+              "mean": 0.8725,
+              "ci95": [
+                0.8238,
+                0.9159
+              ]
+            },
+            "compact": {
+              "mean": 0.84,
+              "ci95": [
+                0.7904,
+                0.8853
+              ]
+            },
+            "sentences": {
+              "mean": 0.8462,
+              "ci95": [
+                0.7977,
+                0.8896
+              ]
+            },
+            "replay_minus_original": {
+              "mean": 0.0006,
+              "ci95": [
+                -0.0012,
+                0.0027
+              ]
+            },
+            "replay_minus_crud": {
+              "mean": 0.0285,
+              "ci95": [
+                -0.0082,
+                0.0589
+              ]
+            },
+            "compact_minus_original": {
+              "mean": -0.0319,
+              "ci95": [
+                -0.0605,
+                -0.0054
+              ]
+            },
+            "compact_minus_crud": {
+              "mean": -0.0039,
+              "ci95": [
+                -0.0446,
+                0.0311
+              ]
+            },
+            "sentences_minus_original": {
+              "mean": -0.0257,
+              "ci95": [
+                -0.0572,
+                0.0088
+              ]
+            },
+            "sentences_minus_crud": {
+              "mean": 0.0022,
+              "ci95": [
+                -0.0258,
+                0.0276
+              ]
+            },
+            "compact_minus_replay": {
+              "mean": -0.0324,
+              "ci95": [
+                -0.0608,
+                -0.0063
+              ]
+            },
+            "sentences_minus_replay": {
+              "mean": -0.0263,
+              "ci95": [
+                -0.0588,
+                0.0084
+              ]
+            },
+            "original_minus_crud": {
+              "mean": 0.028,
+              "ci95": [
+                -0.0084,
+                0.0583
+              ]
+            },
+            "display_part": {
+              "mean": 0.0257,
+              "ci95": [
+                -0.0088,
+                0.0572
+              ]
+            },
+            "content_part": {
+              "mean": 0.0022,
+              "ci95": [
+                -0.0258,
+                0.0276
+              ]
+            }
+          },
+          "stable_preference": {
+            "probes": 594,
+            "units": 28,
+            "original": {
+              "mean": 0.9063,
+              "ci95": [
+                0.8722,
+                0.938
+              ]
+            },
+            "crud": {
+              "mean": 0.885,
+              "ci95": [
+                0.8502,
+                0.9173
+              ]
+            },
+            "replay": {
+              "mean": 0.9063,
+              "ci95": [
+                0.8722,
+                0.938
+              ]
+            },
+            "compact": {
+              "mean": 0.8855,
+              "ci95": [
+                0.8524,
+                0.9155
+              ]
+            },
+            "sentences": {
+              "mean": 0.8805,
+              "ci95": [
+                0.8413,
+                0.9138
+              ]
+            },
+            "replay_minus_original": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "replay_minus_crud": {
+              "mean": 0.0213,
+              "ci95": [
+                -0.0094,
+                0.0539
+              ]
+            },
+            "compact_minus_original": {
+              "mean": -0.0208,
+              "ci95": [
+                -0.0421,
+                -0.0
+              ]
+            },
+            "compact_minus_crud": {
+              "mean": 0.0006,
+              "ci95": [
+                -0.0318,
+                0.032
+              ]
+            },
+            "sentences_minus_original": {
+              "mean": -0.0258,
+              "ci95": [
+                -0.0535,
+                -0.0011
+              ]
+            },
+            "sentences_minus_crud": {
+              "mean": -0.0045,
+              "ci95": [
+                -0.0341,
+                0.0256
+              ]
+            },
+            "compact_minus_replay": {
+              "mean": -0.0208,
+              "ci95": [
+                -0.0421,
+                -0.0
+              ]
+            },
+            "sentences_minus_replay": {
+              "mean": -0.0258,
+              "ci95": [
+                -0.0535,
+                -0.0011
+              ]
+            },
+            "original_minus_crud": {
+              "mean": 0.0213,
+              "ci95": [
+                -0.0094,
+                0.0539
+              ]
+            },
+            "display_part": {
+              "mean": 0.0258,
+              "ci95": [
+                0.0011,
+                0.0535
+              ]
+            },
+            "content_part": {
+              "mean": -0.0045,
+              "ci95": [
+                -0.0341,
+                0.0256
+              ]
+            }
+          },
+          "type_target": {
+            "probes": 691,
+            "units": 28,
+            "original": {
+              "mean": 0.8437,
+              "ci95": [
+                0.7999,
+                0.8846
+              ]
+            },
+            "crud": {
+              "mean": 0.8678,
+              "ci95": [
+                0.8302,
+                0.9017
+              ]
+            },
+            "replay": {
+              "mean": 0.8456,
+              "ci95": [
+                0.8019,
+                0.8859
+              ]
+            },
+            "compact": {
+              "mean": 0.8398,
+              "ci95": [
+                0.7994,
+                0.8766
+              ]
+            },
+            "sentences": {
+              "mean": 0.8567,
+              "ci95": [
+                0.8264,
+                0.8868
+              ]
+            },
+            "replay_minus_original": {
+              "mean": 0.0019,
+              "ci95": [
+                -0.0015,
+                0.0062
+              ]
+            },
+            "replay_minus_crud": {
+              "mean": -0.0222,
+              "ci95": [
+                -0.0503,
+                0.008
+              ]
+            },
+            "compact_minus_original": {
+              "mean": -0.0039,
+              "ci95": [
+                -0.046,
+                0.0363
+              ]
+            },
+            "compact_minus_crud": {
+              "mean": -0.028,
+              "ci95": [
+                -0.0698,
+                0.0073
+              ]
+            },
+            "sentences_minus_original": {
+              "mean": 0.013,
+              "ci95": [
+                -0.0182,
+                0.0439
+              ]
+            },
+            "sentences_minus_crud": {
+              "mean": -0.0111,
+              "ci95": [
+                -0.0355,
+                0.0163
+              ]
+            },
+            "compact_minus_replay": {
+              "mean": -0.0058,
+              "ci95": [
+                -0.0464,
+                0.0328
+              ]
+            },
+            "sentences_minus_replay": {
+              "mean": 0.0111,
+              "ci95": [
+                -0.0205,
+                0.042
+              ]
+            },
+            "original_minus_crud": {
+              "mean": -0.0241,
+              "ci95": [
+                -0.0522,
+                0.0067
+              ]
+            },
+            "display_part": {
+              "mean": -0.013,
+              "ci95": [
+                -0.0439,
+                0.0182
+              ]
+            },
+            "content_part": {
+              "mean": -0.0111,
+              "ci95": [
+                -0.0355,
+                0.0163
+              ]
+            }
+          },
+          "type_default": {
+            "probes": 531,
+            "units": 28,
+            "original": {
+              "mean": 0.9096,
+              "ci95": [
+                0.8627,
+                0.9474
+              ]
+            },
+            "crud": {
+              "mean": 0.7972,
+              "ci95": [
+                0.7485,
+                0.8476
+              ]
+            },
+            "replay": {
+              "mean": 0.909,
+              "ci95": [
+                0.8622,
+                0.9472
+              ]
+            },
+            "compact": {
+              "mean": 0.9021,
+              "ci95": [
+                0.8598,
+                0.939
+              ]
+            },
+            "sentences": {
+              "mean": 0.8092,
+              "ci95": [
+                0.7636,
+                0.8545
+              ]
+            },
+            "replay_minus_original": {
+              "mean": -0.0006,
+              "ci95": [
+                -0.002,
+                0.0
+              ]
+            },
+            "replay_minus_crud": {
+              "mean": 0.1117,
+              "ci95": [
+                0.0619,
+                0.1612
+              ]
+            },
+            "compact_minus_original": {
+              "mean": -0.0075,
+              "ci95": [
+                -0.0426,
+                0.0238
+              ]
+            },
+            "compact_minus_crud": {
+              "mean": 0.1048,
+              "ci95": [
+                0.056,
+                0.1553
+              ]
+            },
+            "sentences_minus_original": {
+              "mean": -0.1004,
+              "ci95": [
+                -0.148,
+                -0.0537
+              ]
+            },
+            "sentences_minus_crud": {
+              "mean": 0.0119,
+              "ci95": [
+                -0.0187,
+                0.0426
+              ]
+            },
+            "compact_minus_replay": {
+              "mean": -0.0069,
+              "ci95": [
+                -0.0421,
+                0.024
+              ]
+            },
+            "sentences_minus_replay": {
+              "mean": -0.0998,
+              "ci95": [
+                -0.1467,
+                -0.0537
+              ]
+            },
+            "original_minus_crud": {
+              "mean": 0.1124,
+              "ci95": [
+                0.0621,
+                0.1613
+              ]
+            },
+            "display_part": {
+              "mean": 0.1004,
+              "ci95": [
+                0.0537,
+                0.148
+              ]
+            },
+            "content_part": {
+              "mean": 0.0119,
+              "ci95": [
+                -0.0187,
+                0.0426
+              ]
+            }
+          },
+          "type_neighbor": {
+            "probes": 717,
+            "units": 28,
+            "original": {
+              "mean": 0.8935,
+              "ci95": [
+                0.8503,
+                0.9308
+              ]
+            },
+            "crud": {
+              "mean": 0.9079,
+              "ci95": [
+                0.8808,
+                0.9322
+              ]
+            },
+            "replay": {
+              "mean": 0.8926,
+              "ci95": [
+                0.8496,
+                0.9298
+              ]
+            },
+            "compact": {
+              "mean": 0.8536,
+              "ci95": [
+                0.8081,
+                0.8926
+              ]
+            },
+            "sentences": {
+              "mean": 0.8875,
+              "ci95": [
+                0.84,
+                0.9283
+              ]
+            },
+            "replay_minus_original": {
+              "mean": -0.0009,
+              "ci95": [
+                -0.0032,
+                0.0013
+              ]
+            },
+            "replay_minus_crud": {
+              "mean": -0.0153,
+              "ci95": [
+                -0.041,
+                0.012
+              ]
+            },
+            "compact_minus_original": {
+              "mean": -0.04,
+              "ci95": [
+                -0.0605,
+                -0.0211
+              ]
+            },
+            "compact_minus_crud": {
+              "mean": -0.0544,
+              "ci95": [
+                -0.0798,
+                -0.0302
+              ]
+            },
+            "sentences_minus_original": {
+              "mean": -0.006,
+              "ci95": [
+                -0.0273,
+                0.0183
+              ]
+            },
+            "sentences_minus_crud": {
+              "mean": -0.0205,
+              "ci95": [
+                -0.0525,
+                0.0086
+              ]
+            },
+            "compact_minus_replay": {
+              "mean": -0.0391,
+              "ci95": [
+                -0.06,
+                -0.0199
+              ]
+            },
+            "sentences_minus_replay": {
+              "mean": -0.0051,
+              "ci95": [
+                -0.0257,
+                0.0184
+              ]
+            },
+            "original_minus_crud": {
+              "mean": -0.0144,
+              "ci95": [
+                -0.0405,
+                0.013
+              ]
+            },
+            "display_part": {
+              "mean": 0.006,
+              "ci95": [
+                -0.0183,
+                0.0273
+              ]
+            },
+            "content_part": {
+              "mean": -0.0205,
+              "ci95": [
+                -0.0525,
+                0.0086
+              ]
+            }
+          },
+          "type_boundary": {
+            "probes": 88,
+            "units": 22,
+            "original": {
+              "mean": 0.4318,
+              "ci95": [
+                0.3041,
+                0.5516
+              ]
+            },
+            "crud": {
+              "mean": 0.1742,
+              "ci95": [
+                0.0821,
+                0.2829
+              ]
+            },
+            "replay": {
+              "mean": 0.428,
+              "ci95": [
+                0.2987,
+                0.5525
+              ]
+            },
+            "compact": {
+              "mean": 0.1515,
+              "ci95": [
+                0.049,
+                0.2574
+              ]
+            },
+            "sentences": {
+              "mean": 0.2424,
+              "ci95": [
+                0.1176,
+                0.3645
+              ]
+            },
+            "replay_minus_original": {
+              "mean": -0.0038,
+              "ci95": [
+                -0.0189,
+                0.008
+              ]
+            },
+            "replay_minus_crud": {
+              "mean": 0.2538,
+              "ci95": [
+                0.1185,
+                0.3882
+              ]
+            },
+            "compact_minus_original": {
+              "mean": -0.2803,
+              "ci95": [
+                -0.3716,
+                -0.1815
+              ]
+            },
+            "compact_minus_crud": {
+              "mean": -0.0227,
+              "ci95": [
+                -0.1521,
+                0.0957
+              ]
+            },
+            "sentences_minus_original": {
+              "mean": -0.1894,
+              "ci95": [
+                -0.2863,
+                -0.0782
+              ]
+            },
+            "sentences_minus_crud": {
+              "mean": 0.0682,
+              "ci95": [
+                -0.0083,
+                0.1573
+              ]
+            },
+            "compact_minus_replay": {
+              "mean": -0.2765,
+              "ci95": [
+                -0.3704,
+                -0.1754
+              ]
+            },
+            "sentences_minus_replay": {
+              "mean": -0.1856,
+              "ci95": [
+                -0.2825,
+                -0.072
+              ]
+            },
+            "original_minus_crud": {
+              "mean": 0.2576,
+              "ci95": [
+                0.1268,
+                0.3909
+              ]
+            },
+            "display_part": {
+              "mean": 0.1894,
+              "ci95": [
+                0.0782,
+                0.2863
+              ]
+            },
+            "content_part": {
+              "mean": 0.0682,
+              "ci95": [
+                -0.0083,
+                0.1573
+              ]
+            }
+          }
+        }
+      },
+      "per_run": [
+        {
+          "run": "runs/test_p12_sft_s0",
+          "display_run": "runs/readtime/test_sft_s0",
+          "replay": {
+            "lost": 0,
+            "gained": 0
+          },
+          "compact": {
+            "lost": 145,
+            "gained": 89
+          },
+          "sentences": {
+            "lost": 138,
+            "gained": 73
+          },
+          "replay_same_answer": {
+            "probes": 2027,
+            "same": 2027,
+            "share": 1.0
+          }
+        },
+        {
+          "run": "runs/test_p12_sft_s1",
+          "display_run": "runs/readtime/test_sft_s1",
+          "replay": {
+            "lost": 0,
+            "gained": 0
+          },
+          "compact": {
+            "lost": 140,
+            "gained": 74
+          },
+          "sentences": {
+            "lost": 130,
+            "gained": 65
+          },
+          "replay_same_answer": {
+            "probes": 2027,
+            "same": 2027,
+            "share": 1.0
+          }
+        },
+        {
+          "run": "runs/test_p12_sft_s2",
+          "display_run": "runs/readtime/test_sft_s2",
+          "replay": {
+            "lost": 9,
+            "gained": 9
+          },
+          "compact": {
+            "lost": 143,
+            "gained": 85
+          },
+          "sentences": {
+            "lost": 138,
+            "gained": 72
+          },
+          "replay_same_answer": {
+            "probes": 2027,
+            "same": 2006,
+            "share": 0.9896
+          }
+        }
+      ],
+      "tokens": {
+        "replay": {
+          "input_tokens": {
+            "calls": 6081,
+            "total": 2805538,
+            "mean": 461.4
+          },
+          "memory_tokens": {
+            "calls": 6081,
+            "total": 1917088,
+            "mean": 315.3
+          },
+          "output_tokens": {
+            "calls": 6081,
+            "total": 320384,
+            "mean": 52.7
+          }
+        },
+        "compact": {
+          "input_tokens": {
+            "calls": 6081,
+            "total": 1247153,
+            "mean": 205.1
+          },
+          "memory_tokens": {
+            "calls": 6081,
+            "total": 352622,
+            "mean": 58.0
+          },
+          "output_tokens": {
+            "calls": 6081,
+            "total": 227615,
+            "mean": 37.4
+          }
+        },
+        "sentences": {
+          "input_tokens": {
+            "calls": 6081,
+            "total": 1592482,
+            "mean": 261.9
+          },
+          "memory_tokens": {
+            "calls": 6081,
+            "total": 704032,
+            "mean": 115.8
+          },
+          "output_tokens": {
+            "calls": 6081,
+            "total": 313508,
+            "mean": 51.6
+          }
+        }
+      },
+      "display_check": {
+        "bad_edges": 0,
+        "edges_ok": 9869,
+        "general": 7875,
+        "general_not_persistent": 0,
+        "probes": 6081,
+        "records": 17744,
+        "replaces_active": 0,
+        "replay_same_raw_answer": 6059,
+        "situation": 9869,
+        "situation_open": 3537,
+        "situation_persistent": 4895,
+        "situation_window": 1437
+      },
+      "answer_line_missing": {
+        "replay": 9,
+        "compact": 0,
+        "sentences": 12
+      }
+    },
+    "gold": {
+      "runs": [
+        "runs/test_p12_gold"
+      ],
+      "probes": 2027,
+      "by_unit": {
+        "episode": {
+          "all": {
+            "probes": 2027,
+            "units": 200,
+            "original": {
+              "mean": 0.8959,
+              "ci95": [
+                0.8796,
+                0.9127
+              ]
+            },
+            "crud": {
+              "mean": 0.8688,
+              "ci95": [
+                0.8494,
+                0.8894
+              ]
+            },
+            "replay": {
+              "mean": 0.8964,
+              "ci95": [
+                0.8802,
+                0.9124
+              ]
+            },
+            "compact": {
+              "mean": 0.8737,
+              "ci95": [
+                0.8548,
+                0.8929
+              ]
+            },
+            "sentences": {
+              "mean": 0.8693,
+              "ci95": [
+                0.8506,
+                0.8888
+              ]
+            },
+            "replay_minus_original": {
+              "mean": 0.0005,
+              "ci95": [
+                -0.004,
+                0.0049
+              ]
+            },
+            "replay_minus_crud": {
+              "mean": 0.0276,
+              "ci95": [
+                0.0122,
+                0.0427
+              ]
+            },
+            "compact_minus_original": {
+              "mean": -0.0222,
+              "ci95": [
+                -0.0362,
+                -0.0095
+              ]
+            },
+            "compact_minus_crud": {
+              "mean": 0.0049,
+              "ci95": [
+                -0.0122,
+                0.0213
+              ]
+            },
+            "sentences_minus_original": {
+              "mean": -0.0266,
+              "ci95": [
+                -0.0418,
+                -0.0114
+              ]
+            },
+            "sentences_minus_crud": {
+              "mean": 0.0005,
+              "ci95": [
+                -0.0119,
+                0.0115
+              ]
+            },
+            "compact_minus_replay": {
+              "mean": -0.0227,
+              "ci95": [
+                -0.0363,
+                -0.0097
+              ]
+            },
+            "sentences_minus_replay": {
+              "mean": -0.0271,
+              "ci95": [
+                -0.0422,
+                -0.012
+              ]
+            },
+            "original_minus_crud": {
+              "mean": 0.0271,
+              "ci95": [
+                0.0125,
+                0.0418
+              ]
+            },
+            "display_part": {
+              "mean": 0.0266,
+              "ci95": [
+                0.0114,
+                0.0418
+              ]
+            },
+            "content_part": {
+              "mean": 0.0005,
+              "ci95": [
+                -0.0119,
+                0.0115
+              ]
+            }
+          },
+          "all_but_boundary": {
+            "probes": 1939,
+            "units": 200,
+            "original": {
+              "mean": 0.917,
+              "ci95": [
+                0.9023,
+                0.9309
+              ]
+            },
+            "crud": {
+              "mean": 0.9005,
+              "ci95": [
+                0.884,
+                0.9168
+              ]
+            },
+            "replay": {
+              "mean": 0.9185,
+              "ci95": [
+                0.9042,
+                0.9324
+              ]
+            },
+            "compact": {
+              "mean": 0.9087,
+              "ci95": [
+                0.8926,
+                0.9232
+              ]
+            },
+            "sentences": {
+              "mean": 0.8999,
+              "ci95": [
+                0.8839,
+                0.9162
+              ]
+            },
+            "replay_minus_original": {
+              "mean": 0.0015,
+              "ci95": [
+                -0.0026,
+                0.0057
+              ]
+            },
+            "replay_minus_crud": {
+              "mean": 0.0181,
+              "ci95": [
+                0.0026,
+                0.0322
+              ]
+            },
+            "compact_minus_original": {
+              "mean": -0.0083,
+              "ci95": [
+                -0.0229,
+                0.0055
+              ]
+            },
+            "compact_minus_crud": {
+              "mean": 0.0083,
+              "ci95": [
+                -0.0095,
+                0.0251
+              ]
+            },
+            "sentences_minus_original": {
+              "mean": -0.017,
+              "ci95": [
+                -0.0317,
+                -0.0026
+              ]
+            },
+            "sentences_minus_crud": {
+              "mean": -0.0005,
+              "ci95": [
+                -0.0133,
+                0.0109
+              ]
+            },
+            "compact_minus_replay": {
+              "mean": -0.0098,
+              "ci95": [
+                -0.0238,
+                0.0032
+              ]
+            },
+            "sentences_minus_replay": {
+              "mean": -0.0186,
+              "ci95": [
+                -0.0331,
+                -0.0037
+              ]
+            },
+            "original_minus_crud": {
+              "mean": 0.0165,
+              "ci95": [
+                0.0015,
+                0.031
+              ]
+            },
+            "display_part": {
+              "mean": 0.017,
+              "ci95": [
+                0.0026,
+                0.0317
+              ]
+            },
+            "content_part": {
+              "mean": -0.0005,
+              "ci95": [
+                -0.0133,
+                0.0109
+              ]
+            }
+          },
+          "general_update": {
+            "probes": 279,
+            "units": 65,
+            "original": {
+              "mean": 0.9427,
+              "ci95": [
+                0.9175,
+                0.9667
+              ]
+            },
+            "crud": {
+              "mean": 0.9211,
+              "ci95": [
+                0.8874,
+                0.954
+              ]
+            },
+            "replay": {
+              "mean": 0.9498,
+              "ci95": [
+                0.9248,
+                0.9732
+              ]
+            },
+            "compact": {
+              "mean": 0.9462,
+              "ci95": [
+                0.9177,
+                0.97
+              ]
+            },
+            "sentences": {
+              "mean": 0.8996,
+              "ci95": [
+                0.86,
+                0.9356
+              ]
+            },
+            "replay_minus_original": {
+              "mean": 0.0072,
+              "ci95": [
+                -0.0067,
+                0.0215
+              ]
+            },
+            "replay_minus_crud": {
+              "mean": 0.0287,
+              "ci95": [
+                -0.0042,
+                0.064
+              ]
+            },
+            "compact_minus_original": {
+              "mean": 0.0036,
+              "ci95": [
+                -0.0317,
+                0.037
+              ]
+            },
+            "compact_minus_crud": {
+              "mean": 0.0251,
+              "ci95": [
+                -0.0147,
+                0.063
+              ]
+            },
+            "sentences_minus_original": {
+              "mean": -0.043,
+              "ci95": [
+                -0.0797,
+                -0.0063
+              ]
+            },
+            "sentences_minus_crud": {
+              "mean": -0.0215,
+              "ci95": [
+                -0.0674,
+                0.0201
+              ]
+            },
+            "compact_minus_replay": {
+              "mean": -0.0036,
+              "ci95": [
+                -0.04,
+                0.0286
+              ]
+            },
+            "sentences_minus_replay": {
+              "mean": -0.0502,
+              "ci95": [
+                -0.0877,
+                -0.0154
+              ]
+            },
+            "original_minus_crud": {
+              "mean": 0.0215,
+              "ci95": [
+                -0.0119,
+                0.0561
+              ]
+            },
+            "display_part": {
+              "mean": 0.043,
+              "ci95": [
+                0.0063,
+                0.0797
+              ]
+            },
+            "content_part": {
+              "mean": -0.0215,
+              "ci95": [
+                -0.0674,
+                0.0201
+              ]
+            }
+          },
+          "scoped_exception": {
+            "probes": 558,
+            "units": 116,
+            "original": {
+              "mean": 0.81,
+              "ci95": [
+                0.7826,
+                0.8396
+              ]
+            },
+            "crud": {
+              "mean": 0.7652,
+              "ci95": [
+                0.7314,
+                0.8011
+              ]
+            },
+            "replay": {
+              "mean": 0.8082,
+              "ci95": [
+                0.7788,
+                0.8385
+              ]
+            },
+            "compact": {
+              "mean": 0.7599,
+              "ci95": [
+                0.7254,
+                0.7984
+              ]
+            },
+            "sentences": {
+              "mean": 0.7742,
+              "ci95": [
+                0.7415,
+                0.8089
+              ]
+            },
+            "replay_minus_original": {
+              "mean": -0.0018,
+              "ci95": [
+                -0.0143,
+                0.0107
+              ]
+            },
+            "replay_minus_crud": {
+              "mean": 0.043,
+              "ci95": [
+                0.0108,
+                0.0734
+              ]
+            },
+            "compact_minus_original": {
+              "mean": -0.0502,
+              "ci95": [
+                -0.081,
+                -0.0181
+              ]
+            },
+            "compact_minus_crud": {
+              "mean": -0.0054,
+              "ci95": [
+                -0.0323,
+                0.0214
+              ]
+            },
+            "sentences_minus_original": {
+              "mean": -0.0358,
+              "ci95": [
+                -0.0648,
+                -0.0058
+              ]
+            },
+            "sentences_minus_crud": {
+              "mean": 0.009,
+              "ci95": [
+                -0.0058,
+                0.0242
+              ]
+            },
+            "compact_minus_replay": {
+              "mean": -0.0484,
+              "ci95": [
+                -0.0824,
+                -0.0136
+              ]
+            },
+            "sentences_minus_replay": {
+              "mean": -0.0341,
+              "ci95": [
+                -0.0644,
+                -0.0035
+              ]
+            },
+            "original_minus_crud": {
+              "mean": 0.0448,
+              "ci95": [
+                0.0157,
+                0.0736
+              ]
+            },
+            "display_part": {
+              "mean": 0.0358,
+              "ci95": [
+                0.0058,
+                0.0648
+              ]
+            },
+            "content_part": {
+              "mean": 0.009,
+              "ci95": [
+                -0.0058,
+                0.0242
+              ]
+            }
+          },
+          "exception_revision": {
+            "probes": 596,
+            "units": 129,
+            "original": {
+              "mean": 0.9077,
+              "ci95": [
+                0.8795,
+                0.9343
+              ]
+            },
+            "crud": {
+              "mean": 0.8809,
+              "ci95": [
+                0.8536,
+                0.908
+              ]
+            },
+            "replay": {
+              "mean": 0.9094,
+              "ci95": [
+                0.8808,
+                0.9353
+              ]
+            },
+            "compact": {
+              "mean": 0.8876,
+              "ci95": [
+                0.858,
+                0.9147
+              ]
+            },
+            "sentences": {
+              "mean": 0.8842,
+              "ci95": [
+                0.851,
+                0.9135
+              ]
+            },
+            "replay_minus_original": {
+              "mean": 0.0017,
+              "ci95": [
+                -0.0037,
+                0.0079
+              ]
+            },
+            "replay_minus_crud": {
+              "mean": 0.0285,
+              "ci95": [
+                0.0,
+                0.0564
+              ]
+            },
+            "compact_minus_original": {
+              "mean": -0.0201,
+              "ci95": [
+                -0.0455,
+                0.0033
+              ]
+            },
+            "compact_minus_crud": {
+              "mean": 0.0067,
+              "ci95": [
+                -0.0254,
+                0.0365
+              ]
+            },
+            "sentences_minus_original": {
+              "mean": -0.0235,
+              "ci95": [
+                -0.0508,
+                0.0052
+              ]
+            },
+            "sentences_minus_crud": {
+              "mean": 0.0034,
+              "ci95": [
+                -0.0177,
+                0.0237
+              ]
+            },
+            "compact_minus_replay": {
+              "mean": -0.0218,
+              "ci95": [
+                -0.0471,
+                0.0017
+              ]
+            },
+            "sentences_minus_replay": {
+              "mean": -0.0252,
+              "ci95": [
+                -0.0532,
+                0.0035
+              ]
+            },
+            "original_minus_crud": {
+              "mean": 0.0268,
+              "ci95": [
+                -0.0017,
+                0.054
+              ]
+            },
+            "display_part": {
+              "mean": 0.0235,
+              "ci95": [
+                -0.0052,
+                0.0508
+              ]
+            },
+            "content_part": {
+              "mean": 0.0034,
+              "ci95": [
+                -0.0177,
+                0.0237
+              ]
+            }
+          },
+          "stable_preference": {
+            "probes": 594,
+            "units": 137,
+            "original": {
+              "mean": 0.9428,
+              "ci95": [
+                0.9229,
+                0.9616
+              ]
+            },
+            "crud": {
+              "mean": 0.9293,
+              "ci95": [
+                0.9055,
+                0.9509
+              ]
+            },
+            "replay": {
+              "mean": 0.9411,
+              "ci95": [
+                0.92,
+                0.9606
+              ]
+            },
+            "compact": {
+              "mean": 0.9327,
+              "ci95": [
+                0.9112,
+                0.9534
+              ]
+            },
+            "sentences": {
+              "mean": 0.9293,
+              "ci95": [
+                0.905,
+                0.9516
+              ]
+            },
+            "replay_minus_original": {
+              "mean": -0.0017,
+              "ci95": [
+                -0.0081,
+                0.0035
+              ]
+            },
+            "replay_minus_crud": {
+              "mean": 0.0118,
+              "ci95": [
+                -0.0138,
+                0.0382
+              ]
+            },
+            "compact_minus_original": {
+              "mean": -0.0101,
+              "ci95": [
+                -0.0307,
+                0.0106
+              ]
+            },
+            "compact_minus_crud": {
+              "mean": 0.0034,
+              "ci95": [
+                -0.0216,
+                0.0275
+              ]
+            },
+            "sentences_minus_original": {
+              "mean": -0.0135,
+              "ci95": [
+                -0.0363,
+                0.0094
+              ]
+            },
+            "sentences_minus_crud": {
+              "mean": 0.0,
+              "ci95": [
+                -0.0217,
+                0.0193
+              ]
+            },
+            "compact_minus_replay": {
+              "mean": -0.0084,
+              "ci95": [
+                -0.03,
+                0.0131
+              ]
+            },
+            "sentences_minus_replay": {
+              "mean": -0.0118,
+              "ci95": [
+                -0.0354,
+                0.0125
+              ]
+            },
+            "original_minus_crud": {
+              "mean": 0.0135,
+              "ci95": [
+                -0.01,
+                0.0387
+              ]
+            },
+            "display_part": {
+              "mean": 0.0135,
+              "ci95": [
+                -0.0094,
+                0.0363
+              ]
+            },
+            "content_part": {
+              "mean": 0.0,
+              "ci95": [
+                -0.0217,
+                0.0193
+              ]
+            }
+          },
+          "type_target": {
+            "probes": 691,
+            "units": 200,
+            "original": {
+              "mean": 0.9045,
+              "ci95": [
+                0.8743,
+                0.9319
+              ]
+            },
+            "crud": {
+              "mean": 0.9204,
+              "ci95": [
+                0.8928,
+                0.9457
+              ]
+            },
+            "replay": {
+              "mean": 0.9045,
+              "ci95": [
+                0.8748,
+                0.932
+              ]
+            },
+            "compact": {
+              "mean": 0.9059,
+              "ci95": [
+                0.8754,
+                0.9315
+              ]
+            },
+            "sentences": {
+              "mean": 0.919,
+              "ci95": [
+                0.8898,
+                0.9457
+              ]
+            },
+            "replay_minus_original": {
+              "mean": 0.0,
+              "ci95": [
+                -0.0089,
+                0.0089
+              ]
+            },
+            "replay_minus_crud": {
+              "mean": -0.0159,
+              "ci95": [
+                -0.0403,
+                0.0088
+              ]
+            },
+            "compact_minus_original": {
+              "mean": 0.0014,
+              "ci95": [
+                -0.0267,
+                0.0292
+              ]
+            },
+            "compact_minus_crud": {
+              "mean": -0.0145,
+              "ci95": [
+                -0.04,
+                0.0113
+              ]
+            },
+            "sentences_minus_original": {
+              "mean": 0.0145,
+              "ci95": [
+                -0.0118,
+                0.0404
+              ]
+            },
+            "sentences_minus_crud": {
+              "mean": -0.0014,
+              "ci95": [
+                -0.0203,
+                0.0173
+              ]
+            },
+            "compact_minus_replay": {
+              "mean": 0.0014,
+              "ci95": [
+                -0.026,
+                0.0277
+              ]
+            },
+            "sentences_minus_replay": {
+              "mean": 0.0145,
+              "ci95": [
+                -0.0128,
+                0.041
+              ]
+            },
+            "original_minus_crud": {
+              "mean": -0.0159,
+              "ci95": [
+                -0.0411,
+                0.01
+              ]
+            },
+            "display_part": {
+              "mean": -0.0145,
+              "ci95": [
+                -0.0404,
+                0.0118
+              ]
+            },
+            "content_part": {
+              "mean": -0.0014,
+              "ci95": [
+                -0.0203,
+                0.0173
+              ]
+            }
+          },
+          "type_default": {
+            "probes": 531,
+            "units": 200,
+            "original": {
+              "mean": 0.9284,
+              "ci95": [
+                0.9041,
+                0.9503
+              ]
+            },
+            "crud": {
+              "mean": 0.8173,
+              "ci95": [
+                0.7813,
+                0.8529
+              ]
+            },
+            "replay": {
+              "mean": 0.9284,
+              "ci95": [
+                0.9033,
+                0.95
+              ]
+            },
+            "compact": {
+              "mean": 0.919,
+              "ci95": [
+                0.8958,
+                0.9425
+              ]
+            },
+            "sentences": {
+              "mean": 0.8343,
+              "ci95": [
+                0.8012,
+                0.8652
+              ]
+            },
+            "replay_minus_original": {
+              "mean": 0.0,
+              "ci95": [
+                -0.0056,
+                0.0056
+              ]
+            },
+            "replay_minus_crud": {
+              "mean": 0.1111,
+              "ci95": [
+                0.0775,
+                0.1469
+              ]
+            },
+            "compact_minus_original": {
+              "mean": -0.0094,
+              "ci95": [
+                -0.0402,
+                0.021
+              ]
+            },
+            "compact_minus_crud": {
+              "mean": 0.1017,
+              "ci95": [
+                0.0651,
+                0.1396
+              ]
+            },
+            "sentences_minus_original": {
+              "mean": -0.0942,
+              "ci95": [
+                -0.1285,
+                -0.0597
+              ]
+            },
+            "sentences_minus_crud": {
+              "mean": 0.0169,
+              "ci95": [
+                -0.0093,
+                0.0428
+              ]
+            },
+            "compact_minus_replay": {
+              "mean": -0.0094,
+              "ci95": [
+                -0.0402,
+                0.0207
+              ]
+            },
+            "sentences_minus_replay": {
+              "mean": -0.0942,
+              "ci95": [
+                -0.1274,
+                -0.0605
+              ]
+            },
+            "original_minus_crud": {
+              "mean": 0.1111,
+              "ci95": [
+                0.0751,
+                0.1491
+              ]
+            },
+            "display_part": {
+              "mean": 0.0942,
+              "ci95": [
+                0.0597,
+                0.1285
+              ]
+            },
+            "content_part": {
+              "mean": 0.0169,
+              "ci95": [
+                -0.0093,
+                0.0428
+              ]
+            }
+          },
+          "type_neighbor": {
+            "probes": 717,
+            "units": 200,
+            "original": {
+              "mean": 0.9205,
+              "ci95": [
+                0.9004,
+                0.9389
+              ]
+            },
+            "crud": {
+              "mean": 0.9428,
+              "ci95": [
+                0.9257,
+                0.9585
+              ]
+            },
+            "replay": {
+              "mean": 0.9247,
+              "ci95": [
+                0.9041,
+                0.9431
+              ]
+            },
+            "compact": {
+              "mean": 0.9038,
+              "ci95": [
+                0.8792,
+                0.9263
+              ]
+            },
+            "sentences": {
+              "mean": 0.9303,
+              "ci95": [
+                0.9113,
+                0.9482
+              ]
+            },
+            "replay_minus_original": {
+              "mean": 0.0042,
+              "ci95": [
+                -0.0014,
+                0.0109
+              ]
+            },
+            "replay_minus_crud": {
+              "mean": -0.0181,
+              "ci95": [
+                -0.038,
+                0.0014
+              ]
+            },
+            "compact_minus_original": {
+              "mean": -0.0167,
+              "ci95": [
+                -0.0374,
+                0.0028
+              ]
+            },
+            "compact_minus_crud": {
+              "mean": -0.0391,
+              "ci95": [
+                -0.0639,
+                -0.0169
+              ]
+            },
+            "sentences_minus_original": {
+              "mean": 0.0098,
+              "ci95": [
+                -0.0086,
+                0.029
+              ]
+            },
+            "sentences_minus_crud": {
+              "mean": -0.0126,
+              "ci95": [
+                -0.0293,
+                0.0028
+              ]
+            },
+            "compact_minus_replay": {
+              "mean": -0.0209,
+              "ci95": [
+                -0.0425,
+                0.0
+              ]
+            },
+            "sentences_minus_replay": {
+              "mean": 0.0056,
+              "ci95": [
+                -0.013,
+                0.0255
+              ]
+            },
+            "original_minus_crud": {
+              "mean": -0.0223,
+              "ci95": [
+                -0.0413,
+                -0.0028
+              ]
+            },
+            "display_part": {
+              "mean": -0.0098,
+              "ci95": [
+                -0.029,
+                0.0086
+              ]
+            },
+            "content_part": {
+              "mean": -0.0126,
+              "ci95": [
+                -0.0293,
+                0.0028
+              ]
+            }
+          },
+          "type_boundary": {
+            "probes": 88,
+            "units": 45,
+            "original": {
+              "mean": 0.4318,
+              "ci95": [
+                0.3214,
+                0.5465
+              ]
+            },
+            "crud": {
+              "mean": 0.1705,
+              "ci95": [
+                0.092,
+                0.2535
+              ]
+            },
+            "replay": {
+              "mean": 0.4091,
+              "ci95": [
+                0.3088,
+                0.5114
+              ]
+            },
+            "compact": {
+              "mean": 0.1023,
+              "ci95": [
+                0.037,
+                0.1809
+              ]
+            },
+            "sentences": {
+              "mean": 0.1932,
+              "ci95": [
+                0.1053,
+                0.2877
+              ]
+            },
+            "replay_minus_original": {
+              "mean": -0.0227,
+              "ci95": [
+                -0.0787,
+                0.0308
+              ]
+            },
+            "replay_minus_crud": {
+              "mean": 0.2386,
+              "ci95": [
+                0.1236,
+                0.3523
+              ]
+            },
+            "compact_minus_original": {
+              "mean": -0.3295,
+              "ci95": [
+                -0.4337,
+                -0.2245
+              ]
+            },
+            "compact_minus_crud": {
+              "mean": -0.0682,
+              "ci95": [
+                -0.1625,
+                0.0256
+              ]
+            },
+            "sentences_minus_original": {
+              "mean": -0.2386,
+              "ci95": [
+                -0.3649,
+                -0.12
+              ]
+            },
+            "sentences_minus_crud": {
+              "mean": 0.0227,
+              "ci95": [
+                0.0,
+                0.0571
+              ]
+            },
+            "compact_minus_replay": {
+              "mean": -0.3068,
+              "ci95": [
+                -0.4105,
+                -0.2059
+              ]
+            },
+            "sentences_minus_replay": {
+              "mean": -0.2159,
+              "ci95": [
+                -0.3333,
+                -0.1061
+              ]
+            },
+            "original_minus_crud": {
+              "mean": 0.2614,
+              "ci95": [
+                0.1415,
+                0.3797
+              ]
+            },
+            "display_part": {
+              "mean": 0.2386,
+              "ci95": [
+                0.12,
+                0.3649
+              ]
+            },
+            "content_part": {
+              "mean": 0.0227,
+              "ci95": [
+                0.0,
+                0.0571
+              ]
+            }
+          }
+        },
+        "family": {
+          "all": {
+            "probes": 2027,
+            "units": 28,
+            "original": {
+              "mean": 0.8959,
+              "ci95": [
+                0.8753,
+                0.916
+              ]
+            },
+            "crud": {
+              "mean": 0.8688,
+              "ci95": [
+                0.8439,
+                0.8923
+              ]
+            },
+            "replay": {
+              "mean": 0.8964,
+              "ci95": [
+                0.8755,
+                0.9158
+              ]
+            },
+            "compact": {
+              "mean": 0.8737,
+              "ci95": [
+                0.8497,
+                0.897
+              ]
+            },
+            "sentences": {
+              "mean": 0.8693,
+              "ci95": [
+                0.8462,
+                0.8914
+              ]
+            },
+            "replay_minus_original": {
+              "mean": 0.0005,
+              "ci95": [
+                -0.0038,
+                0.0045
+              ]
+            },
+            "replay_minus_crud": {
+              "mean": 0.0276,
+              "ci95": [
+                0.0095,
+                0.0462
+              ]
+            },
+            "compact_minus_original": {
+              "mean": -0.0222,
+              "ci95": [
+                -0.0406,
+                -0.0055
+              ]
+            },
+            "compact_minus_crud": {
+              "mean": 0.0049,
+              "ci95": [
+                -0.0204,
+                0.0301
+              ]
+            },
+            "sentences_minus_original": {
+              "mean": -0.0266,
+              "ci95": [
+                -0.0463,
+                -0.0081
+              ]
+            },
+            "sentences_minus_crud": {
+              "mean": 0.0005,
+              "ci95": [
+                -0.0144,
+                0.0145
+              ]
+            },
+            "compact_minus_replay": {
+              "mean": -0.0227,
+              "ci95": [
+                -0.0399,
+                -0.0066
+              ]
+            },
+            "sentences_minus_replay": {
+              "mean": -0.0271,
+              "ci95": [
+                -0.0467,
+                -0.0087
+              ]
+            },
+            "original_minus_crud": {
+              "mean": 0.0271,
+              "ci95": [
+                0.0091,
+                0.045
+              ]
+            },
+            "display_part": {
+              "mean": 0.0266,
+              "ci95": [
+                0.0081,
+                0.0463
+              ]
+            },
+            "content_part": {
+              "mean": 0.0005,
+              "ci95": [
+                -0.0144,
+                0.0145
+              ]
+            }
+          },
+          "all_but_boundary": {
+            "probes": 1939,
+            "units": 28,
+            "original": {
+              "mean": 0.917,
+              "ci95": [
+                0.8967,
+                0.9359
+              ]
+            },
+            "crud": {
+              "mean": 0.9005,
+              "ci95": [
+                0.876,
+                0.9235
+              ]
+            },
+            "replay": {
+              "mean": 0.9185,
+              "ci95": [
+                0.8986,
+                0.9372
+              ]
+            },
+            "compact": {
+              "mean": 0.9087,
+              "ci95": [
+                0.8874,
+                0.9281
+              ]
+            },
+            "sentences": {
+              "mean": 0.8999,
+              "ci95": [
+                0.8781,
+                0.922
+              ]
+            },
+            "replay_minus_original": {
+              "mean": 0.0015,
+              "ci95": [
+                -0.0031,
+                0.0062
+              ]
+            },
+            "replay_minus_crud": {
+              "mean": 0.0181,
+              "ci95": [
+                -0.0025,
+                0.0363
+              ]
+            },
+            "compact_minus_original": {
+              "mean": -0.0083,
+              "ci95": [
+                -0.0304,
+                0.0118
+              ]
+            },
+            "compact_minus_crud": {
+              "mean": 0.0083,
+              "ci95": [
+                -0.0199,
+                0.0356
+              ]
+            },
+            "sentences_minus_original": {
+              "mean": -0.017,
+              "ci95": [
+                -0.0374,
+                0.0041
+              ]
+            },
+            "sentences_minus_crud": {
+              "mean": -0.0005,
+              "ci95": [
+                -0.0163,
+                0.0142
+              ]
+            },
+            "compact_minus_replay": {
+              "mean": -0.0098,
+              "ci95": [
+                -0.0294,
+                0.0084
+              ]
+            },
+            "sentences_minus_replay": {
+              "mean": -0.0186,
+              "ci95": [
+                -0.0382,
+                0.0021
+              ]
+            },
+            "original_minus_crud": {
+              "mean": 0.0165,
+              "ci95": [
+                -0.0036,
+                0.0342
+              ]
+            },
+            "display_part": {
+              "mean": 0.017,
+              "ci95": [
+                -0.0041,
+                0.0374
+              ]
+            },
+            "content_part": {
+              "mean": -0.0005,
+              "ci95": [
+                -0.0163,
+                0.0142
+              ]
+            }
+          },
+          "general_update": {
+            "probes": 279,
+            "units": 23,
+            "original": {
+              "mean": 0.9427,
+              "ci95": [
+                0.9031,
+                0.977
+              ]
+            },
+            "crud": {
+              "mean": 0.9211,
+              "ci95": [
+                0.8815,
+                0.96
+              ]
+            },
+            "replay": {
+              "mean": 0.9498,
+              "ci95": [
+                0.9125,
+                0.9811
+              ]
+            },
+            "compact": {
+              "mean": 0.9462,
+              "ci95": [
+                0.9076,
+                0.976
+              ]
+            },
+            "sentences": {
+              "mean": 0.8996,
+              "ci95": [
+                0.8459,
+                0.9512
+              ]
+            },
+            "replay_minus_original": {
+              "mean": 0.0072,
+              "ci95": [
+                -0.0076,
+                0.0263
+              ]
+            },
+            "replay_minus_crud": {
+              "mean": 0.0287,
+              "ci95": [
+                -0.0175,
+                0.0731
+              ]
+            },
+            "compact_minus_original": {
+              "mean": 0.0036,
+              "ci95": [
+                -0.0456,
+                0.0492
+              ]
+            },
+            "compact_minus_crud": {
+              "mean": 0.0251,
+              "ci95": [
+                -0.0291,
+                0.0714
+              ]
+            },
+            "sentences_minus_original": {
+              "mean": -0.043,
+              "ci95": [
+                -0.092,
+                0.0084
+              ]
+            },
+            "sentences_minus_crud": {
+              "mean": -0.0215,
+              "ci95": [
+                -0.0842,
+                0.0333
+              ]
+            },
+            "compact_minus_replay": {
+              "mean": -0.0036,
+              "ci95": [
+                -0.0526,
+                0.043
+              ]
+            },
+            "sentences_minus_replay": {
+              "mean": -0.0502,
+              "ci95": [
+                -0.0962,
+                -0.0038
+              ]
+            },
+            "original_minus_crud": {
+              "mean": 0.0215,
+              "ci95": [
+                -0.0231,
+                0.065
+              ]
+            },
+            "display_part": {
+              "mean": 0.043,
+              "ci95": [
+                -0.0084,
+                0.092
+              ]
+            },
+            "content_part": {
+              "mean": -0.0215,
+              "ci95": [
+                -0.0842,
+                0.0333
+              ]
+            }
+          },
+          "scoped_exception": {
+            "probes": 558,
+            "units": 28,
+            "original": {
+              "mean": 0.81,
+              "ci95": [
+                0.7794,
+                0.8401
+              ]
+            },
+            "crud": {
+              "mean": 0.7652,
+              "ci95": [
+                0.7209,
+                0.8098
+              ]
+            },
+            "replay": {
+              "mean": 0.8082,
+              "ci95": [
+                0.7759,
+                0.84
+              ]
+            },
+            "compact": {
+              "mean": 0.7599,
+              "ci95": [
+                0.7151,
+                0.8013
+              ]
+            },
+            "sentences": {
+              "mean": 0.7742,
+              "ci95": [
+                0.7313,
+                0.8188
+              ]
+            },
+            "replay_minus_original": {
+              "mean": -0.0018,
+              "ci95": [
+                -0.0136,
+                0.009
+              ]
+            },
+            "replay_minus_crud": {
+              "mean": 0.043,
+              "ci95": [
+                0.0044,
+                0.0786
+              ]
+            },
+            "compact_minus_original": {
+              "mean": -0.0502,
+              "ci95": [
+                -0.0909,
+                -0.0119
+              ]
+            },
+            "compact_minus_crud": {
+              "mean": -0.0054,
+              "ci95": [
+                -0.0425,
+                0.0274
+              ]
+            },
+            "sentences_minus_original": {
+              "mean": -0.0358,
+              "ci95": [
+                -0.0694,
+                0.0017
+              ]
+            },
+            "sentences_minus_crud": {
+              "mean": 0.009,
+              "ci95": [
+                -0.0088,
+                0.026
+              ]
+            },
+            "compact_minus_replay": {
+              "mean": -0.0484,
+              "ci95": [
+                -0.0925,
+                -0.0065
+              ]
+            },
+            "sentences_minus_replay": {
+              "mean": -0.0341,
+              "ci95": [
+                -0.0673,
+                0.004
+              ]
+            },
+            "original_minus_crud": {
+              "mean": 0.0448,
+              "ci95": [
+                0.009,
+                0.0791
+              ]
+            },
+            "display_part": {
+              "mean": 0.0358,
+              "ci95": [
+                -0.0017,
+                0.0694
+              ]
+            },
+            "content_part": {
+              "mean": 0.009,
+              "ci95": [
+                -0.0088,
+                0.026
+              ]
+            }
+          },
+          "exception_revision": {
+            "probes": 596,
+            "units": 28,
+            "original": {
+              "mean": 0.9077,
+              "ci95": [
+                0.8692,
+                0.9411
+              ]
+            },
+            "crud": {
+              "mean": 0.8809,
+              "ci95": [
+                0.8458,
+                0.9148
+              ]
+            },
+            "replay": {
+              "mean": 0.9094,
+              "ci95": [
+                0.8721,
+                0.9418
+              ]
+            },
+            "compact": {
+              "mean": 0.8876,
+              "ci95": [
+                0.8511,
+                0.9213
+              ]
+            },
+            "sentences": {
+              "mean": 0.8842,
+              "ci95": [
+                0.847,
+                0.917
+              ]
+            },
+            "replay_minus_original": {
+              "mean": 0.0017,
+              "ci95": [
+                -0.0037,
+                0.0072
+              ]
+            },
+            "replay_minus_crud": {
+              "mean": 0.0285,
+              "ci95": [
+                -0.012,
+                0.0651
+              ]
+            },
+            "compact_minus_original": {
+              "mean": -0.0201,
+              "ci95": [
+                -0.0465,
+                0.0082
+              ]
+            },
+            "compact_minus_crud": {
+              "mean": 0.0067,
+              "ci95": [
+                -0.0372,
+                0.049
+              ]
+            },
+            "sentences_minus_original": {
+              "mean": -0.0235,
+              "ci95": [
+                -0.0578,
+                0.0137
+              ]
+            },
+            "sentences_minus_crud": {
+              "mean": 0.0034,
+              "ci95": [
+                -0.0239,
+                0.0291
+              ]
+            },
+            "compact_minus_replay": {
+              "mean": -0.0218,
+              "ci95": [
+                -0.0469,
+                0.0049
+              ]
+            },
+            "sentences_minus_replay": {
+              "mean": -0.0252,
+              "ci95": [
+                -0.0595,
+                0.0135
+              ]
+            },
+            "original_minus_crud": {
+              "mean": 0.0268,
+              "ci95": [
+                -0.0138,
+                0.0624
+              ]
+            },
+            "display_part": {
+              "mean": 0.0235,
+              "ci95": [
+                -0.0137,
+                0.0578
+              ]
+            },
+            "content_part": {
+              "mean": 0.0034,
+              "ci95": [
+                -0.0239,
+                0.0291
+              ]
+            }
+          },
+          "stable_preference": {
+            "probes": 594,
+            "units": 28,
+            "original": {
+              "mean": 0.9428,
+              "ci95": [
+                0.9199,
+                0.965
+              ]
+            },
+            "crud": {
+              "mean": 0.9293,
+              "ci95": [
+                0.9012,
+                0.9557
+              ]
+            },
+            "replay": {
+              "mean": 0.9411,
+              "ci95": [
+                0.9167,
+                0.9641
+              ]
+            },
+            "compact": {
+              "mean": 0.9327,
+              "ci95": [
+                0.9085,
+                0.9533
+              ]
+            },
+            "sentences": {
+              "mean": 0.9293,
+              "ci95": [
+                0.8955,
+                0.9585
+              ]
+            },
+            "replay_minus_original": {
+              "mean": -0.0017,
+              "ci95": [
+                -0.006,
+                0.0
+              ]
+            },
+            "replay_minus_crud": {
+              "mean": 0.0118,
+              "ci95": [
+                -0.0144,
+                0.0402
+              ]
+            },
+            "compact_minus_original": {
+              "mean": -0.0101,
+              "ci95": [
+                -0.0335,
+                0.0129
+              ]
+            },
+            "compact_minus_crud": {
+              "mean": 0.0034,
+              "ci95": [
+                -0.0246,
+                0.0306
+              ]
+            },
+            "sentences_minus_original": {
+              "mean": -0.0135,
+              "ci95": [
+                -0.0454,
+                0.0152
+              ]
+            },
+            "sentences_minus_crud": {
+              "mean": 0.0,
+              "ci95": [
+                -0.0283,
+                0.0256
+              ]
+            },
+            "compact_minus_replay": {
+              "mean": -0.0084,
+              "ci95": [
+                -0.0326,
+                0.0153
+              ]
+            },
+            "sentences_minus_replay": {
+              "mean": -0.0118,
+              "ci95": [
+                -0.0441,
+                0.0193
+              ]
+            },
+            "original_minus_crud": {
+              "mean": 0.0135,
+              "ci95": [
+                -0.0116,
+                0.041
+              ]
+            },
+            "display_part": {
+              "mean": 0.0135,
+              "ci95": [
+                -0.0152,
+                0.0454
+              ]
+            },
+            "content_part": {
+              "mean": 0.0,
+              "ci95": [
+                -0.0283,
+                0.0256
+              ]
+            }
+          },
+          "type_target": {
+            "probes": 691,
+            "units": 28,
+            "original": {
+              "mean": 0.9045,
+              "ci95": [
+                0.8585,
+                0.941
+              ]
+            },
+            "crud": {
+              "mean": 0.9204,
+              "ci95": [
+                0.8837,
+                0.9527
+              ]
+            },
+            "replay": {
+              "mean": 0.9045,
+              "ci95": [
+                0.859,
+                0.9392
+              ]
+            },
+            "compact": {
+              "mean": 0.9059,
+              "ci95": [
+                0.8702,
+                0.9382
+              ]
+            },
+            "sentences": {
+              "mean": 0.919,
+              "ci95": [
+                0.8832,
+                0.9487
+              ]
+            },
+            "replay_minus_original": {
+              "mean": 0.0,
+              "ci95": [
+                -0.0103,
+                0.0104
+              ]
+            },
+            "replay_minus_crud": {
+              "mean": -0.0159,
+              "ci95": [
+                -0.046,
+                0.0133
+              ]
+            },
+            "compact_minus_original": {
+              "mean": 0.0014,
+              "ci95": [
+                -0.0447,
+                0.0451
+              ]
+            },
+            "compact_minus_crud": {
+              "mean": -0.0145,
+              "ci95": [
+                -0.0558,
+                0.0193
+              ]
+            },
+            "sentences_minus_original": {
+              "mean": 0.0145,
+              "ci95": [
+                -0.0211,
+                0.0508
+              ]
+            },
+            "sentences_minus_crud": {
+              "mean": -0.0014,
+              "ci95": [
+                -0.0258,
+                0.0224
+              ]
+            },
+            "compact_minus_replay": {
+              "mean": 0.0014,
+              "ci95": [
+                -0.0371,
+                0.0404
+              ]
+            },
+            "sentences_minus_replay": {
+              "mean": 0.0145,
+              "ci95": [
+                -0.0201,
+                0.0492
+              ]
+            },
+            "original_minus_crud": {
+              "mean": -0.0159,
+              "ci95": [
+                -0.0461,
+                0.0141
+              ]
+            },
+            "display_part": {
+              "mean": -0.0145,
+              "ci95": [
+                -0.0508,
+                0.0211
+              ]
+            },
+            "content_part": {
+              "mean": -0.0014,
+              "ci95": [
+                -0.0258,
+                0.0224
+              ]
+            }
+          },
+          "type_default": {
+            "probes": 531,
+            "units": 28,
+            "original": {
+              "mean": 0.9284,
+              "ci95": [
+                0.893,
+                0.9593
+              ]
+            },
+            "crud": {
+              "mean": 0.8173,
+              "ci95": [
+                0.7734,
+                0.8625
+              ]
+            },
+            "replay": {
+              "mean": 0.9284,
+              "ci95": [
+                0.8937,
+                0.9593
+              ]
+            },
+            "compact": {
+              "mean": 0.919,
+              "ci95": [
+                0.8857,
+                0.9499
+              ]
+            },
+            "sentences": {
+              "mean": 0.8343,
+              "ci95": [
+                0.7907,
+                0.8733
+              ]
+            },
+            "replay_minus_original": {
+              "mean": 0.0,
+              "ci95": [
+                -0.0057,
+                0.0053
+              ]
+            },
+            "replay_minus_crud": {
+              "mean": 0.1111,
+              "ci95": [
+                0.0582,
+                0.1615
+              ]
+            },
+            "compact_minus_original": {
+              "mean": -0.0094,
+              "ci95": [
+                -0.0468,
+                0.0248
+              ]
+            },
+            "compact_minus_crud": {
+              "mean": 0.1017,
+              "ci95": [
+                0.0528,
+                0.1498
+              ]
+            },
+            "sentences_minus_original": {
+              "mean": -0.0942,
+              "ci95": [
+                -0.1465,
+                -0.0365
+              ]
+            },
+            "sentences_minus_crud": {
+              "mean": 0.0169,
+              "ci95": [
+                -0.0137,
+                0.0463
+              ]
+            },
+            "compact_minus_replay": {
+              "mean": -0.0094,
+              "ci95": [
+                -0.0462,
+                0.0239
+              ]
+            },
+            "sentences_minus_replay": {
+              "mean": -0.0942,
+              "ci95": [
+                -0.1462,
+                -0.0379
+              ]
+            },
+            "original_minus_crud": {
+              "mean": 0.1111,
+              "ci95": [
+                0.0568,
+                0.1627
+              ]
+            },
+            "display_part": {
+              "mean": 0.0942,
+              "ci95": [
+                0.0365,
+                0.1465
+              ]
+            },
+            "content_part": {
+              "mean": 0.0169,
+              "ci95": [
+                -0.0137,
+                0.0463
+              ]
+            }
+          },
+          "type_neighbor": {
+            "probes": 717,
+            "units": 28,
+            "original": {
+              "mean": 0.9205,
+              "ci95": [
+                0.8926,
+                0.9464
+              ]
+            },
+            "crud": {
+              "mean": 0.9428,
+              "ci95": [
+                0.916,
+                0.9658
+              ]
+            },
+            "replay": {
+              "mean": 0.9247,
+              "ci95": [
+                0.8967,
+                0.9505
+              ]
+            },
+            "compact": {
+              "mean": 0.9038,
+              "ci95": [
+                0.8764,
+                0.9293
+              ]
+            },
+            "sentences": {
+              "mean": 0.9303,
+              "ci95": [
+                0.9004,
+                0.9559
+              ]
+            },
+            "replay_minus_original": {
+              "mean": 0.0042,
+              "ci95": [
+                -0.0014,
+                0.0104
+              ]
+            },
+            "replay_minus_crud": {
+              "mean": -0.0181,
+              "ci95": [
+                -0.049,
+                0.0112
+              ]
+            },
+            "compact_minus_original": {
+              "mean": -0.0167,
+              "ci95": [
+                -0.038,
+                0.0028
+              ]
+            },
+            "compact_minus_crud": {
+              "mean": -0.0391,
+              "ci95": [
+                -0.0685,
+                -0.0086
+              ]
+            },
+            "sentences_minus_original": {
+              "mean": 0.0098,
+              "ci95": [
+                -0.0123,
+                0.0359
+              ]
+            },
+            "sentences_minus_crud": {
+              "mean": -0.0126,
+              "ci95": [
+                -0.0345,
+                0.0079
+              ]
+            },
+            "compact_minus_replay": {
+              "mean": -0.0209,
+              "ci95": [
+                -0.044,
+                0.0
+              ]
+            },
+            "sentences_minus_replay": {
+              "mean": 0.0056,
+              "ci95": [
+                -0.0173,
+                0.0326
+              ]
+            },
+            "original_minus_crud": {
+              "mean": -0.0223,
+              "ci95": [
+                -0.0522,
+                0.0054
+              ]
+            },
+            "display_part": {
+              "mean": -0.0098,
+              "ci95": [
+                -0.0359,
+                0.0123
+              ]
+            },
+            "content_part": {
+              "mean": -0.0126,
+              "ci95": [
+                -0.0345,
+                0.0079
+              ]
+            }
+          },
+          "type_boundary": {
+            "probes": 88,
+            "units": 22,
+            "original": {
+              "mean": 0.4318,
+              "ci95": [
+                0.2812,
+                0.5745
+              ]
+            },
+            "crud": {
+              "mean": 0.1705,
+              "ci95": [
+                0.0761,
+                0.2787
+              ]
+            },
+            "replay": {
+              "mean": 0.4091,
+              "ci95": [
+                0.2787,
+                0.5301
+              ]
+            },
+            "compact": {
+              "mean": 0.1023,
+              "ci95": [
+                0.0145,
+                0.2039
+              ]
+            },
+            "sentences": {
+              "mean": 0.1932,
+              "ci95": [
+                0.0845,
+                0.3182
+              ]
+            },
+            "replay_minus_original": {
+              "mean": -0.0227,
+              "ci95": [
+                -0.0864,
+                0.0405
+              ]
+            },
+            "replay_minus_crud": {
+              "mean": 0.2386,
+              "ci95": [
+                0.1067,
+                0.3564
+              ]
+            },
+            "compact_minus_original": {
+              "mean": -0.3295,
+              "ci95": [
+                -0.4639,
+                -0.1864
+              ]
+            },
+            "compact_minus_crud": {
+              "mean": -0.0682,
+              "ci95": [
+                -0.175,
+                0.0294
+              ]
+            },
+            "sentences_minus_original": {
+              "mean": -0.2386,
+              "ci95": [
+                -0.374,
+                -0.1039
+              ]
+            },
+            "sentences_minus_crud": {
+              "mean": 0.0227,
+              "ci95": [
+                0.0,
+                0.0532
+              ]
+            },
+            "compact_minus_replay": {
+              "mean": -0.3068,
+              "ci95": [
+                -0.4304,
+                -0.1765
+              ]
+            },
+            "sentences_minus_replay": {
+              "mean": -0.2159,
+              "ci95": [
+                -0.3378,
+                -0.0847
+              ]
+            },
+            "original_minus_crud": {
+              "mean": 0.2614,
+              "ci95": [
+                0.1237,
+                0.3922
+              ]
+            },
+            "display_part": {
+              "mean": 0.2386,
+              "ci95": [
+                0.1039,
+                0.374
+              ]
+            },
+            "content_part": {
+              "mean": 0.0227,
+              "ci95": [
+                0.0,
+                0.0532
+              ]
+            }
+          }
+        }
+      },
+      "per_run": [
+        {
+          "run": "runs/test_p12_gold",
+          "display_run": "runs/readtime/test_gold",
+          "replay": {
+            "lost": 11,
+            "gained": 12
+          },
+          "compact": {
+            "lost": 145,
+            "gained": 100
+          },
+          "sentences": {
+            "lost": 135,
+            "gained": 81
+          },
+          "replay_same_answer": {
+            "probes": 2027,
+            "same": 2000,
+            "share": 0.9867
+          }
+        }
+      ],
+      "tokens": {
+        "replay": {
+          "input_tokens": {
+            "calls": 2027,
+            "total": 941506,
+            "mean": 464.5
+          },
+          "memory_tokens": {
+            "calls": 2027,
+            "total": 645356,
+            "mean": 318.4
+          },
+          "output_tokens": {
+            "calls": 2027,
+            "total": 107362,
+            "mean": 53.0
+          }
+        },
+        "compact": {
+          "input_tokens": {
+            "calls": 2027,
+            "total": 416905,
+            "mean": 205.7
+          },
+          "memory_tokens": {
+            "calls": 2027,
+            "total": 118728,
+            "mean": 58.6
+          },
+          "output_tokens": {
+            "calls": 2027,
+            "total": 76571,
+            "mean": 37.8
+          }
+        },
+        "sentences": {
+          "input_tokens": {
+            "calls": 2027,
+            "total": 532764,
+            "mean": 262.8
+          },
+          "memory_tokens": {
+            "calls": 2027,
+            "total": 236614,
+            "mean": 116.7
+          },
+          "output_tokens": {
+            "calls": 2027,
+            "total": 105010,
+            "mean": 51.8
+          }
+        }
+      },
+      "display_check": {
+        "bad_edges": 0,
+        "edges_ok": 3328,
+        "general": 2625,
+        "general_not_persistent": 0,
+        "probes": 2027,
+        "records": 5953,
+        "replaces_active": 0,
+        "replay_same_raw_answer": 1995,
+        "situation": 3328,
+        "situation_open": 1207,
+        "situation_persistent": 1622,
+        "situation_window": 499
+      },
+      "answer_line_missing": {
+        "replay": 3,
+        "compact": 0,
+        "sentences": 8
+      }
+    }
+  }
+}

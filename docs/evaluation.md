@@ -212,6 +212,9 @@ probes per arm, no duplicate answers, the test file, reader 3, and adapters that
 Post-hoc analyses added afterwards (format against writing with intervals over episodes and over attributes, the
 comparison with dev, teacher-forced write metrics, cost, and the figures for the report) are in
 [analysis.md](analysis.md#post-hoc-analyses-2026-11-24); they re-read these runs and change none of the numbers above.
+The read-time experiments of the team's mid-project update (A: answering from the raw conversations; B: the same
+memory shown in other ways) ran later with the same frozen Answer Agent and are post-hoc too
+([analysis.md](analysis.md#read-time-experiments-post-hoc-2026-11-24)).
 
 Next is the manual error analysis fixed in [analysis.md](analysis.md#manual-error-analysis-pre-specified). Its packets
 are in [annotations/error_analysis/](../annotations/error_analysis/): 40 of the 275 wrong scope probes and 40 of the

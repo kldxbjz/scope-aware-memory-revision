@@ -8,7 +8,8 @@
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=64G
 #SBATCH --time=06:00:00
-#SBATCH --exclude=babel-z5-20,babel-l5-[16,20,28,32],babel-l9-[16,20,28,32],babel-m9-[16,20,28,32],babel-n9-20,babel-z5-[16,28,32],babel-z9-[16,20,24]
+#SBATCH --exclude=babel-aa9-[16,20,24],babel-l5-[16,20,28,32],babel-l9-[16,20,28,32],babel-m9-[16,20,28,32],babel-n9-20,babel-z5-[16,20,28,32],babel-z9-[16,20,24,28]
+# --exclude: every RTX PRO 6000 Blackwell node (sinfo of 2026-11-24); torch 2.6+cu124 has no kernels for them.
 #SBATCH --output=/home/zichuwu/scope-sft-work/runs/slurm-%j.out
 # Policy runs and scoring on the full v1.1 dev split (default), with SPLIT=test the test split, or with
 # SPLIT=challenge the challenge set (training/challenge_v1), with Qwen3-4B-Instruct-2507; resumable. The test split is
