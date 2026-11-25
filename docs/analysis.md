@@ -74,8 +74,9 @@ The first command draws 5 events of every category from train and from test (60 
 
 ### Result (2026-11-23)
 
-One team member (Raina) labelled all 60 items alone, from the packet and a Chinese instruction sheet with the same six
-categories and a recommended order of checks. Her file is `annotations/label_audit/labels_raina.json`, as received
+The initial repository record contained one submitted annotation file (Raina), covering all 60 items from the packet
+and a Chinese instruction sheet with the same six categories and a recommended order of checks. Subsequent provenance
+review established that Raina discussed some items with AI; the record should not be described as unaided human annotation. Her file is `annotations/label_audit/labels_raina.json`, as received
 (SHA-256 `3d162e9f…`, no notes). `agreement --labels annotations/label_audit/labels_raina.json --key
 annotations/label_audit/key.json` wrote `annotations/label_audit/agreement_raina.json`: she chose the gold category
 for 58 of the 60 items (96.7%; Cohen's kappa against gold 0.96). The two disagreements were checked against the
@@ -87,15 +88,15 @@ gold labels.
 | L008 | train `tr-0138` | `exception_revision` | `stable_preference` | There is no stored rule for the situation (typing without gloves), so there is nothing to revise, and the user limits the change to today ("Once this occasion is over, keep my earlier preferences"), which makes it a one-off request. Gold holds. |
 | L024 | test `te-0053` | `general_update` | `exception_revision` | The stored preferences already hold a rule for lodgings used for a single night; the user changes its value and says the rest of the preferences stay. Gold holds. |
 
-The audit therefore found no label error in 60 events (one-sided 95% upper bound 4.9%). Even if both disagreements
-counted as errors, the rate would be 2 of 60 (3.3%, 95% CI 0.4–11.5%). No data were changed. A second annotator was
-not available, so there is no agreement between annotators to report; the team decided on 2026-11-23 to go ahead
-with one annotator.
+That non-blind check retained both gold categories and no data were changed. At the time of the test submission,
+only Raina's annotation file was recorded in the repository, so the initial report had no inter-annotator agreement.
+The later completion below is a separate update; it does not change that submission history. These category-balanced
+sample checks do not establish an error-rate bound for the full corpus.
 
 ### Second annotator and adjudication (after the test run, 2026-11-24)
 
-After the single test run, a second team member (A) labelled the same 60 items alone, and a third (C) settled the
-disagreements. The team sent the files on 2026-11-24; they are in `annotations/label_audit/` as received:
+After the single test run, the completed second annotation file (A) for the same 60 items was added, together with
+Raina's report that a third member (C) settled both disagreements in A's favour. The files were recorded on 2026-11-24; they are in `annotations/label_audit/` as received:
 `labels_A.json` (SHA-256 `3ad4f159…`, no notes), `labels_final.json` (SHA-256 `24f5a260…`, the labels after
 adjudication; its `annotator` field says `final_adjudicated`: a summary, not a third annotation) and
 `adjudication_summary.md` (in Chinese: the comparison, the adjudication and the SHA-256 of both raw files, which it
@@ -114,8 +115,18 @@ the gold category for all 60. The two disagreements are L008 and L024 above; C d
 (C's own record was not sent). The final labels therefore equal A's labels and the gold category on all 60 items. No
 data, setting or result changed.
 
-The audit that cleared the test run is the one-annotator result of 2026-11-23 above; this second annotation came
-later and does not change that record. Raina discussed some items with an AI assistant, which the report should say.
+The audit recorded before the test run is the one-annotator result of 2026-11-23 above; this second file and
+adjudication were recorded later and do not change that history. Raina discussed some items with an AI assistant,
+which the report should say. The blinding process was not independently verified.
+
+The machine-readable [`adjudication_C_record.json`](../annotations/label_audit/adjudication_C_record.json) records
+Raina's confirmation, the two decisions and source hashes; it is not C's original annotation file. The final
+aggregate's 60/60 agreement with generated categories does not establish that all fields, probes or episodes are
+correct, and must not replace the original 58/60 inter-annotator agreement. The additional 60-item packet remains
+a reserve, not a prerequisite for A/B. The separate 40-per-arm error-analysis packets remain a different task.
+
+Current recommendations: [后续实验建议](后续实验建议.md) and [中期 update](中期update.md). The A/B implementation
+and run plan below are already committed; check smoke/freeze/job status before submitting duplicate work.
 
 ## Post-hoc analyses (2026-11-24)
 
@@ -302,3 +313,4 @@ $P b --display $R/dev_sft_s0 $R/dev_sft_s1 $R/dev_sft_s2 $R/dev_gold \
   --sft ${D}_s0 ${D}_s1 ${D}_s2 --gold runs/reference_gold_p12 --out $O/readtime_b_dev.json
 $P show --data DATA --probe EPISODE/PROBE [--run RUN --condition compact]   # print one prompt
 ```
+

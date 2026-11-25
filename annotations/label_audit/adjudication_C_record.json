@@ -1,0 +1,42 @@
+{
+  "recorded_date": "2026-11-24",
+  "adjudicator": "C",
+  "reported_by": "Raina",
+  "record_type": "coordinator_record_of_user_reported_adjudication",
+  "decision_source": "Raina confirmed in the conversation that teammate C completed adjudication and supported A on both disagreements.",
+  "original_C_annotation_file_provided": false,
+  "blinding_independently_verified": false,
+  "primary_annotations": {
+    "Raina": {
+      "file": "labels_raina.json",
+      "sha256": "3d162e9f56bc0c1ec4aa5250de967c9c93302731b13c558803e13f8901d82795"
+    },
+    "A": {
+      "file": "labels_A.json",
+      "sha256": "3ad4f1599af8b852833ee4b744eb148c2bbc5031eb521c674a3ac1b145d1dd7c"
+    }
+  },
+  "items": [
+    {
+      "id": "L008",
+      "raina_category": "exception_revision",
+      "A_category": "stable_preference",
+      "adjudicated_category": "stable_preference",
+      "decision": "accept_A",
+      "verbatim_C_rationale": null
+    },
+    {
+      "id": "L024",
+      "raina_category": "general_update",
+      "A_category": "exception_revision",
+      "adjudicated_category": "exception_revision",
+      "decision": "accept_A",
+      "verbatim_C_rationale": null
+    }
+  ],
+  "final_labels_file": "labels_final.json",
+  "final_labels_sha256": "24f5a260ac7f400a73b278cc251a2d291481be3a07960eec36139414e9c83c09",
+  "finalization_rule": "Retain the 58 originally agreed labels and use A for the two disagreements, as confirmed by Raina.",
+  "provenance_note": "Raina discussed some items with AI. The original primary labels are preserved; do not describe the process as independently verified fully human double-blind annotation.",
+  "timing_note": "This completion record was added after the original test results were available. It does not retrospectively make the test submission a completed two-annotator audit."
+}

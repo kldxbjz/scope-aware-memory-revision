@@ -120,12 +120,13 @@ kept; no seed or setting was added or changed after the challenge set. Identifie
 Before the run, the label audit in [analysis.md](analysis.md#label-audit-of-the-synthetic-data) is done and the team
 decides whether its error rate needs a data fix. Then `submit_test.sh` runs once.
 
-The label audit was done on 2026-11-23 with one annotator, who confirmed 58 of the 60 gold categories; both
-disagreements are annotator slips, so no label error was found and no data were changed
-([result](analysis.md#result-2026-11-23)).
+The initial label audit recorded on 2026-11-23 contained Raina's file, agreeing with 58 of the 60 gold categories.
+A non-blind check retained both disputed gold labels and no data were changed
+([initial result](analysis.md#result-2026-11-23)).
 
-A second annotator labelled the same 60 items after the test run (2026-11-24): the two agree on 58 of 60
-(kappa 0.96), and both disagreements were decided for the gold category
+A second annotation file covering the same 60 items was added after the test run (2026-11-24): the original two
+files agree on 58 of 60 (96.67%, kappa 0.96). Raina reported that C decided both disagreements for A, and the final
+aggregate agrees with the generated categories on all 60
 ([record](analysis.md#second-annotator-and-adjudication-after-the-test-run-2026-11-24)). This does not
 change the record above.
 
@@ -223,3 +224,4 @@ are in [annotations/error_analysis/](../annotations/error_analysis/): 40 of the 
 ## Not covered yet
 
 - The v0.1 corpus in `training/scope_revision_training/`, which predates this protocol.
+

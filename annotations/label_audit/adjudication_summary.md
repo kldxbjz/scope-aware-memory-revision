@@ -26,8 +26,8 @@ Raina 在本次对话中确认：队友 C 已完成两处分歧的仲裁，均�
 
 ## 来源与记录边界
 
-- Raina 原始文件：`Raina_finished/labels_raina.json`。
-- A 原始文件：`annotator_A/labels_A.json`。
+- Raina 原始文件：`labels_raina.json`。
+- A 原始文件：`labels_A.json`。
 - C 的仲裁来源：Raina 在对话中的明确确认；本次未提供 C 的原始标注文件，未将本记录伪装为 C 的原始提交。
 - 本记录不单独确认仲裁过程是否全程盲审。Raina 部分条目曾与 AI 讨论，应在研究方法或辅助记录中如实说明。
 - 此次确定的是这 60 条的最终人工类别；未因此改写生成数据、重新训练模型或改变模型评测结果。
@@ -36,3 +36,13 @@ Raina 在本次对话中确认：队友 C 已完成两处分歧的仲裁，均�
 
 - Raina：`3d162e9f56bc0c1ec4aa5250de967c9c93302731b13c558803e13f8901d82795`。
 - A：`3ad4f1599af8b852833ee4b744eb148c2bbc5031eb521c674a3ac1b145d1dd7c`。
+
+## 对照生成标签与上传时间线
+
+双人原始一致性报告：`agreement_raina_A.json`；最终汇总对照 gold 的报告：`agreement_final.json`。两份报告由仓库 `scope_memory/analysis.py` 的原有一致性函数生成，使用与 GitHub blob 完全一致的原始 train/test 数据。
+
+Raina 对照 gold 为 58/60，A 对照 gold 为 60/60，仲裁后的最终人工类别对照 gold 为 60/60。这里的 100% 只描述这批样本与生成类别的一致情况，不能外推整个数据集的错误率。无需据此改动生成标签或重新训练模型。
+
+机器可读的 C 仲裁转述记录为 `adjudication_C_record.json`；它不是 C 的原始提交。
+
+本次上传发生在原始 test 结果已知之后。2026-11-23 测试提交前仓库只保存 Raina 一份标注的记录仍保留，不能把后补的第二份标注和仲裁写成测试前已经完成。
