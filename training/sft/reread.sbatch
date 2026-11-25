@@ -19,19 +19,22 @@
 # When RUN/cost_runs.txt lists baseline.sbatch runs, cost_report.py writes their token counts to RUN/cost_runs.json.
 # READTIME_MIRROR and READTIME_CODE (sbatch --export=ALL,...) replace the mirror and the script folder, for a run from a
 # staged copy before the code is pushed.
+# READTIME_MODEL replaces the Answer Agent's base model (post-hoc runs with a larger reader; default
+# Qwen3-4B-Instruct-2507).
 set -euo pipefail
 RUN=${1:?usage: reread.sbatch RUN_DIR [reread.py options]}
 shift
 MIRROR=${READTIME_MIRROR:-/home/zichuwu/scope-aware-memory-revision}
 CODE=${READTIME_CODE:-/home/zichuwu/scope-sft-work/sft}
 BIG=/data/user_data/zichuwu/scope-sft
+MODEL=${READTIME_MODEL:-$BIG/models/Qwen3-4B-Instruct-2507}
 PY=$BIG/venv-trl024/bin/python
 export HF_HOME=$BIG/hf_home HF_HUB_OFFLINE=1 PYTHONDONTWRITEBYTECODE=1 TOKENIZERS_PARALLELISM=false
 mkdir -p "$RUN"
 [ -f "$RUN/ALL_DONE" ] && { echo "already done"; exit 0; }
-echo "host=$(hostname) job=${SLURM_JOB_ID:-} mirror=$MIRROR code=$CODE options=$* $(date -Is)"
+echo "host=$(hostname) job=${SLURM_JOB_ID:-} mirror=$MIRROR code=$CODE model=$MODEL options=$* $(date -Is)"
 nvidia-smi --query-gpu=name,memory.total --format=csv,noheader
-"$PY" "$CODE/reread.py" --model "$BIG/models/Qwen3-4B-Instruct-2507" --repo "$MIRROR" --out-dir "$RUN" "$@"
+"$PY" "$CODE/reread.py" --model "$MODEL" --repo "$MIRROR" --out-dir "$RUN" "$@"
 if [ -f "$RUN/cost_runs.txt" ] && [ ! -f "$RUN/cost_runs.json" ]; then
   # shellcheck disable=SC2046
   "$PY" "$CODE/cost_report.py" --tokenizer "$BIG/models/Qwen3-4B-Instruct-2507" --repo "$MIRROR" \

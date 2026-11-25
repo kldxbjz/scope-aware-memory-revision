@@ -7,7 +7,8 @@ demonstrations, the same events for both arms. With SFT, each arm loads only its
 path, and memory never written), so the Answer Agent's ceiling and the do-nothing floor are measured the same way.
 The Answer Agent is always a freshly loaded base model without any adapter; `--reader-version` picks its prompt
 (scope_memory.evaluate.ANSWER_READERS), and `--from-run` reuses a finished run's policy outputs so that only the
-Answer Agent runs again.
+Answer Agent runs again. `--answer-model` gives the Answer Agent another base model than the policy's (post-hoc
+re-reads with a larger reader; default `--model`).
 Writes predictions_<arm>.jsonl (policy model only), trajectories.jsonl, answers.jsonl and answer_agent.json for
 scope_memory.evaluate.
 """
@@ -25,6 +26,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 
 class Generator:
     def __init__(self, model_dir, adapter, batch_size):
+        self.model_dir = model_dir
         self.tok = AutoTokenizer.from_pretrained(model_dir)
         self.tok.padding_side = "left"
         if self.tok.pad_token is None:
@@ -107,7 +109,9 @@ def main():
     p.add_argument("--reader-version", type=int,
                    help="Answer Agent prompt version (scope_memory.evaluate.ANSWER_READERS); default ANSWER_READER")
     p.add_argument("--from-run", help="finished run whose policy outputs are reused, so only the Answer Agent runs "
-                                      "again; its settings must match apart from the reader version")
+                                      "again; its settings must match apart from the reader version and model")
+    p.add_argument("--answer-model", help="base model of the Answer Agent when it is not --model (post-hoc re-reads "
+                                          "with another reader)")
     args = p.parse_args()
     if bool(args.adapter_scope) != bool(args.adapter_crud):
         sys.exit("give both --adapter-scope and --adapter-crud, or neither")
@@ -135,6 +139,9 @@ def main():
                                              for arm in ARMS}}
     if args.from_run:
         config["policy_outputs_from"] = args.from_run
+    if args.answer_model:  # recorded only when given, so earlier run directories still resume
+        config["answer_model"] = args.answer_model
+    answer_model = args.answer_model or args.model
     config_path = out / "run_config.json"  # a resumed run must use the same settings and instructions
     if config_path.exists() and json.loads(config_path.read_text(encoding="utf-8")) != config:
         sys.exit(f"{config_path} was written with other settings or instructions; use a new --out-dir")
@@ -155,7 +162,8 @@ def main():
         theirs = {"policy": "model", "reader_version": 1,  # keys added after the first runs, at their old values
                   **json.loads((source / "run_config.json").read_text(encoding="utf-8"))}
         differ = sorted(k for k in set(config) | set(theirs)
-                        if k not in ("reader_version", "policy_outputs_from") and config.get(k) != theirs.get(k))
+                        if k not in ("reader_version", "policy_outputs_from", "answer_model")
+                        and config.get(k) != theirs.get(k))
         if differ:
             sys.exit(f"{source} was run with other settings: {differ}")
         for arm in ARMS:
@@ -173,13 +181,13 @@ def main():
 
     loaded = {"gen": None}
 
-    def generator(adapter):
+    def generator(adapter, model=args.model):
         """Loaded lazily: an arm's model carries only that arm's adapter; adapter None is a fresh base model."""
         gen = loaded["gen"]
-        if gen is None or gen.adapter != adapter:
+        if gen is None or gen.adapter != adapter or gen.model_dir != model:
             if gen is not None:
                 gen.close()
-            gen = loaded["gen"] = Generator(args.model, adapter, args.batch_size)
+            gen = loaded["gen"] = Generator(model, adapter, args.batch_size)
         return gen
 
     for arm in ARMS:
@@ -232,11 +240,11 @@ def main():
 
     answers_path = out / "answers.jsonl"
     if not answers_path.exists():  # fixed Answer Agent: the base model, never an adapter
-        gen = generator(None)
+        gen = generator(None, answer_model)
         injected = lora_modules(gen.model)
         if injected:
             sys.exit(f"Answer Agent still has LoRA modules, e.g. {injected[0]}")
-        agent = {"model": args.model, "adapter": None, "lora_modules": 0, "reader_version": reader}
+        agent = {"model": answer_model, "adapter": None, "lora_modules": 0, "reader_version": reader}
         (out / "answer_agent.json").write_text(json.dumps(agent) + "\n", encoding="utf-8")
         by_id = {e["episode_id"]: e for e in episodes}
         items, prompts = [], []

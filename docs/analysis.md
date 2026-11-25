@@ -387,3 +387,38 @@ missing in at most 0.6% of the replies (CRUD sentences on dev: 21 of 3,510). Rep
 In short: with this reader both memories beat the raw history by 25-38 points; the structured scope-aware display is
 worth about 2-3 points on both splits, while what the scope-aware policy writes is no better than CRUD's on test and
 worse on dev; and the compact display trades 2-3 points for 82% fewer memory tokens.
+
+## Larger reader (post-hoc, dev only, 2026-11-25)
+
+Experiments A and B used one small reader. To see whether their readings depend on it, the dev runs are answered
+again by a larger reader with nothing else changed: Qwen3-30B-A3B-Instruct-2507 (the same 2507 instruct line,
+non-thinking only, 30.5 B parameters of which 3.3 B are active; the revision and every file's size and hash are pinned
+in `training/sft/bigreader_model.json`), prompt version 3, greedy decoding, the 160-token reply budget, batch size 32.
+The test split stays read once: dev only. The model is read from a shared Hugging Face cache when one holds the pinned
+revision, and is otherwise downloaded into node scratch for each job, checked file by file and deleted afterwards
+(`training/sft/bigreader.sbatch`); it needs an 80 GB GPU.
+
+Runs (`training/sft/submit_bigreader.sh`; run root `runs/bigreader_qwen3-30b-a3b-instruct-2507/`):
+
+- `sft_p12_eval_s{0,1,2}` and `reference_gold_p12`: both arms' stored dev memories (the same files as before)
+  answered by the larger reader (`baseline.py --from-run ... --answer-model`);
+- `readtime/dev_history`: A with the larger reader;
+- `readtime/dev_sft_s{0,1,2}` and `readtime/dev_gold`: B with the larger reader.
+
+The directory names match the source runs, so the reports are made exactly as for A and B (`readtime a` and
+`readtime b` on these directories) and shown next to the 4B numbers. `display_check.json` of these runs compares the
+replay with the 4B reader's stored answers; the report's replay agreement compares it with the larger reader's own.
+
+Readings, fixed before any run (dev; 4B values in brackets; intervals are reported with every number):
+
+- A holds if the raw history stays at least 10 points below each SFT memory (4B: −37.9 against CRUD, −35.5 against
+  scope); a gap under 5 points to either would make A's result mostly a property of the small reader.
+- The display reading of B holds if the display part (original − sentences) is positive for both SFT and gold memory
+  (4B: +2.0, +2.5) and the content part (sentences − CRUD) is not positive for SFT memory (4B: −4.4).
+- The cost of the compact display holds if compact − replay is negative for both SFT and gold memory (4B: −2.2, −2.6).
+
+Procedure: `submit_bigreader.sh smoke` runs one job that answers the first 5 dev episodes three ways (gold memory, A,
+and B on seed 0's memory) to check the pipeline only (every probe answered, the "Answer:" line present, no prompt cut,
+the model files checked) and to measure the speed, and then re-reads the full dev gold memory. After the smoke,
+`SMOKE_PASSED` in the run root names the commit, and `submit_bigreader.sh full` submits the other eight units once.
+Every result is reported, whichever way it falls.
