@@ -1,0 +1,24 @@
+{
+  "annotators": {
+    "final_adjudicated": {
+      "labelled": 60,
+      "labels": {
+        "exception_retirement": 10,
+        "scoped_exception": 10,
+        "general_update": 10,
+        "clarify": 10,
+        "exception_revision": 10,
+        "stable_preference": 10
+      }
+    }
+  },
+  "pairwise": {},
+  "against_gold": {
+    "final_adjudicated": {
+      "items": 60,
+      "agreement": 1.0,
+      "kappa": 1.0,
+      "disagreements": []
+    }
+  }
+}

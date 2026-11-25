@@ -124,6 +124,11 @@ The label audit was done on 2026-11-23 with one annotator, who confirmed 58 of t
 disagreements are annotator slips, so no label error was found and no data were changed
 ([result](analysis.md#result-2026-11-23)).
 
+A second annotator labelled the same 60 items after the test run (2026-11-24): the two agree on 58 of 60
+(kappa 0.96), and both disagreements were decided for the gold category
+([record](analysis.md#second-annotator-and-adjudication-after-the-test-run-2026-11-24)). This does not
+change the record above.
+
 `bash ~/scope-sft-work/sft/submit_test.sh` (Babel login node) submits the seven runs with `SPLIT=test` into `runs/test_p12_*`; every run directory gets a `SUBMITTED` marker, so a second call submits nothing again.
 
 ## Test results (2026-11-24)

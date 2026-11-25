@@ -92,6 +92,31 @@ counted as errors, the rate would be 2 of 60 (3.3%, 95% CI 0.4–11.5%). No data
 not available, so there is no agreement between annotators to report; the team decided on 2026-11-23 to go ahead
 with one annotator.
 
+### Second annotator and adjudication (after the test run, 2026-11-24)
+
+After the single test run, a second team member (A) labelled the same 60 items alone, and a third (C) settled the
+disagreements. The team sent the files on 2026-11-24; they are in `annotations/label_audit/` as received:
+`labels_A.json` (SHA-256 `3ad4f159…`, no notes), `labels_final.json` (SHA-256 `24f5a260…`, the labels after
+adjudication; its `annotator` field says `final_adjudicated`: a summary, not a third annotation) and
+`adjudication_summary.md` (in Chinese: the comparison, the adjudication and the SHA-256 of both raw files, which it
+names by their paths in the team's folders).
+
+```sh
+python3 -m scope_memory.analysis agreement --labels annotations/label_audit/labels_raina.json \
+  annotations/label_audit/labels_A.json --key annotations/label_audit/key.json \
+  --out annotations/label_audit/agreement_raina_A.json
+python3 -m scope_memory.analysis agreement --labels annotations/label_audit/labels_final.json \
+  --key annotations/label_audit/key.json --out annotations/label_audit/agreement_final.json
+```
+
+The two annotators agree on 58 of the 60 items (96.7%; Cohen's kappa 0.96), computed from the two raw files. A chose
+the gold category for all 60. The two disagreements are L008 and L024 above; C decided both for A, as Raina reported
+(C's own record was not sent). The final labels therefore equal A's labels and the gold category on all 60 items. No
+data, setting or result changed.
+
+The audit that cleared the test run is the one-annotator result of 2026-11-23 above; this second annotation came
+later and does not change that record. Raina discussed some items with an AI assistant, which the report should say.
+
 ## Post-hoc analyses (2026-11-24)
 
 The team asked for these after the single test run, to describe it and to compare it with dev. None was planned
