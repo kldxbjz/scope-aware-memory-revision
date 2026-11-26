@@ -390,15 +390,16 @@ worse on dev; and the compact display trades 2-3 points for 82% fewer memory tok
 
 ## Larger reader (post-hoc, dev only, 2026-11-25)
 
-Experiments A and B used one small reader. To see whether their readings depend on it, the dev runs are answered
-again by a larger reader with nothing else changed: Qwen3-30B-A3B-Instruct-2507 (the same 2507 instruct line,
-non-thinking only, 30.5 B parameters of which 3.3 B are active; the revision and every file's size and hash are pinned
-in `training/sft/bigreader_model.json`), prompt version 3, greedy decoding, the 160-token reply budget, batch size 64.
-The test split stays read once: dev only. The model is read from a Hugging Face cache on the cluster's shared storage
-when one holds the pinned revision, and is otherwise downloaded into node scratch for each job, checked file by file
-and deleted afterwards (`training/sft/bigreader.sbatch`). On 2026-11-25 every 80 GB GPU of the cluster was held by
-long jobs, so each job uses two 48 GB GPUs: `training/sft/spread.py` puts the first 24 decoder layers (with the
-embeddings, the final norm and the output layer) on one and the other 24 on the other.
+Experiments A and B used one small reader. To see whether their readings depend on it, the dev runs are answered again
+by a larger reader with nothing else changed: Qwen3-30B-A3B-Instruct-2507 (the same 2507 instruct line, non-thinking
+only, 30.5 B parameters of which 3.3 B are active; the revision and every file's size and hash are pinned in
+`training/sft/bigreader_model.json`), prompt version 3, greedy decoding, the 160-token reply budget, batch size 64. It
+started on dev only; on 2026-11-26 it was extended to test and the challenge set (last subsection). The model is read
+from a Hugging Face cache on the cluster's shared storage when one holds the pinned revision, and is otherwise
+downloaded into node scratch for each job, checked file by file and deleted afterwards
+(`training/sft/bigreader.sbatch`). On 2026-11-25 every 80 GB GPU of the cluster was held by long jobs, so each job
+uses two 48 GB GPUs: `training/sft/spread.py` puts the first 24 decoder layers (with the embeddings, the final norm
+and the output layer) on one and the other 24 on the other.
 
 Placement on two GPUs (2026-11-25/26). The first smoke job let accelerate spread the layers (`device_map="auto"`),
 which copies hidden states directly from one GPU to the other. Every reply came back as garbage ("!!!!" runs and
@@ -520,3 +521,40 @@ both memories, and the structured display is still worth about 2.5 points), whil
 does not (it gains 1.4-2.5 points instead). The reader also moves the dev difference between the arms by about 3
 points (from −2.5 to +0.7, neither interval excluding zero). The main table, read once on test with the 4B reader,
 stays as it is.
+
+### Test split and challenge set (post-hoc, 2026-11-26)
+
+On dev the larger reader moved the difference between the arms by about 3 points, and the main result is the test
+lead of the scope-aware arm (+2.7 with the 4B reader). On 2026-11-26 the check was therefore extended to the test
+split and the challenge set. This is a second, post-hoc reading of test, as A and B on test were: the main table,
+read once with the 4B reader, stays as it is, and every result below is reported whichever way it falls.
+
+Runs (same run root and settings as on dev; `submit_bigreader.sh test` and `submit_bigreader.sh challenge`, with
+`BIGREADER_SBATCH=--time=06:00:00`):
+
+- test, with `SPLIT=test` as the source runs: `test_p12_sft_s{0,1,2}` and `test_p12_gold` (both arms' stored test
+  memories), `readtime/test_sft_s{0,1,2}` and `readtime/test_gold` (B) and `readtime/test_history` (A), in five
+  jobs, the raw history in one of its own, since test has 1.7 times the dev questions (2,027 per arm);
+- challenge set, with `SPLIT=challenge`: `challenge_p12_ffeb6a87_sft_s{0,1,2}` and `challenge_p12_ffeb6a87_gold`,
+  both arms' stored memories only (the challenge set has no read-time runs), in one job.
+
+Checks and reports as on dev, with `--split test` or `--split challenge`: `bigreader_check.py`, and
+`bigreader_report.py`, which writes `results/posthoc/bigreader_test.json` and `bigreader_challenge.json`. Both scripts
+reproduce the dev report and checks unchanged; with the 4B runs on both sides, the report gives the 4B numbers of
+Tables 8 and 9 on test and the challenge set's H1 (+0.4 [−2.9, +4.0]).
+
+Readings, fixed before any of these runs (4B values in brackets):
+
+- A, the display reading of B and the cost of the compact display are judged on test with the rules used on dev
+  (4B: history − SFT CRUD −25.2 and − SFT scope-aware −27.9; display part +3.2 for SFT and +2.7 for gold memory,
+  content part −0.5 for SFT; compact − replay −3.0 and −2.3).
+- The test lead stays if scope-aware − CRUD after SFT is positive and its episode-bootstrap interval excludes zero
+  (4B: +2.7 [+0.9, +4.5]); it does not stay if the point estimate is zero or below; otherwise it is reported as
+  positive with an interval that reaches zero.
+- The dev finding that the larger reader misreads CRUD memory on ordinary-occasion questions replicates on test if
+  SFT CRUD accuracy on those questions falls by more than 5 points against the 4B reader (dev: −16.2; 4B on test:
+  79.7).
+- The challenge set (24 episodes; 4B: +0.4 [−2.9, +4.0]) is described, not judged, apart from the same replication
+  rule on its ordinary-occasion questions (4B: 86.0).
+
+Expected from dev, not judged: the lead grows, because CRUD memory loses on ordinary-occasion questions.

@@ -12,9 +12,10 @@
 #SBATCH --output=/home/zichuwu/scope-sft-work/runs/slurm-%j.out
 # Two 48 GB GPUs: spread.py splits the reader by decoder layers (at batch size 64 the smoke's check unit used at most
 # 36.7 of 44.4 GiB per L40S on the longest prompts, 0.88 s per reply; batch size 128 ran out of memory).
-# Larger-reader check (post-hoc, dev only; docs/analysis.md): puts the reader model of bigreader_model.json on this
-# node, then runs the units of UNITS_FILE one after another with it as the Answer Agent. One unit per line:
-#   baseline RUN [baseline.py options]   both arms' memories answered by the reader (baseline.sbatch, --answer-model)
+# Larger-reader check (post-hoc; docs/analysis.md): puts the reader model of bigreader_model.json on this node, then
+# runs the units of UNITS_FILE one after another with it as the Answer Agent. One unit per line:
+#   baseline RUN [baseline.py options]   both arms' memories answered by the reader (baseline.sbatch, --answer-model;
+#                                        the split is SPLIT of the job's environment, dev by default)
 #   reread RUN [reread.py options]       read-time conditions answered by the reader (reread.sbatch, READTIME_MODEL)
 #   check RUN [spread_check.py options]  checks of the two-GPU placement and of the model files (spread_check.py)
 # Units whose RUN has ALL_DONE are skipped, so a requeued job goes on where it stopped (and a finished job that the

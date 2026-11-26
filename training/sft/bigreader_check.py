@@ -1,14 +1,17 @@
-"""Pipeline checks of the larger reader's dev runs (docs/analysis.md, "Larger reader"):
+"""Pipeline checks of the larger reader's runs (docs/analysis.md, "Larger reader"):
 
     cd ~/scope-sft-work    # the folder that holds runs/
     python3 -I $REPO/training/sft/bigreader_check.py $REPO runs/bigreader_qwen3-30b-a3b-instruct-2507 runs
+    python3 -I $REPO/training/sft/bigreader_check.py --split test $REPO runs/bigreader_qwen3-30b-a3b-instruct-2507 runs
 
-Only the reader may differ from the 4B runs: the same episodes, the same memories (predictions and trajectories copied
-from the 4B runs; JSON summaries equal apart from the path of the run's own episodes.jsonl), the same prompts (read-time
-prompts recomputed from the repository code and compared with the 4B runs' prompt hashes), every probe answered. Also
-reports the "Answer:" line, replies at the token budget, the job logs (hosts, GPUs, errors) and the unit times.
-Prints PIPELINE CHECKS PASSED or FAILED. Standard library only.
+--split is dev (the default), test or challenge (memories only: the challenge set has no read-time runs). Only the
+reader may differ from the 4B runs: the same episodes, the same memories (predictions and trajectories copied from the
+4B runs; JSON summaries equal apart from the path of the run's own episodes.jsonl), the same prompts (read-time prompts
+recomputed from the repository code and compared with the 4B runs' prompt hashes), every probe answered, and the
+split's data in the job logs. Also reports the "Answer:" line, replies at the token budget, the job logs (hosts, GPUs,
+errors) and the unit times. Prints PIPELINE CHECKS PASSED or FAILED. Standard library only.
 """
+import argparse
 import hashlib
 import json
 import re
@@ -16,11 +19,29 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
-repo, big, small = (Path(a) for a in sys.argv[1:4])
+parser = argparse.ArgumentParser(description="Pipeline checks of the larger reader's runs (docs/analysis.md).")
+parser.add_argument("repo", type=Path, help="the repository")
+parser.add_argument("big", type=Path, help="the folder with the larger reader's runs")
+parser.add_argument("small", type=Path, help="the folder with the 4B runs")
+parser.add_argument("--split", choices=("dev", "test", "challenge"), default="dev")
+args = parser.parse_args()
+repo, big, small = args.repo, args.big, args.small
 sys.path.insert(0, str(repo))
 from scope_memory import readtime  # noqa: E402
 from scope_memory.evaluate import ANSWER_LINE  # noqa: E402
 
+SEEDS = (0, 1, 2)
+CHALLENGE = "challenge_p12_ffeb6a87"  # the challenge set's run names carry its data hash (training/challenge_v1)
+SPLITS = {"dev": {"jobs": ("br-s0", "br-s1", "br-s2", "br-gold"),
+                  "memory": [f"sft_p12_eval_s{k}" for k in SEEDS] + ["reference_gold_p12"],
+                  "readtime": ["dev_history"] + [f"dev_sft_s{k}" for k in SEEDS] + ["dev_gold"]},
+          "test": {"jobs": ("br-t-s0", "br-t-s1", "br-t-s2", "br-t-gold", "br-t-hist"),
+                   "memory": [f"test_p12_sft_s{k}" for k in SEEDS] + ["test_p12_gold"],
+                   "readtime": ["test_history"] + [f"test_sft_s{k}" for k in SEEDS] + ["test_gold"]},
+          "challenge": {"jobs": ("br-c",),
+                        "memory": [f"{CHALLENGE}_sft_s{k}" for k in SEEDS] + [f"{CHALLENGE}_gold"],
+                        "readtime": []}}
+spec = SPLITS[args.split]
 problems = []
 
 
@@ -46,15 +67,26 @@ def same_bytes(a, b):
     return a.read_bytes() == b.read_bytes()
 
 
-print("== job logs")
+def job_of(log):
+    m = re.fullmatch(r"slurm-(.+)-\d+\.out", log.name)
+    return m.group(1) if m else None
+
+
+print(f"== job logs ({args.split})")
 stamps = []
-for log in sorted((big / "units").glob("slurm-*.out")):
+logs = sorted(log for log in (big / "units").glob("slurm-*.out") if job_of(log) in spec["jobs"])
+missing_jobs = sorted(set(spec["jobs"]) - {job_of(log) for log in logs})
+if missing_jobs:
+    problems.append(f"no log of {missing_jobs}")
+splits = set()
+for log in logs:
     text = log.read_text(encoding="utf-8", errors="replace").splitlines()
     hosts = sorted({m.group(1) for line in text for m in [re.match(r"host=(\S+) job=", line)] if m})
     gpus = sorted({line.strip() for line in text if line.startswith("NVIDIA")})
     bad = [line for line in text if re.search(r"Traceback|Error|error|Killed|out of memory", line)
            and "DUE TO PREEMPTION" not in line]
     pre = [line[:120] for line in text if "DUE TO PREEMPTION" in line]
+    splits |= {m.group(1) for line in text for m in [re.search(r" split=(\S+) ", line)] if m}
     print(f"  {log.name}: hosts {hosts}, GPUs {gpus}, preempted: {pre or 'no'}, error lines: {bad or 'none'}")
     if bad:
         problems.append(f"{log.name}: error lines")
@@ -62,6 +94,9 @@ for log in sorted((big / "units").glob("slurm-*.out")):
         m = re.match(r"== unit (done )?(?:(\w+) )?(\S+) (\d{4}-\d\d-\d\dT[\d:]+)", line)
         if m:
             stamps.append((m.group(1) is not None, m.group(3), datetime.fromisoformat(m.group(4))))
+print(f"  SPLIT of the memory units: {sorted(splits)}")
+if splits - {args.split}:
+    problems.append(f"memory units ran on {sorted(splits)}")
 starts = {}
 print("  unit times:")
 for done, run_dir, t in stamps:
@@ -76,29 +111,31 @@ SAME_FILES = ("episodes.jsonl", "predictions_crud.jsonl", "predictions_scope.jso
               "trajectories_crud.jsonl", "trajectories_scope.jsonl", "eval_tf_crud.json", "eval_tf_scope.json",
               "eval_rollout_oracle_reader.json")
 EXPECTED_NEW = {"policy_outputs_from", "answer_model"}
-for name in ("sft_p12_eval_s0", "sft_p12_eval_s1", "sft_p12_eval_s2", "reference_gold_p12"):
+for name in spec["memory"]:
     b, s = big / name, small / name
     cb = json.loads((b / "run_config.json").read_text(encoding="utf-8"))
     cs = json.loads((s / "run_config.json").read_text(encoding="utf-8"))
     differ = sorted(k for k in set(cb) | set(cs) if cb.get(k) != cs.get(k))
     files = {f: same_bytes(b / f, s / f) for f in SAME_FILES if (s / f).exists()}
     ab, as_ = jsonl(b / "answers.jsonl"), jsonl(s / "answers.jsonl")
+    probes = sum(len(e["probes"]) for e in jsonl(s / "episodes.jsonl"))
     ids_equal = [r["id"] for r in ab] == [r["id"] for r in as_]
     missing = sum(not ANSWER_LINE.search(r["raw"]) for r in ab)
     missing4 = sum(not ANSWER_LINE.search(r["raw"]) for r in as_)
     agent = json.loads((b / "answer_agent.json").read_text(encoding="utf-8"))
     same_answer = sum(x["answer"] == y["answer"] for x, y in zip(ab, as_)) / len(ab)
     print(f"  {name}: config keys differing from the 4B run: {differ}; files equal to the 4B run: "
-          f"{sum(files.values())}/{len(files)}{'' if all(files.values()) else ' ' + str(files)}; answers {len(ab)}, "
-          f"ids as in the 4B run: {ids_equal}; answer line missing {missing} (4B: {missing4}); answer_agent.json "
-          f"{agent['model']} missing={agent['answer_line_missing']}; same answer text as the 4B reader: "
-          f"{100 * same_answer:.1f}%")
-    if set(differ) != EXPECTED_NEW or not all(files.values()) or not ids_equal or len(ab) != 2340:
+          f"{sum(files.values())}/{len(files)}{'' if all(files.values()) else ' ' + str(files)}; answers {len(ab)} "
+          f"for {probes} probes x 2 arms, ids as in the 4B run: {ids_equal}; answer line missing {missing} (4B: "
+          f"{missing4}); answer_agent.json {agent['model']} missing={agent['answer_line_missing']}; same answer text "
+          f"as the 4B reader: {100 * same_answer:.1f}%")
+    if set(differ) != EXPECTED_NEW or not all(files.values()) or not ids_equal or len(ab) != 2 * probes:
         problems.append(f"{name}: run differs from the 4B run beyond the reader")
 
-print("\n== read-time runs")
+if spec["readtime"]:
+    print("\n== read-time runs")
 local_sha = hashlib.sha256((repo / "scope_memory" / "readtime.py").read_bytes()).hexdigest()
-for name in ("dev_history", "dev_sft_s0", "dev_sft_s1", "dev_sft_s2", "dev_gold"):
+for name in spec["readtime"]:
     rb = readtime.load_readtime(big / "readtime" / name)
     rs = readtime.load_readtime(small / "readtime" / name)
     cfg = rb["config"]
@@ -118,7 +155,7 @@ for name in ("dev_history", "dev_sft_s0", "dev_sft_s1", "dev_sft_s2", "dev_gold"
     probes = [(e, p) for e in eps for p in e["probes"]]
     keys = [f"{e['episode_id']}/{p['probe_id']}" for e, p in probes]
     trajectories = None
-    if name != "dev_history":
+    if not name.endswith("_history"):
         trajectories = {t["episode_id"]: t for t in jsonl(big / "readtime" / name / "trajectories.jsonl")}
     for c in rb["answers"]:
         mine, theirs = rb["answers"][c], rs["answers"][c]
