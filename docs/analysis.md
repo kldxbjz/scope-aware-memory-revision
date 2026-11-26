@@ -444,3 +444,79 @@ smoke (2026-11-26) passed all of these: 324 answers, none without the "Answer:" 
 After the smoke, `SMOKE_PASSED` in the run root names the commit, and `submit_bigreader.sh full` submits the nine dev
 units once, in four jobs (one per SFT seed with its memories and its displays; one with gold memory, its displays and
 the raw history). Every result is reported, whichever way it falls.
+
+### Results (2026-11-26, larger reader)
+
+Runs. The four jobs (11283758-11283761, code `57f5592`) ran on 2026-11-26 between 07:30 and 10:30 ET: seeds 1 and 2
+on two L40S GPUs each, seed 0 and the gold job on two L40 GPUs each. Seed 0's job had first started at 03:26 and was
+preempted while loading the model, before it answered anything; it resumed at 08:31. After it finished, the requeue
+quirk put it back in the queue, and that copy was cancelled before it started. Every job read the model from the
+shared Hugging Face cache (24 of 24 files as in the manifest), so nothing was downloaded; the first smoke's download
+was deleted by its own job when it ended, and only links to the shared copy remain on the nodes. The nine units took
+29-56 minutes each, 6.2 hours of two-GPU jobs in all.
+
+Checks (`training/sft/bigreader_check.py`, passed): the episodes, the memories (predictions and trajectories) and the
+prompts are those of the 4B runs (every read-time prompt recomputed from the repository code and equal to the 4B
+run's), and every probe got one answer in each condition, 24,570 answers in all. The "Answer:" line is missing in 3 of
+them (the 4B reader: 59 of 24,570), and 4 history replies reached the 160-token budget (4B: 2). The larger reader gives
+the same answer as the 4B reader on 87% of the memory questions (86.8-87.2% per run); answering the original prompts
+again (replay) gives its own stored answer on 4,679 of 4,680. Report: `results/posthoc/bigreader_dev.json`, made by
+`training/sft/bigreader_report.py` (both readers, also by probe type and question group).
+
+Dev accuracy in %, 95% episode-bootstrap intervals, SFT pooled over the three seeds:
+
+| Dev (1,170 questions) | 4B reader | Larger reader |
+|---|---|---|
+| Raw history, no memory | 50.8 [47.5, 54.1] | 50.9 [47.2, 54.6] |
+| SFT CRUD memory | 88.8 | 85.4 |
+| SFT scope-aware memory | 86.3 | 86.1 |
+| Gold memory, CRUD / scope-aware | 91.4 / 91.5 | 87.9 / 90.4 |
+| A: history − SFT CRUD | −37.9 [−41.8, −34.2] | −34.4 [−38.2, −30.8] |
+| A: history − SFT scope-aware | −35.5 [−39.7, −31.4] | −35.2 [−39.3, −31.2] |
+| B: display part (original − sentences), SFT | +2.0 [−0.4, +4.2] | +2.6 [+0.5, +4.8] |
+| B: display part, gold | +2.5 [+0.3, +4.7] | +2.4 [+0.1, +4.7] |
+| B: content part (sentences − CRUD), SFT | −4.4 [−6.6, −2.3] | −1.8 [−3.8, +0.1] |
+| B: content part, gold | −2.4 [−4.1, −0.9] | +0.2 [−1.4, +1.7] |
+| B: compact − replay, SFT | −2.2 [−4.4, +0.3] | +1.4 [−0.6, +3.4] |
+| B: compact − replay, gold | −2.6 [−5.0, −0.1] | +2.5 [+0.3, +4.8] |
+| Scope-aware − CRUD (original − CRUD), SFT | −2.5 [−5.2, +0.3] | +0.7 [−1.8, +3.2] |
+| Scope-aware − CRUD, gold | +0.1 [−2.4, +2.5] | +2.6 [+0.3, +5.0] |
+
+The readings fixed before the runs, judged on the point estimates as written:
+
+- A holds: the raw history stays 34-35 points below both SFT memories (family intervals [−40.6, −28.2] and [−40.6,
+  −29.8]).
+- The display reading of B holds: the display part is positive for SFT and gold memory (+2.6 and +2.4; by family
+  [−0.7, +5.6] and [−1.0, +5.7], so, as with the 4B reader's SFT memory on dev, the interval reaches below zero), and
+  the content part of SFT memory is not positive (−1.8).
+- The cost of the compact display does not hold: with the larger reader compact − replay is positive (SFT +1.4, gold
+  +2.5; by family [−1.2, +4.0] and [−0.3, +5.2]). The cost measured with the 4B reader was a property of that reader.
+
+Described after the runs (not fixed before them):
+
+- The larger reader reads the raw history no better than the 4B reader (50.9 against 50.8). By probe type it does
+  worse on ordinary-occasion questions (34.1 against 39.7) and better on neighbouring situations (57.3 against 52.6)
+  and on the 28 boundary questions (53.6 against 28.6).
+- It reads memory a little worse, CRUD memory (SFT −3.4, gold −3.5) more than scope-aware memory (−0.2, −1.1). The loss
+  sits in ordinary-occasion questions (SFT CRUD from 84.2 to 68.0, gold CRUD from 85.0 to 68.8; SFT scope-aware from
+  86.2 to 77.6, gold from 90.3 to 78.1), while both memories gain 2.4-4.4 points on neighbouring situations. Over the
+  three SFT seeds, 199 CRUD answers to ordinary-occasion questions go from right to wrong and 44 from wrong to right
+  (scope-aware: 127 and 44); in 138 of the 199 the reply picks another record's value from the memory shown. In the four
+  such replies read, that record was a situation's preference in effect on the date (open-ended or dated), and the reply
+  took it to apply because it was in effect or because the ordinary occasion could include its situation.
+- The compact display gains on ordinary-occasion questions (SFT +9.5 [+5.1, +14.1], gold +12.2 [+7.3, +17.4]), where
+  it labels each attribute's general preference `general`, and on the 28 boundary questions; it loses on neighbouring
+  situations (SFT −4.6 [−7.4, −2.1], gold −3.8 [−6.7, −1.0]), as it did with the 4B reader (−3.0, −4.0). The loss on
+  boundary questions that made it costly with the 4B reader does not appear.
+- The content part shrinks (SFT from −4.4 to −1.8, gold from −2.4 to +0.2), so the record-order effect that the 4B
+  reader showed on gold memory does not appear with this reader.
+- Scope-aware against CRUD on dev moves by about 3 points toward scope-aware (SFT from −2.5 to +0.7, gold from +0.1
+  to +2.6), because the larger reader misreads CRUD memory on ordinary-occasion questions, not because it reads the
+  scope-aware memory better. Test is not answered by this reader, so how the test lead (+2.7 with the 4B reader)
+  would move is not known.
+
+In short: with a larger reader, A and the display reading of B stand (the raw history stays about 35 points below
+both memories, and the structured display is still worth about 2.5 points), while the cost of the compact display
+does not (it gains 1.4-2.5 points instead). The reader also moves the dev difference between the arms by about 3
+points (from −2.5 to +0.7, neither interval excluding zero). The main table, read once on test with the 4B reader,
+stays as it is.
