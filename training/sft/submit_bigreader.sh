@@ -12,7 +12,10 @@
 #   readtime/dev_sft_s{0,1,2}, readtime/dev_gold   B: replay, compact and CRUD sentences of the scope memory
 # The names match the source runs, so scope_memory.readtime a / b take them as --sft / --gold / --display. Each job's
 # units file goes to <run root>/units/; every unit directory gets a SUBMITTED marker, so nothing is submitted twice.
-# BIGREADER_SBATCH adds sbatch options (a time limit, say); BIGREADER_BATCH sets the batch size (default 32).
+# BIGREADER_SBATCH adds sbatch options, e.g. two 48 GB GPUs instead of one 80 GB GPU (baseline.py then spreads the
+# decoder layers over both):
+#   BIGREADER_SBATCH='--gres=gpu:2 --constraint=L40S|A6000|L40|6000Ada --cpus-per-task=2 --mem=32G --time=03:00:00'
+# BIGREADER_BATCH sets the batch size (default 32).
 set -euo pipefail
 MODE=${1:?usage: submit_bigreader.sh smoke|full}
 W=/home/zichuwu/scope-sft-work/runs

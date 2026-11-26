@@ -396,7 +396,9 @@ non-thinking only, 30.5 B parameters of which 3.3 B are active; the revision and
 in `training/sft/bigreader_model.json`), prompt version 3, greedy decoding, the 160-token reply budget, batch size 32.
 The test split stays read once: dev only. The model is read from a shared Hugging Face cache when one holds the pinned
 revision, and is otherwise downloaded into node scratch for each job, checked file by file and deleted afterwards
-(`training/sft/bigreader.sbatch`); it needs an 80 GB GPU.
+(`training/sft/bigreader.sbatch`); it needs an 80 GB GPU, or two 48 GB GPUs over which `baseline.py` spreads the
+decoder layers evenly (the same computation, split by layers). On 2026-11-25 every 80 GB GPU of the cluster was
+held by long jobs, so these runs use two 48 GB GPUs each (`BIGREADER_SBATCH` in `submit_bigreader.sh`).
 
 Runs (`training/sft/submit_bigreader.sh`; run root `runs/bigreader_qwen3-30b-a3b-instruct-2507/`):
 
