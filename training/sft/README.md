@@ -22,6 +22,7 @@ Policy base model: Qwen3-4B-Instruct-2507. Environment: a venv on top of the `ml
 | `submit_readtime.sh` | the read-time runs: `smoke`, then `full` once `runs/readtime/FROZEN` exists |
 | `bigreader.sbatch`, `download_model.py`, `bigreader_model.json` | larger-reader check: puts the pinned reader model on the node (from a shared Hugging Face cache, or downloaded into node scratch and checked against the manifest's sizes and hashes), runs `baseline` and `reread` units with it, and deletes the copy afterwards |
 | `submit_bigreader.sh` | the larger-reader runs on dev: `smoke`, then `full` once `SMOKE_PASSED` exists |
+| `spread.py`, `spread_check.py` | where the Answer Agent's base model runs: one GPU as for every 4B run, or, for the larger reader, two 48 GB GPUs split by decoder layers with copies through host memory, and transformers' Qwen3-MoE expert loop with the routing sorted once per layer; `spread_check.py` (the `check` unit of `bigreader.sbatch`) tests the GPU-to-GPU copies, the model files and both forwards bit for bit, and measures the speed |
 
 The Answer Agent is the base model without any adapter in every condition, so differences come from the memory each policy writes. After adapter runs `baseline.py` loads a fresh copy of the base model instead of calling `get_base_model()`: PEFT injects the LoRA layers into the base model, where they stay active. The script stops if any LoRA module is present and records the check in `answer_agent.json`.
 

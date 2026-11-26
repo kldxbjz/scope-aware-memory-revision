@@ -3,21 +3,25 @@
 #SBATCH --account=atalwalk
 #SBATCH --partition=preempt
 #SBATCH --qos=preempt_qos
-#SBATCH --gres=gpu:1
-#SBATCH --constraint=VRAM_80GB|VRAM_141GB|A100_80G
+#SBATCH --gres=gpu:2
+#SBATCH --constraint=L40S|A6000|L40|6000Ada
 #SBATCH --requeue
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=64G
 #SBATCH --time=04:00:00
 #SBATCH --output=/home/zichuwu/scope-sft-work/runs/slurm-%j.out
+# Two 48 GB GPUs: spread.py splits the reader by decoder layers (at batch size 64 the smoke's check unit used at most
+# 36.7 of 44.4 GiB per L40S on the longest prompts, 0.88 s per reply; batch size 128 ran out of memory).
 # Larger-reader check (post-hoc, dev only; docs/analysis.md): puts the reader model of bigreader_model.json on this
 # node, then runs the units of UNITS_FILE one after another with it as the Answer Agent. One unit per line:
 #   baseline RUN [baseline.py options]   both arms' memories answered by the reader (baseline.sbatch, --answer-model)
 #   reread RUN [reread.py options]       read-time conditions answered by the reader (reread.sbatch, READTIME_MODEL)
+#   check RUN [spread_check.py options]  checks of the two-GPU placement and of the model files (spread_check.py)
 # Units whose RUN has ALL_DONE are skipped, so a requeued job goes on where it stopped (and a finished job that the
 # preempt quirk requeues does nothing).
-# The model comes from a shared Hugging Face cache snapshot at the pinned revision whose blobs carry the manifest's
-# hashes, or else it is downloaded into node scratch (/scratch/job_tmp/zichuwu-br, or /tmp/zichuwu-br when that is not
+# The model comes from a Hugging Face cache snapshot at the pinned revision whose blobs carry the manifest's hashes
+# (shared caches, or the copy this user already holds for another course project), or else it is downloaded into node
+# scratch (/scratch/job_tmp/zichuwu-br, or /tmp/zichuwu-br when that is not
 # writable) and checked file by file. Every job reads it as /tmp/zichuwu-br-model/NAME (a link), so a resumed run sees
 # the same settings. My jobs on one node share one download (flock on ROOT/.lock; ROOT/users lists them); the last to
 # leave deletes it. A job killed outright can leave a copy behind: remove those after the batch.
@@ -25,6 +29,7 @@
 set -euo pipefail
 UNITS=${1:?usage: bigreader.sbatch UNITS_FILE}
 CODE=${READTIME_CODE:-/home/zichuwu/scope-sft-work/sft}
+MIRROR=${READTIME_MIRROR:-/home/zichuwu/scope-aware-memory-revision}
 BIG=/data/user_data/zichuwu/scope-sft
 PY=$BIG/venv-trl024/bin/python
 MAN=$CODE/bigreader_model.json
@@ -72,7 +77,8 @@ trap cleanup EXIT
 trap 'exit 143' TERM INT
 
 shared=""
-for base in /data/hf_cache/hub /data/hf_cache /data/models/hub /data/models /data/models/huggingface/hub; do
+for base in /data/hf_cache/hub /data/hf_cache /data/models/hub /data/models /data/models/huggingface/hub \
+            /data/user_data/zichuwu/anlp-a2-claude/hf/hub; do
   d=$base/models--${REPO//\//--}/snapshots/$REV
   if [ -d "$d" ] && "$PY" -I "$CODE/download_model.py" --manifest "$MAN" --check-links "$d"; then shared=$d; break; fi
 done
@@ -114,6 +120,9 @@ for line in "${LINES[@]}"; do
   case "$kind" in
     baseline) bash "$CODE/baseline.sbatch" "$run" $rest --answer-model "$MODEL" ;;
     reread) READTIME_MODEL="$MODEL" bash "$CODE/reread.sbatch" "$run" $rest ;;
+    check) HF_HUB_OFFLINE=1 PYTHONDONTWRITEBYTECODE=1 TOKENIZERS_PARALLELISM=false "$PY" "$CODE/spread_check.py" \
+             --model "$MODEL" --repo "$MIRROR" --episodes "$MIRROR/training/scope_revision_v1/data/dev.jsonl" \
+             --manifest "$MAN" $rest && touch "$run/ALL_DONE" ;;
     *) echo "unknown unit kind $kind"; exit 2 ;;
   esac < /dev/null 2>&1 | tee -a "$run/bigreader_unit.log"
   echo "== unit done $run $(date -Is)"

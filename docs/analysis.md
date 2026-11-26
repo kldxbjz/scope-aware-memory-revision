@@ -393,12 +393,30 @@ worse on dev; and the compact display trades 2-3 points for 82% fewer memory tok
 Experiments A and B used one small reader. To see whether their readings depend on it, the dev runs are answered
 again by a larger reader with nothing else changed: Qwen3-30B-A3B-Instruct-2507 (the same 2507 instruct line,
 non-thinking only, 30.5 B parameters of which 3.3 B are active; the revision and every file's size and hash are pinned
-in `training/sft/bigreader_model.json`), prompt version 3, greedy decoding, the 160-token reply budget, batch size 32.
-The test split stays read once: dev only. The model is read from a shared Hugging Face cache when one holds the pinned
-revision, and is otherwise downloaded into node scratch for each job, checked file by file and deleted afterwards
-(`training/sft/bigreader.sbatch`); it needs an 80 GB GPU, or two 48 GB GPUs over which `baseline.py` spreads the
-decoder layers evenly (the same computation, split by layers). On 2026-11-25 every 80 GB GPU of the cluster was
-held by long jobs, so these runs use two 48 GB GPUs each (`BIGREADER_SBATCH` in `submit_bigreader.sh`).
+in `training/sft/bigreader_model.json`), prompt version 3, greedy decoding, the 160-token reply budget, batch size 64.
+The test split stays read once: dev only. The model is read from a Hugging Face cache on the cluster's shared storage
+when one holds the pinned revision, and is otherwise downloaded into node scratch for each job, checked file by file
+and deleted afterwards (`training/sft/bigreader.sbatch`). On 2026-11-25 every 80 GB GPU of the cluster was held by
+long jobs, so each job uses two 48 GB GPUs: `training/sft/spread.py` puts the first 24 decoder layers (with the
+embeddings, the final norm and the output layer) on one and the other 24 on the other.
+
+Placement on two GPUs (2026-11-25/26). The first smoke job let accelerate spread the layers (`device_map="auto"`),
+which copies hidden states directly from one GPU to the other. Every reply came back as garbage ("!!!!" runs and
+repeated tokens; none of the 216 replies had the "Answer:" line), and at about 18 minutes per batch of 32 the job hit
+its 3-hour limit; the downloaded model files had passed the hash check. `training/sft/spread_check.py`, run as the
+first unit of the second smoke job (two L40S GPUs of another node), shows why: the driver reports peer access between
+the two GPUs, yet all 40 direct GPU-to-GPU copies of random tensors differed from the source, while all 20 copies
+through host memory were exact. `spread.py` therefore removes accelerate's hooks and copies every tensor that crosses
+between the GPUs through host memory. It also replaces transformers' loop over the experts of each Qwen3-MoE block,
+which waits for the GPU twice per expert, by the same loop with the routing sorted once per layer, so the same
+experts run on the same tokens in the same order. The check compared the two on the block inputs of layers 0, 23, 24
+and 47 (the prefill of four history prompts and one decode step: 8 of 8 outputs equal bit for bit) and generated 24
+greedy tokens for those prompts with each (identical tokens; 6.0 s against 8.6 s). The model copy on shared storage
+(a Hugging Face cache at the pinned revision) matched the manifest in all 24 files. The check then
+answered 128 dev history prompts at batch size 64 in 113 s (0.88 s per reply, against about 39 s in the first smoke,
+whose replies also ran to the full 160 tokens), every reply with the "Answer:" line, using at most 36.7 of 44.4 GiB
+per GPU; batch size 128 ran out of GPU memory. The garbled first smoke is kept as
+`runs/bigreader_qwen3-30b-a3b-instruct-2507_smoke_garbled/` and enters no result.
 
 Runs (`training/sft/submit_bigreader.sh`; run root `runs/bigreader_qwen3-30b-a3b-instruct-2507/`):
 
@@ -419,8 +437,10 @@ Readings, fixed before any run (dev; 4B values in brackets; intervals are report
   (4B: +2.0, +2.5) and the content part (sentences − CRUD) is not positive for SFT memory (4B: −4.4).
 - The cost of the compact display holds if compact − replay is negative for both SFT and gold memory (4B: −2.2, −2.6).
 
-Procedure: `submit_bigreader.sh smoke` runs one job that answers the first 5 dev episodes three ways (gold memory, A,
-and B on seed 0's memory) to check the pipeline only (every probe answered, the "Answer:" line present, no prompt cut,
-the model files checked) and to measure the speed, and then re-reads the full dev gold memory. After the smoke,
-`SMOKE_PASSED` in the run root names the commit, and `submit_bigreader.sh full` submits the other eight units once.
-Every result is reported, whichever way it falls.
+Procedure: `submit_bigreader.sh smoke` runs one job: the check above, then the first 5 dev episodes answered three
+ways (gold memory, A, and B on seed 0's memory) to check the pipeline only (every probe answered, the "Answer:" line
+present, no prompt cut, the prompts equal to the ones the repository builds) and to measure the speed. The second
+smoke (2026-11-26) passed all of these: 324 answers, none without the "Answer:" line, no reply at the token budget.
+After the smoke, `SMOKE_PASSED` in the run root names the commit, and `submit_bigreader.sh full` submits the nine dev
+units once, in four jobs (one per SFT seed with its memories and its displays; one with gold memory, its displays and
+the raw history). Every result is reported, whichever way it falls.

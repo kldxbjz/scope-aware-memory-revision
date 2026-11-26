@@ -21,7 +21,9 @@ import sys
 from pathlib import Path
 
 import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer
+from transformers import AutoTokenizer
+
+from spread import load_reader
 
 
 class Generator:
@@ -31,16 +33,9 @@ class Generator:
         self.tok.padding_side = "left"
         if self.tok.pad_token is None:
             self.tok.pad_token = self.tok.eos_token
-        # one GPU holds the whole model; with several (a reader too large for one card, docs/analysis.md "Larger
-        # reader") the decoder layers are spread evenly over them: the same computation, split by layers
-        placement = "auto" if torch.cuda.device_count() > 1 else "cuda"
-        self.model = AutoModelForCausalLM.from_pretrained(model_dir, torch_dtype=torch.bfloat16, device_map=placement)
-        if placement == "auto":
-            devices = [str(d) for d in self.model.hf_device_map.values()]
-            share = ", ".join(f"{d}: {devices.count(d)}" for d in sorted(set(devices)))
-            if any(d in ("cpu", "disk") for d in devices):
-                sys.exit(f"{model_dir} does not fit on the GPUs ({share} modules)")
-            print(f"{model_dir} spread over {torch.cuda.device_count()} GPUs ({share} modules)", flush=True)
+        # one GPU holds the whole model; a job with two (the larger reader, docs/analysis.md "Larger reader") splits
+        # it by decoder layers, copying between the GPUs through host memory (spread.py)
+        self.model = load_reader(model_dir)
         if adapter:
             from peft import PeftModel
             self.model = PeftModel.from_pretrained(self.model, adapter)

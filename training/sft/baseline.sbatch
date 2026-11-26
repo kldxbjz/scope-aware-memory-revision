@@ -31,7 +31,7 @@ case "$SPLIT" in
   challenge) DATA=$MIRROR/training/challenge_v1/data/challenge.jsonl ;;
   *) echo "SPLIT must be dev, test or challenge, not $SPLIT"; exit 2 ;;
 esac
-CODE=/home/zichuwu/scope-sft-work/sft
+CODE=${READTIME_CODE:-/home/zichuwu/scope-sft-work/sft}  # READTIME_CODE: a staged copy of the scripts
 BIG=/data/user_data/zichuwu/scope-sft
 PY=$BIG/venv-trl024/bin/python
 export HF_HOME=$BIG/hf_home HF_HUB_OFFLINE=1 PYTHONDONTWRITEBYTECODE=1 TOKENIZERS_PARALLELISM=false
