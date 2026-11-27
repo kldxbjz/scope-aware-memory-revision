@@ -214,7 +214,9 @@ comparison with dev, teacher-forced write metrics, cost, and the figures for the
 [analysis.md](analysis.md#post-hoc-analyses-2026-11-24); they re-read these runs and change none of the numbers above.
 The read-time experiments of the team's mid-project update (A: answering from the raw conversations; B: the same
 memory shown in other ways) ran later with the same frozen Answer Agent and are post-hoc too
-([analysis.md](analysis.md#read-time-experiments-post-hoc-2026-11-24)).
+([analysis.md](analysis.md#read-time-experiments-post-hoc-2026-11-24)). A larger reader (Qwen3-30B-A3B-Instruct-2507)
+later re-read the same test memories, also post-hoc: the scope arm's lead stays, +3.2 [+1.1, +5.0]
+([analysis.md](analysis.md#results-on-test-and-the-challenge-set-2026-11-27)).
 
 Next is the manual error analysis fixed in [analysis.md](analysis.md#manual-error-analysis-pre-specified). Its packets
 are in [annotations/error_analysis/](../annotations/error_analysis/): 40 of the 275 wrong scope probes and 40 of the

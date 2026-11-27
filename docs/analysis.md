@@ -352,8 +352,8 @@ missing in at most 0.6% of the replies (CRUD sentences on dev: 21 of 3,510). Rep
 - Tokens of one test run: history 1.55 M (766 per question; its prompts average 714 tokens), CRUD 1.40 M,
   scope-aware 2.17 M, counting every policy call on every event. On these short timelines (at most 8 events) the raw
   history is 11% dearer than the CRUD memory and 29% cheaper than the scope-aware memory, at a far lower accuracy.
-- Limits: one small reader with one prompt written for this experiment and not tuned; a larger reader may read raw
-  histories much better, and longer histories cost more per question.
+- Limits: one small reader with one prompt written for this experiment and not tuned (the larger reader of the next
+  section reads the raw history no better: 57.5% on test), and longer histories cost more per question.
 
 **B, the display of the same memory.** Test accuracy in %:
 
@@ -388,7 +388,7 @@ In short: with this reader both memories beat the raw history by 25-38 points; t
 worth about 2-3 points on both splits, while what the scope-aware policy writes is no better than CRUD's on test and
 worse on dev; and the compact display trades 2-3 points for 82% fewer memory tokens.
 
-## Larger reader (post-hoc, dev only, 2026-11-25)
+## Larger reader (post-hoc, 2026-11-25)
 
 Experiments A and B used one small reader. To see whether their readings depend on it, the dev runs are answered again
 by a larger reader with nothing else changed: Qwen3-30B-A3B-Instruct-2507 (the same 2507 instruct line, non-thinking
@@ -511,10 +511,10 @@ Described after the runs (not fixed before them):
   boundary questions that made it costly with the 4B reader does not appear.
 - The content part shrinks (SFT from −4.4 to −1.8, gold from −2.4 to +0.2), so the record-order effect that the 4B
   reader showed on gold memory does not appear with this reader.
-- Scope-aware against CRUD on dev moves by about 3 points toward scope-aware (SFT from −2.5 to +0.7, gold from +0.1
-  to +2.6), because the larger reader misreads CRUD memory on ordinary-occasion questions, not because it reads the
-  scope-aware memory better. Test is not answered by this reader, so how the test lead (+2.7 with the 4B reader)
-  would move is not known.
+- Scope-aware against CRUD on dev moves by about 3 points toward scope-aware (SFT from −2.5 to +0.7, gold from +0.1 to
+  +2.6), because the larger reader misreads CRUD memory on ordinary-occasion questions, not because it reads the
+  scope-aware memory better. On test, answered by this reader afterwards (last subsection), the lead stays: +3.2
+  [+1.1, +5.0] against +2.7 [+0.9, +4.5] with the 4B reader.
 
 In short: with a larger reader, A and the display reading of B stand (the raw history stays about 35 points below
 both memories, and the structured display is still worth about 2.5 points), while the cost of the compact display
@@ -558,3 +558,98 @@ Readings, fixed before any of these runs (4B values in brackets):
   rule on its ordinary-occasion questions (4B: 86.0).
 
 Expected from dev, not judged: the lead grows, because CRUD memory loses on ordinary-occasion questions.
+
+### Results on test and the challenge set (2026-11-27)
+
+Runs. The six jobs (11288988-11288993, code `6e63fd3`) ran between 21:25 ET on 2026-11-26 and 09:22 on 2026-11-27,
+each on two RTX A6000 GPUs (48 GB): seed 1 on babel-u9-16, seed 2 on babel-u9-32, seed 0 on babel-t9-32, and the gold,
+raw-history and challenge-set jobs on babel-n5-16. Seed 0's job had first started at 19:12 on 2026-11-26 and was
+preempted while loading the model, before it answered anything; it ran again from the start at 05:48. After it
+finished, the requeue quirk put it back in the queue, and that copy was cancelled before it started. Every job read
+the model from the shared Hugging Face cache (24 of 24 files as in the manifest). The thirteen units took 17-125
+minutes each (test 46-125, the challenge set 17-20), 14.8 hours of two-GPU jobs in all.
+
+Checks (`bigreader_check.py --split test` and `--split challenge`, both passed): every memory unit's job log shows its
+split's data; the episodes, the memories and the prompts are those of the 4B runs (every read-time prompt recomputed
+from the repository code and equal to the 4B run's); and every probe got one answer in each condition, 42,567 answers
+on test and 4,536 on the challenge set. The "Answer:" line is missing in 16 of these 47,103 answers (the 4B reader:
+82). No history reply reached the 160-token budget (4B: 5), and 6 display replies did (4B: 34). The larger reader
+gives the same answer as the 4B reader on 84.4-85.2% of the test memory questions per run and on 86.9-88.6% of the
+challenge-set ones; answering the original prompts again (replay) gives its own stored answer on 8,105 of 8,108.
+Reports: `results/posthoc/bigreader_test.json` and `results/posthoc/bigreader_challenge.json`.
+
+Test accuracy in %, 95% episode-bootstrap intervals, SFT pooled over the three seeds:
+
+| Test (2,027 questions) | 4B reader | Larger reader |
+|---|---|---|
+| Raw history, no memory | 58.2 [55.7, 60.6] | 57.5 [54.9, 59.9] |
+| SFT CRUD memory | 83.3 | 81.9 |
+| SFT scope-aware memory | 86.1 | 85.1 |
+| Gold memory, CRUD / scope-aware | 86.9 / 89.6 | 85.6 / 89.1 |
+| A: history − SFT CRUD | −25.2 [−28.0, −22.4] | −24.4 [−27.4, −21.6] |
+| A: history − SFT scope-aware | −27.9 [−30.4, −25.4] | −27.6 [−30.4, −24.9] |
+| B: display part (original − sentences), SFT | +3.2 [+1.9, +4.5] | +3.6 [+2.0, +5.1] |
+| B: display part, gold | +2.7 [+1.1, +4.2] | +3.5 [+1.7, +5.2] |
+| B: content part (sentences − CRUD), SFT | −0.5 [−2.2, +1.1] | −0.4 [−2.0, +1.0] |
+| B: content part, gold | +0.1 [−1.2, +1.1] | +0.1 [−1.2, +1.2] |
+| B: compact − replay, SFT | −3.0 [−4.3, −1.6] | +0.1 [−1.5, +1.6] |
+| B: compact − replay, gold | −2.3 [−3.6, −1.0] | −0.1 [−1.8, +1.7] |
+| Scope-aware − CRUD (original − CRUD), SFT | +2.7 [+0.9, +4.5] | +3.2 [+1.1, +5.0] |
+| Scope-aware − CRUD, gold | +2.7 [+1.2, +4.2] | +3.5 [+1.6, +5.3] |
+
+Challenge-set accuracy in % (24 episodes), both arms' stored memories:
+
+| Challenge set (567 questions) | 4B reader | Larger reader |
+|---|---|---|
+| SFT CRUD memory | 80.6 [75.0, 85.8] | 83.3 [78.3, 87.9] |
+| SFT scope-aware memory | 81.0 [75.7, 85.9] | 82.2 [77.0, 87.0] |
+| SFT scope-aware − CRUD | +0.4 [−2.9, +4.0] | −1.1 [−4.2, +1.8] |
+| Gold CRUD memory | 90.0 [85.0, 94.4] | 92.8 [89.0, 96.1] |
+| Gold scope-aware memory | 91.2 [86.9, 94.8] | 93.0 [89.4, 96.1] |
+| Gold scope-aware − CRUD | +1.2 [−2.6, +4.9] | +0.2 [−1.6, +2.0] |
+
+The readings fixed before the runs, judged on the point estimates as written:
+
+- A holds: the raw history stays 24-28 points below both SFT memories (family intervals [−27.4, −21.2] and [−31.0,
+  −24.1]).
+- The display reading of B holds: the display part is positive for SFT and gold memory (+3.6 and +3.5; by family
+  [+1.6, +5.7] and [+1.2, +5.8]), and the content part of SFT memory is not positive (−0.4).
+- The cost of the compact display does not hold: compact − replay is +0.1 for SFT and −0.1 for gold memory (by family
+  [−1.9, +2.1] and [−2.5, +2.2]). As on dev, the cost measured with the 4B reader (−3.0 and −2.3 on test) was a
+  property of that reader.
+- The test lead stays: scope-aware − CRUD after SFT is +3.2 [+1.1, +5.0] by episode and [+1.1, +5.5] by family (4B:
+  +2.7 [+0.9, +4.5]).
+- The misreading of CRUD memory on ordinary-occasion questions replicates on test: SFT CRUD accuracy on them falls
+  from 79.7 to 69.1 (−10.6; dev −16.2).
+- Challenge set, described: SFT scope-aware − CRUD is −1.1 [−4.2, +1.8] by episode and [−3.9, +2.1] by family (4B:
+  +0.4 [−2.9, +4.0]), gold memory +0.2 [−1.6, +2.0] (4B: +1.2 [−2.6, +4.9]). The misreading does not replicate there:
+  SFT CRUD on ordinary-occasion questions 86.0 with the 4B reader and 85.8 with the larger one.
+
+Described after the runs (not fixed before them):
+
+- The expectation from dev holds in direction but not in reason. The lead grows by 0.5 points, but on test both
+  memories lose on ordinary-occasion questions, the scope-aware memory a little more (SFT CRUD from 79.7 to 69.1, SFT
+  scope-aware from 91.0 to 78.1; gold CRUD from 81.7 to 71.8, gold scope-aware from 92.8 to 80.2), so the difference
+  between the arms on these questions shrinks (from +11.2 to +9.0). The lead grows because the scope-aware memory's
+  small deficits elsewhere shrink or vanish (target questions from −2.4 to −1.4, neighbouring situations from −1.4 to
+  +0.1) and its advantage on the 88 boundary questions grows (from +25.8 to +28.8).
+- Over the three SFT seeds, 291 CRUD answers to ordinary-occasion questions go from right to wrong and 122 from wrong
+  to right (scope-aware: 245 and 40). In 203 of the 291 CRUD flips (dev: 138 of 199) and in 118 of the 245 scope-aware
+  ones the reply picks another record's value from the memory shown.
+- The lead is still all display: display part +3.6, content part −0.4 for SFT memory (4B: +3.2 and −0.5).
+- The larger reader reads the raw history no better than the 4B reader on test either (57.5 against 58.2): worse on
+  ordinary-occasion questions (40.5 against 48.0) and neighbouring situations (61.2 against 66.0), better on target
+  questions (68.2 against 62.7) and the 88 boundary questions (46.6 against 20.4).
+- The compact display gains on ordinary-occasion questions (SFT +5.0 [+1.0, +8.8], gold +3.6 [−0.8, +8.0]) and loses
+  on neighbouring situations (SFT −1.7 [−3.3, −0.2], gold −1.1 [−3.1, +1.0]), as on dev. Its loss on boundary
+  questions shrinks from −27.7 to −10.6 for SFT memory and from −30.7 to −10.2 for gold memory, with intervals that
+  reach zero.
+- On the challenge set the larger reader reads both memories a little better than the 4B reader (SFT CRUD +2.7,
+  scope-aware +1.2; gold +2.8 and +1.8), and its answers to ordinary-occasion questions barely change (SFT CRUD: 7
+  right to wrong, 6 wrong to right; scope-aware: 12 and 13). Why the misreading appears on dev and test but not on
+  this set was not examined.
+
+In short: on test the readings come out as on dev. With the larger reader, A and the display reading of B stand, the
+cost of the compact display disappears, and the test lead of the scope-aware arm stays (+3.2 [+1.1, +5.0] against +2.7
+[+0.9, +4.5]) and is still all display; on the challenge set the arms still tie. The main table, read once on test
+with the 4B reader, stays as it is.

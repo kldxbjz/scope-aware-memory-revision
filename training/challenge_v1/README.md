@@ -167,3 +167,7 @@ Diagnostics (rule readers and teacher forcing; not primary):
   CRUD. Most rejections are records with a missing or invalid field: a REVISE without its target, an ADD without a
   valid attribute, or an exception without its single EXCEPTION_TO edge.
 - Memory at the probes takes about 370 tokens for scope and 130 for CRUD (seed records alone: 266 and 111).
+
+Post-hoc (2026-11-27): the same stored memories read by a larger reader (Qwen3-30B-A3B-Instruct-2507) still tie: SFT
+scope − CRUD −1.1 [−4.2, +1.8] (4B reader: +0.4 [−2.9, +4.0]), gold memory +0.2 [−1.6, +2.0]
+([docs/analysis.md](../../docs/analysis.md#results-on-test-and-the-challenge-set-2026-11-27)).
