@@ -143,6 +143,8 @@ everything below re-reads the stored run directories (the seven test runs, and t
 P="python3 -m scope_memory.posthoc"; T=runs/test_p12; D=runs/sft_p12_eval; O=$REPO/results/posthoc
 $P decompose --sft ${T}_sft_s0 ${T}_sft_s1 ${T}_sft_s2 --gold ${T}_gold --out $O/decomposition_test.json
 $P decompose --sft ${D}_s0 ${D}_s1 ${D}_s2 --gold runs/reference_gold_p12 --out $O/decomposition_dev.json
+C=runs/challenge_p12_ffeb6a87   # added on 2026-11-27 for the course report
+$P decompose --sft ${C}_sft_s0 ${C}_sft_s1 ${C}_sft_s2 --gold ${C}_gold --out $O/decomposition_challenge.json
 $P mechanism ${T}_sft_s0 ${T}_sft_s1 ${T}_sft_s2 --out $O/mechanism_test.json
 $P mechanism ${D}_s0 ${D}_s1 ${D}_s2 --out $O/mechanism_dev.json
 $P cost --noop ${T}_noop --zero-shot ${T}_zero_shot --six-shot ${T}_six_shot \
@@ -176,6 +178,10 @@ two policies write equally well against their own gold memory. Per question type
 is +11.2 = +11.1 + 0.1 for default probes, +25.8 = +26.1 − 0.4 for boundary probes, −2.4 = −1.6 − 0.8 for target
 and −1.4 = −2.2 + 0.8 for neighbor probes; for scoped-exception questions it is +4.3 = +4.5 − 0.2. The family
 intervals on test are about as wide as the episode intervals, so the test result does not rest on a few attributes.
+
+On the challenge set (added on 2026-11-27 for the course report; it re-reads the stored runs
+`challenge_p12_ffeb6a87_sft_s0`–`s2` and `challenge_p12_ffeb6a87_gold`) both parts are small: total +0.4 [−2.9, +4.0]
+= format +1.2 [−2.6, +4.9] + writing −0.8 [−4.8, +3.4] (episode intervals).
 
 ### Dev against test
 
